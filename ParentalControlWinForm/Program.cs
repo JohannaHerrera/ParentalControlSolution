@@ -10,6 +10,7 @@ namespace ParentalControlWinForm
     {
         /// <summary>
         ///  The main entry point for the application.
+        ///  Prueba comentario
         /// </summary>
         [STAThread]
         static void Main()
