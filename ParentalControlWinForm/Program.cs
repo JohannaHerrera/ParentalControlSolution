@@ -19,7 +19,7 @@ namespace ParentalControlWinForm
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Form1()); 
-            //comentario prueba 
+            //comentario prueba2
         }
     }
 }
