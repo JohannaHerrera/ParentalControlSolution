@@ -12,6 +12,8 @@ namespace ParentalControlWindowsForm.Forms
 {
     public partial class FormHome : Form
     {
+        public int parentId;
+
         public FormHome()
         {
             InitializeComponent();

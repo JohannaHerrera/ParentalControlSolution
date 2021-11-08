@@ -1,4 +1,5 @@
-﻿using ParentalControl.Data;
+﻿using ParentalControl.Business.BusinessBO;
+using ParentalControl.Models.Login;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -28,42 +29,44 @@ namespace ParentalControlWindowsForm.Forms
 
         private void btnRegister_Click(object sender, EventArgs e)
         {
-            if (txtUser.Text == "" || txtPassword.Text == "" || txtUser.Text == "")
-            {
-                MessageBox.Show("Por favor, complete todos los datos solicitados.");
-                return;
-            }
-
             try
             {
-                SqlConnection connection = SQLConexionDataBase.BuildSqlConnection();
-                SqlCommand query = new SqlCommand
-                    ("SELECT * FROM Parent where ParentEmail=@username and ParentPassword=@password", connection);
+                DataTable dataTable = new DataTable();
+                RegisterModel registerModel = new RegisterModel();
+                LoginBO loginBO = new LoginBO();
 
-                query.Parameters.AddWithValue("@username", txtUser.Text);
-                query.Parameters.AddWithValue("@password", txtPassword.Text);
-                connection.Open();
+                registerModel.Name = txtName.Text;
+                registerModel.User = txtUser.Text;
+                registerModel.Password = txtPassword.Text;
 
-                SqlDataAdapter adapt = new SqlDataAdapter(query);
-                DataSet ds = new DataSet();
-                adapt.Fill(ds);
-                connection.Close();
-                int count = ds.Tables[0].Rows.Count;
+                string message = registerModel.Validate(registerModel);
 
-                //Si el login es exitoso, ingresa a Home
-                if (count == 1)
+                if (!string.IsNullOrEmpty(message))
                 {
-                    MessageBox.Show("Login Successful!");
-                    this.Hide();
-                    FormHome formHome = new FormHome();
-                    formHome.Show();
+                    MessageBox.Show(message);
+                    return;
                 }
                 else
                 {
-                    MessageBox.Show("Login Failed!");
+                    dataTable = loginBO.validateRegister(registerModel.User);
+
+                    if (dataTable.Rows.Count == 0)
+                    {
+                        if (loginBO.registerUser(registerModel))
+                        {
+                            MessageBox.Show("¡Te has registrado satisfactoriamente!");
+                            this.Hide();
+                            FormLogin formLogin = new FormLogin();
+                            formLogin.Show();
+                        }                       
+                    }
+                    else
+                    {
+                        MessageBox.Show("Ya existe una cuenta con el mismo correo electrónico.");
+                    }
                 }
             }
-            catch (Exception ex)
+            catch(Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }

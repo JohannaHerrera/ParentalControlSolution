@@ -1,4 +1,5 @@
-﻿using ParentalControl.Models.Login;
+﻿using ParentalControl.Business.BusinessBO;
+using ParentalControl.Models.Login;
 using ParentalControlWindowsForm.Forms;
 using System;
 using System.Collections.Generic;
@@ -22,41 +23,38 @@ namespace ParentalControlWindowsForm
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            DataTable dataTable = new DataTable();
-            LoginModel loginModel = new LoginModel();
-            LoginBO loginBO = new LoginBO();
-
-            loginModel.User = txtUser.Text;
-            loginModel.Password = txtPassword.Text;
-
-
-            if (loginModel.User == "" || txtPassword.Text == "")
-            {
-                MessageBox.Show("Por favor, ingrese su correo y contraseña");
-                return;
-            }
-
             try
             {
-                string query = $"SELECT * FROM Parent WHERE ParentEmail = {txtUser.Text}" +
-                               $"AND ParentPassword = {txtPassword.Text}";
+                DataTable dataTable = new DataTable();
+                LoginModel loginModel = new LoginModel();
+                LoginBO loginBO = new LoginBO();
 
-                DataSet dataSet = SQLConexionDataBase.Query(query);
+                loginModel.User = txtUser.Text;
+                loginModel.Password = txtPassword.Text;
 
-                int count = dataSet.Tables[0].Rows.Count;
+                string message = loginModel.Validate(loginModel);
 
-                //Si el login es exitoso, ingresa a Home
-                if (count == 1)
+                if (!string.IsNullOrEmpty(message))
                 {
-                    MessageBox.Show("Login Successful!");
-                    this.Hide();
-                    FormHome formHome = new FormHome();
-                    formHome.Show();
+                    MessageBox.Show(message);
+                    return;
                 }
                 else
                 {
-                    MessageBox.Show("Login Failed!");
-                }
+                    dataTable = loginBO.validateCredentials(loginModel);
+
+                    if (dataTable.Rows.Count == 1)
+                    {
+                        this.Hide();
+                        FormHome formHome = new FormHome();
+                        formHome.parentId = 1;
+                        formHome.Show(); 
+                    }
+                    else
+                    {
+                        MessageBox.Show("Usuario o contraseña incorrectos.");
+                    }
+                }                
             }
             catch (Exception ex)
             {
