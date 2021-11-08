@@ -1,7 +1,7 @@
 ﻿
 namespace ParentalControlWindowsForm
 {
-    partial class Form1
+    partial class FormLogin
     {
         /// <summary>
         /// Required designer variable.
@@ -83,6 +83,7 @@ namespace ParentalControlWindowsForm
             this.btnRegister.TabIndex = 4;
             this.btnRegister.Text = "Registrarse";
             this.btnRegister.UseVisualStyleBackColor = true;
+            this.btnRegister.Click += new System.EventHandler(this.btnRegister_Click);
             // 
             // txtUser
             // 
@@ -98,7 +99,7 @@ namespace ParentalControlWindowsForm
             this.txtPassword.Size = new System.Drawing.Size(232, 20);
             this.txtPassword.TabIndex = 6;
             // 
-            // Form1
+            // FormLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -110,7 +111,7 @@ namespace ParentalControlWindowsForm
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Name = "Form1";
+            this.Name = "FormLogin";
             this.Text = "Form1";
             this.ResumeLayout(false);
             this.PerformLayout();

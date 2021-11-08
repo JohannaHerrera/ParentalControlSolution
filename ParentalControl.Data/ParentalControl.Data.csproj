@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{5D5428DB-2C19-4F62-8B3F-EAFCB9B4991A}</ProjectGuid>
-    <OutputType>WinExe</OutputType>
-    <RootNamespace>ParentalControlWindowsForm</RootNamespace>
-    <AssemblyName>ParentalControlWindowsForm</AssemblyName>
+    <ProjectGuid>{6B051E87-526A-40EA-B75F-42E387FD6744}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>ParentalControl.Data</RootNamespace>
+    <AssemblyName>ParentalControl.Data</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -32,8 +32,12 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -46,32 +50,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Forms\FormHome.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\FormHome.Designer.cs">
-      <DependentUpon>FormHome.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\FormLogin.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\FormLogin.Designer.cs">
-      <DependentUpon>FormLogin.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\FormRegister.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\FormRegister.Designer.cs">
-      <DependentUpon>FormRegister.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Forms\FormLogin.resx">
-      <DependentUpon>FormLogin.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\FormRegister.resx">
-      <DependentUpon>FormRegister.cs</DependentUpon>
-    </EmbeddedResource>
+    <Compile Include="SQLConexionDataBase.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -93,12 +73,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\ParentalControl.Models\ParentalControl.Models.csproj">
-      <Project>{6d29192c-8ecf-4d75-b5c3-b9c5b782fee6}</Project>
-      <Name>ParentalControl.Models</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
