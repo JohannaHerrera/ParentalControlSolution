@@ -1,4 +1,6 @@
 ﻿
+using ParentalControl.Business.BusinessBO;
+
 namespace ParentalControlWindowsForm.Forms
 {
     partial class FormDevice
@@ -185,7 +187,7 @@ namespace ParentalControlWindowsForm.Forms
             this.lblDeviceName.Name = "lblDeviceName";
             this.lblDeviceName.Size = new System.Drawing.Size(93, 32);
             this.lblDeviceName.TabIndex = 2;
-            this.lblDeviceName.Text = "label5";
+            this.lblDeviceName.Text = this.deviceName;
             // 
             // btnMyAccount
             // 

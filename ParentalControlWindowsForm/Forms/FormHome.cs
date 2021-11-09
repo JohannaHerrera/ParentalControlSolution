@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ParentalControl.Business.BusinessBO;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -27,7 +28,11 @@ namespace ParentalControlWindowsForm.Forms
         private void imgDevice_Click(object sender, EventArgs e)
         {
             this.Hide();
+            DeviceBO deviceBO = new DeviceBO();
             FormDevice formDevice = new FormDevice();
+            string deviceCode = deviceBO.GetMACAddress();
+            formDevice.parentId = this.parentId;
+            formDevice.deviceName = deviceBO.GetDeviceName(deviceCode);
             formDevice.Show();
         }
     }

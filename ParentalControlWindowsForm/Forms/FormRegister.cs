@@ -50,11 +50,11 @@ namespace ParentalControlWindowsForm.Forms
                 {
                     // Se verifica que no exista una cuenta con el mismo correo
                     List<RegisterModel> registerModelList = new List<RegisterModel>();
-                    registerModelList = loginBO.validateRegister(registerModel.User);
+                    registerModelList = loginBO.ValidateRegister(registerModel.User);
 
                     if (registerModelList.Count == 0)
                     {
-                        if (loginBO.registerUser(registerModel))
+                        if (loginBO.RegisterUser(registerModel))
                         {
                             MessageBox.Show("¡Te has registrado satisfactoriamente!");
                             this.Hide();

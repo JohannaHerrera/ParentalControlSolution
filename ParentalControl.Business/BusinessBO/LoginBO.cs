@@ -19,7 +19,7 @@ namespace ParentalControl.Business.BusinessBO
         /// </summary>
         /// <param name="loginModel">contiene el usuario y la contraseña</param>
         /// <returns>List<LoginModel></returns>
-        public List<LoginModel> validateCredentials(LoginModel loginModel)
+        public List<LoginModel> ValidateCredentials(LoginModel loginModel)
         {
             string query = $"SELECT * FROM Parent WHERE ParentEmail = '{loginModel.User}'" +
                            $" AND ParentPassword = '{loginModel.Password}'";
@@ -34,7 +34,7 @@ namespace ParentalControl.Business.BusinessBO
         /// </summary>
         /// <param name="user">correo del Padre</param>
         /// <returns>List<RegisterModel></returns>
-        public List<RegisterModel> validateRegister(string user)
+        public List<RegisterModel> ValidateRegister(string user)
         {
             string query = $"SELECT * FROM Parent WHERE ParentEmail = '{user}'";
 
@@ -48,7 +48,7 @@ namespace ParentalControl.Business.BusinessBO
         /// </summary>
         /// <param name="registerModel">modelo que contiene los datos del usuario Padre</param>
         /// <returns>bool: TRUE(registro exitoso), FALSE(error al registrar)</returns>
-        public bool registerUser(RegisterModel registerModel)
+        public bool RegisterUser(RegisterModel registerModel)
         {
             var creationDate = DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss");
             string query = $"INSERT INTO Parent VALUES('{registerModel.Name}', " +
@@ -58,7 +58,7 @@ namespace ParentalControl.Business.BusinessBO
             bool execute = SQLConexionDataBase.Execute(query);
 
             return execute;
-        }
+        }        
 
         /// <summary>
         /// Método para convertir una lista DataTable a un TModel (Modelo genérico)

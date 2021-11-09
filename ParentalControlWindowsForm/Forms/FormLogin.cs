@@ -44,36 +44,57 @@ namespace ParentalControlWindowsForm
                 else
                 {        
                     // Valida las credenciales ingresadas
-                    loginModelList = loginBO.validateCredentials(loginModel);                    
+                    loginModelList = loginBO.ValidateCredentials(loginModel);                    
 
                     if (loginModelList.Count > 0)
                     {
-                        // Si se encuentran los datos, verifica si el dispositivo está vinculado
                         List<DeviceModel> deviceModelList = new List<DeviceModel>();
                         DeviceModel deviceModel = new DeviceModel();
                         DeviceBO deviceBO = new DeviceBO();
+                        ParentBO parentBO = new ParentBO();
 
-                        deviceModel.DeviceCode = Environment.UserName;
-                        deviceModel.ParentId = 1;
+                        deviceModel.DeviceCode = deviceBO.GetMACAddress();
+                        deviceModel.ParentId = parentBO.GetParentId(loginModel);
 
-                        deviceModelList = deviceBO.verifyDevice(deviceModel);
-
-                        // Si no está vinculado el dispositivo, se realiza el registro
-                        if (deviceModelList.Count == 0)
+                        if (deviceModel.ParentId != 0)
                         {
-                            deviceModel.DeviceName = Environment.UserName;
-                            
-                            // Si hay algún error se notifica
-                            if (!deviceBO.registerDevice(deviceModel))
+                            // Verifica si el dispositivo está vinculado a la cuenta del Padre
+                            deviceModelList = deviceBO.VerifyDevice(deviceModel);
+                                                        
+                            if (deviceModelList.Count == 0)
                             {
-                                MessageBox.Show("Ha ocurrido un error, vuelva a intentarlo.");
-                                return;
+                                // Si no está vinculado a la cuenta actual, verifica que no esté vinculado a otra cuenta
+                                deviceModelList = deviceBO.VerifyDeviceExist(deviceModel.DeviceCode);
+
+                                if (deviceModelList.Count > 0)
+                                {
+                                    MessageBox.Show("El dispositivo actual ya está vinculado a una cuenta.");
+                                    return;
+                                }
+                                else
+                                {
+                                    deviceModel.DeviceName = Environment.MachineName;
+
+                                    // Si hay algún error se notifica
+                                    if (!deviceBO.RegisterDevice(deviceModel))
+                                    {
+                                        MessageBox.Show("Ha ocurrido un error, vuelva a intentarlo.");
+                                        return;
+                                    }
+                                }
                             }
                         }
+                        else
+                        {
+                            MessageBox.Show("Ha ocurrido un error, inténtelo de nuevo.");
+                            return;
+                        }
+                        
 
+                        // Envío el Id del Padre al FormHome                        
                         this.Hide();
                         FormHome formHome = new FormHome();
-                        formHome.parentId = 1;
+                        formHome.parentId = deviceModel.ParentId;
                         formHome.Show(); 
                     }
                     else

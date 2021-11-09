@@ -12,6 +12,9 @@ namespace ParentalControlWindowsForm.Forms
 {
     public partial class FormDevice : Form
     {
+        public int parentId;
+        public string deviceName; 
+
         public FormDevice()
         {
             InitializeComponent();
