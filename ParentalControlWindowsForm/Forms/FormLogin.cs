@@ -1,4 +1,5 @@
 ﻿using ParentalControl.Business.BusinessBO;
+using ParentalControl.Models.Device;
 using ParentalControl.Models.Login;
 using ParentalControlWindowsForm.Forms;
 using System;
@@ -25,13 +26,14 @@ namespace ParentalControlWindowsForm
         {
             try
             {
-                DataTable dataTable = new DataTable();
+                List<LoginModel> loginModelList = new List<LoginModel>();
                 LoginModel loginModel = new LoginModel();
                 LoginBO loginBO = new LoginBO();
 
                 loginModel.User = txtUser.Text;
                 loginModel.Password = txtPassword.Text;
 
+                // Valida los datos del login (campos vacíos, dirección de correo)
                 string message = loginModel.Validate(loginModel);
 
                 if (!string.IsNullOrEmpty(message))
@@ -40,11 +42,35 @@ namespace ParentalControlWindowsForm
                     return;
                 }
                 else
-                {
-                    dataTable = loginBO.validateCredentials(loginModel);
+                {        
+                    // Valida las credenciales ingresadas
+                    loginModelList = loginBO.validateCredentials(loginModel);                    
 
-                    if (dataTable.Rows.Count == 1)
+                    if (loginModelList.Count > 0)
                     {
+                        // Si se encuentran los datos, verifica si el dispositivo está vinculado
+                        List<DeviceModel> deviceModelList = new List<DeviceModel>();
+                        DeviceModel deviceModel = new DeviceModel();
+                        DeviceBO deviceBO = new DeviceBO();
+
+                        deviceModel.DeviceCode = Environment.UserName;
+                        deviceModel.ParentId = 1;
+
+                        deviceModelList = deviceBO.verifyDevice(deviceModel);
+
+                        // Si no está vinculado el dispositivo, se realiza el registro
+                        if (deviceModelList.Count == 0)
+                        {
+                            deviceModel.DeviceName = Environment.UserName;
+                            
+                            // Si hay algún error se notifica
+                            if (!deviceBO.registerDevice(deviceModel))
+                            {
+                                MessageBox.Show("Ha ocurrido un error, vuelva a intentarlo.");
+                                return;
+                            }
+                        }
+
                         this.Hide();
                         FormHome formHome = new FormHome();
                         formHome.parentId = 1;

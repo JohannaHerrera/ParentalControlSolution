@@ -31,7 +31,7 @@ namespace ParentalControlWindowsForm.Forms
         {
             try
             {
-                DataTable dataTable = new DataTable();
+                // Se validan los datos del registro
                 RegisterModel registerModel = new RegisterModel();
                 LoginBO loginBO = new LoginBO();
 
@@ -48,9 +48,11 @@ namespace ParentalControlWindowsForm.Forms
                 }
                 else
                 {
-                    dataTable = loginBO.validateRegister(registerModel.User);
+                    // Se verifica que no exista una cuenta con el mismo correo
+                    List<RegisterModel> registerModelList = new List<RegisterModel>();
+                    registerModelList = loginBO.validateRegister(registerModel.User);
 
-                    if (dataTable.Rows.Count == 0)
+                    if (registerModelList.Count == 0)
                     {
                         if (loginBO.registerUser(registerModel))
                         {

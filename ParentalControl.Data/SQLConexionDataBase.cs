@@ -9,11 +9,14 @@ using System.Threading.Tasks;
 
 namespace ParentalControl.Data
 {
-    public class SQLConexionDataBase
+	/// <summary>
+	/// Clase para ejecutar sentencias sobre la BD SQL Server
+	/// </summary>
+	public class SQLConexionDataBase
     {
 
 		/// <summary>
-		/// Ejecuta una consulta SQL (Select) sobre la base de datos SQL Server
+		/// Método para ejecutar una consulta SQL (Select) sobre la base de datos SQL Server
 		/// </summary>
 		/// <param name="query">La consulta a ejecutar (Select)</param>
 		/// <returns>El DataSet con los datos recibidos</returns>
@@ -41,7 +44,7 @@ namespace ParentalControl.Data
 		}
 
 		/// <summary>
-		/// Ejecuta una sentencia (Insert, Update, Delete) SQL sobre la base de datos SQL Server.
+		/// Método para ejecutar (Insert, Update, Delete) SQL sobre la base de datos SQL Server.
 		/// </summary>
 		/// <param name="strSentence">La sentencia a ejecutar</param>
 		/// <returns>El resultado de que si se ejecuto o no la sentencia</returns>
@@ -76,6 +79,9 @@ namespace ParentalControl.Data
 			}
 		}
 
+		/// <summary>
+		/// Método para establecer conexión con la base de datos.
+		/// </summary>
 		public static SqlConnection BuildSqlConnection()
 		{
 			string sqlConnString = ConfigurationManager.ConnectionStrings["ParentalControlDB"].ConnectionString;

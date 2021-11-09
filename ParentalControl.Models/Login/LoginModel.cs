@@ -6,11 +6,17 @@ using System.Threading.Tasks;
 
 namespace ParentalControl.Models.Login
 {
+    /// <summary>
+    /// Modelo para el Login
+    /// </summary>
     public class LoginModel
     {
+        //Correo
         public string User { get; set; }
+        //Contraseña
         public string Password { get; set; }
 
+        //Método para validar los datos
         public string Validate(LoginModel loginModel)
         {
             string message = string.Empty;

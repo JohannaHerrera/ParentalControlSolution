@@ -10,25 +10,18 @@ using System.Windows.Forms;
 
 namespace ParentalControlWindowsForm.Forms
 {
-    public partial class FormHome : Form
+    public partial class FormDevice : Form
     {
-        public int parentId;
-
-        public FormHome()
+        public FormDevice()
         {
             InitializeComponent();
         }
 
         private void imgLogo_Click(object sender, EventArgs e)
         {
-
-        }
-
-        private void imgDevice_Click(object sender, EventArgs e)
-        {
             this.Hide();
-            FormDevice formDevice = new FormDevice();
-            formDevice.Show();
+            FormHome formHome = new FormHome();
+            formHome.Show();
         }
     }
 }
