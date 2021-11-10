@@ -187,7 +187,7 @@ namespace ParentalControlWindowsForm.Forms
             this.lblDeviceName.Name = "lblDeviceName";
             this.lblDeviceName.Size = new System.Drawing.Size(93, 32);
             this.lblDeviceName.TabIndex = 2;
-            this.lblDeviceName.Text = this.deviceName;
+            this.lblDeviceName.Text = "";
             // 
             // btnMyAccount
             // 

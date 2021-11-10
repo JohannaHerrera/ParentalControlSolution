@@ -52,7 +52,7 @@ namespace ParentalControl.Business.BusinessBO
 
             if (registerModelList.Count > 0)
             {
-                parentName = registerModelList.FirstOrDefault().Username;
+                parentName = registerModelList.FirstOrDefault().ParentUsername;
             }
 
             return parentName;

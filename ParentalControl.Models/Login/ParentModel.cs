@@ -14,7 +14,7 @@ namespace ParentalControl.Models.Login
         // Id del Padre
         public int ParentId { get; set; }
         // Nombre de usuario
-        public string Username { get; set; }
+        public string ParentUsername { get; set; }
         // Correo
         public string ParentEmail { get; set; }
         // Contraseña

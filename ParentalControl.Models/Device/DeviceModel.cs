@@ -11,6 +11,8 @@ namespace ParentalControl.Models.Device
     /// </summary>
     public class DeviceModel
     {
+        // Id del dispositivo
+        public int DeviceId { get; set; }
         // Nombre del dispositivo
         public string DeviceName { get; set; }
         // Código del dispositivo
