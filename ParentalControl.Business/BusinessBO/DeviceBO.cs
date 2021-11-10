@@ -82,11 +82,11 @@ namespace ParentalControl.Business.BusinessBO
             string deviceName = string.Empty;
             string query = $"SELECT * FROM DevicePC WHERE DevicePCCode = '{deviceCode}'";
 
-            DataTable deviceModelList = SQLConexionDataBase.Query(query);
+            List<DeviceModel> deviceModelList = this.ObtenerListaSQL<DeviceModel>(query).ToList();
 
-            if (deviceModelList.Rows.Count > 0)
+            if (deviceModelList.Count > 0)
             {
-                deviceName = deviceModelList.Rows[0][1].ToString();
+                deviceName = deviceModelList.FirstOrDefault().ToString();
             }
 
             return deviceName;
