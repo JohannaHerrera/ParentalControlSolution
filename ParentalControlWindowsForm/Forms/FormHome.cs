@@ -27,10 +27,10 @@ namespace ParentalControlWindowsForm.Forms
 
         private void imgDevice_Click(object sender, EventArgs e)
         {
-            this.Hide();
             DeviceBO deviceBO = new DeviceBO();
-            FormDevice formDevice = new FormDevice();
             string deviceCode = deviceBO.GetMACAddress();
+            this.Hide();
+            FormDevice formDevice = new FormDevice();            
             formDevice.parentId = this.parentId;
             formDevice.deviceName = deviceBO.GetDeviceName(deviceCode);
             formDevice.Show();

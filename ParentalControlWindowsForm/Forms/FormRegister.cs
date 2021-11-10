@@ -35,9 +35,9 @@ namespace ParentalControlWindowsForm.Forms
                 RegisterModel registerModel = new RegisterModel();
                 LoginBO loginBO = new LoginBO();
 
-                registerModel.Name = txtName.Text;
-                registerModel.User = txtUser.Text;
-                registerModel.Password = txtPassword.Text;
+                registerModel.ParentUsername = txtName.Text;
+                registerModel.ParentEmail = txtUser.Text;
+                registerModel.ParentPassword = txtPassword.Text;
 
                 string message = registerModel.Validate(registerModel);
 
@@ -50,7 +50,7 @@ namespace ParentalControlWindowsForm.Forms
                 {
                     // Se verifica que no exista una cuenta con el mismo correo
                     List<RegisterModel> registerModelList = new List<RegisterModel>();
-                    registerModelList = loginBO.ValidateRegister(registerModel.User);
+                    registerModelList = loginBO.ValidateRegister(registerModel.ParentEmail);
 
                     if (registerModelList.Count == 0)
                     {

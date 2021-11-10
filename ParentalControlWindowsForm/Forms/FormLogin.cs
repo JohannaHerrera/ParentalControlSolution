@@ -30,8 +30,8 @@ namespace ParentalControlWindowsForm
                 LoginModel loginModel = new LoginModel();
                 LoginBO loginBO = new LoginBO();
 
-                loginModel.User = txtUser.Text;
-                loginModel.Password = txtPassword.Text;
+                loginModel.ParentEmail = txtUser.Text;
+                loginModel.ParentPassword = txtPassword.Text;
 
                 // Valida los datos del login (campos vacíos, dirección de correo)
                 string message = loginModel.Validate(loginModel);
@@ -53,7 +53,7 @@ namespace ParentalControlWindowsForm
                         DeviceBO deviceBO = new DeviceBO();
                         ParentBO parentBO = new ParentBO();
 
-                        deviceModel.DeviceCode = deviceBO.GetMACAddress();
+                        deviceModel.DevicePCCode = deviceBO.GetMACAddress();
                         deviceModel.ParentId = parentBO.GetParentId(loginModel);
 
                         if (deviceModel.ParentId != 0)
@@ -64,7 +64,7 @@ namespace ParentalControlWindowsForm
                             if (deviceModelList.Count == 0)
                             {
                                 // Si no está vinculado a la cuenta actual, verifica que no esté vinculado a otra cuenta
-                                deviceModelList = deviceBO.VerifyDeviceExist(deviceModel.DeviceCode);
+                                deviceModelList = deviceBO.VerifyDeviceExist(deviceModel.DevicePCCode);
 
                                 if (deviceModelList.Count > 0)
                                 {
@@ -73,7 +73,7 @@ namespace ParentalControlWindowsForm
                                 }
                                 else
                                 {
-                                    deviceModel.DeviceName = Environment.MachineName;
+                                    deviceModel.DevicePCName = Environment.MachineName;
 
                                     // Si hay algún error se notifica
                                     if (!deviceBO.RegisterDevice(deviceModel))

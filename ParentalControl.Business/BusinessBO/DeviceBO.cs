@@ -22,7 +22,7 @@ namespace ParentalControl.Business.BusinessBO
         /// <returns>List<DeviceModel></returns>
         public List<DeviceModel> VerifyDevice(DeviceModel deviceModel)
         {
-            string query = $"SELECT * FROM DevicePC WHERE DevicePCCode = '{deviceModel.DeviceCode}'" +
+            string query = $"SELECT * FROM DevicePC WHERE DevicePCCode = '{deviceModel.DevicePCCode}'" +
                            $" AND ParentId = {deviceModel.ParentId}";
 
             List<DeviceModel> deviceModelList = this.ObtenerListaSQL<DeviceModel>(query).ToList();
@@ -52,8 +52,8 @@ namespace ParentalControl.Business.BusinessBO
         public bool RegisterDevice(DeviceModel deviceModel)
         {
             var creationDate = DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss");
-            string query = $"INSERT INTO DevicePC VALUES('{deviceModel.DeviceName}', " +
-                           $" '{deviceModel.DeviceCode}', '{creationDate}'," +
+            string query = $"INSERT INTO DevicePC VALUES('{deviceModel.DevicePCName}', " +
+                           $" '{deviceModel.DevicePCCode}', '{creationDate}'," +
                            $" {deviceModel.ParentId})";
 
             bool execute = SQLConexionDataBase.Execute(query);
@@ -83,8 +83,8 @@ namespace ParentalControl.Business.BusinessBO
             string query = $"SELECT * FROM DevicePC WHERE DevicePCCode = '{deviceCode}'";
 
             DataTable deviceModelList = SQLConexionDataBase.Query(query);
-            
-            if(deviceModelList.Rows.Count > 0)
+
+            if (deviceModelList.Rows.Count > 0)
             {
                 deviceName = deviceModelList.Rows[0][1].ToString();
             }

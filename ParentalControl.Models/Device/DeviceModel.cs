@@ -12,13 +12,13 @@ namespace ParentalControl.Models.Device
     public class DeviceModel
     {
         // Id del dispositivo
-        public int DeviceId { get; set; }
+        public int DevicePCId { get; set; }
         // Nombre del dispositivo
-        public string DeviceName { get; set; }
+        public string DevicePCName { get; set; }
         // Código del dispositivo
-        public string DeviceCode { get; set; }
+        public string DevicePCCode { get; set; }
         // Fecha de creación
-        public DateTime DeviceCreationDate { get; set; }
+        public DateTime DevicePCCreationDate { get; set; }
         // Id del Padre
         public int ParentId { get; set; }
 

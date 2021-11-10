@@ -34,6 +34,8 @@ namespace ParentalControlWindowsForm.Forms
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormDevice));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.dtgWindowsAccounts = new System.Windows.Forms.DataGridView();
+            this.WindowsAccounts = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -47,16 +49,14 @@ namespace ParentalControlWindowsForm.Forms
             this.lblDeviceName = new System.Windows.Forms.Label();
             this.btnMyAccount = new System.Windows.Forms.Button();
             this.btnLogout = new System.Windows.Forms.Button();
-            this.dtgWindowsAccounts = new System.Windows.Forms.DataGridView();
-            this.WindowsAccounts = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgWindowsAccounts)).BeginInit();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imgNotifications)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgScheedule)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgInfants)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgDevice)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgLogo)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dtgWindowsAccounts)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -66,6 +66,34 @@ namespace ParentalControlWindowsForm.Forms
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(522, 309);
             this.panel1.TabIndex = 0;
+            // 
+            // dtgWindowsAccounts
+            // 
+            this.dtgWindowsAccounts.BackgroundColor = System.Drawing.Color.White;
+            this.dtgWindowsAccounts.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dtgWindowsAccounts.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.dtgWindowsAccounts.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dtgWindowsAccounts.ColumnHeadersVisible = false;
+            this.dtgWindowsAccounts.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.WindowsAccounts});
+            this.dtgWindowsAccounts.GridColor = System.Drawing.Color.White;
+            this.dtgWindowsAccounts.Location = new System.Drawing.Point(3, 3);
+            this.dtgWindowsAccounts.Name = "dtgWindowsAccounts";
+            this.dtgWindowsAccounts.RowHeadersVisible = false;
+            this.dtgWindowsAccounts.Size = new System.Drawing.Size(215, 306);
+            this.dtgWindowsAccounts.TabIndex = 0;
+            // 
+            // WindowsAccounts
+            // 
+            this.WindowsAccounts.HeaderText = "Cuentas Windows";
+            this.WindowsAccounts.Name = "WindowsAccounts";
             // 
             // panel2
             // 
@@ -182,12 +210,12 @@ namespace ParentalControlWindowsForm.Forms
             // lblDeviceName
             // 
             this.lblDeviceName.AutoSize = true;
-            this.lblDeviceName.Font = new System.Drawing.Font("Arial", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDeviceName.Font = new System.Drawing.Font("Arial", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDeviceName.Location = new System.Drawing.Point(222, 83);
             this.lblDeviceName.Name = "lblDeviceName";
-            this.lblDeviceName.Size = new System.Drawing.Size(93, 32);
+            this.lblDeviceName.Size = new System.Drawing.Size(153, 29);
             this.lblDeviceName.TabIndex = 2;
-            this.lblDeviceName.Text = "";
+            this.lblDeviceName.Text = "DeviceName";
             // 
             // btnMyAccount
             // 
@@ -217,34 +245,6 @@ namespace ParentalControlWindowsForm.Forms
             this.btnLogout.Text = "Cerrar Sesión";
             this.btnLogout.UseVisualStyleBackColor = false;
             // 
-            // dtgWindowsAccounts
-            // 
-            this.dtgWindowsAccounts.BackgroundColor = System.Drawing.Color.White;
-            this.dtgWindowsAccounts.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dtgWindowsAccounts.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.dtgWindowsAccounts.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dtgWindowsAccounts.ColumnHeadersVisible = false;
-            this.dtgWindowsAccounts.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.WindowsAccounts});
-            this.dtgWindowsAccounts.GridColor = System.Drawing.Color.White;
-            this.dtgWindowsAccounts.Location = new System.Drawing.Point(3, 3);
-            this.dtgWindowsAccounts.Name = "dtgWindowsAccounts";
-            this.dtgWindowsAccounts.RowHeadersVisible = false;
-            this.dtgWindowsAccounts.Size = new System.Drawing.Size(215, 306);
-            this.dtgWindowsAccounts.TabIndex = 0;
-            // 
-            // WindowsAccounts
-            // 
-            this.WindowsAccounts.HeaderText = "Cuentas Windows";
-            this.WindowsAccounts.Name = "WindowsAccounts";
-            // 
             // FormDevice
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -262,7 +262,9 @@ namespace ParentalControlWindowsForm.Forms
             this.Name = "FormDevice";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Control Parental";
+            this.Load += new System.EventHandler(this.FormDevice_Load);
             this.panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dtgWindowsAccounts)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imgNotifications)).EndInit();
@@ -270,7 +272,6 @@ namespace ParentalControlWindowsForm.Forms
             ((System.ComponentModel.ISupportInitialize)(this.imgInfants)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgDevice)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgLogo)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dtgWindowsAccounts)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

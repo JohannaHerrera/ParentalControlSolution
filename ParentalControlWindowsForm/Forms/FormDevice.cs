@@ -13,7 +13,7 @@ namespace ParentalControlWindowsForm.Forms
     public partial class FormDevice : Form
     {
         public int parentId;
-        public string deviceName; 
+        public string deviceName;
 
         public FormDevice()
         {
@@ -25,6 +25,11 @@ namespace ParentalControlWindowsForm.Forms
             this.Hide();
             FormHome formHome = new FormHome();
             formHome.Show();
+        }
+
+        private void FormDevice_Load(object sender, EventArgs e)
+        {
+            this.lblDeviceName.Text = this.deviceName.ToString();
         }
     }
 }

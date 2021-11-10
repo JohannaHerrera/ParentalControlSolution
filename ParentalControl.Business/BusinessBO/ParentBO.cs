@@ -23,8 +23,8 @@ namespace ParentalControl.Business.BusinessBO
         {
             int parentId = 0;
 
-            string query = $"SELECT * FROM Parent WHERE ParentEmail = '{loginModel.User}'" +
-                           $" AND ParentPassword = '{loginModel.Password}'";
+            string query = $"SELECT * FROM Parent WHERE ParentEmail = '{loginModel.ParentEmail}'" +
+                           $" AND ParentPassword = '{loginModel.ParentPassword}'";
 
             List<ParentModel> registerModelList = this.ObtenerListaSQL<ParentModel>(query).ToList();
 
@@ -45,8 +45,8 @@ namespace ParentalControl.Business.BusinessBO
         {
             string parentName = string.Empty;
 
-            string query = $"SELECT * FROM Parent WHERE ParentEmail = '{loginModel.User}'" +
-                           $" AND ParentPassword = '{loginModel.Password}'";
+            string query = $"SELECT * FROM Parent WHERE ParentEmail = '{loginModel.ParentEmail}'" +
+                           $" AND ParentPassword = '{loginModel.ParentPassword}'";
 
             List<ParentModel> registerModelList = this.ObtenerListaSQL<ParentModel>(query).ToList();
 

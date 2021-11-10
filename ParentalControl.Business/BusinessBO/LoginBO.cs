@@ -21,8 +21,8 @@ namespace ParentalControl.Business.BusinessBO
         /// <returns>List<LoginModel></returns>
         public List<LoginModel> ValidateCredentials(LoginModel loginModel)
         {
-            string query = $"SELECT * FROM Parent WHERE ParentEmail = '{loginModel.User}'" +
-                           $" AND ParentPassword = '{loginModel.Password}'";
+            string query = $"SELECT * FROM Parent WHERE ParentEmail = '{loginModel.ParentEmail}'" +
+                           $" AND ParentPassword = '{loginModel.ParentPassword}'";
 
             List<LoginModel> loginModelList = this.ObtenerListaSQL<LoginModel>(query).ToList();
 
@@ -51,8 +51,8 @@ namespace ParentalControl.Business.BusinessBO
         public bool RegisterUser(RegisterModel registerModel)
         {
             var creationDate = DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss");
-            string query = $"INSERT INTO Parent VALUES('{registerModel.Name}', " +
-                           $" '{registerModel.User}', '{registerModel.Password}'," +
+            string query = $"INSERT INTO Parent VALUES('{registerModel.ParentUsername}', " +
+                           $" '{registerModel.ParentEmail}', '{registerModel.ParentPassword}'," +
                            $" '{creationDate}')";
 
             bool execute = SQLConexionDataBase.Execute(query);
