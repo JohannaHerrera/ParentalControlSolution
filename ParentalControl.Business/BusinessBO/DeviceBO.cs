@@ -56,7 +56,6 @@ namespace ParentalControl.Business.BusinessBO
 
             List<string> users = new List<string>();
             var path = string.Format("WinNT://{0},computer", Environment.MachineName);
-            users.Add(Environment.UserName);
 
             using (var computerEntry = new DirectoryEntry(path))
             {
