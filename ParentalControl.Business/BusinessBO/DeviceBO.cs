@@ -1,8 +1,11 @@
-﻿using ParentalControl.Data;
+﻿using ParentalControl.Business.Enums;
+using ParentalControl.Data;
 using ParentalControl.Models.Device;
+using ParentalControl.Models.InfantAccount;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.DirectoryServices;
 using System.Linq;
 using System.Management;
 using System.Text;
@@ -42,6 +45,54 @@ namespace ParentalControl.Business.BusinessBO
             List<DeviceModel> deviceModelList = this.ObtenerListaSQL<DeviceModel>(query).ToList();
 
             return deviceModelList;
+        }
+
+        /// <summary>
+        /// Método para obtener las cuentas Windows del dispositivo
+        /// </summary>
+        /// <returns>List<DeviceModel></returns>
+        public List<string> GetWindowsAccounts()
+        {
+
+            List<string> users = new List<string>();
+            var path = string.Format("WinNT://{0},computer", Environment.MachineName);
+            users.Add(Environment.UserName);
+
+            using (var computerEntry = new DirectoryEntry(path))
+            {
+                foreach (DirectoryEntry childEntry in computerEntry.Children)
+                {
+                    if (childEntry.SchemaClassName == "User")
+                    {
+                        users.Add(childEntry.Name);
+                    }                        
+                }                   
+            }            
+
+            return users;
+
+        }
+
+        /// <summary>
+        /// Método para obtener las cuentas Infantiles
+        /// </summary>
+        /// <param name="deviceModel">contiene la data del dispositivo PC</param>
+        /// <returns>List<DeviceModel></returns>
+        public List<InfantAccountModel> GetInfantAccounts(int parentId)
+        {
+
+            List<InfantAccountModel> infantAccountModelList = new List<InfantAccountModel>();
+            InfantAccountModel accountNoProtected = new InfantAccountModel();
+            Constants constants = new Constants();
+
+            accountNoProtected.InfantName = constants.NoProtected;
+            infantAccountModelList.Add(accountNoProtected);
+            string query = $"SELECT * FROM InfantAccount WHERE ParentId = {parentId}";
+            List<InfantAccountModel> infantAccounts = this.ObtenerListaSQL<InfantAccountModel>(query).ToList();
+            infantAccountModelList.AddRange(infantAccounts);
+
+            return infantAccountModelList;
+
         }
 
         /// <summary>
@@ -86,7 +137,7 @@ namespace ParentalControl.Business.BusinessBO
 
             if (deviceModelList.Count > 0)
             {
-                deviceName = deviceModelList.FirstOrDefault().ToString();
+                deviceName = deviceModelList.FirstOrDefault().DevicePCName;
             }
 
             return deviceName;
