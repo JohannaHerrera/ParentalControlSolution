@@ -31,15 +31,17 @@ namespace ParentalControlWindowsForm.Forms
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormHome));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.imgNotifications = new System.Windows.Forms.PictureBox();
             this.imgScheedule = new System.Windows.Forms.PictureBox();
             this.imgInfants = new System.Windows.Forms.PictureBox();
             this.imgDevice = new System.Windows.Forms.PictureBox();
             this.imgLogo = new System.Windows.Forms.PictureBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
+            this.btnLogout = new System.Windows.Forms.Button();
+            this.btnMyAccount = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imgNotifications)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgScheedule)).BeginInit();
@@ -64,6 +66,50 @@ namespace ParentalControlWindowsForm.Forms
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(144, 566);
             this.panel1.TabIndex = 0;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.White;
+            this.label4.Location = new System.Drawing.Point(28, 490);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(84, 14);
+            this.label4.TabIndex = 8;
+            this.label4.Text = "Notificaciones";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.White;
+            this.label3.Location = new System.Drawing.Point(42, 406);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(54, 14);
+            this.label3.TabIndex = 7;
+            this.label3.Text = "Horarios";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.White;
+            this.label2.Location = new System.Drawing.Point(28, 314);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(84, 14);
+            this.label2.TabIndex = 6;
+            this.label2.Text = "Mi dispositivo";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(19, 221);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(107, 14);
+            this.label1.TabIndex = 5;
+            this.label1.Text = "Cuentas Infantiles";
             // 
             // imgNotifications
             // 
@@ -117,49 +163,35 @@ namespace ParentalControlWindowsForm.Forms
             this.imgLogo.TabStop = false;
             this.imgLogo.Click += new System.EventHandler(this.imgLogo_Click);
             // 
-            // label1
+            // btnLogout
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(19, 221);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(107, 14);
-            this.label1.TabIndex = 5;
-            this.label1.Text = "Cuentas Infantiles";
+            this.btnLogout.BackColor = System.Drawing.SystemColors.Highlight;
+            this.btnLogout.FlatAppearance.BorderColor = System.Drawing.SystemColors.Highlight;
+            this.btnLogout.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnLogout.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLogout.ForeColor = System.Drawing.Color.White;
+            this.btnLogout.Location = new System.Drawing.Point(716, 13);
+            this.btnLogout.Name = "btnLogout";
+            this.btnLogout.Size = new System.Drawing.Size(128, 31);
+            this.btnLogout.TabIndex = 8;
+            this.btnLogout.Text = "Cerrar Sesión";
+            this.btnLogout.UseVisualStyleBackColor = false;
+            this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
             // 
-            // label2
+            // btnMyAccount
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(28, 314);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(84, 14);
-            this.label2.TabIndex = 6;
-            this.label2.Text = "Mi dispositivo";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(42, 406);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(54, 14);
-            this.label3.TabIndex = 7;
-            this.label3.Text = "Horarios";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(28, 490);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(84, 14);
-            this.label4.TabIndex = 8;
-            this.label4.Text = "Notificaciones";
+            this.btnMyAccount.BackColor = System.Drawing.SystemColors.Highlight;
+            this.btnMyAccount.FlatAppearance.BorderColor = System.Drawing.SystemColors.Highlight;
+            this.btnMyAccount.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnMyAccount.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnMyAccount.ForeColor = System.Drawing.Color.White;
+            this.btnMyAccount.Location = new System.Drawing.Point(587, 13);
+            this.btnMyAccount.Name = "btnMyAccount";
+            this.btnMyAccount.Size = new System.Drawing.Size(109, 31);
+            this.btnMyAccount.TabIndex = 7;
+            this.btnMyAccount.Text = "Mi Cuenta";
+            this.btnMyAccount.UseVisualStyleBackColor = false;
+            this.btnMyAccount.Click += new System.EventHandler(this.btnMyAccount_Click);
             // 
             // FormHome
             // 
@@ -167,6 +199,8 @@ namespace ParentalControlWindowsForm.Forms
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(884, 561);
+            this.Controls.Add(this.btnLogout);
+            this.Controls.Add(this.btnMyAccount);
             this.Controls.Add(this.panel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
@@ -197,5 +231,7 @@ namespace ParentalControlWindowsForm.Forms
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button btnLogout;
+        private System.Windows.Forms.Button btnMyAccount;
     }
 }

@@ -63,9 +63,9 @@ namespace ParentalControlWindowsForm
             this.label2.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
             this.label2.Location = new System.Drawing.Point(446, 167);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(66, 16);
+            this.label2.Size = new System.Drawing.Size(61, 16);
             this.label2.TabIndex = 1;
-            this.label2.Text = "Usuario:";
+            this.label2.Text = "Correo:";
             // 
             // label3
             // 

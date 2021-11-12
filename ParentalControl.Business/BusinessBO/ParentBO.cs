@@ -58,6 +58,48 @@ namespace ParentalControl.Business.BusinessBO
             return parentName;
         }
 
+        // <summary>
+        /// Método para obtener la información del Padre
+        /// </summary>
+        /// <param name="parentId">Id del Padre</param>
+        /// <returns>ParentModel</returns>
+        public ParentModel GetParenInformation(int parentId)
+        {
+            ParentModel parentModel = new ParentModel();
+
+            string query = $"SELECT * FROM Parent WHERE ParentId = {parentId}";
+
+            List<ParentModel> parentModelList = this.ObtenerListaSQL<ParentModel>(query).ToList();
+
+            if (parentModelList.Count > 0)
+            {
+                parentModel = parentModelList.FirstOrDefault();
+                return parentModel;
+            }
+            else
+            {
+                return null;
+            }            
+        }
+
+        // <summary>
+        /// Método para actualizar la información del Padre
+        /// </summary>
+        /// <param name="parentModel">modelo que contiene la información del Padre</param>
+        /// <returns>bool: TRUE(registro exitoso), FALSE(error al registrar)</returns>
+        public bool UpdateParenInformation(ParentModel parentModel)
+        {
+            string query = $"UPDATE Parent SET ParentUsername = '{parentModel.ParentUsername}'," +
+                           $" ParentEmail = '{parentModel.ParentEmail}'," +
+                           $" ParentPassword = '{parentModel.ParentPassword}'" +
+                           $" WHERE ParentId = {parentModel.ParentId}";
+
+            bool execute = SQLConexionDataBase.Execute(query);
+
+            return execute;
+
+        }
+
         /// <summary>
         /// Método para convertir una lista DataTable a un TModel (Modelo genérico)
         /// </summary>

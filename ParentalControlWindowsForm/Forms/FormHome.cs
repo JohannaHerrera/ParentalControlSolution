@@ -22,7 +22,7 @@ namespace ParentalControlWindowsForm.Forms
 
         private void imgLogo_Click(object sender, EventArgs e)
         {
-
+            return;
         }
 
         private void imgDevice_Click(object sender, EventArgs e)
@@ -34,6 +34,35 @@ namespace ParentalControlWindowsForm.Forms
             formDevice.parentId = this.parentId;
             formDevice.deviceName = deviceBO.GetDeviceName(deviceCode);
             formDevice.Show();
+        }
+
+        private void btnMyAccount_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                this.Hide();
+                FormPersonalAccount formPersonalAccount = new FormPersonalAccount();
+                formPersonalAccount.parentId = this.parentId;
+                formPersonalAccount.Show();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void btnLogout_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                this.Hide();
+                FormLogin formLogin = new FormLogin();
+                formLogin.Show();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }
