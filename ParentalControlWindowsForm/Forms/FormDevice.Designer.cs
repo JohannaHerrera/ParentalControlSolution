@@ -357,7 +357,7 @@ namespace ParentalControlWindowsForm.Forms
             // 
             // btnEdit
             // 
-            this.btnEdit.Image = global::ParentalControlWindowsForm.Properties.Resources.editar;
+            this.btnEdit.Image = global::ParentalControlWindowsForm.Properties.Resources.edit;
             this.btnEdit.Location = new System.Drawing.Point(450, 59);
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(24, 26);

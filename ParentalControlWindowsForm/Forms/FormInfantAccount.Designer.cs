@@ -75,7 +75,7 @@ namespace ParentalControlWindowsForm.Forms
             this.addInfantButton.FlatAppearance.BorderSize = 0;
             this.addInfantButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.addInfantButton.ForeColor = System.Drawing.Color.White;
-            this.addInfantButton.Image = global::ParentalControlWindowsForm.Properties.Resources.AddGroup;
+            this.addInfantButton.Image = global::ParentalControlWindowsForm.Properties.Resources.AddInfantAccount;
             this.addInfantButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.addInfantButton.Location = new System.Drawing.Point(304, 127);
             this.addInfantButton.Name = "addInfantButton";
