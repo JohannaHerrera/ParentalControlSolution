@@ -63,9 +63,9 @@ namespace ParentalControlWindowsForm
             this.label2.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
             this.label2.Location = new System.Drawing.Point(446, 167);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(66, 16);
+            this.label2.Size = new System.Drawing.Size(61, 16);
             this.label2.TabIndex = 1;
-            this.label2.Text = "Usuario:";
+            this.label2.Text = "Correo:";
             // 
             // label3
             // 
@@ -149,7 +149,7 @@ namespace ParentalControlWindowsForm
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Arial", 16F, System.Drawing.FontStyle.Bold);
             this.label5.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.label5.Location = new System.Drawing.Point(525, 114);
+            this.label5.Location = new System.Drawing.Point(535, 107);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(141, 26);
             this.label5.TabIndex = 9;

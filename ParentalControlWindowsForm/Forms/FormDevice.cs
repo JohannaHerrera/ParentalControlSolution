@@ -159,10 +159,16 @@ namespace ParentalControlWindowsForm.Forms
             try
             {
                 WindowsAccountBO windowsAccountBO = new WindowsAccountBO();
+                DeviceBO deviceBO = new DeviceBO();
                 WindowsAccountModel windowsAccountModel = new WindowsAccountModel();
                 List<WindowsAccountModel> windowsAccountModelList = new List<WindowsAccountModel>();
                 Constants constants = new Constants();
                 bool updateState = true;
+                this.lblDeviceName.Enabled = false;
+                this.lblDeviceName.BorderStyle = BorderStyle.None;
+
+                // Se actualiza el nombre del dispositivo
+                updateState = deviceBO.UpdateDeviceName(this.lblDeviceName.Text);
 
                 foreach (DataGridViewRow row in this.dtgWindowsAccounts.Rows)
                 {
@@ -194,7 +200,12 @@ namespace ParentalControlWindowsForm.Forms
 
                 if (!updateState)
                 {
-                    MessageBox.Show("Ha ocurrido un error al actualizar la actualización. Inténtelo otra vez");
+                    MessageBox.Show("Ha ocurrido un error al actualizar la información. Inténtelo otra vez.");
+                    return;
+                }
+                else
+                {
+                    MessageBox.Show("La información se actualizó correctamente.");
                     return;
                 }
             }
@@ -202,6 +213,62 @@ namespace ParentalControlWindowsForm.Forms
             {
                 MessageBox.Show(ex.Message);
             }
+        }
+
+        private void btnEdit_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (this.lblDeviceName.Enabled)
+                {
+                    this.lblDeviceName.Enabled = false;
+                    this.lblDeviceName.BorderStyle = BorderStyle.None;
+                }
+                else
+                {
+                    this.lblDeviceName.Enabled = true;
+                    this.lblDeviceName.BorderStyle = BorderStyle.FixedSingle;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }                  
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                this.lblDeviceName.Enabled = false;
+                this.lblDeviceName.BorderStyle = BorderStyle.None;
+
+                DialogResult res = MessageBox.Show("¿Estás seguro que deseas eliminar este dispositivo?", "¡ADVERTENCIA!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if (res == DialogResult.No)
+                {
+                    return;
+                }
+                if (res == DialogResult.Yes)
+                {
+                    MessageBox.Show("You have clicked Ok Button");
+                    // TODO: CREAR MÉTODO PARA ELIMINAR 
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }            
+        }
+
+        private void imgDevice_Click(object sender, EventArgs e)
+        {
+            DeviceBO deviceBO = new DeviceBO();
+            string deviceCode = deviceBO.GetMACAddress();
+            this.Hide();
+            FormDevice formDevice = new FormDevice();
+            formDevice.deviceName = deviceBO.GetDeviceName(deviceCode);
+            formDevice.parentId = this.parentId;
+            formDevice.Show();
         }
     }
 }

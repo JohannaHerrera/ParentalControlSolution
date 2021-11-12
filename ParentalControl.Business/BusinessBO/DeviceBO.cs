@@ -56,7 +56,6 @@ namespace ParentalControl.Business.BusinessBO
 
             List<string> users = new List<string>();
             var path = string.Format("WinNT://{0},computer", Environment.MachineName);
-            users.Add(Environment.UserName);
 
             using (var computerEntry = new DirectoryEntry(path))
             {
@@ -106,6 +105,21 @@ namespace ParentalControl.Business.BusinessBO
             string query = $"INSERT INTO DevicePC VALUES('{deviceModel.DevicePCName}', " +
                            $" '{deviceModel.DevicePCCode}', '{creationDate}'," +
                            $" {deviceModel.ParentId})";
+
+            bool execute = SQLConexionDataBase.Execute(query);
+
+            return execute;
+        }
+
+        /// <summary>
+        /// Método para actualizar el nombre del dispositivo
+        /// </summary>
+        /// <param name="deviceName">nuevo nombre del dispositivo</param>
+        /// <returns>bool: TRUE(registro exitoso), FALSE(error al registrar)</returns>
+        public bool UpdateDeviceName(string deviceName)
+        {
+            string deviceCode = this.GetMACAddress();
+            string query = $"UPDATE DevicePC SET DevicePCName = '{deviceName}' WHERE DevicePCCode = '{deviceCode}'";
 
             bool execute = SQLConexionDataBase.Execute(query);
 

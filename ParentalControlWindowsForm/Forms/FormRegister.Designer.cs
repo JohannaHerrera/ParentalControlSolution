@@ -141,7 +141,7 @@ namespace ParentalControlWindowsForm.Forms
             // pictureBox1
             // 
             this.pictureBox1.Image = global::ParentalControlWindowsForm.Properties.Resources.control_parental;
-            this.pictureBox1.Location = new System.Drawing.Point(64, 132);
+            this.pictureBox1.Location = new System.Drawing.Point(85, 132);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(211, 208);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
