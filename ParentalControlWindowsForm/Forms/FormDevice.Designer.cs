@@ -52,13 +52,15 @@ namespace ParentalControlWindowsForm.Forms
             this.imgInfants = new System.Windows.Forms.PictureBox();
             this.imgDevice = new System.Windows.Forms.PictureBox();
             this.imgLogo = new System.Windows.Forms.PictureBox();
-            this.lblDeviceName = new System.Windows.Forms.Label();
             this.btnMyAccount = new System.Windows.Forms.Button();
             this.btnLogout = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.btnSave = new System.Windows.Forms.Button();
+            this.btnDelete = new System.Windows.Forms.PictureBox();
+            this.btnEdit = new System.Windows.Forms.PictureBox();
+            this.lblDeviceName = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgWindowsAccounts)).BeginInit();
             this.panel2.SuspendLayout();
@@ -67,6 +69,8 @@ namespace ParentalControlWindowsForm.Forms
             ((System.ComponentModel.ISupportInitialize)(this.imgInfants)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgDevice)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgLogo)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnDelete)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnEdit)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -244,6 +248,7 @@ namespace ParentalControlWindowsForm.Forms
             this.imgInfants.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.imgInfants.TabIndex = 2;
             this.imgInfants.TabStop = false;
+            this.imgInfants.Click += new System.EventHandler(this.imgInfants_Click);
             // 
             // imgDevice
             // 
@@ -254,6 +259,7 @@ namespace ParentalControlWindowsForm.Forms
             this.imgDevice.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.imgDevice.TabIndex = 1;
             this.imgDevice.TabStop = false;
+            this.imgDevice.Click += new System.EventHandler(this.imgDevice_Click);
             // 
             // imgLogo
             // 
@@ -265,16 +271,6 @@ namespace ParentalControlWindowsForm.Forms
             this.imgLogo.TabIndex = 0;
             this.imgLogo.TabStop = false;
             this.imgLogo.Click += new System.EventHandler(this.imgLogo_Click);
-            // 
-            // lblDeviceName
-            // 
-            this.lblDeviceName.AutoSize = true;
-            this.lblDeviceName.Font = new System.Drawing.Font("Arial", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDeviceName.Location = new System.Drawing.Point(198, 59);
-            this.lblDeviceName.Name = "lblDeviceName";
-            this.lblDeviceName.Size = new System.Drawing.Size(153, 29);
-            this.lblDeviceName.TabIndex = 2;
-            this.lblDeviceName.Text = "DeviceName";
             // 
             // btnMyAccount
             // 
@@ -349,19 +345,54 @@ namespace ParentalControlWindowsForm.Forms
             this.btnSave.UseVisualStyleBackColor = false;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
+            // btnDelete
+            // 
+            this.btnDelete.Image = global::ParentalControlWindowsForm.Properties.Resources.delete;
+            this.btnDelete.Location = new System.Drawing.Point(487, 59);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(25, 26);
+            this.btnDelete.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.btnDelete.TabIndex = 10;
+            this.btnDelete.TabStop = false;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
+            // 
+            // btnEdit
+            // 
+            this.btnEdit.Image = global::ParentalControlWindowsForm.Properties.Resources.edit;
+            this.btnEdit.Location = new System.Drawing.Point(450, 59);
+            this.btnEdit.Name = "btnEdit";
+            this.btnEdit.Size = new System.Drawing.Size(24, 26);
+            this.btnEdit.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.btnEdit.TabIndex = 9;
+            this.btnEdit.TabStop = false;
+            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
+            // 
+            // lblDeviceName
+            // 
+            this.lblDeviceName.BackColor = System.Drawing.Color.White;
+            this.lblDeviceName.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.lblDeviceName.Enabled = false;
+            this.lblDeviceName.Font = new System.Drawing.Font("Arial", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDeviceName.Location = new System.Drawing.Point(189, 57);
+            this.lblDeviceName.Name = "lblDeviceName";
+            this.lblDeviceName.Size = new System.Drawing.Size(236, 28);
+            this.lblDeviceName.TabIndex = 11;
+            // 
             // FormDevice
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(884, 561);
+            this.Controls.Add(this.lblDeviceName);
+            this.Controls.Add(this.btnDelete);
+            this.Controls.Add(this.btnEdit);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.btnLogout);
             this.Controls.Add(this.btnMyAccount);
-            this.Controls.Add(this.lblDeviceName);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -380,6 +411,8 @@ namespace ParentalControlWindowsForm.Forms
             ((System.ComponentModel.ISupportInitialize)(this.imgInfants)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgDevice)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgLogo)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnDelete)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnEdit)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -398,15 +431,17 @@ namespace ParentalControlWindowsForm.Forms
         private System.Windows.Forms.PictureBox imgInfants;
         private System.Windows.Forms.PictureBox imgDevice;
         private System.Windows.Forms.PictureBox imgLogo;
-        private System.Windows.Forms.Label lblDeviceName;
         private System.Windows.Forms.Button btnMyAccount;
         private System.Windows.Forms.Button btnLogout;
         private System.Windows.Forms.DataGridView dtgWindowsAccounts;
         private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn WindowsAccounts;
-        private System.Windows.Forms.DataGridViewComboBoxColumn cmbInfantAccount;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button btnSave;
+        private System.Windows.Forms.PictureBox btnEdit;
+        private System.Windows.Forms.PictureBox btnDelete;
+        private System.Windows.Forms.TextBox lblDeviceName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn WindowsAccounts;
+        private System.Windows.Forms.DataGridViewComboBoxColumn cmbInfantAccount;
     }
 }

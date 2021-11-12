@@ -112,6 +112,21 @@ namespace ParentalControl.Business.BusinessBO
         }
 
         /// <summary>
+        /// Método para actualizar el nombre del dispositivo
+        /// </summary>
+        /// <param name="deviceName">nuevo nombre del dispositivo</param>
+        /// <returns>bool: TRUE(registro exitoso), FALSE(error al registrar)</returns>
+        public bool UpdateDeviceName(string deviceName)
+        {
+            string deviceCode = this.GetMACAddress();
+            string query = $"UPDATE DevicePC SET DevicePCName = '{deviceName}' WHERE DevicePCCode = '{deviceCode}'";
+
+            bool execute = SQLConexionDataBase.Execute(query);
+
+            return execute;
+        }
+
+        /// <summary>
         /// Método para obtener la MAC del dispositivo
         /// </summary>
         /// <returns>macAddresses</returns>

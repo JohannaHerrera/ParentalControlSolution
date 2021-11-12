@@ -1,7 +1,7 @@
 ﻿
 namespace ParentalControlWindowsForm.Forms
 {
-    partial class FormHome
+    partial class FormAddInfantAccount
     {
         /// <summary>
         /// Required designer variable.
@@ -27,10 +27,10 @@ namespace ParentalControlWindowsForm.Forms
         /// Required method for Designer support - do not modify
         /// the contents of this method with the code editor.
         /// </summary>
+
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormHome));
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -40,9 +40,12 @@ namespace ParentalControlWindowsForm.Forms
             this.imgInfants = new System.Windows.Forms.PictureBox();
             this.imgDevice = new System.Windows.Forms.PictureBox();
             this.imgLogo = new System.Windows.Forms.PictureBox();
-            this.btnLogout = new System.Windows.Forms.Button();
+            this.lblCreateInfantAccount = new System.Windows.Forms.Label();
             this.btnMyAccount = new System.Windows.Forms.Button();
-            this.panel1.SuspendLayout();
+            this.btnLogout = new System.Windows.Forms.Button();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.btnSave = new System.Windows.Forms.Button();
+            this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imgNotifications)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgScheedule)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgInfants)).BeginInit();
@@ -50,22 +53,22 @@ namespace ParentalControlWindowsForm.Forms
             ((System.ComponentModel.ISupportInitialize)(this.imgLogo)).BeginInit();
             this.SuspendLayout();
             // 
-            // panel1
+            // panel2
             // 
-            this.panel1.BackColor = System.Drawing.SystemColors.Highlight;
-            this.panel1.Controls.Add(this.label4);
-            this.panel1.Controls.Add(this.label3);
-            this.panel1.Controls.Add(this.label2);
-            this.panel1.Controls.Add(this.label1);
-            this.panel1.Controls.Add(this.imgNotifications);
-            this.panel1.Controls.Add(this.imgScheedule);
-            this.panel1.Controls.Add(this.imgInfants);
-            this.panel1.Controls.Add(this.imgDevice);
-            this.panel1.Controls.Add(this.imgLogo);
-            this.panel1.Location = new System.Drawing.Point(0, -2);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(144, 566);
-            this.panel1.TabIndex = 0;
+            this.panel2.BackColor = System.Drawing.SystemColors.Highlight;
+            this.panel2.Controls.Add(this.label4);
+            this.panel2.Controls.Add(this.label3);
+            this.panel2.Controls.Add(this.label2);
+            this.panel2.Controls.Add(this.label1);
+            this.panel2.Controls.Add(this.imgNotifications);
+            this.panel2.Controls.Add(this.imgScheedule);
+            this.panel2.Controls.Add(this.imgInfants);
+            this.panel2.Controls.Add(this.imgDevice);
+            this.panel2.Controls.Add(this.imgLogo);
+            this.panel2.Location = new System.Drawing.Point(0, 0);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(144, 566);
+            this.panel2.TabIndex = 1;
             // 
             // label4
             // 
@@ -164,20 +167,15 @@ namespace ParentalControlWindowsForm.Forms
             this.imgLogo.TabStop = false;
             this.imgLogo.Click += new System.EventHandler(this.imgLogo_Click);
             // 
-            // btnLogout
+            // lblCreateInfantAccount
             // 
-            this.btnLogout.BackColor = System.Drawing.SystemColors.Highlight;
-            this.btnLogout.FlatAppearance.BorderColor = System.Drawing.SystemColors.Highlight;
-            this.btnLogout.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnLogout.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLogout.ForeColor = System.Drawing.Color.White;
-            this.btnLogout.Location = new System.Drawing.Point(716, 13);
-            this.btnLogout.Name = "btnLogout";
-            this.btnLogout.Size = new System.Drawing.Size(128, 31);
-            this.btnLogout.TabIndex = 8;
-            this.btnLogout.Text = "Cerrar Sesión";
-            this.btnLogout.UseVisualStyleBackColor = false;
-            this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
+            this.lblCreateInfantAccount.AutoSize = true;
+            this.lblCreateInfantAccount.Font = new System.Drawing.Font("Arial", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCreateInfantAccount.Location = new System.Drawing.Point(198, 59);
+            this.lblCreateInfantAccount.Name = "lblCreateInfantAccount";
+            this.lblCreateInfantAccount.Size = new System.Drawing.Size(245, 29);
+            this.lblCreateInfantAccount.TabIndex = 2;
+            this.lblCreateInfantAccount.Text = "Crear cuenta infantil";
             // 
             // btnMyAccount
             // 
@@ -189,50 +187,93 @@ namespace ParentalControlWindowsForm.Forms
             this.btnMyAccount.Location = new System.Drawing.Point(587, 13);
             this.btnMyAccount.Name = "btnMyAccount";
             this.btnMyAccount.Size = new System.Drawing.Size(109, 31);
-            this.btnMyAccount.TabIndex = 7;
+            this.btnMyAccount.TabIndex = 3;
             this.btnMyAccount.Text = "Mi Cuenta";
             this.btnMyAccount.UseVisualStyleBackColor = false;
             this.btnMyAccount.Click += new System.EventHandler(this.btnMyAccount_Click);
             // 
-            // FormHome
+            // btnLogout
+            // 
+            this.btnLogout.BackColor = System.Drawing.SystemColors.Highlight;
+            this.btnLogout.FlatAppearance.BorderColor = System.Drawing.SystemColors.Highlight;
+            this.btnLogout.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnLogout.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLogout.ForeColor = System.Drawing.Color.White;
+            this.btnLogout.Location = new System.Drawing.Point(716, 13);
+            this.btnLogout.Name = "btnLogout";
+            this.btnLogout.Size = new System.Drawing.Size(128, 31);
+            this.btnLogout.TabIndex = 4;
+            this.btnLogout.Text = "Cerrar Sesión";
+            this.btnLogout.UseVisualStyleBackColor = false;
+            this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
+            // 
+            // panel3
+            // 
+            this.panel3.BackColor = System.Drawing.Color.DimGray;
+            this.panel3.Location = new System.Drawing.Point(170, 91);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(674, 2);
+            this.panel3.TabIndex = 5;
+            // 
+            // btnSave
+            // 
+            this.btnSave.BackColor = System.Drawing.SystemColors.Highlight;
+            this.btnSave.FlatAppearance.BorderColor = System.Drawing.SystemColors.Highlight;
+            this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSave.ForeColor = System.Drawing.Color.White;
+            this.btnSave.Location = new System.Drawing.Point(450, 490);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(109, 31);
+            this.btnSave.TabIndex = 8;
+            this.btnSave.Text = "Guardar";
+            this.btnSave.UseVisualStyleBackColor = false;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            // 
+            // FormAddInfantAccount
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(884, 561);
+            this.Controls.Add(this.btnSave);
+            this.Controls.Add(this.panel3);
             this.Controls.Add(this.btnLogout);
             this.Controls.Add(this.btnMyAccount);
-            this.Controls.Add(this.panel1);
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Controls.Add(this.lblCreateInfantAccount);
+            this.Controls.Add(this.panel2);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "FormHome";
+            this.Name = "FormAddInfantAccount";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Control Parental";
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imgNotifications)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgScheedule)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgInfants)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgDevice)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgLogo)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
-        #endregion
-
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.PictureBox imgDevice;
-        private System.Windows.Forms.PictureBox imgLogo;
-        private System.Windows.Forms.PictureBox imgScheedule;
-        private System.Windows.Forms.PictureBox imgInfants;
-        private System.Windows.Forms.PictureBox imgNotifications;
+#endregion
+        private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button btnLogout;
+        private System.Windows.Forms.PictureBox imgNotifications;
+        private System.Windows.Forms.PictureBox imgScheedule;
+        private System.Windows.Forms.PictureBox imgInfants;
+        private System.Windows.Forms.PictureBox imgDevice;
+        private System.Windows.Forms.PictureBox imgLogo;
+        private System.Windows.Forms.Label lblCreateInfantAccount;
         private System.Windows.Forms.Button btnMyAccount;
+        private System.Windows.Forms.Button btnLogout;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Button btnSave;
     }
 }
