@@ -29,6 +29,7 @@ namespace ParentalControlWindowsForm.Forms
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormInfantAccount));
             this.panel1 = new System.Windows.Forms.Panel();
             this.addInfantButton = new ParentalControlWindowsForm.Botones_Personalizados.OurButton();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
@@ -177,6 +178,7 @@ namespace ParentalControlWindowsForm.Forms
             this.imgScheedule.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.imgScheedule.TabIndex = 3;
             this.imgScheedule.TabStop = false;
+            this.imgScheedule.Click += new System.EventHandler(this.imgScheedule_Click);
             // 
             // imgInfants
             // 
@@ -209,6 +211,7 @@ namespace ParentalControlWindowsForm.Forms
             this.imgLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.imgLogo.TabIndex = 0;
             this.imgLogo.TabStop = false;
+            this.imgLogo.Click += new System.EventHandler(this.imgLogo_Click_1);
             // 
             // lblInfantAccount
             // 
@@ -248,6 +251,7 @@ namespace ParentalControlWindowsForm.Forms
             this.btnLogout.TabIndex = 4;
             this.btnLogout.Text = "Cerrar Sesión";
             this.btnLogout.UseVisualStyleBackColor = false;
+            this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click_1);
             // 
             // panel3
             // 
@@ -269,11 +273,13 @@ namespace ParentalControlWindowsForm.Forms
             this.Controls.Add(this.lblInfantAccount);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FormInfantAccount";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Control Parental";
+            this.Load += new System.EventHandler(this.FormInfantAccount_Load);
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.panel2.ResumeLayout(false);

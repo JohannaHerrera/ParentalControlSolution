@@ -22,6 +22,17 @@ namespace ParentalControlWindowsForm.Forms
 
         private void imgLogo_Click(object sender, EventArgs e)
         {
+            try
+            {
+                this.Hide();
+                FormHome formHome = new FormHome();
+                formHome.parentId = this.parentId;
+                formHome.Show();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
             return;
         }
 
@@ -95,6 +106,21 @@ namespace ParentalControlWindowsForm.Forms
             FormSchedule formSchedule = new FormSchedule();
             this.Hide();
             formSchedule.Show();
+        }
+
+        private void imgScheedule_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                this.Hide();
+                FormSchedule formSchedule = new FormSchedule();
+                formSchedule.parentId = this.parentId;
+                formSchedule.Show();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }

@@ -169,6 +169,7 @@ namespace ParentalControlWindowsForm.Forms
             this.imgScheedule.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.imgScheedule.TabIndex = 3;
             this.imgScheedule.TabStop = false;
+            this.imgScheedule.Click += new System.EventHandler(this.imgScheedule_Click);
             // 
             // imgInfants
             // 
@@ -179,6 +180,7 @@ namespace ParentalControlWindowsForm.Forms
             this.imgInfants.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.imgInfants.TabIndex = 2;
             this.imgInfants.TabStop = false;
+            this.imgInfants.Click += new System.EventHandler(this.imgInfants_Click);
             // 
             // imgDevice
             // 
@@ -189,6 +191,7 @@ namespace ParentalControlWindowsForm.Forms
             this.imgDevice.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.imgDevice.TabIndex = 1;
             this.imgDevice.TabStop = false;
+            this.imgDevice.Click += new System.EventHandler(this.imgDevice_Click);
             // 
             // imgLogo
             // 
@@ -199,6 +202,7 @@ namespace ParentalControlWindowsForm.Forms
             this.imgLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.imgLogo.TabIndex = 0;
             this.imgLogo.TabStop = false;
+            this.imgLogo.Click += new System.EventHandler(this.imgLogo_Click);
             // 
             // lblScheduleStar
             // 
@@ -363,6 +367,7 @@ namespace ParentalControlWindowsForm.Forms
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Location = new System.Drawing.Point(450, 490);
             this.Name = "FormScheduleRegister";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FormScheduleRegister";
             this.Load += new System.EventHandler(this.FormScheduleRegister_Load);
             this.panel1.ResumeLayout(false);

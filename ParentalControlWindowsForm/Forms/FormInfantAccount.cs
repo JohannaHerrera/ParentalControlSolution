@@ -116,6 +116,55 @@ namespace ParentalControlWindowsForm.Forms
             }
         }
 
+        private void imgLogo_Click_1(object sender, EventArgs e)
+        {
+            try
+            {
+                this.Hide();
+                FormHome formHome = new FormHome();
+                formHome.parentId = this.parentId;
+                formHome.Show();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void imgScheedule_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                this.Hide();
+                FormSchedule formSchedule = new FormSchedule();
+                formSchedule.parentId = this.parentId;
+                formSchedule.Show();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void btnLogout_Click_1(object sender, EventArgs e)
+        {
+            try
+            {
+                this.Hide();
+                FormLogin formLogin = new FormLogin();
+                formLogin.Show();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void FormInfantAccount_Load(object sender, EventArgs e)
+        {
+
+        }
+
         //private void FormInfantAccount_Load(object sender, EventArgs e)
         //{
         //    try

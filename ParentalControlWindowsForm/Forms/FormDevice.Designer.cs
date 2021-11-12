@@ -238,6 +238,7 @@ namespace ParentalControlWindowsForm.Forms
             this.imgScheedule.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.imgScheedule.TabIndex = 3;
             this.imgScheedule.TabStop = false;
+            this.imgScheedule.Click += new System.EventHandler(this.imgScheedule_Click);
             // 
             // imgInfants
             // 

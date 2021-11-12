@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ParentalControl.Business.BusinessBO;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -24,11 +25,7 @@ namespace ParentalControlWindowsForm.Forms
 
         }
 
-        private void lblSchedule_Click(object sender, EventArgs e)
-        {
-
-        }
-
+      
         private void FormSchedule_Load(object sender, EventArgs e)
         {
 
@@ -53,9 +50,58 @@ namespace ParentalControlWindowsForm.Forms
         {
             this.Hide();
             FormScheduleRegister formScheduleRegister = new FormScheduleRegister();
-            //formHome.parentId = this.parentId;
-            //Todas las ventanas necesitan el ID del papa?
+            formScheduleRegister.parentId = this.parentId;
+            //Todas las ventanas necesitan el ID del papa? Si
             formScheduleRegister.Show();
         }
+
+        private void imgScheedule_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                this.Hide();
+                FormSchedule formSchedule = new FormSchedule();
+                formSchedule.parentId = this.parentId;
+                formSchedule.Show();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void imgDevice_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                DeviceBO deviceBO = new DeviceBO();
+                string deviceCode = deviceBO.GetMACAddress();
+                this.Hide();
+                FormDevice formDevice = new FormDevice();
+                formDevice.parentId = this.parentId;
+                formDevice.deviceName = deviceBO.GetDeviceName(deviceCode);
+                formDevice.Show();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void imgInfants_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                this.Hide();
+                FormInfantAccount formInfantAccount = new FormInfantAccount();
+                formInfantAccount.parentId = this.parentId;
+                formInfantAccount.Show();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
     }
 }

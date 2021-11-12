@@ -292,5 +292,20 @@ namespace ParentalControlWindowsForm.Forms
                 MessageBox.Show(ex.Message);
             }
         }
+
+        private void imgScheedule_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                this.Hide();
+                FormSchedule formSchedule = new FormSchedule();
+                formSchedule.parentId = this.parentId;
+                formSchedule.Show();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
     }
 }

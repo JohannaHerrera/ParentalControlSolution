@@ -14,6 +14,7 @@ namespace ParentalControlWindowsForm.Forms
 {
     public partial class FormScheduleRegister : Form
     {
+        public int parentId;
         public FormScheduleRegister()
         {
             
@@ -58,12 +59,17 @@ namespace ParentalControlWindowsForm.Forms
                     MessageBox.Show("¡Se ha registrado satisfactoriamente!");
                     this.Hide();
                     FormSchedule formSchedule = new FormSchedule();
+                    formSchedule.parentId = this.parentId;
                     formSchedule.Show();
                 }
                 else
                 {
                     String message = ("Error en la creacion de horario");
                     MessageBox.Show(message);
+                    this.Hide();
+                    FormSchedule formSchedule = new FormSchedule();
+                    formSchedule.parentId = this.parentId;
+                    formSchedule.Show();
                 }
                
             }            
@@ -91,7 +97,67 @@ namespace ParentalControlWindowsForm.Forms
 
         }
 
+        private void imgLogo_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                this.Hide();
+                FormHome formHome = new FormHome();
+                formHome.parentId = this.parentId;
+                formHome.Show();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
 
-    
+        private void imgInfants_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                this.Hide();
+                FormInfantAccount formInfantAccount = new FormInfantAccount();
+                formInfantAccount.parentId = this.parentId;
+                formInfantAccount.Show();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void imgDevice_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                DeviceBO deviceBO = new DeviceBO();
+                string deviceCode = deviceBO.GetMACAddress();
+                this.Hide();
+                FormDevice formDevice = new FormDevice();
+                formDevice.parentId = this.parentId;
+                formDevice.deviceName = deviceBO.GetDeviceName(deviceCode);
+                formDevice.Show();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void imgScheedule_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                this.Hide();
+                FormSchedule formSchedule = new FormSchedule();
+                formSchedule.parentId = this.parentId;
+                formSchedule.Show();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
     }
 }

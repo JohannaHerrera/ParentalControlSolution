@@ -118,6 +118,9 @@
     <EmbeddedResource Include="Forms\FormDevice.resx">
       <DependentUpon>FormDevice.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormEditInfantAccount.resx">
+      <DependentUpon>FormEditInfantAccount.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\FormHome.resx">
       <DependentUpon>FormHome.cs</DependentUpon>
     </EmbeddedResource>
