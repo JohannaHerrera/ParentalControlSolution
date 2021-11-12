@@ -33,17 +33,17 @@ namespace ParentalControl.Business.BusinessBO
         /// </summary>
         /// <param name="InfantAccountModel">modelo que contiene los datos del usuario hijo</param>
         /// <returns>bool: TRUE(registro exitoso), FALSE(error al crear)</returns>
-        //public bool CreateInfantAccount(InfantAccountModel infantAccountModel,int parentId)
-        //{
-        //    var creationDate = DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss");
-        //    string query = $"INSERT INTO InfantAccount VALUES('{infantAccountModel.InfantName}', " +
-        //                   $" '{infantAccountModel.}', '{infantAccountModel.}'," +
-        //                   $" '{creationDate}')";
+        public bool CreateInfantAccount(InfantAccountModel infantAccountModel, int parentId)
+        {
+            var creationDate = DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss");
+            string query = $"INSERT INTO InfantAccount VALUES('{infantAccountModel.InfantName}', " +
+                           $" '{infantAccountModel.InfantGender}', '{creationDate}'," +
+                           $" {parentId})";
 
-        //    bool execute = SQLConexionDataBase.Execute(query);
+            bool execute = SQLConexionDataBase.Execute(query);
 
-        //    return execute;
-        //}
+            return execute;
+        }
 
         /// <summary>
         /// Método para convertir una lista DataTable a un TModel (Modelo genérico)

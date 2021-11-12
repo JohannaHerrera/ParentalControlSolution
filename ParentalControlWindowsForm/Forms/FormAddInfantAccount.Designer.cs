@@ -45,12 +45,19 @@ namespace ParentalControlWindowsForm.Forms
             this.btnLogout = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
             this.btnSave = new System.Windows.Forms.Button();
+            this.rbGenderM = new System.Windows.Forms.RadioButton();
+            this.rbGenderF = new System.Windows.Forms.RadioButton();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.txtName = new System.Windows.Forms.TextBox();
+            this.rbGroup = new System.Windows.Forms.GroupBox();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imgNotifications)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgScheedule)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgInfants)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgDevice)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgLogo)).BeginInit();
+            this.rbGroup.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel2
@@ -133,6 +140,7 @@ namespace ParentalControlWindowsForm.Forms
             this.imgScheedule.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.imgScheedule.TabIndex = 3;
             this.imgScheedule.TabStop = false;
+            this.imgScheedule.Click += new System.EventHandler(this.imgScheedule_Click);
             // 
             // imgInfants
             // 
@@ -230,12 +238,83 @@ namespace ParentalControlWindowsForm.Forms
             this.btnSave.UseVisualStyleBackColor = false;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
+            // rbGenderM
+            // 
+            this.rbGenderM.AutoSize = true;
+            this.rbGenderM.Image = global::ParentalControlWindowsForm.Properties.Resources.AddInfantAccount;
+            this.rbGenderM.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.rbGenderM.Location = new System.Drawing.Point(6, 33);
+            this.rbGenderM.Name = "rbGenderM";
+            this.rbGenderM.Size = new System.Drawing.Size(137, 64);
+            this.rbGenderM.TabIndex = 9;
+            this.rbGenderM.TabStop = true;
+            this.rbGenderM.Text = "Masculino";
+            this.rbGenderM.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.rbGenderM.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.rbGenderM.UseVisualStyleBackColor = true;
+            // 
+            // rbGenderF
+            // 
+            this.rbGenderF.AutoSize = true;
+            this.rbGenderF.Image = global::ParentalControlWindowsForm.Properties.Resources.AddInfantAccount;
+            this.rbGenderF.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.rbGenderF.Location = new System.Drawing.Point(6, 103);
+            this.rbGenderF.Name = "rbGenderF";
+            this.rbGenderF.Size = new System.Drawing.Size(135, 64);
+            this.rbGenderF.TabIndex = 10;
+            this.rbGenderF.TabStop = true;
+            this.rbGenderF.Text = "Femenino";
+            this.rbGenderF.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.rbGenderF.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.rbGenderF.UseVisualStyleBackColor = true;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(239, 204);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(45, 13);
+            this.label5.TabIndex = 11;
+            this.label5.Text = "Género:";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(239, 125);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(47, 13);
+            this.label6.TabIndex = 12;
+            this.label6.Text = "Nombre:";
+            // 
+            // txtName
+            // 
+            this.txtName.Location = new System.Drawing.Point(242, 156);
+            this.txtName.Name = "txtName";
+            this.txtName.Size = new System.Drawing.Size(169, 20);
+            this.txtName.TabIndex = 13;
+            // 
+            // rbGroup
+            // 
+            this.rbGroup.BackColor = System.Drawing.Color.Transparent;
+            this.rbGroup.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.rbGroup.Controls.Add(this.rbGenderM);
+            this.rbGroup.Controls.Add(this.rbGenderF);
+            this.rbGroup.Location = new System.Drawing.Point(254, 229);
+            this.rbGroup.Name = "rbGroup";
+            this.rbGroup.Size = new System.Drawing.Size(157, 191);
+            this.rbGroup.TabIndex = 14;
+            this.rbGroup.TabStop = false;
+            // 
             // FormAddInfantAccount
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(884, 561);
+            this.Controls.Add(this.rbGroup);
+            this.Controls.Add(this.txtName);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.btnLogout);
@@ -254,6 +333,8 @@ namespace ParentalControlWindowsForm.Forms
             ((System.ComponentModel.ISupportInitialize)(this.imgInfants)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgDevice)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgLogo)).EndInit();
+            this.rbGroup.ResumeLayout(false);
+            this.rbGroup.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -275,5 +356,11 @@ namespace ParentalControlWindowsForm.Forms
         private System.Windows.Forms.Button btnLogout;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Button btnSave;
+        private System.Windows.Forms.RadioButton rbGenderM;
+        private System.Windows.Forms.RadioButton rbGenderF;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox txtName;
+        private System.Windows.Forms.GroupBox rbGroup;
     }
 }

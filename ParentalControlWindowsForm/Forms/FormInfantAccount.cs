@@ -43,6 +43,7 @@ namespace ParentalControlWindowsForm.Forms
             {
                 this.Hide();
                 FormAddInfantAccount formAddInfantAccount = new FormAddInfantAccount();
+                formAddInfantAccount.parentId = this.parentId;
                 formAddInfantAccount.Show();
             }
             catch (Exception ex)

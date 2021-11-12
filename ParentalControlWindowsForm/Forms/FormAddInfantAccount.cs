@@ -101,49 +101,75 @@ namespace ParentalControlWindowsForm.Forms
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            //try
-            //{
-            //    // Se validan los datos del registro
-            //    InfantAccountModel infantAccountModel = new InfantAccountModel();
-            //    LoginBO loginBO = new LoginBO();
+            try
+            {
+                // Se validan los datos del registro
+                InfantAccountModel infantAccountModel = new InfantAccountModel();
+                InfantAccountBO infantAccountBO = new InfantAccountBO();
 
-            //    registerModel.ParentUsername = txtName.Text;
-            //    registerModel.ParentEmail = txtUser.Text;
-            //    registerModel.ParentPassword = txtPassword.Text;
+                infantAccountModel.InfantName = txtName.Text;
+                if (rbGenderF.Checked)
+                {
+                    infantAccountModel.InfantGender = rbGenderF.Text;
+                }
+                else if(rbGenderM.Checked)
+                {
+                    infantAccountModel.InfantGender = rbGenderM.Text;
+                }
+                else
+                {
+                    MessageBox.Show("Debe seleccionar el Género de su hijo.");
+                }
+                
+                string message = infantAccountModel.Validate(infantAccountModel);
 
-            //    string message = registerModel.Validate(registerModel);
+                if (!string.IsNullOrEmpty(message))
+                {
+                    MessageBox.Show(message);
+                    return;
+                }
+                else
+                {
+                    // Se verifica que no exista un hijo con el mismo nombre
+                    List<InfantAccountModel> infantAccountModelList = new List<InfantAccountModel>();
+                    infantAccountModelList = infantAccountBO.ValidateInfantAccount(infantAccountModel.InfantName);
 
-            //    if (!string.IsNullOrEmpty(message))
-            //    {
-            //        MessageBox.Show(message);
-            //        return;
-            //    }
-            //    else
-            //    {
-            //        // Se verifica que no exista una cuenta con el mismo correo
-            //        List<RegisterModel> registerModelList = new List<RegisterModel>();
-            //        registerModelList = loginBO.ValidateRegister(registerModel.ParentEmail);
+                    if (infantAccountModelList.Count == 0)
+                    {
+                        if (infantAccountBO.CreateInfantAccount(infantAccountModel,parentId))
+                        {
+                            MessageBox.Show("¡Se ha creado la cuenta de Hijo satisfactoriamente!");
+                            this.Hide();
+                            FormInfantAccount formInfantAccount = new FormInfantAccount();
+                            formInfantAccount.parentId = this.parentId;
+                            formInfantAccount.Show();
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Ya existe una cuenta con el mismo nombre.");
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
 
-            //        if (registerModelList.Count == 0)
-            //        {
-            //            if (loginBO.RegisterUser(registerModel))
-            //            {
-            //                MessageBox.Show("¡Te has registrado satisfactoriamente!");
-            //                this.Hide();
-            //                FormLogin formLogin = new FormLogin();
-            //                formLogin.Show();
-            //            }
-            //        }
-            //        else
-            //        {
-            //            MessageBox.Show("Ya existe una cuenta con el mismo correo electrónico.");
-            //        }
-            //    }
-            //}
-            //catch (Exception ex)
-            //{
-            //    MessageBox.Show(ex.Message);
-            //}
+        private void imgScheedule_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                this.Hide();
+                FormSchedule formSchedule = new FormSchedule();
+                formSchedule.parentId = this.parentId;
+                formSchedule.Show();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }

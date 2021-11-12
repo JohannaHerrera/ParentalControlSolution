@@ -21,5 +21,18 @@ namespace ParentalControl.Models.InfantAccount
         public DateTime InfantCreationDate { get; set; }
         // Id del Padre
         public int ParentId { get; set; }
+
+        //Método para validar los datos
+        public string Validate(InfantAccountModel infantAccountModel)
+        {
+            string message = string.Empty;
+
+            if (string.IsNullOrEmpty(infantAccountModel.InfantName) || string.IsNullOrEmpty(infantAccountModel.InfantGender))
+            {
+                return "Por favor, ingrese todos los datos requeridos";
+            }
+
+            return message;
+        }
     }
 }
