@@ -36,29 +36,29 @@ namespace ParentalControlWindowsForm.Forms
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.imgNotifications = new System.Windows.Forms.PictureBox();
-            this.imgScheedule = new System.Windows.Forms.PictureBox();
-            this.imgInfants = new System.Windows.Forms.PictureBox();
-            this.imgDevice = new System.Windows.Forms.PictureBox();
-            this.imgLogo = new System.Windows.Forms.PictureBox();
             this.lblCreateInfantAccount = new System.Windows.Forms.Label();
             this.btnMyAccount = new System.Windows.Forms.Button();
             this.btnLogout = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
             this.btnSave = new System.Windows.Forms.Button();
-            this.rbGenderM = new System.Windows.Forms.RadioButton();
-            this.rbGenderF = new System.Windows.Forms.RadioButton();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.txtName = new System.Windows.Forms.TextBox();
             this.rbGroup = new System.Windows.Forms.GroupBox();
+            this.rbGenderF = new System.Windows.Forms.RadioButton();
+            this.rbGenderM = new System.Windows.Forms.RadioButton();
+            this.imgNotifications = new System.Windows.Forms.PictureBox();
+            this.imgScheedule = new System.Windows.Forms.PictureBox();
+            this.imgInfants = new System.Windows.Forms.PictureBox();
+            this.imgDevice = new System.Windows.Forms.PictureBox();
+            this.imgLogo = new System.Windows.Forms.PictureBox();
             this.panel2.SuspendLayout();
+            this.rbGroup.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imgNotifications)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgScheedule)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgInfants)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgDevice)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgLogo)).BeginInit();
-            this.rbGroup.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel2
@@ -121,60 +121,6 @@ namespace ParentalControlWindowsForm.Forms
             this.label1.Size = new System.Drawing.Size(107, 14);
             this.label1.TabIndex = 5;
             this.label1.Text = "Cuentas Infantiles";
-            // 
-            // imgNotifications
-            // 
-            this.imgNotifications.Image = global::ParentalControlWindowsForm.Properties.Resources.notificaciones;
-            this.imgNotifications.Location = new System.Drawing.Point(41, 433);
-            this.imgNotifications.Name = "imgNotifications";
-            this.imgNotifications.Size = new System.Drawing.Size(58, 54);
-            this.imgNotifications.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.imgNotifications.TabIndex = 4;
-            this.imgNotifications.TabStop = false;
-            // 
-            // imgScheedule
-            // 
-            this.imgScheedule.Image = global::ParentalControlWindowsForm.Properties.Resources.calendario;
-            this.imgScheedule.Location = new System.Drawing.Point(39, 340);
-            this.imgScheedule.Name = "imgScheedule";
-            this.imgScheedule.Size = new System.Drawing.Size(64, 63);
-            this.imgScheedule.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.imgScheedule.TabIndex = 3;
-            this.imgScheedule.TabStop = false;
-            this.imgScheedule.Click += new System.EventHandler(this.imgScheedule_Click);
-            // 
-            // imgInfants
-            // 
-            this.imgInfants.Image = global::ParentalControlWindowsForm.Properties.Resources.children;
-            this.imgInfants.Location = new System.Drawing.Point(35, 156);
-            this.imgInfants.Name = "imgInfants";
-            this.imgInfants.Size = new System.Drawing.Size(68, 62);
-            this.imgInfants.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.imgInfants.TabIndex = 2;
-            this.imgInfants.TabStop = false;
-            this.imgInfants.Click += new System.EventHandler(this.imgInfants_Click);
-            // 
-            // imgDevice
-            // 
-            this.imgDevice.Image = global::ParentalControlWindowsForm.Properties.Resources.devices;
-            this.imgDevice.Location = new System.Drawing.Point(41, 248);
-            this.imgDevice.Name = "imgDevice";
-            this.imgDevice.Size = new System.Drawing.Size(58, 63);
-            this.imgDevice.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.imgDevice.TabIndex = 1;
-            this.imgDevice.TabStop = false;
-            this.imgDevice.Click += new System.EventHandler(this.imgDevice_Click);
-            // 
-            // imgLogo
-            // 
-            this.imgLogo.Image = global::ParentalControlWindowsForm.Properties.Resources.control_parental;
-            this.imgLogo.Location = new System.Drawing.Point(22, 26);
-            this.imgLogo.Name = "imgLogo";
-            this.imgLogo.Size = new System.Drawing.Size(100, 89);
-            this.imgLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.imgLogo.TabIndex = 0;
-            this.imgLogo.TabStop = false;
-            this.imgLogo.Click += new System.EventHandler(this.imgLogo_Click);
             // 
             // lblCreateInfantAccount
             // 
@@ -239,36 +185,6 @@ namespace ParentalControlWindowsForm.Forms
             this.btnSave.UseVisualStyleBackColor = false;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
-            // rbGenderM
-            // 
-            this.rbGenderM.AutoSize = true;
-            this.rbGenderM.Image = global::ParentalControlWindowsForm.Properties.Resources.AddInfantAccount;
-            this.rbGenderM.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.rbGenderM.Location = new System.Drawing.Point(6, 33);
-            this.rbGenderM.Name = "rbGenderM";
-            this.rbGenderM.Size = new System.Drawing.Size(137, 64);
-            this.rbGenderM.TabIndex = 9;
-            this.rbGenderM.TabStop = true;
-            this.rbGenderM.Text = "Masculino";
-            this.rbGenderM.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.rbGenderM.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.rbGenderM.UseVisualStyleBackColor = true;
-            // 
-            // rbGenderF
-            // 
-            this.rbGenderF.AutoSize = true;
-            this.rbGenderF.Image = global::ParentalControlWindowsForm.Properties.Resources.AddInfantAccount;
-            this.rbGenderF.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.rbGenderF.Location = new System.Drawing.Point(6, 103);
-            this.rbGenderF.Name = "rbGenderF";
-            this.rbGenderF.Size = new System.Drawing.Size(135, 64);
-            this.rbGenderF.TabIndex = 10;
-            this.rbGenderF.TabStop = true;
-            this.rbGenderF.Text = "Femenino";
-            this.rbGenderF.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.rbGenderF.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.rbGenderF.UseVisualStyleBackColor = true;
-            // 
             // label5
             // 
             this.label5.AutoSize = true;
@@ -298,13 +214,95 @@ namespace ParentalControlWindowsForm.Forms
             // 
             this.rbGroup.BackColor = System.Drawing.Color.Transparent;
             this.rbGroup.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.rbGroup.Controls.Add(this.rbGenderM);
             this.rbGroup.Controls.Add(this.rbGenderF);
+            this.rbGroup.Controls.Add(this.rbGenderM);
             this.rbGroup.Location = new System.Drawing.Point(254, 229);
             this.rbGroup.Name = "rbGroup";
-            this.rbGroup.Size = new System.Drawing.Size(157, 191);
+            this.rbGroup.Size = new System.Drawing.Size(157, 124);
             this.rbGroup.TabIndex = 14;
             this.rbGroup.TabStop = false;
+            // 
+            // rbGenderF
+            // 
+            this.rbGenderF.Image = global::ParentalControlWindowsForm.Properties.Resources.hijaImgPeque;
+            this.rbGenderF.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.rbGenderF.Location = new System.Drawing.Point(15, 74);
+            this.rbGenderF.Name = "rbGenderF";
+            this.rbGenderF.Size = new System.Drawing.Size(105, 40);
+            this.rbGenderF.TabIndex = 10;
+            this.rbGenderF.TabStop = true;
+            this.rbGenderF.Text = "Femenino";
+            this.rbGenderF.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.rbGenderF.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.rbGenderF.UseVisualStyleBackColor = true;
+            // 
+            // rbGenderM
+            // 
+            this.rbGenderM.Image = global::ParentalControlWindowsForm.Properties.Resources.hijoImgPeque;
+            this.rbGenderM.Location = new System.Drawing.Point(15, 19);
+            this.rbGenderM.Margin = new System.Windows.Forms.Padding(0);
+            this.rbGenderM.Name = "rbGenderM";
+            this.rbGenderM.Size = new System.Drawing.Size(105, 40);
+            this.rbGenderM.TabIndex = 9;
+            this.rbGenderM.TabStop = true;
+            this.rbGenderM.Text = "Masculino";
+            this.rbGenderM.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.rbGenderM.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.rbGenderM.UseVisualStyleBackColor = true;
+            // 
+            // imgNotifications
+            // 
+            this.imgNotifications.Image = global::ParentalControlWindowsForm.Properties.Resources.notificaciones;
+            this.imgNotifications.Location = new System.Drawing.Point(41, 433);
+            this.imgNotifications.Name = "imgNotifications";
+            this.imgNotifications.Size = new System.Drawing.Size(58, 54);
+            this.imgNotifications.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.imgNotifications.TabIndex = 4;
+            this.imgNotifications.TabStop = false;
+            // 
+            // imgScheedule
+            // 
+            this.imgScheedule.Image = global::ParentalControlWindowsForm.Properties.Resources.calendario;
+            this.imgScheedule.Location = new System.Drawing.Point(39, 340);
+            this.imgScheedule.Name = "imgScheedule";
+            this.imgScheedule.Size = new System.Drawing.Size(64, 63);
+            this.imgScheedule.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.imgScheedule.TabIndex = 3;
+            this.imgScheedule.TabStop = false;
+            this.imgScheedule.Click += new System.EventHandler(this.imgScheedule_Click);
+            // 
+            // imgInfants
+            // 
+            this.imgInfants.Image = global::ParentalControlWindowsForm.Properties.Resources.children;
+            this.imgInfants.Location = new System.Drawing.Point(35, 156);
+            this.imgInfants.Name = "imgInfants";
+            this.imgInfants.Size = new System.Drawing.Size(68, 62);
+            this.imgInfants.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.imgInfants.TabIndex = 2;
+            this.imgInfants.TabStop = false;
+            this.imgInfants.Click += new System.EventHandler(this.imgInfants_Click);
+            // 
+            // imgDevice
+            // 
+            this.imgDevice.Image = global::ParentalControlWindowsForm.Properties.Resources.devices;
+            this.imgDevice.Location = new System.Drawing.Point(41, 248);
+            this.imgDevice.Name = "imgDevice";
+            this.imgDevice.Size = new System.Drawing.Size(58, 63);
+            this.imgDevice.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.imgDevice.TabIndex = 1;
+            this.imgDevice.TabStop = false;
+            this.imgDevice.Click += new System.EventHandler(this.imgDevice_Click);
+            // 
+            // imgLogo
+            // 
+            this.imgLogo.Image = global::ParentalControlWindowsForm.Properties.Resources.control_parental;
+            this.imgLogo.Location = new System.Drawing.Point(22, 26);
+            this.imgLogo.Name = "imgLogo";
+            this.imgLogo.Size = new System.Drawing.Size(100, 89);
+            this.imgLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.imgLogo.TabIndex = 0;
+            this.imgLogo.TabStop = false;
+            this.imgLogo.Click += new System.EventHandler(this.imgLogo_Click);
             // 
             // FormAddInfantAccount
             // 
@@ -330,13 +328,12 @@ namespace ParentalControlWindowsForm.Forms
             this.Text = "Control Parental";
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            this.rbGroup.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.imgNotifications)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgScheedule)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgInfants)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgDevice)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgLogo)).EndInit();
-            this.rbGroup.ResumeLayout(false);
-            this.rbGroup.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
