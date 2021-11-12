@@ -35,5 +35,14 @@ namespace ParentalControlWindowsForm.Forms
             formDevice.deviceName = deviceBO.GetDeviceName(deviceCode);
             formDevice.Show();
         }
+
+
+        private void imgSchedule_Click_1(object sender, EventArgs e)
+        {
+            ScheduleBO scheduleBO = new ScheduleBO();
+            FormSchedule formSchedule = new FormSchedule();
+            this.Hide();
+            formSchedule.Show();
+        }
     }
 }

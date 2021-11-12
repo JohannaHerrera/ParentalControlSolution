@@ -1,7 +1,7 @@
 ﻿
 namespace ParentalControlWindowsForm.Forms
 {
-    partial class FormHome
+    partial class FormSchedule
     {
         /// <summary>
         /// Required designer variable.
@@ -29,20 +29,23 @@ namespace ParentalControlWindowsForm.Forms
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormHome));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormSchedule));
             this.panel1 = new System.Windows.Forms.Panel();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.imgNotifications = new System.Windows.Forms.PictureBox();
-            this.imgSchedule = new System.Windows.Forms.PictureBox();
+            this.imgScheedule = new System.Windows.Forms.PictureBox();
             this.imgInfants = new System.Windows.Forms.PictureBox();
             this.imgDevice = new System.Windows.Forms.PictureBox();
             this.imgLogo = new System.Windows.Forms.PictureBox();
+            this.lblSchedule = new System.Windows.Forms.Label();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.btnAddSchedule = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imgNotifications)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.imgSchedule)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgScheedule)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgInfants)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgDevice)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgLogo)).BeginInit();
@@ -56,14 +59,15 @@ namespace ParentalControlWindowsForm.Forms
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.imgNotifications);
-            this.panel1.Controls.Add(this.imgSchedule);
+            this.panel1.Controls.Add(this.imgScheedule);
             this.panel1.Controls.Add(this.imgInfants);
             this.panel1.Controls.Add(this.imgDevice);
             this.panel1.Controls.Add(this.imgLogo);
-            this.panel1.Location = new System.Drawing.Point(0, -2);
+            this.panel1.Location = new System.Drawing.Point(1, 1);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(144, 566);
-            this.panel1.TabIndex = 0;
+            this.panel1.TabIndex = 1;
+            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // label4
             // 
@@ -119,16 +123,15 @@ namespace ParentalControlWindowsForm.Forms
             this.imgNotifications.TabIndex = 4;
             this.imgNotifications.TabStop = false;
             // 
-            // imgSchedule
+            // imgScheedule
             // 
-            this.imgSchedule.Image = global::ParentalControlWindowsForm.Properties.Resources.calendario;
-            this.imgSchedule.Location = new System.Drawing.Point(39, 340);
-            this.imgSchedule.Name = "imgSchedule";
-            this.imgSchedule.Size = new System.Drawing.Size(64, 63);
-            this.imgSchedule.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.imgSchedule.TabIndex = 3;
-            this.imgSchedule.TabStop = false;
-            this.imgSchedule.Click += new System.EventHandler(this.imgSchedule_Click_1);
+            this.imgScheedule.Image = global::ParentalControlWindowsForm.Properties.Resources.calendario;
+            this.imgScheedule.Location = new System.Drawing.Point(39, 340);
+            this.imgScheedule.Name = "imgScheedule";
+            this.imgScheedule.Size = new System.Drawing.Size(64, 63);
+            this.imgScheedule.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.imgScheedule.TabIndex = 3;
+            this.imgScheedule.TabStop = false;
             // 
             // imgInfants
             // 
@@ -149,7 +152,6 @@ namespace ParentalControlWindowsForm.Forms
             this.imgDevice.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.imgDevice.TabIndex = 1;
             this.imgDevice.TabStop = false;
-            this.imgDevice.Click += new System.EventHandler(this.imgDevice_Click);
             // 
             // imgLogo
             // 
@@ -162,41 +164,80 @@ namespace ParentalControlWindowsForm.Forms
             this.imgLogo.TabStop = false;
             this.imgLogo.Click += new System.EventHandler(this.imgLogo_Click);
             // 
-            // FormHome
+            // lblSchedule
+            // 
+            this.lblSchedule.AutoSize = true;
+            this.lblSchedule.Font = new System.Drawing.Font("Arial", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSchedule.ForeColor = System.Drawing.SystemColors.WindowFrame;
+            this.lblSchedule.Location = new System.Drawing.Point(151, 41);
+            this.lblSchedule.Name = "lblSchedule";
+            this.lblSchedule.Size = new System.Drawing.Size(136, 33);
+            this.lblSchedule.TabIndex = 2;
+            this.lblSchedule.Text = "Schedule";
+            this.lblSchedule.Click += new System.EventHandler(this.lblSchedule_Click);
+            // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.Color.Silver;
+            this.panel2.Location = new System.Drawing.Point(157, 71);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(706, 3);
+            this.panel2.TabIndex = 3;
+            // 
+            // btnAddSchedule
+            // 
+            this.btnAddSchedule.BackColor = System.Drawing.Color.MediumSpringGreen;
+            this.btnAddSchedule.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAddSchedule.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAddSchedule.ForeColor = System.Drawing.Color.White;
+            this.btnAddSchedule.Location = new System.Drawing.Point(763, 94);
+            this.btnAddSchedule.Name = "btnAddSchedule";
+            this.btnAddSchedule.Size = new System.Drawing.Size(100, 40);
+            this.btnAddSchedule.TabIndex = 4;
+            this.btnAddSchedule.Text = "Añadir";
+            this.btnAddSchedule.UseVisualStyleBackColor = false;
+            this.btnAddSchedule.Click += new System.EventHandler(this.btnAddSchedule_Click);
+            // 
+            // FormSchedule
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(884, 561);
+            this.Controls.Add(this.btnAddSchedule);
+            this.Controls.Add(this.panel2);
+            this.Controls.Add(this.lblSchedule);
             this.Controls.Add(this.panel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MaximizeBox = false;
-            this.MinimizeBox = false;
-            this.Name = "FormHome";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Control Parental";
+            this.Location = new System.Drawing.Point(450, 490);
+            this.Name = "FormSchedule";
+            this.Text = "FormSchedule";
+            this.Load += new System.EventHandler(this.FormSchedule_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imgNotifications)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.imgSchedule)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgScheedule)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgInfants)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgDevice)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgLogo)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
 
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.PictureBox imgDevice;
-        private System.Windows.Forms.PictureBox imgLogo;
-        private System.Windows.Forms.PictureBox imgSchedule;
-        private System.Windows.Forms.PictureBox imgInfants;
-        private System.Windows.Forms.PictureBox imgNotifications;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.PictureBox imgNotifications;
+        private System.Windows.Forms.PictureBox imgScheedule;
+        private System.Windows.Forms.PictureBox imgInfants;
+        private System.Windows.Forms.PictureBox imgDevice;
+        private System.Windows.Forms.PictureBox imgLogo;
+        private System.Windows.Forms.Label lblSchedule;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Button btnAddSchedule;
     }
 }
