@@ -187,6 +187,7 @@ namespace ParentalControlWindowsForm.Forms
             this.imgInfants.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.imgInfants.TabIndex = 2;
             this.imgInfants.TabStop = false;
+            this.imgInfants.Click += new System.EventHandler(this.imgInfants_Click);
             // 
             // imgDevice
             // 

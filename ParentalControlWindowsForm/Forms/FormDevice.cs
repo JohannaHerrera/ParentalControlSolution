@@ -262,13 +262,35 @@ namespace ParentalControlWindowsForm.Forms
 
         private void imgDevice_Click(object sender, EventArgs e)
         {
-            DeviceBO deviceBO = new DeviceBO();
-            string deviceCode = deviceBO.GetMACAddress();
-            this.Hide();
-            FormDevice formDevice = new FormDevice();
-            formDevice.deviceName = deviceBO.GetDeviceName(deviceCode);
-            formDevice.parentId = this.parentId;
-            formDevice.Show();
+            try
+            {
+                DeviceBO deviceBO = new DeviceBO();
+                string deviceCode = deviceBO.GetMACAddress();
+                this.Hide();
+                FormDevice formDevice = new FormDevice();
+                formDevice.parentId = this.parentId;
+                formDevice.deviceName = deviceBO.GetDeviceName(deviceCode);
+                formDevice.Show();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void imgInfants_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                this.Hide();
+                FormInfantAccount formInfantAccount = new FormInfantAccount();
+                formInfantAccount.parentId = this.parentId;
+                formInfantAccount.Show();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }

@@ -170,5 +170,20 @@ namespace ParentalControlWindowsForm.Forms
             formPersonalAccount.parentId = this.parentId;
             formPersonalAccount.Show();
         }
+
+        private void imgInfants_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                this.Hide();
+                FormInfantAccount formInfantAccount = new FormInfantAccount();
+                formInfantAccount.parentId = this.parentId;
+                formInfantAccount.Show();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
     }
 }
