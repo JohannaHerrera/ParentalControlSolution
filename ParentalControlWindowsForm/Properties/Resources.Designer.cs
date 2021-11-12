@@ -63,6 +63,16 @@ namespace ParentalControlWindowsForm.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap AddGroup {
+            get {
+                object obj = ResourceManager.GetObject("AddGroup", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap calendario {
             get {
                 object obj = ResourceManager.GetObject("calendario", resourceCulture);
@@ -96,6 +106,16 @@ namespace ParentalControlWindowsForm.Properties {
         internal static System.Drawing.Bitmap devices {
             get {
                 object obj = ResourceManager.GetObject("devices", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap nina {
+            get {
+                object obj = ResourceManager.GetObject("nina", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
