@@ -40,8 +40,8 @@ namespace ParentalControlWindowsForm.Forms
             this.imgInfants = new System.Windows.Forms.PictureBox();
             this.imgDevice = new System.Windows.Forms.PictureBox();
             this.imgLogo = new System.Windows.Forms.PictureBox();
-            this.btnLogout = new System.Windows.Forms.Button();
-            this.btnMyAccount = new System.Windows.Forms.Button();
+            this.btnMyAccount = new ParentalControlWindowsForm.Botones_Personalizados.OurButton();
+            this.btnLogout = new ParentalControlWindowsForm.Botones_Personalizados.OurButton();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imgNotifications)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgScheedule)).BeginInit();
@@ -165,35 +165,45 @@ namespace ParentalControlWindowsForm.Forms
             this.imgLogo.TabStop = false;
             this.imgLogo.Click += new System.EventHandler(this.imgLogo_Click);
             // 
+            // btnMyAccount
+            // 
+            this.btnMyAccount.BackColor = System.Drawing.SystemColors.Highlight;
+            this.btnMyAccount.BackgroundColor = System.Drawing.SystemColors.Highlight;
+            this.btnMyAccount.BorderColor = System.Drawing.SystemColors.Highlight;
+            this.btnMyAccount.BorderRadius = 10;
+            this.btnMyAccount.BorderSize = 0;
+            this.btnMyAccount.FlatAppearance.BorderSize = 0;
+            this.btnMyAccount.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnMyAccount.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold);
+            this.btnMyAccount.ForeColor = System.Drawing.Color.White;
+            this.btnMyAccount.Location = new System.Drawing.Point(587, 13);
+            this.btnMyAccount.Name = "btnMyAccount";
+            this.btnMyAccount.Size = new System.Drawing.Size(112, 31);
+            this.btnMyAccount.TabIndex = 25;
+            this.btnMyAccount.Text = "Mi Cuenta";
+            this.btnMyAccount.TextColor = System.Drawing.Color.White;
+            this.btnMyAccount.UseVisualStyleBackColor = false;
+            this.btnMyAccount.Click += new System.EventHandler(this.btnMyAccount_Click);
+            // 
             // btnLogout
             // 
             this.btnLogout.BackColor = System.Drawing.SystemColors.Highlight;
-            this.btnLogout.FlatAppearance.BorderColor = System.Drawing.SystemColors.Highlight;
+            this.btnLogout.BackgroundColor = System.Drawing.SystemColors.Highlight;
+            this.btnLogout.BorderColor = System.Drawing.SystemColors.Highlight;
+            this.btnLogout.BorderRadius = 10;
+            this.btnLogout.BorderSize = 0;
+            this.btnLogout.FlatAppearance.BorderSize = 0;
             this.btnLogout.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnLogout.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLogout.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold);
             this.btnLogout.ForeColor = System.Drawing.Color.White;
             this.btnLogout.Location = new System.Drawing.Point(716, 13);
             this.btnLogout.Name = "btnLogout";
             this.btnLogout.Size = new System.Drawing.Size(128, 31);
-            this.btnLogout.TabIndex = 8;
+            this.btnLogout.TabIndex = 26;
             this.btnLogout.Text = "Cerrar Sesión";
+            this.btnLogout.TextColor = System.Drawing.Color.White;
             this.btnLogout.UseVisualStyleBackColor = false;
             this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
-            // 
-            // btnMyAccount
-            // 
-            this.btnMyAccount.BackColor = System.Drawing.SystemColors.Highlight;
-            this.btnMyAccount.FlatAppearance.BorderColor = System.Drawing.SystemColors.Highlight;
-            this.btnMyAccount.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnMyAccount.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnMyAccount.ForeColor = System.Drawing.Color.White;
-            this.btnMyAccount.Location = new System.Drawing.Point(587, 13);
-            this.btnMyAccount.Name = "btnMyAccount";
-            this.btnMyAccount.Size = new System.Drawing.Size(109, 31);
-            this.btnMyAccount.TabIndex = 7;
-            this.btnMyAccount.Text = "Mi Cuenta";
-            this.btnMyAccount.UseVisualStyleBackColor = false;
-            this.btnMyAccount.Click += new System.EventHandler(this.btnMyAccount_Click);
             // 
             // FormHome
             // 
@@ -233,7 +243,7 @@ namespace ParentalControlWindowsForm.Forms
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button btnLogout;
-        private System.Windows.Forms.Button btnMyAccount;
+        private Botones_Personalizados.OurButton btnMyAccount;
+        private Botones_Personalizados.OurButton btnLogout;
     }
 }

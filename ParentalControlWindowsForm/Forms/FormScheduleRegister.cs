@@ -159,5 +159,34 @@ namespace ParentalControlWindowsForm.Forms
                 MessageBox.Show(ex.Message);
             }
         }
+
+        private void btnMyAccount_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                this.Hide();
+                FormPersonalAccount formPersonalAccount = new FormPersonalAccount();
+                formPersonalAccount.parentId = this.parentId;
+                formPersonalAccount.Show();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void btnLogout_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                this.Hide();
+                FormLogin formLogin = new FormLogin();
+                formLogin.Show();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
     }
 }
