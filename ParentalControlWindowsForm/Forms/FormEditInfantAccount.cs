@@ -173,7 +173,7 @@ namespace ParentalControlWindowsForm.Forms
                 this.rbGenderM.Enabled = false;
                 this.btnCancel.Visible = false;
                 this.btnSave.Visible = false;
-                this.btnEditar.Visible = true;
+                this.btnEdit.Visible = true;
 
                 infantAccountModel.InfantName = this.txtName.Text;
                 infantAccountModel.InfantAccountId = this.infantId;
@@ -210,7 +210,7 @@ namespace ParentalControlWindowsForm.Forms
             }
         }
 
-        private void btnEditar_Click(object sender, EventArgs e)
+        private void btnEdit_Click(object sender, EventArgs e)
         {
             try
             {
@@ -219,7 +219,7 @@ namespace ParentalControlWindowsForm.Forms
                 this.rbGenderF.Enabled = true;
                 this.btnCancel.Visible = true;
                 this.btnSave.Visible = true;
-                this.btnEditar.Visible = false;
+                this.btnEdit.Visible = false;
             }
             catch (Exception ex)
             {
