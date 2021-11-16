@@ -103,6 +103,7 @@ namespace ParentalControlWindowsForm.Forms
         {
             try
             {
+                Constants constants = new Constants();
                 // Se validan los datos del registro
                 InfantAccountModel infantAccountModel = new InfantAccountModel();
                 InfantAccountBO infantAccountBO = new InfantAccountBO();
@@ -110,11 +111,11 @@ namespace ParentalControlWindowsForm.Forms
                 infantAccountModel.InfantName = txtName.Text;
                 if (rbGenderF.Checked)
                 {
-                    infantAccountModel.InfantGender = rbGenderF.Text;
+                    infantAccountModel.InfantGender = constants.Femenino;
                 }
                 else if(rbGenderM.Checked)
                 {
-                    infantAccountModel.InfantGender = rbGenderM.Text;
+                    infantAccountModel.InfantGender = constants.Masculino;
                 }
                 else
                 {

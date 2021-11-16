@@ -41,32 +41,32 @@ namespace ParentalControlWindowsForm.Forms
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.rbGroup = new System.Windows.Forms.GroupBox();
-            this.txtName = new System.Windows.Forms.TextBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.rbGenderF = new System.Windows.Forms.RadioButton();
-            this.rbGenderM = new System.Windows.Forms.RadioButton();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.imgNotifications = new System.Windows.Forms.PictureBox();
             this.imgScheedule = new System.Windows.Forms.PictureBox();
             this.imgInfants = new System.Windows.Forms.PictureBox();
             this.imgDevice = new System.Windows.Forms.PictureBox();
             this.imgLogo = new System.Windows.Forms.PictureBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.rbGroup = new System.Windows.Forms.GroupBox();
+            this.rbGenderF = new System.Windows.Forms.RadioButton();
+            this.rbGenderM = new System.Windows.Forms.RadioButton();
+            this.txtName = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnEdit = new ParentalControlWindowsForm.Botones_Personalizados.OurButton();
             this.btnCancel = new ParentalControlWindowsForm.Botones_Personalizados.OurButton();
             this.btnSave = new ParentalControlWindowsForm.Botones_Personalizados.OurButton();
             this.btnLogout = new ParentalControlWindowsForm.Botones_Personalizados.OurButton();
             this.btnMyAccount = new ParentalControlWindowsForm.Botones_Personalizados.OurButton();
             this.panel2.SuspendLayout();
-            this.rbGroup.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgNotifications)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgScheedule)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgInfants)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgDevice)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgLogo)).BeginInit();
+            this.rbGroup.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // panel2
@@ -130,98 +130,6 @@ namespace ParentalControlWindowsForm.Forms
             this.label1.TabIndex = 5;
             this.label1.Text = "Cuentas Infantiles";
             // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Arial", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(353, 88);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(361, 41);
-            this.label5.TabIndex = 8;
-            this.label5.Text = "Editar Cuenta Infantil";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(345, 186);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(64, 17);
-            this.label6.TabIndex = 9;
-            this.label6.Text = "Nombre:";
-            // 
-            // rbGroup
-            // 
-            this.rbGroup.BackColor = System.Drawing.Color.Transparent;
-            this.rbGroup.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.rbGroup.Controls.Add(this.rbGenderF);
-            this.rbGroup.Controls.Add(this.rbGenderM);
-            this.rbGroup.Location = new System.Drawing.Point(386, 296);
-            this.rbGroup.Name = "rbGroup";
-            this.rbGroup.Size = new System.Drawing.Size(157, 124);
-            this.rbGroup.TabIndex = 14;
-            this.rbGroup.TabStop = false;
-            // 
-            // txtName
-            // 
-            this.txtName.BackColor = System.Drawing.Color.White;
-            this.txtName.Enabled = false;
-            this.txtName.Font = new System.Drawing.Font("Arial", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtName.Location = new System.Drawing.Point(348, 221);
-            this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(306, 27);
-            this.txtName.TabIndex = 12;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Arial", 11.25F);
-            this.label7.Location = new System.Drawing.Point(348, 266);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(60, 17);
-            this.label7.TabIndex = 18;
-            this.label7.Text = "Género:";
-            // 
-            // rbGenderF
-            // 
-            this.rbGenderF.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rbGenderF.Image = global::ParentalControlWindowsForm.Properties.Resources.hijaImgPeque;
-            this.rbGenderF.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.rbGenderF.Location = new System.Drawing.Point(15, 78);
-            this.rbGenderF.Name = "rbGenderF";
-            this.rbGenderF.Size = new System.Drawing.Size(142, 40);
-            this.rbGenderF.TabIndex = 10;
-            this.rbGenderF.TabStop = true;
-            this.rbGenderF.Text = "  Femenino";
-            this.rbGenderF.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.rbGenderF.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.rbGenderF.UseVisualStyleBackColor = true;
-            // 
-            // rbGenderM
-            // 
-            this.rbGenderM.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rbGenderM.Image = global::ParentalControlWindowsForm.Properties.Resources.hijoImgPeque;
-            this.rbGenderM.Location = new System.Drawing.Point(15, 18);
-            this.rbGenderM.Margin = new System.Windows.Forms.Padding(0);
-            this.rbGenderM.Name = "rbGenderM";
-            this.rbGenderM.Size = new System.Drawing.Size(121, 40);
-            this.rbGenderM.TabIndex = 9;
-            this.rbGenderM.TabStop = true;
-            this.rbGenderM.Text = "  Masculino";
-            this.rbGenderM.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.rbGenderM.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.rbGenderM.UseVisualStyleBackColor = true;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::ParentalControlWindowsForm.Properties.Resources.ninos;
-            this.pictureBox1.Location = new System.Drawing.Point(250, 61);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(97, 90);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 7;
-            this.pictureBox1.TabStop = false;
-            // 
             // imgNotifications
             // 
             this.imgNotifications.Image = global::ParentalControlWindowsForm.Properties.Resources.notificaciones;
@@ -276,6 +184,98 @@ namespace ParentalControlWindowsForm.Forms
             this.imgLogo.TabStop = false;
             this.imgLogo.Click += new System.EventHandler(this.imgLogo_Click);
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Arial", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(353, 88);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(299, 41);
+            this.label5.TabIndex = 8;
+            this.label5.Text = "EDITAR CUENTA ";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(345, 186);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(64, 17);
+            this.label6.TabIndex = 9;
+            this.label6.Text = "Nombre:";
+            // 
+            // rbGroup
+            // 
+            this.rbGroup.BackColor = System.Drawing.Color.Transparent;
+            this.rbGroup.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.rbGroup.Controls.Add(this.rbGenderF);
+            this.rbGroup.Controls.Add(this.rbGenderM);
+            this.rbGroup.Location = new System.Drawing.Point(386, 282);
+            this.rbGroup.Name = "rbGroup";
+            this.rbGroup.Size = new System.Drawing.Size(202, 168);
+            this.rbGroup.TabIndex = 14;
+            this.rbGroup.TabStop = false;
+            // 
+            // rbGenderF
+            // 
+            this.rbGenderF.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rbGenderF.Image = global::ParentalControlWindowsForm.Properties.Resources.nina_64;
+            this.rbGenderF.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.rbGenderF.Location = new System.Drawing.Point(15, 89);
+            this.rbGenderF.Name = "rbGenderF";
+            this.rbGenderF.Size = new System.Drawing.Size(149, 70);
+            this.rbGenderF.TabIndex = 10;
+            this.rbGenderF.TabStop = true;
+            this.rbGenderF.Text = "Femenino";
+            this.rbGenderF.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.rbGenderF.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.rbGenderF.UseVisualStyleBackColor = true;
+            // 
+            // rbGenderM
+            // 
+            this.rbGenderM.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rbGenderM.Image = global::ParentalControlWindowsForm.Properties.Resources.hijo_64;
+            this.rbGenderM.Location = new System.Drawing.Point(15, 16);
+            this.rbGenderM.Margin = new System.Windows.Forms.Padding(0);
+            this.rbGenderM.Name = "rbGenderM";
+            this.rbGenderM.Size = new System.Drawing.Size(149, 70);
+            this.rbGenderM.TabIndex = 9;
+            this.rbGenderM.TabStop = true;
+            this.rbGenderM.Text = "Masculino";
+            this.rbGenderM.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.rbGenderM.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.rbGenderM.UseVisualStyleBackColor = true;
+            // 
+            // txtName
+            // 
+            this.txtName.BackColor = System.Drawing.Color.White;
+            this.txtName.Enabled = false;
+            this.txtName.Font = new System.Drawing.Font("Arial", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtName.Location = new System.Drawing.Point(348, 221);
+            this.txtName.Name = "txtName";
+            this.txtName.Size = new System.Drawing.Size(306, 27);
+            this.txtName.TabIndex = 12;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Arial", 11.25F);
+            this.label7.Location = new System.Drawing.Point(348, 266);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(60, 17);
+            this.label7.TabIndex = 18;
+            this.label7.Text = "Género:";
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::ParentalControlWindowsForm.Properties.Resources.ninos;
+            this.pictureBox1.Location = new System.Drawing.Point(238, 63);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(90, 90);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 7;
+            this.pictureBox1.TabStop = false;
+            // 
             // btnEdit
             // 
             this.btnEdit.BackColor = System.Drawing.SystemColors.Highlight;
@@ -283,14 +283,15 @@ namespace ParentalControlWindowsForm.Forms
             this.btnEdit.BorderColor = System.Drawing.SystemColors.Highlight;
             this.btnEdit.BorderRadius = 10;
             this.btnEdit.BorderSize = 0;
+            this.btnEdit.FlatAppearance.BorderColor = System.Drawing.SystemColors.Highlight;
             this.btnEdit.FlatAppearance.BorderSize = 0;
             this.btnEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnEdit.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold);
+            this.btnEdit.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEdit.ForeColor = System.Drawing.Color.White;
-            this.btnEdit.Location = new System.Drawing.Point(437, 456);
+            this.btnEdit.Location = new System.Drawing.Point(452, 456);
             this.btnEdit.Name = "btnEdit";
-            this.btnEdit.Size = new System.Drawing.Size(112, 31);
-            this.btnEdit.TabIndex = 36;
+            this.btnEdit.Size = new System.Drawing.Size(109, 31);
+            this.btnEdit.TabIndex = 15;
             this.btnEdit.Text = "Editar";
             this.btnEdit.TextColor = System.Drawing.Color.White;
             this.btnEdit.UseVisualStyleBackColor = false;
@@ -303,14 +304,15 @@ namespace ParentalControlWindowsForm.Forms
             this.btnCancel.BorderColor = System.Drawing.Color.Red;
             this.btnCancel.BorderRadius = 10;
             this.btnCancel.BorderSize = 0;
+            this.btnCancel.FlatAppearance.BorderColor = System.Drawing.Color.Red;
             this.btnCancel.FlatAppearance.BorderSize = 0;
             this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold);
+            this.btnCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancel.ForeColor = System.Drawing.Color.White;
-            this.btnCancel.Location = new System.Drawing.Point(504, 456);
+            this.btnCancel.Location = new System.Drawing.Point(512, 456);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(112, 31);
-            this.btnCancel.TabIndex = 35;
+            this.btnCancel.Size = new System.Drawing.Size(109, 31);
+            this.btnCancel.TabIndex = 17;
             this.btnCancel.Text = "Cancelar";
             this.btnCancel.TextColor = System.Drawing.Color.White;
             this.btnCancel.UseVisualStyleBackColor = false;
@@ -324,14 +326,15 @@ namespace ParentalControlWindowsForm.Forms
             this.btnSave.BorderColor = System.Drawing.SystemColors.Highlight;
             this.btnSave.BorderRadius = 10;
             this.btnSave.BorderSize = 0;
+            this.btnSave.FlatAppearance.BorderColor = System.Drawing.SystemColors.Highlight;
             this.btnSave.FlatAppearance.BorderSize = 0;
             this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold);
+            this.btnSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSave.ForeColor = System.Drawing.Color.White;
-            this.btnSave.Location = new System.Drawing.Point(376, 456);
+            this.btnSave.Location = new System.Drawing.Point(386, 456);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(112, 31);
-            this.btnSave.TabIndex = 34;
+            this.btnSave.Size = new System.Drawing.Size(109, 31);
+            this.btnSave.TabIndex = 16;
             this.btnSave.Text = "Guardar";
             this.btnSave.TextColor = System.Drawing.Color.White;
             this.btnSave.UseVisualStyleBackColor = false;
@@ -378,142 +381,6 @@ namespace ParentalControlWindowsForm.Forms
             this.btnMyAccount.UseVisualStyleBackColor = false;
             this.btnMyAccount.Click += new System.EventHandler(this.btnMyAccount_Click);
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::ParentalControlWindowsForm.Properties.Resources.user;
-            this.pictureBox1.Location = new System.Drawing.Point(238, 63);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(90, 90);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 7;
-            this.pictureBox1.TabStop = false;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Arial", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(353, 88);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(299, 41);
-            this.label5.TabIndex = 8;
-            this.label5.Text = "EDITAR CUENTA ";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(345, 186);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(64, 17);
-            this.label6.TabIndex = 9;
-            this.label6.Text = "Nombre:";
-            // 
-            // rbGroup
-            // 
-            this.rbGroup.BackColor = System.Drawing.Color.Transparent;
-            this.rbGroup.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.rbGroup.Controls.Add(this.rbGenderF);
-            this.rbGroup.Controls.Add(this.rbGenderM);
-            this.rbGroup.Location = new System.Drawing.Point(386, 282);
-            this.rbGroup.Name = "rbGroup";
-            this.rbGroup.Size = new System.Drawing.Size(202, 168);
-            this.rbGroup.TabIndex = 14;
-            this.rbGroup.TabStop = false;
-            // 
-            // rbGenderF
-            // 
-            this.rbGenderF.Image = global::ParentalControlWindowsForm.Properties.Resources.nina_64;
-            this.rbGenderF.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.rbGenderF.Location = new System.Drawing.Point(15, 89);
-            this.rbGenderF.Name = "rbGenderF";
-            this.rbGenderF.Size = new System.Drawing.Size(149, 70);
-            this.rbGenderF.TabIndex = 10;
-            this.rbGenderF.TabStop = true;
-            this.rbGenderF.Text = "Femenino";
-            this.rbGenderF.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.rbGenderF.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.rbGenderF.UseVisualStyleBackColor = true;
-            // 
-            // rbGenderM
-            // 
-            this.rbGenderM.Image = global::ParentalControlWindowsForm.Properties.Resources.hijo_64;
-            this.rbGenderM.Location = new System.Drawing.Point(15, 16);
-            this.rbGenderM.Margin = new System.Windows.Forms.Padding(0);
-            this.rbGenderM.Name = "rbGenderM";
-            this.rbGenderM.Size = new System.Drawing.Size(149, 70);
-            this.rbGenderM.TabIndex = 9;
-            this.rbGenderM.TabStop = true;
-            this.rbGenderM.Text = "Masculino";
-            this.rbGenderM.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.rbGenderM.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.rbGenderM.UseVisualStyleBackColor = true;
-            // 
-            // txtName
-            // 
-            this.txtName.BackColor = System.Drawing.Color.White;
-            this.txtName.Enabled = false;
-            this.txtName.Font = new System.Drawing.Font("Arial", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtName.Location = new System.Drawing.Point(348, 221);
-            this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(306, 27);
-            this.txtName.TabIndex = 12;
-            // 
-            // btnEditar
-            // 
-            this.btnEditar.BackColor = System.Drawing.SystemColors.Highlight;
-            this.btnEditar.FlatAppearance.BorderColor = System.Drawing.SystemColors.Highlight;
-            this.btnEditar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnEditar.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEditar.ForeColor = System.Drawing.Color.White;
-            this.btnEditar.Location = new System.Drawing.Point(452, 456);
-            this.btnEditar.Name = "btnEditar";
-            this.btnEditar.Size = new System.Drawing.Size(109, 31);
-            this.btnEditar.TabIndex = 15;
-            this.btnEditar.Text = "Editar";
-            this.btnEditar.UseVisualStyleBackColor = false;
-            this.btnEditar.Click += new System.EventHandler(this.btnEditar_Click);
-            // 
-            // btnSave
-            // 
-            this.btnSave.BackColor = System.Drawing.SystemColors.Highlight;
-            this.btnSave.FlatAppearance.BorderColor = System.Drawing.SystemColors.Highlight;
-            this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSave.ForeColor = System.Drawing.Color.White;
-            this.btnSave.Location = new System.Drawing.Point(386, 456);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(109, 31);
-            this.btnSave.TabIndex = 16;
-            this.btnSave.Text = "Guardar";
-            this.btnSave.UseVisualStyleBackColor = false;
-            this.btnSave.Visible = false;
-            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
-            // 
-            // btnCancel
-            // 
-            this.btnCancel.BackColor = System.Drawing.Color.Red;
-            this.btnCancel.FlatAppearance.BorderColor = System.Drawing.Color.Red;
-            this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancel.ForeColor = System.Drawing.Color.White;
-            this.btnCancel.Location = new System.Drawing.Point(512, 456);
-            this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(109, 31);
-            this.btnCancel.TabIndex = 17;
-            this.btnCancel.Text = "Cancelar";
-            this.btnCancel.UseVisualStyleBackColor = false;
-            this.btnCancel.Visible = false;
-            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(348, 266);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(45, 13);
-            this.label7.TabIndex = 18;
-            this.label7.Text = "Género:";
-            // 
             // FormEditInfantAccount
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -541,13 +408,13 @@ namespace ParentalControlWindowsForm.Forms
             this.Load += new System.EventHandler(this.FormEditInfantAccount_Load);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-            this.rbGroup.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgNotifications)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgScheedule)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgInfants)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgDevice)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgLogo)).EndInit();
+            this.rbGroup.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

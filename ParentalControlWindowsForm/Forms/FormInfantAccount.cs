@@ -171,7 +171,7 @@ namespace ParentalControlWindowsForm.Forms
                 List<InfantAccountModel> infantAccounts = new List<InfantAccountModel>();
                 
                 int iterator = 0;
-
+                 
                 infantAccounts = infantAccountBO.GetInfantAccounts(this.parentId);
                 
                
@@ -179,6 +179,7 @@ namespace ParentalControlWindowsForm.Forms
                 {
                     foreach (var infant in infantAccounts)
                     {
+                        
                         this.EditButton.Image = global::ParentalControlWindowsForm.Properties.Resources.editar_32;
                         this.delete.Image = global::ParentalControlWindowsForm.Properties.Resources.eliminar_32;
 

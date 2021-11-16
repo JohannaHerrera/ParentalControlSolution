@@ -198,6 +198,7 @@
     <Content Include="Resources\eliminar 32.png" />
     <Content Include="Resources\hijo 64.png" />
     <Content Include="Resources\nina_64.png" />
+    <None Include="Resources\ninos.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
