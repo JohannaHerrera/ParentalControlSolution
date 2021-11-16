@@ -179,16 +179,16 @@ namespace ParentalControlWindowsForm.Forms
                 {
                     foreach (var infant in infantAccounts)
                     {
-                        this.EditButton.Image = global::ParentalControlWindowsForm.Properties.Resources.editar;
-                        this.delete.Image = global::ParentalControlWindowsForm.Properties.Resources.eliminar;
+                        this.EditButton.Image = global::ParentalControlWindowsForm.Properties.Resources.editar_32;
+                        this.delete.Image = global::ParentalControlWindowsForm.Properties.Resources.eliminar_32;
 
                         if (infant.InfantGender.Equals(constants.Femenino))
                         {
-                            this.InfantImage.Image = global::ParentalControlWindowsForm.Properties.Resources.hijaImgPeque;              
+                            this.InfantImage.Image = global::ParentalControlWindowsForm.Properties.Resources.nina_64;              
                         }
                         else
                         {
-                            this.InfantImage.Image = global::ParentalControlWindowsForm.Properties.Resources.hijoImgPeque;
+                            this.InfantImage.Image = global::ParentalControlWindowsForm.Properties.Resources.hijo_64;
                         }
 
                         this.dtgInfantAccounts.Rows.Add(this.InfantImage.Image, infant.InfantName, this.EditButton.Image, this.delete.Image); 

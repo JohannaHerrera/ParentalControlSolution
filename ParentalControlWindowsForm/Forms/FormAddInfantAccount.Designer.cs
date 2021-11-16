@@ -230,18 +230,18 @@ namespace ParentalControlWindowsForm.Forms
             this.rbGroup.Controls.Add(this.rbGenderM);
             this.rbGroup.Location = new System.Drawing.Point(252, 246);
             this.rbGroup.Name = "rbGroup";
-            this.rbGroup.Size = new System.Drawing.Size(191, 124);
+            this.rbGroup.Size = new System.Drawing.Size(191, 174);
             this.rbGroup.TabIndex = 14;
             this.rbGroup.TabStop = false;
             // 
             // rbGenderF
             // 
             this.rbGenderF.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rbGenderF.Image = global::ParentalControlWindowsForm.Properties.Resources.hijaImgPeque;
+            this.rbGenderF.Image = global::ParentalControlWindowsForm.Properties.Resources.nina_64;
             this.rbGenderF.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.rbGenderF.Location = new System.Drawing.Point(15, 74);
+            this.rbGenderF.Location = new System.Drawing.Point(15, 92);
             this.rbGenderF.Name = "rbGenderF";
-            this.rbGenderF.Size = new System.Drawing.Size(176, 40);
+            this.rbGenderF.Size = new System.Drawing.Size(167, 70);
             this.rbGenderF.TabIndex = 10;
             this.rbGenderF.TabStop = true;
             this.rbGenderF.Text = "   Femenino";
@@ -252,12 +252,12 @@ namespace ParentalControlWindowsForm.Forms
             // rbGenderM
             // 
             this.rbGenderM.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rbGenderM.Image = global::ParentalControlWindowsForm.Properties.Resources.hijoImgPeque;
+            this.rbGenderM.Image = global::ParentalControlWindowsForm.Properties.Resources.hijo_64;
             this.rbGenderM.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.rbGenderM.Location = new System.Drawing.Point(15, 19);
+            this.rbGenderM.Location = new System.Drawing.Point(15, 16);
             this.rbGenderM.Margin = new System.Windows.Forms.Padding(0);
             this.rbGenderM.Name = "rbGenderM";
-            this.rbGenderM.Size = new System.Drawing.Size(173, 40);
+            this.rbGenderM.Size = new System.Drawing.Size(167, 70);
             this.rbGenderM.TabIndex = 9;
             this.rbGenderM.TabStop = true;
             this.rbGenderM.Text = "   Masculino";

@@ -133,9 +133,9 @@ namespace ParentalControlWindowsForm.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap editar {
+        internal static System.Drawing.Bitmap editar_32 {
             get {
-                object obj = ResourceManager.GetObject("editar", resourceCulture);
+                object obj = ResourceManager.GetObject("editar_32", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -143,9 +143,9 @@ namespace ParentalControlWindowsForm.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap eliminar {
+        internal static System.Drawing.Bitmap eliminar_32 {
             get {
-                object obj = ResourceManager.GetObject("eliminar", resourceCulture);
+                object obj = ResourceManager.GetObject("eliminar_32", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -153,9 +153,9 @@ namespace ParentalControlWindowsForm.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap hijaImgPeque {
+        internal static System.Drawing.Bitmap hijo_64 {
             get {
-                object obj = ResourceManager.GetObject("hijaImgPeque", resourceCulture);
+                object obj = ResourceManager.GetObject("hijo_64", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -163,9 +163,9 @@ namespace ParentalControlWindowsForm.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap hijoImgPeque {
+        internal static System.Drawing.Bitmap nina_64 {
             get {
-                object obj = ResourceManager.GetObject("hijoImgPeque", resourceCulture);
+                object obj = ResourceManager.GetObject("nina_64", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

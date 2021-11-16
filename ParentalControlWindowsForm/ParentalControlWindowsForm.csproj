@@ -194,10 +194,10 @@
     <None Include="Resources\AddInfantAccount.png" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Resources\editar.png" />
-    <Content Include="Resources\eliminar.png" />
-    <Content Include="Resources\hijaImgPeque.png" />
-    <Content Include="Resources\hijoImgPeque.png" />
+    <Content Include="Resources\editar 32.png" />
+    <Content Include="Resources\eliminar 32.png" />
+    <Content Include="Resources\hijo 64.png" />
+    <Content Include="Resources\nina_64.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
