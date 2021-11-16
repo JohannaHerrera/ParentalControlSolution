@@ -198,6 +198,7 @@
     <Content Include="Resources\eliminar.png" />
     <Content Include="Resources\hijaImgPeque.png" />
     <Content Include="Resources\hijoImgPeque.png" />
+    <None Include="Resources\ninos.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
