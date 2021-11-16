@@ -113,7 +113,7 @@ namespace ParentalControlWindowsForm.Forms
             }
         }
 
-        private void btnEditar_Click(object sender, EventArgs e)
+        private void btnEdit_Click(object sender, EventArgs e)
         {
             try
             {
@@ -122,7 +122,7 @@ namespace ParentalControlWindowsForm.Forms
                 this.txtPassword.Enabled = true;
                 this.btnCancel.Visible = true;
                 this.btnSave.Visible = true;
-                this.btnEditar.Visible = false;
+                this.btnEdit.Visible = false;
             }
             catch (Exception ex)
             {
@@ -141,7 +141,7 @@ namespace ParentalControlWindowsForm.Forms
                 this.txtPassword.Enabled = false;
                 this.btnCancel.Visible = false;
                 this.btnSave.Visible = false;
-                this.btnEditar.Visible = true;
+                this.btnEdit.Visible = true;
 
                 parentModel.ParentId = this.parentId;
                 parentModel.ParentUsername = this.txtName.Text;

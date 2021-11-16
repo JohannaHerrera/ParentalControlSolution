@@ -42,7 +42,9 @@ namespace ParentalControlWindowsForm.Forms
             this.imgLogo = new System.Windows.Forms.PictureBox();
             this.lblSchedule = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.btnAddSchedule = new System.Windows.Forms.Button();
+            this.btnLogout = new ParentalControlWindowsForm.Botones_Personalizados.OurButton();
+            this.btnMyAccount = new ParentalControlWindowsForm.Botones_Personalizados.OurButton();
+            this.btnAddSchedule = new ParentalControlWindowsForm.Botones_Personalizados.OurButton();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imgNotifications)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgScheedule)).BeginInit();
@@ -63,7 +65,7 @@ namespace ParentalControlWindowsForm.Forms
             this.panel1.Controls.Add(this.imgInfants);
             this.panel1.Controls.Add(this.imgDevice);
             this.panel1.Controls.Add(this.imgLogo);
-            this.panel1.Location = new System.Drawing.Point(1, 1);
+            this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(144, 566);
             this.panel1.TabIndex = 1;
@@ -170,33 +172,79 @@ namespace ParentalControlWindowsForm.Forms
             // lblSchedule
             // 
             this.lblSchedule.AutoSize = true;
-            this.lblSchedule.Font = new System.Drawing.Font("Arial", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSchedule.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.lblSchedule.Location = new System.Drawing.Point(151, 41);
+            this.lblSchedule.Font = new System.Drawing.Font("Arial", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSchedule.ForeColor = System.Drawing.Color.Black;
+            this.lblSchedule.Location = new System.Drawing.Point(189, 57);
             this.lblSchedule.Name = "lblSchedule";
-            this.lblSchedule.Size = new System.Drawing.Size(136, 33);
+            this.lblSchedule.Size = new System.Drawing.Size(111, 29);
             this.lblSchedule.TabIndex = 2;
-            this.lblSchedule.Text = "Schedule";
+            this.lblSchedule.Text = "Horarios";
             // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.Silver;
-            this.panel2.Location = new System.Drawing.Point(157, 71);
+            this.panel2.Location = new System.Drawing.Point(170, 91);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(706, 3);
             this.panel2.TabIndex = 3;
             // 
+            // btnLogout
+            // 
+            this.btnLogout.BackColor = System.Drawing.SystemColors.Highlight;
+            this.btnLogout.BackgroundColor = System.Drawing.SystemColors.Highlight;
+            this.btnLogout.BorderColor = System.Drawing.SystemColors.Highlight;
+            this.btnLogout.BorderRadius = 10;
+            this.btnLogout.BorderSize = 0;
+            this.btnLogout.FlatAppearance.BorderSize = 0;
+            this.btnLogout.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnLogout.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold);
+            this.btnLogout.ForeColor = System.Drawing.Color.White;
+            this.btnLogout.Location = new System.Drawing.Point(716, 13);
+            this.btnLogout.Name = "btnLogout";
+            this.btnLogout.Size = new System.Drawing.Size(128, 31);
+            this.btnLogout.TabIndex = 27;
+            this.btnLogout.Text = "Cerrar Sesión";
+            this.btnLogout.TextColor = System.Drawing.Color.White;
+            this.btnLogout.UseVisualStyleBackColor = false;
+            this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
+            // 
+            // btnMyAccount
+            // 
+            this.btnMyAccount.BackColor = System.Drawing.SystemColors.Highlight;
+            this.btnMyAccount.BackgroundColor = System.Drawing.SystemColors.Highlight;
+            this.btnMyAccount.BorderColor = System.Drawing.SystemColors.Highlight;
+            this.btnMyAccount.BorderRadius = 10;
+            this.btnMyAccount.BorderSize = 0;
+            this.btnMyAccount.FlatAppearance.BorderSize = 0;
+            this.btnMyAccount.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnMyAccount.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold);
+            this.btnMyAccount.ForeColor = System.Drawing.Color.White;
+            this.btnMyAccount.Location = new System.Drawing.Point(587, 13);
+            this.btnMyAccount.Name = "btnMyAccount";
+            this.btnMyAccount.Size = new System.Drawing.Size(112, 31);
+            this.btnMyAccount.TabIndex = 26;
+            this.btnMyAccount.Text = "Mi Cuenta";
+            this.btnMyAccount.TextColor = System.Drawing.Color.White;
+            this.btnMyAccount.UseVisualStyleBackColor = false;
+            this.btnMyAccount.Click += new System.EventHandler(this.btnMyAccount_Click);
+            // 
             // btnAddSchedule
             // 
-            this.btnAddSchedule.BackColor = System.Drawing.Color.MediumSpringGreen;
+            this.btnAddSchedule.BackColor = System.Drawing.SystemColors.Highlight;
+            this.btnAddSchedule.BackgroundColor = System.Drawing.SystemColors.Highlight;
+            this.btnAddSchedule.BorderColor = System.Drawing.SystemColors.Highlight;
+            this.btnAddSchedule.BorderRadius = 10;
+            this.btnAddSchedule.BorderSize = 0;
+            this.btnAddSchedule.FlatAppearance.BorderSize = 0;
             this.btnAddSchedule.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAddSchedule.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAddSchedule.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold);
             this.btnAddSchedule.ForeColor = System.Drawing.Color.White;
-            this.btnAddSchedule.Location = new System.Drawing.Point(763, 94);
+            this.btnAddSchedule.Location = new System.Drawing.Point(716, 157);
             this.btnAddSchedule.Name = "btnAddSchedule";
-            this.btnAddSchedule.Size = new System.Drawing.Size(100, 40);
-            this.btnAddSchedule.TabIndex = 4;
-            this.btnAddSchedule.Text = "Añadir";
+            this.btnAddSchedule.Size = new System.Drawing.Size(112, 31);
+            this.btnAddSchedule.TabIndex = 28;
+            this.btnAddSchedule.Text = "Agregar";
+            this.btnAddSchedule.TextColor = System.Drawing.Color.White;
             this.btnAddSchedule.UseVisualStyleBackColor = false;
             this.btnAddSchedule.Click += new System.EventHandler(this.btnAddSchedule_Click);
             // 
@@ -204,8 +252,11 @@ namespace ParentalControlWindowsForm.Forms
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(884, 561);
             this.Controls.Add(this.btnAddSchedule);
+            this.Controls.Add(this.btnLogout);
+            this.Controls.Add(this.btnMyAccount);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.lblSchedule);
             this.Controls.Add(this.panel1);
@@ -241,6 +292,8 @@ namespace ParentalControlWindowsForm.Forms
         private System.Windows.Forms.PictureBox imgLogo;
         private System.Windows.Forms.Label lblSchedule;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Button btnAddSchedule;
+        private Botones_Personalizados.OurButton btnLogout;
+        private Botones_Personalizados.OurButton btnMyAccount;
+        private Botones_Personalizados.OurButton btnAddSchedule;
     }
 }

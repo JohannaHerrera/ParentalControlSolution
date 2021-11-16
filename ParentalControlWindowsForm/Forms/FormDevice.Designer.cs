@@ -52,15 +52,15 @@ namespace ParentalControlWindowsForm.Forms
             this.imgInfants = new System.Windows.Forms.PictureBox();
             this.imgDevice = new System.Windows.Forms.PictureBox();
             this.imgLogo = new System.Windows.Forms.PictureBox();
-            this.btnMyAccount = new System.Windows.Forms.Button();
-            this.btnLogout = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.btnSave = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.PictureBox();
             this.btnEdit = new System.Windows.Forms.PictureBox();
             this.lblDeviceName = new System.Windows.Forms.TextBox();
+            this.btnLogout = new ParentalControlWindowsForm.Botones_Personalizados.OurButton();
+            this.btnMyAccount = new ParentalControlWindowsForm.Botones_Personalizados.OurButton();
+            this.btnSave = new ParentalControlWindowsForm.Botones_Personalizados.OurButton();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgWindowsAccounts)).BeginInit();
             this.panel2.SuspendLayout();
@@ -273,36 +273,6 @@ namespace ParentalControlWindowsForm.Forms
             this.imgLogo.TabStop = false;
             this.imgLogo.Click += new System.EventHandler(this.imgLogo_Click);
             // 
-            // btnMyAccount
-            // 
-            this.btnMyAccount.BackColor = System.Drawing.SystemColors.Highlight;
-            this.btnMyAccount.FlatAppearance.BorderColor = System.Drawing.SystemColors.Highlight;
-            this.btnMyAccount.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnMyAccount.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnMyAccount.ForeColor = System.Drawing.Color.White;
-            this.btnMyAccount.Location = new System.Drawing.Point(587, 13);
-            this.btnMyAccount.Name = "btnMyAccount";
-            this.btnMyAccount.Size = new System.Drawing.Size(109, 31);
-            this.btnMyAccount.TabIndex = 3;
-            this.btnMyAccount.Text = "Mi Cuenta";
-            this.btnMyAccount.UseVisualStyleBackColor = false;
-            this.btnMyAccount.Click += new System.EventHandler(this.btnMyAccount_Click);
-            // 
-            // btnLogout
-            // 
-            this.btnLogout.BackColor = System.Drawing.SystemColors.Highlight;
-            this.btnLogout.FlatAppearance.BorderColor = System.Drawing.SystemColors.Highlight;
-            this.btnLogout.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnLogout.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLogout.ForeColor = System.Drawing.Color.White;
-            this.btnLogout.Location = new System.Drawing.Point(716, 13);
-            this.btnLogout.Name = "btnLogout";
-            this.btnLogout.Size = new System.Drawing.Size(128, 31);
-            this.btnLogout.TabIndex = 4;
-            this.btnLogout.Text = "Cerrar Sesión";
-            this.btnLogout.UseVisualStyleBackColor = false;
-            this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
-            // 
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.DimGray;
@@ -330,21 +300,6 @@ namespace ParentalControlWindowsForm.Forms
             this.label6.Size = new System.Drawing.Size(146, 19);
             this.label6.TabIndex = 7;
             this.label6.Text = "Cuentas Infantiles";
-            // 
-            // btnSave
-            // 
-            this.btnSave.BackColor = System.Drawing.SystemColors.Highlight;
-            this.btnSave.FlatAppearance.BorderColor = System.Drawing.SystemColors.Highlight;
-            this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSave.ForeColor = System.Drawing.Color.White;
-            this.btnSave.Location = new System.Drawing.Point(450, 490);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(109, 31);
-            this.btnSave.TabIndex = 8;
-            this.btnSave.Text = "Guardar";
-            this.btnSave.UseVisualStyleBackColor = false;
-            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // btnDelete
             // 
@@ -379,21 +334,81 @@ namespace ParentalControlWindowsForm.Forms
             this.lblDeviceName.Size = new System.Drawing.Size(236, 28);
             this.lblDeviceName.TabIndex = 11;
             // 
+            // btnLogout
+            // 
+            this.btnLogout.BackColor = System.Drawing.SystemColors.Highlight;
+            this.btnLogout.BackgroundColor = System.Drawing.SystemColors.Highlight;
+            this.btnLogout.BorderColor = System.Drawing.SystemColors.Highlight;
+            this.btnLogout.BorderRadius = 10;
+            this.btnLogout.BorderSize = 0;
+            this.btnLogout.FlatAppearance.BorderSize = 0;
+            this.btnLogout.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnLogout.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold);
+            this.btnLogout.ForeColor = System.Drawing.Color.White;
+            this.btnLogout.Location = new System.Drawing.Point(716, 13);
+            this.btnLogout.Name = "btnLogout";
+            this.btnLogout.Size = new System.Drawing.Size(128, 31);
+            this.btnLogout.TabIndex = 28;
+            this.btnLogout.Text = "Cerrar Sesión";
+            this.btnLogout.TextColor = System.Drawing.Color.White;
+            this.btnLogout.UseVisualStyleBackColor = false;
+            this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
+            // 
+            // btnMyAccount
+            // 
+            this.btnMyAccount.BackColor = System.Drawing.SystemColors.Highlight;
+            this.btnMyAccount.BackgroundColor = System.Drawing.SystemColors.Highlight;
+            this.btnMyAccount.BorderColor = System.Drawing.SystemColors.Highlight;
+            this.btnMyAccount.BorderRadius = 10;
+            this.btnMyAccount.BorderSize = 0;
+            this.btnMyAccount.FlatAppearance.BorderSize = 0;
+            this.btnMyAccount.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnMyAccount.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold);
+            this.btnMyAccount.ForeColor = System.Drawing.Color.White;
+            this.btnMyAccount.Location = new System.Drawing.Point(587, 13);
+            this.btnMyAccount.Name = "btnMyAccount";
+            this.btnMyAccount.Size = new System.Drawing.Size(112, 31);
+            this.btnMyAccount.TabIndex = 27;
+            this.btnMyAccount.Text = "Mi Cuenta";
+            this.btnMyAccount.TextColor = System.Drawing.Color.White;
+            this.btnMyAccount.UseVisualStyleBackColor = false;
+            this.btnMyAccount.Click += new System.EventHandler(this.btnMyAccount_Click);
+            // 
+            // btnSave
+            // 
+            this.btnSave.BackColor = System.Drawing.SystemColors.Highlight;
+            this.btnSave.BackgroundColor = System.Drawing.SystemColors.Highlight;
+            this.btnSave.BorderColor = System.Drawing.SystemColors.Highlight;
+            this.btnSave.BorderRadius = 10;
+            this.btnSave.BorderSize = 0;
+            this.btnSave.FlatAppearance.BorderSize = 0;
+            this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold);
+            this.btnSave.ForeColor = System.Drawing.Color.White;
+            this.btnSave.Location = new System.Drawing.Point(441, 490);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(112, 31);
+            this.btnSave.TabIndex = 30;
+            this.btnSave.Text = "Guardar";
+            this.btnSave.TextColor = System.Drawing.Color.White;
+            this.btnSave.UseVisualStyleBackColor = false;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            // 
             // FormDevice
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(884, 561);
+            this.Controls.Add(this.btnSave);
+            this.Controls.Add(this.btnLogout);
+            this.Controls.Add(this.btnMyAccount);
             this.Controls.Add(this.lblDeviceName);
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.btnEdit);
-            this.Controls.Add(this.btnSave);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.panel3);
-            this.Controls.Add(this.btnLogout);
-            this.Controls.Add(this.btnMyAccount);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -432,17 +447,17 @@ namespace ParentalControlWindowsForm.Forms
         private System.Windows.Forms.PictureBox imgInfants;
         private System.Windows.Forms.PictureBox imgDevice;
         private System.Windows.Forms.PictureBox imgLogo;
-        private System.Windows.Forms.Button btnMyAccount;
-        private System.Windows.Forms.Button btnLogout;
         private System.Windows.Forms.DataGridView dtgWindowsAccounts;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.PictureBox btnEdit;
         private System.Windows.Forms.PictureBox btnDelete;
         private System.Windows.Forms.TextBox lblDeviceName;
         private System.Windows.Forms.DataGridViewTextBoxColumn WindowsAccounts;
         private System.Windows.Forms.DataGridViewComboBoxColumn cmbInfantAccount;
+        private Botones_Personalizados.OurButton btnLogout;
+        private Botones_Personalizados.OurButton btnMyAccount;
+        private Botones_Personalizados.OurButton btnSave;
     }
 }

@@ -40,8 +40,6 @@ namespace ParentalControlWindowsForm.Forms
             this.imgInfants = new System.Windows.Forms.PictureBox();
             this.imgDevice = new System.Windows.Forms.PictureBox();
             this.imgLogo = new System.Windows.Forms.PictureBox();
-            this.btnLogout = new System.Windows.Forms.Button();
-            this.btnMyAccount = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
@@ -50,9 +48,11 @@ namespace ParentalControlWindowsForm.Forms
             this.txtName = new System.Windows.Forms.TextBox();
             this.txtEmail = new System.Windows.Forms.TextBox();
             this.txtPassword = new System.Windows.Forms.TextBox();
-            this.btnEditar = new System.Windows.Forms.Button();
-            this.btnSave = new System.Windows.Forms.Button();
-            this.btnCancel = new System.Windows.Forms.Button();
+            this.btnLogout = new ParentalControlWindowsForm.Botones_Personalizados.OurButton();
+            this.btnMyAccount = new ParentalControlWindowsForm.Botones_Personalizados.OurButton();
+            this.btnSave = new ParentalControlWindowsForm.Botones_Personalizados.OurButton();
+            this.btnCancel = new ParentalControlWindowsForm.Botones_Personalizados.OurButton();
+            this.btnEdit = new ParentalControlWindowsForm.Botones_Personalizados.OurButton();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imgNotifications)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgScheedule)).BeginInit();
@@ -177,36 +177,6 @@ namespace ParentalControlWindowsForm.Forms
             this.imgLogo.TabStop = false;
             this.imgLogo.Click += new System.EventHandler(this.imgLogo_Click);
             // 
-            // btnLogout
-            // 
-            this.btnLogout.BackColor = System.Drawing.SystemColors.Highlight;
-            this.btnLogout.FlatAppearance.BorderColor = System.Drawing.SystemColors.Highlight;
-            this.btnLogout.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnLogout.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLogout.ForeColor = System.Drawing.Color.White;
-            this.btnLogout.Location = new System.Drawing.Point(716, 13);
-            this.btnLogout.Name = "btnLogout";
-            this.btnLogout.Size = new System.Drawing.Size(128, 31);
-            this.btnLogout.TabIndex = 6;
-            this.btnLogout.Text = "Cerrar Sesión";
-            this.btnLogout.UseVisualStyleBackColor = false;
-            this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
-            // 
-            // btnMyAccount
-            // 
-            this.btnMyAccount.BackColor = System.Drawing.SystemColors.Highlight;
-            this.btnMyAccount.FlatAppearance.BorderColor = System.Drawing.SystemColors.Highlight;
-            this.btnMyAccount.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnMyAccount.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnMyAccount.ForeColor = System.Drawing.Color.White;
-            this.btnMyAccount.Location = new System.Drawing.Point(587, 13);
-            this.btnMyAccount.Name = "btnMyAccount";
-            this.btnMyAccount.Size = new System.Drawing.Size(109, 31);
-            this.btnMyAccount.TabIndex = 5;
-            this.btnMyAccount.Text = "Mi Cuenta";
-            this.btnMyAccount.UseVisualStyleBackColor = false;
-            this.btnMyAccount.Click += new System.EventHandler(this.btnMyAccount_Click);
-            // 
             // pictureBox1
             // 
             this.pictureBox1.Image = global::ParentalControlWindowsForm.Properties.Resources.user;
@@ -288,33 +258,63 @@ namespace ParentalControlWindowsForm.Forms
             this.txtPassword.Size = new System.Drawing.Size(306, 27);
             this.txtPassword.TabIndex = 14;
             // 
-            // btnEditar
+            // btnLogout
             // 
-            this.btnEditar.BackColor = System.Drawing.SystemColors.Highlight;
-            this.btnEditar.FlatAppearance.BorderColor = System.Drawing.SystemColors.Highlight;
-            this.btnEditar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnEditar.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEditar.ForeColor = System.Drawing.Color.White;
-            this.btnEditar.Location = new System.Drawing.Point(452, 456);
-            this.btnEditar.Name = "btnEditar";
-            this.btnEditar.Size = new System.Drawing.Size(109, 31);
-            this.btnEditar.TabIndex = 15;
-            this.btnEditar.Text = "Editar";
-            this.btnEditar.UseVisualStyleBackColor = false;
-            this.btnEditar.Click += new System.EventHandler(this.btnEditar_Click);
+            this.btnLogout.BackColor = System.Drawing.SystemColors.Highlight;
+            this.btnLogout.BackgroundColor = System.Drawing.SystemColors.Highlight;
+            this.btnLogout.BorderColor = System.Drawing.SystemColors.Highlight;
+            this.btnLogout.BorderRadius = 10;
+            this.btnLogout.BorderSize = 0;
+            this.btnLogout.FlatAppearance.BorderSize = 0;
+            this.btnLogout.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnLogout.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold);
+            this.btnLogout.ForeColor = System.Drawing.Color.White;
+            this.btnLogout.Location = new System.Drawing.Point(716, 13);
+            this.btnLogout.Name = "btnLogout";
+            this.btnLogout.Size = new System.Drawing.Size(128, 31);
+            this.btnLogout.TabIndex = 28;
+            this.btnLogout.Text = "Cerrar Sesión";
+            this.btnLogout.TextColor = System.Drawing.Color.White;
+            this.btnLogout.UseVisualStyleBackColor = false;
+            this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
+            // 
+            // btnMyAccount
+            // 
+            this.btnMyAccount.BackColor = System.Drawing.SystemColors.Highlight;
+            this.btnMyAccount.BackgroundColor = System.Drawing.SystemColors.Highlight;
+            this.btnMyAccount.BorderColor = System.Drawing.SystemColors.Highlight;
+            this.btnMyAccount.BorderRadius = 10;
+            this.btnMyAccount.BorderSize = 0;
+            this.btnMyAccount.FlatAppearance.BorderSize = 0;
+            this.btnMyAccount.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnMyAccount.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold);
+            this.btnMyAccount.ForeColor = System.Drawing.Color.White;
+            this.btnMyAccount.Location = new System.Drawing.Point(587, 13);
+            this.btnMyAccount.Name = "btnMyAccount";
+            this.btnMyAccount.Size = new System.Drawing.Size(112, 31);
+            this.btnMyAccount.TabIndex = 27;
+            this.btnMyAccount.Text = "Mi Cuenta";
+            this.btnMyAccount.TextColor = System.Drawing.Color.White;
+            this.btnMyAccount.UseVisualStyleBackColor = false;
+            this.btnMyAccount.Click += new System.EventHandler(this.btnMyAccount_Click);
             // 
             // btnSave
             // 
             this.btnSave.BackColor = System.Drawing.SystemColors.Highlight;
-            this.btnSave.FlatAppearance.BorderColor = System.Drawing.SystemColors.Highlight;
+            this.btnSave.BackgroundColor = System.Drawing.SystemColors.Highlight;
+            this.btnSave.BorderColor = System.Drawing.SystemColors.Highlight;
+            this.btnSave.BorderRadius = 10;
+            this.btnSave.BorderSize = 0;
+            this.btnSave.FlatAppearance.BorderSize = 0;
             this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold);
             this.btnSave.ForeColor = System.Drawing.Color.White;
-            this.btnSave.Location = new System.Drawing.Point(386, 456);
+            this.btnSave.Location = new System.Drawing.Point(382, 456);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(109, 31);
-            this.btnSave.TabIndex = 16;
+            this.btnSave.Size = new System.Drawing.Size(112, 31);
+            this.btnSave.TabIndex = 31;
             this.btnSave.Text = "Guardar";
+            this.btnSave.TextColor = System.Drawing.Color.White;
             this.btnSave.UseVisualStyleBackColor = false;
             this.btnSave.Visible = false;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
@@ -322,18 +322,43 @@ namespace ParentalControlWindowsForm.Forms
             // btnCancel
             // 
             this.btnCancel.BackColor = System.Drawing.Color.Red;
-            this.btnCancel.FlatAppearance.BorderColor = System.Drawing.Color.Red;
+            this.btnCancel.BackgroundColor = System.Drawing.Color.Red;
+            this.btnCancel.BorderColor = System.Drawing.Color.Red;
+            this.btnCancel.BorderRadius = 10;
+            this.btnCancel.BorderSize = 0;
+            this.btnCancel.FlatAppearance.BorderSize = 0;
             this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold);
             this.btnCancel.ForeColor = System.Drawing.Color.White;
-            this.btnCancel.Location = new System.Drawing.Point(512, 456);
+            this.btnCancel.Location = new System.Drawing.Point(510, 456);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(109, 31);
-            this.btnCancel.TabIndex = 17;
+            this.btnCancel.Size = new System.Drawing.Size(112, 31);
+            this.btnCancel.TabIndex = 32;
             this.btnCancel.Text = "Cancelar";
+            this.btnCancel.TextColor = System.Drawing.Color.White;
             this.btnCancel.UseVisualStyleBackColor = false;
             this.btnCancel.Visible = false;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
+            // 
+            // btnEdit
+            // 
+            this.btnEdit.BackColor = System.Drawing.SystemColors.Highlight;
+            this.btnEdit.BackgroundColor = System.Drawing.SystemColors.Highlight;
+            this.btnEdit.BorderColor = System.Drawing.SystemColors.Highlight;
+            this.btnEdit.BorderRadius = 10;
+            this.btnEdit.BorderSize = 0;
+            this.btnEdit.FlatAppearance.BorderSize = 0;
+            this.btnEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEdit.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold);
+            this.btnEdit.ForeColor = System.Drawing.Color.White;
+            this.btnEdit.Location = new System.Drawing.Point(443, 456);
+            this.btnEdit.Name = "btnEdit";
+            this.btnEdit.Size = new System.Drawing.Size(112, 31);
+            this.btnEdit.TabIndex = 33;
+            this.btnEdit.Text = "Editar";
+            this.btnEdit.TextColor = System.Drawing.Color.White;
+            this.btnEdit.UseVisualStyleBackColor = false;
+            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
             // 
             // FormPersonalAccount
             // 
@@ -341,9 +366,11 @@ namespace ParentalControlWindowsForm.Forms
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(884, 561);
+            this.Controls.Add(this.btnEdit);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnSave);
-            this.Controls.Add(this.btnEditar);
+            this.Controls.Add(this.btnLogout);
+            this.Controls.Add(this.btnMyAccount);
             this.Controls.Add(this.txtPassword);
             this.Controls.Add(this.txtEmail);
             this.Controls.Add(this.txtName);
@@ -352,8 +379,6 @@ namespace ParentalControlWindowsForm.Forms
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.btnLogout);
-            this.Controls.Add(this.btnMyAccount);
             this.Controls.Add(this.panel2);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
@@ -387,8 +412,6 @@ namespace ParentalControlWindowsForm.Forms
         private System.Windows.Forms.PictureBox imgInfants;
         private System.Windows.Forms.PictureBox imgDevice;
         private System.Windows.Forms.PictureBox imgLogo;
-        private System.Windows.Forms.Button btnLogout;
-        private System.Windows.Forms.Button btnMyAccount;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
@@ -397,8 +420,10 @@ namespace ParentalControlWindowsForm.Forms
         private System.Windows.Forms.TextBox txtName;
         private System.Windows.Forms.TextBox txtEmail;
         private System.Windows.Forms.TextBox txtPassword;
-        private System.Windows.Forms.Button btnEditar;
-        private System.Windows.Forms.Button btnSave;
-        private System.Windows.Forms.Button btnCancel;
+        private Botones_Personalizados.OurButton btnLogout;
+        private Botones_Personalizados.OurButton btnMyAccount;
+        private Botones_Personalizados.OurButton btnSave;
+        private Botones_Personalizados.OurButton btnCancel;
+        private Botones_Personalizados.OurButton btnEdit;
     }
 }

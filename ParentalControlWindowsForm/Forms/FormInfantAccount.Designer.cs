@@ -53,10 +53,10 @@ namespace ParentalControlWindowsForm.Forms
             this.imgDevice = new System.Windows.Forms.PictureBox();
             this.imgLogo = new System.Windows.Forms.PictureBox();
             this.lblInfantAccount = new System.Windows.Forms.Label();
-            this.btnMyAccount = new System.Windows.Forms.Button();
-            this.btnLogout = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
             this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
+            this.btnLogout = new ParentalControlWindowsForm.Botones_Personalizados.OurButton();
+            this.btnMyAccount = new ParentalControlWindowsForm.Botones_Personalizados.OurButton();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgInfantAccounts)).BeginInit();
             this.panel2.SuspendLayout();
@@ -85,14 +85,15 @@ namespace ParentalControlWindowsForm.Forms
             this.addInfantButton.BorderSize = 0;
             this.addInfantButton.FlatAppearance.BorderSize = 0;
             this.addInfantButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.addInfantButton.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.addInfantButton.ForeColor = System.Drawing.Color.White;
             this.addInfantButton.Image = global::ParentalControlWindowsForm.Properties.Resources.AddInfantAccount;
             this.addInfantButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.addInfantButton.Location = new System.Drawing.Point(409, 127);
             this.addInfantButton.Name = "addInfantButton";
-            this.addInfantButton.Size = new System.Drawing.Size(157, 79);
+            this.addInfantButton.Size = new System.Drawing.Size(185, 79);
             this.addInfantButton.TabIndex = 2;
-            this.addInfantButton.Text = "Agregar Hijo";
+            this.addInfantButton.Text = "   Agregar Hijo";
             this.addInfantButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.addInfantButton.TextColor = System.Drawing.Color.White;
             this.addInfantButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -141,6 +142,12 @@ namespace ParentalControlWindowsForm.Forms
             // 
             // InfantName
             // 
+            this.dataGridView1.BackgroundColor = System.Drawing.Color.White;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(3, 3);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(258, 309);
+            this.dataGridView1.TabIndex = 0;
             dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.White;
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
@@ -293,41 +300,11 @@ namespace ParentalControlWindowsForm.Forms
             // 
             this.lblInfantAccount.AutoSize = true;
             this.lblInfantAccount.Font = new System.Drawing.Font("Arial", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblInfantAccount.Location = new System.Drawing.Point(198, 59);
+            this.lblInfantAccount.Location = new System.Drawing.Point(189, 57);
             this.lblInfantAccount.Name = "lblInfantAccount";
             this.lblInfantAccount.Size = new System.Drawing.Size(599, 29);
             this.lblInfantAccount.TabIndex = 2;
             this.lblInfantAccount.Text = "Selecciona la cuenta infantil que desees configurar";
-            // 
-            // btnMyAccount
-            // 
-            this.btnMyAccount.BackColor = System.Drawing.SystemColors.Highlight;
-            this.btnMyAccount.FlatAppearance.BorderColor = System.Drawing.SystemColors.Highlight;
-            this.btnMyAccount.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnMyAccount.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnMyAccount.ForeColor = System.Drawing.Color.White;
-            this.btnMyAccount.Location = new System.Drawing.Point(587, 13);
-            this.btnMyAccount.Name = "btnMyAccount";
-            this.btnMyAccount.Size = new System.Drawing.Size(109, 31);
-            this.btnMyAccount.TabIndex = 3;
-            this.btnMyAccount.Text = "Mi Cuenta";
-            this.btnMyAccount.UseVisualStyleBackColor = false;
-            this.btnMyAccount.Click += new System.EventHandler(this.btnMyAccount_Click);
-            // 
-            // btnLogout
-            // 
-            this.btnLogout.BackColor = System.Drawing.SystemColors.Highlight;
-            this.btnLogout.FlatAppearance.BorderColor = System.Drawing.SystemColors.Highlight;
-            this.btnLogout.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnLogout.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLogout.ForeColor = System.Drawing.Color.White;
-            this.btnLogout.Location = new System.Drawing.Point(716, 13);
-            this.btnLogout.Name = "btnLogout";
-            this.btnLogout.Size = new System.Drawing.Size(128, 31);
-            this.btnLogout.TabIndex = 4;
-            this.btnLogout.Text = "Cerrar Sesión";
-            this.btnLogout.UseVisualStyleBackColor = false;
-            this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click_1);
             // 
             // panel3
             // 
@@ -336,6 +313,46 @@ namespace ParentalControlWindowsForm.Forms
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(674, 2);
             this.panel3.TabIndex = 5;
+            // 
+            // btnLogout
+            // 
+            this.btnLogout.BackColor = System.Drawing.SystemColors.Highlight;
+            this.btnLogout.BackgroundColor = System.Drawing.SystemColors.Highlight;
+            this.btnLogout.BorderColor = System.Drawing.SystemColors.Highlight;
+            this.btnLogout.BorderRadius = 10;
+            this.btnLogout.BorderSize = 0;
+            this.btnLogout.FlatAppearance.BorderSize = 0;
+            this.btnLogout.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnLogout.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold);
+            this.btnLogout.ForeColor = System.Drawing.Color.White;
+            this.btnLogout.Location = new System.Drawing.Point(725, 12);
+            this.btnLogout.Name = "btnLogout";
+            this.btnLogout.Size = new System.Drawing.Size(128, 31);
+            this.btnLogout.TabIndex = 27;
+            this.btnLogout.Text = "Cerrar Sesión";
+            this.btnLogout.TextColor = System.Drawing.Color.White;
+            this.btnLogout.UseVisualStyleBackColor = false;
+            this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
+            // 
+            // btnMyAccount
+            // 
+            this.btnMyAccount.BackColor = System.Drawing.SystemColors.Highlight;
+            this.btnMyAccount.BackgroundColor = System.Drawing.SystemColors.Highlight;
+            this.btnMyAccount.BorderColor = System.Drawing.SystemColors.Highlight;
+            this.btnMyAccount.BorderRadius = 10;
+            this.btnMyAccount.BorderSize = 0;
+            this.btnMyAccount.FlatAppearance.BorderSize = 0;
+            this.btnMyAccount.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnMyAccount.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold);
+            this.btnMyAccount.ForeColor = System.Drawing.Color.White;
+            this.btnMyAccount.Location = new System.Drawing.Point(596, 12);
+            this.btnMyAccount.Name = "btnMyAccount";
+            this.btnMyAccount.Size = new System.Drawing.Size(112, 31);
+            this.btnMyAccount.TabIndex = 26;
+            this.btnMyAccount.Text = "Mi Cuenta";
+            this.btnMyAccount.TextColor = System.Drawing.Color.White;
+            this.btnMyAccount.UseVisualStyleBackColor = false;
+            this.btnMyAccount.Click += new System.EventHandler(this.btnMyAccount_Click);
             // 
             // dataGridViewImageColumn1
             // 
@@ -355,9 +372,9 @@ namespace ParentalControlWindowsForm.Forms
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(884, 561);
-            this.Controls.Add(this.panel3);
             this.Controls.Add(this.btnLogout);
             this.Controls.Add(this.btnMyAccount);
+            this.Controls.Add(this.panel3);
             this.Controls.Add(this.lblInfantAccount);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
@@ -395,11 +412,11 @@ namespace ParentalControlWindowsForm.Forms
         private System.Windows.Forms.PictureBox imgDevice;
         private System.Windows.Forms.PictureBox imgLogo;
         private System.Windows.Forms.Label lblInfantAccount;
-        private System.Windows.Forms.Button btnMyAccount;
-        private System.Windows.Forms.Button btnLogout;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.DataGridView dtgInfantAccounts;
         private Botones_Personalizados.OurButton addInfantButton;
+        private Botones_Personalizados.OurButton btnLogout;
+        private Botones_Personalizados.OurButton btnMyAccount;
         private System.Windows.Forms.DataGridViewImageColumn InfantImage;
         private System.Windows.Forms.DataGridViewTextBoxColumn InfantName;
         private System.Windows.Forms.DataGridViewImageColumn EditButton;
