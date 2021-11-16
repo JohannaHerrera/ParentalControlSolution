@@ -71,9 +71,9 @@ namespace ParentalControlWindowsForm.Forms
             // 
             this.panel1.Controls.Add(this.addInfantButton);
             this.panel1.Controls.Add(this.dtgInfantAccounts);
-            this.panel1.Location = new System.Drawing.Point(203, 154);
+            this.panel1.Location = new System.Drawing.Point(170, 154);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(569, 315);
+            this.panel1.Size = new System.Drawing.Size(674, 315);
             this.panel1.TabIndex = 0;
             // 
             // addInfantButton
@@ -89,9 +89,9 @@ namespace ParentalControlWindowsForm.Forms
             this.addInfantButton.ForeColor = System.Drawing.Color.White;
             this.addInfantButton.Image = global::ParentalControlWindowsForm.Properties.Resources.AddInfantAccount;
             this.addInfantButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.addInfantButton.Location = new System.Drawing.Point(409, 127);
+            this.addInfantButton.Location = new System.Drawing.Point(398, 127);
             this.addInfantButton.Name = "addInfantButton";
-            this.addInfantButton.Size = new System.Drawing.Size(185, 79);
+            this.addInfantButton.Size = new System.Drawing.Size(187, 79);
             this.addInfantButton.TabIndex = 2;
             this.addInfantButton.Text = "   Agregar Hijo";
             this.addInfantButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -142,12 +142,6 @@ namespace ParentalControlWindowsForm.Forms
             // 
             // InfantName
             // 
-            this.dataGridView1.BackgroundColor = System.Drawing.Color.White;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(3, 3);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(258, 309);
-            this.dataGridView1.TabIndex = 0;
             dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.White;
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
@@ -314,6 +308,18 @@ namespace ParentalControlWindowsForm.Forms
             this.panel3.Size = new System.Drawing.Size(674, 2);
             this.panel3.TabIndex = 5;
             // 
+            // dataGridViewImageColumn1
+            // 
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle5.NullValue = null;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.Black;
+            this.dataGridViewImageColumn1.DefaultCellStyle = dataGridViewCellStyle5;
+            this.dataGridViewImageColumn1.HeaderText = "Eliminar";
+            this.dataGridViewImageColumn1.Image = global::ParentalControlWindowsForm.Properties.Resources.editar;
+            this.dataGridViewImageColumn1.Name = "dataGridViewImageColumn1";
+            this.dataGridViewImageColumn1.Width = 50;
+            // 
             // btnLogout
             // 
             this.btnLogout.BackColor = System.Drawing.SystemColors.Highlight;
@@ -353,18 +359,6 @@ namespace ParentalControlWindowsForm.Forms
             this.btnMyAccount.TextColor = System.Drawing.Color.White;
             this.btnMyAccount.UseVisualStyleBackColor = false;
             this.btnMyAccount.Click += new System.EventHandler(this.btnMyAccount_Click);
-            // 
-            // dataGridViewImageColumn1
-            // 
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle5.NullValue = null;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.Black;
-            this.dataGridViewImageColumn1.DefaultCellStyle = dataGridViewCellStyle5;
-            this.dataGridViewImageColumn1.HeaderText = "Eliminar";
-            this.dataGridViewImageColumn1.Image = global::ParentalControlWindowsForm.Properties.Resources.editar;
-            this.dataGridViewImageColumn1.Name = "dataGridViewImageColumn1";
-            this.dataGridViewImageColumn1.Width = 50;
             // 
             // FormInfantAccount
             // 
