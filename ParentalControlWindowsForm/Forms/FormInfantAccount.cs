@@ -17,6 +17,7 @@ namespace ParentalControlWindowsForm.Forms
     public partial class FormInfantAccount : Form
     {
         public int parentId;
+        public int infantId;
         public FormInfantAccount()
         {
             InitializeComponent();
@@ -162,144 +163,106 @@ namespace ParentalControlWindowsForm.Forms
 
         private void FormInfantAccount_Load(object sender, EventArgs e)
         {
+            try
+            {
+             
+                InfantAccountBO infantAccountBO = new InfantAccountBO();
+                Constants constants = new Constants();
+                List<InfantAccountModel> infantAccounts = new List<InfantAccountModel>();
+                
+                int iterator = 0;
 
+                infantAccounts = infantAccountBO.GetInfantAccounts(this.parentId);
+                
+               
+                if (infantAccounts.Count > 0)
+                {
+                    foreach (var infant in infantAccounts)
+                    {
+                        this.EditButton.Image = global::ParentalControlWindowsForm.Properties.Resources.editar;
+                        this.delete.Image = global::ParentalControlWindowsForm.Properties.Resources.eliminar;
+
+                        if (infant.InfantGender.Equals(constants.Femenino))
+                        {
+                            this.InfantImage.Image = global::ParentalControlWindowsForm.Properties.Resources.hijaImgPeque;              
+                        }
+                        else
+                        {
+                            this.InfantImage.Image = global::ParentalControlWindowsForm.Properties.Resources.hijoImgPeque;
+                        }
+
+                        this.dtgInfantAccounts.Rows.Add(this.InfantImage.Image, infant.InfantName, this.EditButton.Image, this.delete.Image); 
+                    }
+                }
+                else if (infantAccounts.Count == 0)
+                {
+
+                }
+                else
+                {
+                    MessageBox.Show("Ha ocurrido un error al obtener la lista de las cuentas de infante.");
+                    this.Hide();
+                    FormHome formHome = new FormHome();
+                    formHome.parentId = this.parentId;
+                    formHome.Show();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
-        //private void FormInfantAccount_Load(object sender, EventArgs e)
-        //{
-        //    try
-        //    {
-        //        DeviceBO deviceBO = new DeviceBO();
-        //        WindowsAccountBO windowsAccountBO = new WindowsAccountBO();
-        //        List<string> windowsAccounts = new List<string>();
-        //        List<InfantAccountModel> infantAccounts = new List<InfantAccountModel>();
-        //        List<WindowsAccountModel> windowsAccountModelList = new List<WindowsAccountModel>();
-        //        int iterator = 0;
-
-        //        this.lblDeviceName.Text = this.deviceName.ToString();
-        //        windowsAccounts = deviceBO.GetWindowsAccounts();
-        //        infantAccounts = deviceBO.GetInfantAccounts(this.parentId);
-
-        //        if (infantAccounts.Count > 0)
-        //        {
-        //            foreach (var account in infantAccounts)
-        //            {
-        //                this.cmbInfantAccount.Items.Add(account.InfantName);
-        //            }
-        //        }
-        //        else
-        //        {
-        //            MessageBox.Show("Ha ocurrido un error al obtener la lista de cuentas infantiles.");
-        //            this.Hide();
-        //            FormHome formHome = new FormHome();
-        //            formHome.parentId = this.parentId;
-        //            formHome.Show();
-        //        }
-
-        //        if (windowsAccounts.Count > 0)
-        //        {
-        //            foreach (var account in windowsAccounts)
-        //            {
-        //                this.dtgWindowsAccounts.Rows.Add(account);
-        //                windowsAccountModelList = windowsAccountBO.VerifyWindowsAccount(account);
-
-        //                // Si la cuenta Windows está registrada, se setea la cuenta Infantil vinculada
-        //                if (windowsAccountModelList.Count > 0)
-        //                {
-        //                    string accountName = windowsAccountBO.GetInfantAccountLinked(windowsAccountModelList.FirstOrDefault().InfantAccountId);
-
-        //                    // Si no se obtiene la cuenta infantil vinculada se muestra el mensaje de error
-        //                    if (string.IsNullOrEmpty(accountName))
-        //                    {
-        //                        MessageBox.Show("Ha ocurrido un error al obtener la lista de las cuentas Windows.");
-        //                        this.Hide();
-        //                        FormHome formHome = new FormHome();
-        //                        formHome.parentId = this.parentId;
-        //                        formHome.Show();
-        //                    }
-        //                    else
-        //                    {
-        //                        var query = (from infant in infantAccounts
-        //                                     where infant.Equals(accountName)
-        //                                     select infant.InfantName).FirstOrDefault();
-
-        //                        int index = query.FirstOrDefault();
-        //                        this.dtgWindowsAccounts.Rows[iterator].Cells[1].Value = this.cmbInfantAccount.Items[index];
-        //                    }
-        //                }
-        //                // Sino, se deja por defecto "No Protegido"
-        //                else
-        //                {
-        //                    this.dtgWindowsAccounts.Rows[iterator].Cells[1].Value = this.cmbInfantAccount.Items[0];
-        //                }
-
-        //                iterator++;
-        //            }
-        //        }
-        //        else
-        //        {
-        //            MessageBox.Show("Ha ocurrido un error al obtener la lista de las cuentas Windows.");
-        //            this.Hide();
-        //            FormHome formHome = new FormHome();
-        //            formHome.parentId = this.parentId;
-        //            formHome.Show();
-        //        }
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        MessageBox.Show(ex.Message);
-        //    }
-        //}
-
-
-        //private void btnSave_Click(object sender, EventArgs e)
-        //{
-        //    try
-        //    {
-        //        WindowsAccountBO windowsAccountBO = new WindowsAccountBO();
-        //        WindowsAccountModel windowsAccountModel = new WindowsAccountModel();
-        //        List<WindowsAccountModel> windowsAccountModelList = new List<WindowsAccountModel>();
-        //        Constants constants = new Constants();
-        //        bool updateState = true;
-
-        //        foreach (DataGridViewRow row in this.dtgWindowsAccounts.Rows)
-        //        {
-        //            string windowsAccountName = row.Cells[0].Value.ToString();
-        //            windowsAccountModelList = windowsAccountBO.VerifyWindowsAccount(windowsAccountName);
-        //            string infantAccountName = row.Cells[1].Value.ToString();
-
-        //            if (windowsAccountModelList.Count > 0)
-        //            {
-        //                if (!infantAccountName.Equals(constants.NoProtected.ToString()))
-        //                {
-        //                    if (!windowsAccountBO.UpdateInfantAccountLinked(infantAccountName, windowsAccountName, parentId))
-        //                    {
-        //                        updateState = false;
-        //                    }
-        //                }
-        //            }
-        //            else
-        //            {
-        //                if (!infantAccountName.Equals(constants.NoProtected.ToString()))
-        //                {
-        //                    if (!windowsAccountBO.UpdateInfantAccountLinked(infantAccountName, windowsAccountName, parentId))
-        //                    {
-        //                        updateState = false;
-        //                    }
-        //                }
-        //            }
-        //        }
-
-        //        if (!updateState)
-        //        {
-        //            MessageBox.Show("Ha ocurrido un error al actualizar la actualización. Inténtelo otra vez");
-        //            return;
-        //        }
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        MessageBox.Show(ex.Message);
-        //    }
-        //}
+        private void dtgInfantAccounts_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == 2)
+            {
+                InfantAccountBO infantAccountBO = new InfantAccountBO();
+                this.infantId = infantAccountBO.GetInfantId(dtgInfantAccounts.CurrentRow.Cells[1].Value.ToString());
+                this.Hide();
+                FormEditInfantAccount formEditInfantAccount = new FormEditInfantAccount();
+                formEditInfantAccount.parentId = this.parentId;
+                formEditInfantAccount.infantId = this.infantId;
+                formEditInfantAccount.Show();
+            }
+            else if (e.ColumnIndex == 3)
+            {
+                try
+                {                 
+                    DialogResult res = MessageBox.Show("¿Estás seguro que deseas eliminar la cuenta de infante?", "¡ADVERTENCIA!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                    if (res == DialogResult.No)
+                    {
+                        return;
+                    }
+                    if (res == DialogResult.Yes)
+                    {
+                        InfantAccountBO infantAccountBO = new InfantAccountBO();
+                        this.infantId = infantAccountBO.GetInfantId(dtgInfantAccounts.CurrentRow.Cells[1].Value.ToString());
+                        if (infantAccountBO.DeleteInfantAccount(this.infantId))
+                        {
+                            MessageBox.Show("Se eliminó la cuenta correctamente");
+                            this.Hide();
+                            FormInfantAccount formInfantAccount = new FormInfantAccount();
+                            formInfantAccount.parentId = this.parentId;
+                            formInfantAccount.Show();
+                        }
+                        else
+                        {
+                            MessageBox.Show("No se pudo eliminar la cuenta, intente nuevamente");
+                            this.Hide();
+                            FormInfantAccount formInfantAccount = new FormInfantAccount();
+                            formInfantAccount.parentId = this.parentId;
+                            formInfantAccount.Show();
+                        }
+                        
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }
+           
+        }
     }
 }

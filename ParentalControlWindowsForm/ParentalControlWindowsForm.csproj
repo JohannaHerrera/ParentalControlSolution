@@ -194,6 +194,8 @@
     <None Include="Resources\AddInfantAccount.png" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Resources\editar.png" />
+    <Content Include="Resources\eliminar.png" />
     <Content Include="Resources\hijaImgPeque.png" />
     <Content Include="Resources\hijoImgPeque.png" />
   </ItemGroup>
