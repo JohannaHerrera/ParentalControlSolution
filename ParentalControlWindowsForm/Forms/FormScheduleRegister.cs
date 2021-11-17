@@ -23,14 +23,14 @@ namespace ParentalControlWindowsForm.Forms
         }
         private void FormScheduleRegister_Load(object sender, EventArgs e)
         {
-            dudHora.Text = DateTime.Now.ToString("hh");
+            dudHora.Text = DateTime.Now.ToString("HH");
             dudMinute.Text = DateTime.Now.ToString("mm");
-            dudHoraFin.Text = DateTime.Now.ToString("hh");
+            dudHoraFin.Text = DateTime.Now.ToString("HH");
             dudMinuteEnd.Text = DateTime.Now.ToString("mm");
         }
         private void tmrHoraFecha_Tick(object sender, EventArgs e)
         {
-            lblHora.Text = DateTime.Now.ToString("hh:mm:ss");
+            lblHora.Text = DateTime.Now.ToString("HH:mm:ss");
             lblFecha.Text = DateTime.Now.ToString("dddd mmmm yyy");
 
         }
@@ -38,17 +38,18 @@ namespace ParentalControlWindowsForm.Forms
         {
             try
             {
-                //MessageBox.Show("¡En proceso!");
+                //MessageBox.Show("¡En proceso!"+"hora Inicio "+dudHora.Value+" "+dudMinute.Value + "Hora Fin"
+                    //+dudHoraFin.Value + " "+dudMinuteEnd.Value);
                 ScheduleModel scheduleModel = new ScheduleModel();
                 ScheduleBO scheduleBO = new ScheduleBO();
                 //Convertir hora inicio a int
-                int ih = Convert.ToInt32(Math.Round(dudHora.Value, 0));
+                int ih = Convert.ToInt32(Math.Round(dudHora.Value));
                 ////Convertir min inicio a int
-                int im = Convert.ToInt32(Math.Round(dudMinute.Value, 0));
+                int im = Convert.ToInt32(Math.Round(dudMinute.Value));
                 ////Convertir hora fin a int
-                int ihf =Convert.ToInt32(Math.Round(dudHoraFin.Value, 0)); ;
+                int ihf =Convert.ToInt32(Math.Round(dudHoraFin.Value)); 
                 ////Convertir min fin a int
-                int ime = Convert.ToInt32(Math.Round(dudMinuteEnd.Value, 0));
+                int ime = Convert.ToInt32(Math.Round(dudMinuteEnd.Value));
 
                 scheduleModel.ScheduleStartTime = new DateTime(2021, 11, 11, ih, im, 0);
                 scheduleModel.ScheduleEndTime= new DateTime(2021, 11, 11, ihf, ime, 0);

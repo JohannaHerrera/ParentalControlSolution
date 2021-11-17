@@ -191,6 +191,11 @@ namespace ParentalControlWindowsForm.Forms
             // 
             this.dudHora.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dudHora.Location = new System.Drawing.Point(386, 301);
+            this.dudHora.Maximum = new decimal(new int[] {
+            23,
+            0,
+            0,
+            0});
             this.dudHora.Name = "dudHora";
             this.dudHora.Size = new System.Drawing.Size(106, 25);
             this.dudHora.TabIndex = 20;
@@ -199,6 +204,11 @@ namespace ParentalControlWindowsForm.Forms
             // 
             this.dudMinute.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dudMinute.Location = new System.Drawing.Point(559, 301);
+            this.dudMinute.Maximum = new decimal(new int[] {
+            59,
+            0,
+            0,
+            0});
             this.dudMinute.Name = "dudMinute";
             this.dudMinute.Size = new System.Drawing.Size(106, 25);
             this.dudMinute.TabIndex = 21;
@@ -207,6 +217,11 @@ namespace ParentalControlWindowsForm.Forms
             // 
             this.dudHoraFin.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dudHoraFin.Location = new System.Drawing.Point(386, 411);
+            this.dudHoraFin.Maximum = new decimal(new int[] {
+            23,
+            0,
+            0,
+            0});
             this.dudHoraFin.Name = "dudHoraFin";
             this.dudHoraFin.Size = new System.Drawing.Size(106, 25);
             this.dudHoraFin.TabIndex = 22;
@@ -215,6 +230,11 @@ namespace ParentalControlWindowsForm.Forms
             // 
             this.dudMinuteEnd.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dudMinuteEnd.Location = new System.Drawing.Point(559, 413);
+            this.dudMinuteEnd.Maximum = new decimal(new int[] {
+            59,
+            0,
+            0,
+            0});
             this.dudMinuteEnd.Name = "dudMinuteEnd";
             this.dudMinuteEnd.Size = new System.Drawing.Size(106, 25);
             this.dudMinuteEnd.TabIndex = 23;
@@ -423,7 +443,7 @@ namespace ParentalControlWindowsForm.Forms
             this.Location = new System.Drawing.Point(587, 13);
             this.Name = "FormScheduleRegister";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "FormScheduleRegister";
+            this.Text = " ";
             this.Load += new System.EventHandler(this.FormScheduleRegister_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dudHora)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dudMinute)).EndInit();

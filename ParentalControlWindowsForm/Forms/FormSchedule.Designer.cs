@@ -42,15 +42,22 @@ namespace ParentalControlWindowsForm.Forms
             this.imgLogo = new System.Windows.Forms.PictureBox();
             this.lblSchedule = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.btnAddSchedule = new ParentalControlWindowsForm.Botones_Personalizados.OurButton();
             this.btnLogout = new ParentalControlWindowsForm.Botones_Personalizados.OurButton();
             this.btnMyAccount = new ParentalControlWindowsForm.Botones_Personalizados.OurButton();
-            this.btnAddSchedule = new ParentalControlWindowsForm.Botones_Personalizados.OurButton();
+            this.dgvSchedule = new System.Windows.Forms.DataGridView();
+            this.idSchedule = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.StartTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.EndTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.editSchedule = new System.Windows.Forms.DataGridViewImageColumn();
+            this.deleteSchedule = new System.Windows.Forms.DataGridViewImageColumn();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imgNotifications)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgScheedule)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgInfants)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgDevice)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgLogo)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvSchedule)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -188,6 +195,26 @@ namespace ParentalControlWindowsForm.Forms
             this.panel2.Size = new System.Drawing.Size(706, 3);
             this.panel2.TabIndex = 3;
             // 
+            // btnAddSchedule
+            // 
+            this.btnAddSchedule.BackColor = System.Drawing.SystemColors.Highlight;
+            this.btnAddSchedule.BackgroundColor = System.Drawing.SystemColors.Highlight;
+            this.btnAddSchedule.BorderColor = System.Drawing.SystemColors.Highlight;
+            this.btnAddSchedule.BorderRadius = 10;
+            this.btnAddSchedule.BorderSize = 0;
+            this.btnAddSchedule.FlatAppearance.BorderSize = 0;
+            this.btnAddSchedule.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAddSchedule.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold);
+            this.btnAddSchedule.ForeColor = System.Drawing.Color.White;
+            this.btnAddSchedule.Location = new System.Drawing.Point(465, 480);
+            this.btnAddSchedule.Name = "btnAddSchedule";
+            this.btnAddSchedule.Size = new System.Drawing.Size(112, 31);
+            this.btnAddSchedule.TabIndex = 28;
+            this.btnAddSchedule.Text = "Agregar";
+            this.btnAddSchedule.TextColor = System.Drawing.Color.White;
+            this.btnAddSchedule.UseVisualStyleBackColor = false;
+            this.btnAddSchedule.Click += new System.EventHandler(this.btnAddSchedule_Click);
+            // 
             // btnLogout
             // 
             this.btnLogout.BackColor = System.Drawing.SystemColors.Highlight;
@@ -228,25 +255,58 @@ namespace ParentalControlWindowsForm.Forms
             this.btnMyAccount.UseVisualStyleBackColor = false;
             this.btnMyAccount.Click += new System.EventHandler(this.btnMyAccount_Click);
             // 
-            // btnAddSchedule
+            // dgvSchedule
             // 
-            this.btnAddSchedule.BackColor = System.Drawing.SystemColors.Highlight;
-            this.btnAddSchedule.BackgroundColor = System.Drawing.SystemColors.Highlight;
-            this.btnAddSchedule.BorderColor = System.Drawing.SystemColors.Highlight;
-            this.btnAddSchedule.BorderRadius = 10;
-            this.btnAddSchedule.BorderSize = 0;
-            this.btnAddSchedule.FlatAppearance.BorderSize = 0;
-            this.btnAddSchedule.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAddSchedule.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold);
-            this.btnAddSchedule.ForeColor = System.Drawing.Color.White;
-            this.btnAddSchedule.Location = new System.Drawing.Point(716, 157);
-            this.btnAddSchedule.Name = "btnAddSchedule";
-            this.btnAddSchedule.Size = new System.Drawing.Size(112, 31);
-            this.btnAddSchedule.TabIndex = 28;
-            this.btnAddSchedule.Text = "Agregar";
-            this.btnAddSchedule.TextColor = System.Drawing.Color.White;
-            this.btnAddSchedule.UseVisualStyleBackColor = false;
-            this.btnAddSchedule.Click += new System.EventHandler(this.btnAddSchedule_Click);
+            this.dgvSchedule.AllowUserToAddRows = false;
+            this.dgvSchedule.AllowUserToDeleteRows = false;
+            this.dgvSchedule.BackgroundColor = System.Drawing.Color.White;
+            this.dgvSchedule.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvSchedule.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.idSchedule,
+            this.StartTime,
+            this.EndTime,
+            this.editSchedule,
+            this.deleteSchedule});
+            this.dgvSchedule.Location = new System.Drawing.Point(292, 126);
+            this.dgvSchedule.Name = "dgvSchedule";
+            this.dgvSchedule.ReadOnly = true;
+            this.dgvSchedule.RowTemplate.DividerHeight = 10;
+            this.dgvSchedule.RowTemplate.Height = 60;
+            this.dgvSchedule.Size = new System.Drawing.Size(443, 328);
+            this.dgvSchedule.TabIndex = 29;
+            this.dgvSchedule.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvSchedule_CellContentClick);
+            // 
+            // idSchedule
+            // 
+            this.idSchedule.HeaderText = "Horarios";
+            this.idSchedule.Name = "idSchedule";
+            this.idSchedule.ReadOnly = true;
+            this.idSchedule.Visible = false;
+            // 
+            // StartTime
+            // 
+            this.StartTime.HeaderText = "Hora Inicio";
+            this.StartTime.Name = "StartTime";
+            this.StartTime.ReadOnly = true;
+            // 
+            // EndTime
+            // 
+            this.EndTime.HeaderText = "Hora Fin";
+            this.EndTime.Name = "EndTime";
+            this.EndTime.ReadOnly = true;
+            // 
+            // editSchedule
+            // 
+            this.editSchedule.HeaderText = "";
+            this.editSchedule.Name = "editSchedule";
+            this.editSchedule.ReadOnly = true;
+            // 
+            // deleteSchedule
+            // 
+            this.deleteSchedule.HeaderText = "";
+            this.deleteSchedule.Image = global::ParentalControlWindowsForm.Properties.Resources.delete;
+            this.deleteSchedule.Name = "deleteSchedule";
+            this.deleteSchedule.ReadOnly = true;
             // 
             // FormSchedule
             // 
@@ -254,6 +314,7 @@ namespace ParentalControlWindowsForm.Forms
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(884, 561);
+            this.Controls.Add(this.dgvSchedule);
             this.Controls.Add(this.btnAddSchedule);
             this.Controls.Add(this.btnLogout);
             this.Controls.Add(this.btnMyAccount);
@@ -273,6 +334,7 @@ namespace ParentalControlWindowsForm.Forms
             ((System.ComponentModel.ISupportInitialize)(this.imgInfants)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgDevice)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgLogo)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvSchedule)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -295,5 +357,12 @@ namespace ParentalControlWindowsForm.Forms
         private Botones_Personalizados.OurButton btnLogout;
         private Botones_Personalizados.OurButton btnMyAccount;
         private Botones_Personalizados.OurButton btnAddSchedule;
+        private System.Windows.Forms.DataGridViewImageColumn delete;
+        private System.Windows.Forms.DataGridView dgvSchedule;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idSchedule;
+        private System.Windows.Forms.DataGridViewTextBoxColumn StartTime;
+        private System.Windows.Forms.DataGridViewTextBoxColumn EndTime;
+        private System.Windows.Forms.DataGridViewImageColumn editSchedule;
+        private System.Windows.Forms.DataGridViewImageColumn deleteSchedule;
     }
 }

@@ -1,4 +1,5 @@
 ﻿using ParentalControl.Business.BusinessBO;
+using ParentalControl.Models.Schedule;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,8 +14,8 @@ namespace ParentalControlWindowsForm.Forms
 {
     public partial class FormSchedule : Form
     {
-        public int parentId; 
-       
+        public int parentId;
+        public int scheduleId;
         public FormSchedule()
         {
             InitializeComponent();
@@ -28,7 +29,29 @@ namespace ParentalControlWindowsForm.Forms
       
         private void FormSchedule_Load(object sender, EventArgs e)
         {
+            ScheduleBO scheduleBO = new ScheduleBO();
+            List<ScheduleModel> scheduleList = new List<ScheduleModel>();
+            scheduleList = scheduleBO.GetSchedule();
 
+            if (scheduleList.Count > 0)
+            {
+                foreach (var account in scheduleList)
+                {
+                    this.editSchedule.Image = global::ParentalControlWindowsForm.Properties.Resources.editar_32;
+                    this.deleteSchedule.Image = global::ParentalControlWindowsForm.Properties.Resources.eliminar_32;
+                   
+                    dgvSchedule.Rows.Add(account.ScheduleId.ToString(), account.ScheduleStartTime.ToString("HH:mm"), account.ScheduleEndTime.ToString("HH:mm"), this.editSchedule.Image, this.deleteSchedule.Image);
+                    
+                }
+            }
+            else
+            {
+                MessageBox.Show("Ha ocurrido un error al obtener los horarios.");
+                this.Hide();
+                FormHome formHome = new FormHome();
+                formHome.parentId = this.parentId;
+                formHome.Show();
+            }
         }
 
         private void imgLogo_Click(object sender, EventArgs e)
@@ -129,6 +152,69 @@ namespace ParentalControlWindowsForm.Forms
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void dgvSchedule_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            string idSchedule = dgvSchedule.CurrentRow.Cells[0].Value.ToString();
+            if (e.ColumnIndex == 3)
+            {
+
+                
+                ScheduleBO scheduleBO = new ScheduleBO();
+                String id = dgvSchedule.CurrentRow.Cells[0].Value.ToString();
+                String st = dgvSchedule.CurrentRow.Cells[1].Value.ToString();
+                String et = dgvSchedule.CurrentRow.Cells[2].Value.ToString();
+
+                DateTime dtSt = DateTime.Parse(st);
+               
+                this.scheduleId = Int32.Parse(idSchedule); 
+                this.Hide();
+
+                
+                FormScheduleEdit formScheduleEdit = new FormScheduleEdit();
+                formScheduleEdit.parentId = this.parentId;
+                formScheduleEdit.scheduleId = this.scheduleId;
+                formScheduleEdit.Show();
+                
+            }   
+            else if (e.ColumnIndex == 4)
+            {
+                try
+                {
+                    DialogResult res = MessageBox.Show("¿Estás seguro que deseas eliminar la cuenta de infante?", "¡ADVERTENCIA!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                    if (res == DialogResult.No)
+                    {
+                        return;
+                    }
+                    if (res == DialogResult.Yes)
+                    {
+                        ScheduleBO scheduleBo = new ScheduleBO();
+                        this.scheduleId = Int32.Parse(idSchedule);
+                        if (scheduleBo.DeleteSchedule(this.scheduleId))
+                        {
+                            MessageBox.Show("Se eliminó la cuenta correctamente");
+                            this.Hide();
+                            FormSchedule formSchedule = new FormSchedule();
+                            formSchedule.parentId = this.parentId;
+                            formSchedule.Show();
+                        }
+                        else
+                        {
+                            MessageBox.Show("No se pudo eliminar la cuenta, intente nuevamente");
+                            this.Hide();
+                            FormSchedule formSchedule = new FormSchedule();
+                            formSchedule.parentId = this.parentId;
+                            formSchedule.Show();
+                        }
+
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
             }
         }
     }
