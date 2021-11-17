@@ -80,6 +80,12 @@
     <Compile Include="Forms\FormInfantAccount.Designer.cs">
       <DependentUpon>FormInfantAccount.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\FormInfantRules.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormInfantRules.Designer.cs">
+      <DependentUpon>FormInfantRules.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\FormLogin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -132,6 +138,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FormInfantAccount.resx">
       <DependentUpon>FormInfantAccount.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormInfantRules.resx">
+      <DependentUpon>FormInfantRules.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FormLogin.resx">
       <DependentUpon>FormLogin.cs</DependentUpon>
@@ -205,6 +214,7 @@
   <ItemGroup>
     <Content Include="Resources\editar 32.png" />
     <Content Include="Resources\eliminar 32.png" />
+    <None Include="Resources\flecha 32.png" />
     <Content Include="Resources\hijo 64.png" />
     <Content Include="Resources\nina_64.png" />
     <None Include="Resources\ninos.png" />

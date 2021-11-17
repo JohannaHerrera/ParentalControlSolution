@@ -182,6 +182,7 @@ namespace ParentalControlWindowsForm.Forms
                         
                         this.EditButton.Image = global::ParentalControlWindowsForm.Properties.Resources.editar_32;
                         this.delete.Image = global::ParentalControlWindowsForm.Properties.Resources.eliminar_32;
+                        this.Reglas.Image = global::ParentalControlWindowsForm.Properties.Resources.flecha_32;
 
                         if (infant.InfantGender.Equals(constants.Femenino))
                         {
@@ -192,7 +193,7 @@ namespace ParentalControlWindowsForm.Forms
                             this.InfantImage.Image = global::ParentalControlWindowsForm.Properties.Resources.hijo_64;
                         }
 
-                        this.dtgInfantAccounts.Rows.Add(this.InfantImage.Image, infant.InfantName, this.EditButton.Image, this.delete.Image); 
+                        this.dtgInfantAccounts.Rows.Add(this.InfantImage.Image, infant.InfantName, this.EditButton.Image, this.delete.Image,this.Reglas.Image); 
                     }
                 }
             }
@@ -214,7 +215,7 @@ namespace ParentalControlWindowsForm.Forms
                 formEditInfantAccount.infantId = this.infantId;
                 formEditInfantAccount.Show();
             }
-            else if (e.ColumnIndex == 3)
+            if (e.ColumnIndex == 3)
             {
                 try
                 {                 
@@ -251,7 +252,17 @@ namespace ParentalControlWindowsForm.Forms
                     MessageBox.Show(ex.Message);
                 }
             }
-           
+            if (e.ColumnIndex == 4)
+            {
+                InfantAccountBO infantAccountBO = new InfantAccountBO();
+                this.infantId = infantAccountBO.GetInfantId(dtgInfantAccounts.CurrentRow.Cells[1].Value.ToString());
+                this.Hide();
+                FormInfantRules formInfantRules = new FormInfantRules();
+                formInfantRules.parentId = this.parentId;
+                formInfantRules.infantId = this.infantId;
+                formInfantRules.Show();
+            }
+
         }
     }
 }
