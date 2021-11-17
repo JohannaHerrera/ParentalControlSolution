@@ -195,18 +195,6 @@ namespace ParentalControlWindowsForm.Forms
                         this.dtgInfantAccounts.Rows.Add(this.InfantImage.Image, infant.InfantName, this.EditButton.Image, this.delete.Image); 
                     }
                 }
-                else if (infantAccounts.Count == 0)
-                {
-
-                }
-                else
-                {
-                    MessageBox.Show("Ha ocurrido un error al obtener la lista de las cuentas de infante.");
-                    this.Hide();
-                    FormHome formHome = new FormHome();
-                    formHome.parentId = this.parentId;
-                    formHome.Show();
-                }
             }
             catch (Exception ex)
             {

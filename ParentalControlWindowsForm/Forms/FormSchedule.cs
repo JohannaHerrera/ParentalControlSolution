@@ -44,14 +44,6 @@ namespace ParentalControlWindowsForm.Forms
                     
                 }
             }
-            else
-            {
-                MessageBox.Show("Ha ocurrido un error al obtener los horarios.");
-                this.Hide();
-                FormHome formHome = new FormHome();
-                formHome.parentId = this.parentId;
-                formHome.Show();
-            }
         }
 
         private void imgLogo_Click(object sender, EventArgs e)
