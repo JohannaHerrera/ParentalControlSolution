@@ -35,13 +35,12 @@ namespace ParentalControlWindowsForm.Forms
 
             if (scheduleList.Count > 0)
             {
-                foreach (var account in scheduleList)
+                foreach (var schedule in scheduleList)
                 {
                     this.editSchedule.Image = global::ParentalControlWindowsForm.Properties.Resources.editar_32;
                     this.deleteSchedule.Image = global::ParentalControlWindowsForm.Properties.Resources.eliminar_32;
                    
-                    dgvSchedule.Rows.Add(account.ScheduleId.ToString(), account.ScheduleStartTime.ToString("HH:mm"), account.ScheduleEndTime.ToString("HH:mm"), this.editSchedule.Image, this.deleteSchedule.Image);
-                    
+                    dgvSchedule.Rows.Add(schedule.ScheduleId.ToString(),schedule.ScheduleStartTime.ToString("HH:mm"), schedule.ScheduleEndTime.ToString("HH:mm"), this.editSchedule.Image, this.deleteSchedule.Image);                   
                 }
             }
         }

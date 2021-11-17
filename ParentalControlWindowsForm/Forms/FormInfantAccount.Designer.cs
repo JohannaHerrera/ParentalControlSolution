@@ -29,11 +29,12 @@ namespace ParentalControlWindowsForm.Forms
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormInfantAccount));
             this.panel1 = new System.Windows.Forms.Panel();
             this.addInfantButton = new ParentalControlWindowsForm.Botones_Personalizados.OurButton();
@@ -72,9 +73,9 @@ namespace ParentalControlWindowsForm.Forms
             // 
             this.panel1.Controls.Add(this.addInfantButton);
             this.panel1.Controls.Add(this.dtgInfantAccounts);
-            this.panel1.Location = new System.Drawing.Point(215, 154);
+            this.panel1.Location = new System.Drawing.Point(194, 156);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(605, 315);
+            this.panel1.Size = new System.Drawing.Size(629, 331);
             this.panel1.TabIndex = 0;
             // 
             // addInfantButton
@@ -90,7 +91,7 @@ namespace ParentalControlWindowsForm.Forms
             this.addInfantButton.ForeColor = System.Drawing.Color.White;
             this.addInfantButton.Image = global::ParentalControlWindowsForm.Properties.Resources.AddInfantAccount;
             this.addInfantButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.addInfantButton.Location = new System.Drawing.Point(415, 128);
+            this.addInfantButton.Location = new System.Drawing.Point(439, 127);
             this.addInfantButton.Name = "addInfantButton";
             this.addInfantButton.Size = new System.Drawing.Size(187, 78);
             this.addInfantButton.TabIndex = 2;
@@ -119,7 +120,7 @@ namespace ParentalControlWindowsForm.Forms
             this.Reglas});
             this.dtgInfantAccounts.EnableHeadersVisualStyles = false;
             this.dtgInfantAccounts.GridColor = System.Drawing.Color.White;
-            this.dtgInfantAccounts.Location = new System.Drawing.Point(3, 3);
+            this.dtgInfantAccounts.Location = new System.Drawing.Point(16, 0);
             this.dtgInfantAccounts.Name = "dtgInfantAccounts";
             this.dtgInfantAccounts.ReadOnly = true;
             this.dtgInfantAccounts.RowHeadersVisible = false;
@@ -127,7 +128,7 @@ namespace ParentalControlWindowsForm.Forms
             this.dtgInfantAccounts.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dtgInfantAccounts.RowTemplate.DividerHeight = 10;
             this.dtgInfantAccounts.RowTemplate.Height = 80;
-            this.dtgInfantAccounts.Size = new System.Drawing.Size(406, 309);
+            this.dtgInfantAccounts.Size = new System.Drawing.Size(400, 325);
             this.dtgInfantAccounts.TabIndex = 0;
             this.dtgInfantAccounts.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgInfantAccounts_CellContentClick);
             // 
@@ -266,11 +267,11 @@ namespace ParentalControlWindowsForm.Forms
             // 
             // dataGridViewImageColumn1
             // 
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle5.NullValue = null;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.Black;
-            this.dataGridViewImageColumn1.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle6.NullValue = null;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.Black;
+            this.dataGridViewImageColumn1.DefaultCellStyle = dataGridViewCellStyle6;
             this.dataGridViewImageColumn1.HeaderText = "Eliminar";
             this.dataGridViewImageColumn1.Image = global::ParentalControlWindowsForm.Properties.Resources.editar_32;
             this.dataGridViewImageColumn1.Name = "dataGridViewImageColumn1";
@@ -327,7 +328,7 @@ namespace ParentalControlWindowsForm.Forms
             this.InfantImage.HeaderText = "Imagen";
             this.InfantImage.Name = "InfantImage";
             this.InfantImage.ReadOnly = true;
-            this.InfantImage.Width = 70;
+            this.InfantImage.Width = 90;
             // 
             // InfantName
             // 
@@ -351,7 +352,7 @@ namespace ParentalControlWindowsForm.Forms
             this.EditButton.HeaderText = "Editar";
             this.EditButton.Name = "EditButton";
             this.EditButton.ReadOnly = true;
-            this.EditButton.Width = 70;
+            this.EditButton.Width = 50;
             // 
             // delete
             // 
@@ -364,14 +365,19 @@ namespace ParentalControlWindowsForm.Forms
             this.delete.Image = global::ParentalControlWindowsForm.Properties.Resources.editar_32;
             this.delete.Name = "delete";
             this.delete.ReadOnly = true;
-            this.delete.Width = 70;
+            this.delete.Width = 50;
             // 
             // Reglas
             // 
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle5.NullValue = ((object)(resources.GetObject("dataGridViewCellStyle5.NullValue")));
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.Black;
+            this.Reglas.DefaultCellStyle = dataGridViewCellStyle5;
             this.Reglas.HeaderText = "Reglas";
             this.Reglas.Name = "Reglas";
             this.Reglas.ReadOnly = true;
-            this.Reglas.Width = 70;
+            this.Reglas.Width = 50;
             // 
             // FormInfantAccount
             // 

@@ -210,6 +210,7 @@ namespace ParentalControlWindowsForm.Forms
             this.rbGroup.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.rbGroup.Controls.Add(this.rbGenderF);
             this.rbGroup.Controls.Add(this.rbGenderM);
+            this.rbGroup.Enabled = false;
             this.rbGroup.Location = new System.Drawing.Point(386, 282);
             this.rbGroup.Name = "rbGroup";
             this.rbGroup.Size = new System.Drawing.Size(202, 168);

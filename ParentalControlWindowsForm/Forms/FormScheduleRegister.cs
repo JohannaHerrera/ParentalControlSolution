@@ -21,6 +21,7 @@ namespace ParentalControlWindowsForm.Forms
             InitializeComponent();
           
         }
+
         private void FormScheduleRegister_Load(object sender, EventArgs e)
         {
             dudHora.Text = DateTime.Now.ToString("HH");
@@ -28,20 +29,21 @@ namespace ParentalControlWindowsForm.Forms
             dudHoraFin.Text = DateTime.Now.ToString("HH");
             dudMinuteEnd.Text = DateTime.Now.ToString("mm");
         }
+
         private void tmrHoraFecha_Tick(object sender, EventArgs e)
         {
             lblHora.Text = DateTime.Now.ToString("HH:mm:ss");
             lblFecha.Text = DateTime.Now.ToString("dddd mmmm yyy");
 
         }
+
         private void btnSave_Click(object sender, EventArgs e)
         {
             try
             {
-                //MessageBox.Show("¡En proceso!"+"hora Inicio "+dudHora.Value+" "+dudMinute.Value + "Hora Fin"
-                    //+dudHoraFin.Value + " "+dudMinuteEnd.Value);
                 ScheduleModel scheduleModel = new ScheduleModel();
                 ScheduleBO scheduleBO = new ScheduleBO();
+
                 //Convertir hora inicio a int
                 int ih = Convert.ToInt32(Math.Round(dudHora.Value));
                 ////Convertir min inicio a int
@@ -54,25 +56,43 @@ namespace ParentalControlWindowsForm.Forms
                 scheduleModel.ScheduleStartTime = new DateTime(2021, 11, 11, ih, im, 0);
                 scheduleModel.ScheduleEndTime= new DateTime(2021, 11, 11, ihf, ime, 0);
 
+                string message = scheduleModel.Validate(scheduleModel);
 
-                if (scheduleBO.RegisterSchedule(scheduleModel))
+                if (!string.IsNullOrEmpty(message))
                 {
-                    MessageBox.Show("¡Se ha registrado satisfactoriamente!");
-                    this.Hide();
-                    FormSchedule formSchedule = new FormSchedule();
-                    formSchedule.parentId = this.parentId;
-                    formSchedule.Show();
+                    MessageBox.Show(message);
+                    return;
                 }
                 else
                 {
-                    String message = ("Error en la creacion de horario");
-                    MessageBox.Show(message);
-                    this.Hide();
-                    FormSchedule formSchedule = new FormSchedule();
-                    formSchedule.parentId = this.parentId;
-                    formSchedule.Show();
-                }
-               
+                    // Se verifica que no exista un registro con el mismo horario
+                    List<ScheduleModel> scheduleModelList = new List<ScheduleModel>();
+                    scheduleModelList = scheduleBO.ValidateSchedule(scheduleModel.ScheduleStartTime, scheduleModel.ScheduleEndTime);
+
+                    if(scheduleModelList.Count > 0)
+                    {
+                        MessageBox.Show("Ya existe un registro con el mismo horario.");
+                    }
+                    else
+                    {                    
+                        if (scheduleBO.RegisterSchedule(scheduleModel))
+                        {
+                            MessageBox.Show("¡Se ha registrado satisfactoriamente!");
+                            this.Hide();
+                            FormSchedule formSchedule = new FormSchedule();
+                            formSchedule.parentId = this.parentId;
+                            formSchedule.Show();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Error en la creación de horario");
+                            this.Hide();
+                            FormSchedule formSchedule = new FormSchedule();
+                            formSchedule.parentId = this.parentId;
+                            formSchedule.Show();
+                        }
+                    }
+                }                              
             }            
             catch(Exception ex)
             {

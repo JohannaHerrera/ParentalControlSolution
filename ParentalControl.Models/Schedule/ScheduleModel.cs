@@ -19,5 +19,18 @@ namespace ParentalControl.Models.Schedule
         public DateTime ScheduleEndTime { get; set; }
         //Fecha de creacion
         public DateTime ScheduleCreationDate { get; set; }
+
+        //Método para validar los datos
+        public string Validate(ScheduleModel scheduleModel)
+        {
+            string message = string.Empty;
+
+            if (scheduleModel.ScheduleStartTime > scheduleModel.ScheduleEndTime)
+            {
+                return "La hora inicio debe ser menor a la hora fin";
+            }
+
+            return message;
+        }
     }
 }

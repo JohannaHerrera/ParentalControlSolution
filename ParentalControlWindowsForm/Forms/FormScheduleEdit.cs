@@ -37,8 +37,6 @@ namespace ParentalControlWindowsForm.Forms
                     dudMinute.Text = scheduleModel.ScheduleStartTime.ToString("mm");
                     dudHoraFin.Text = scheduleModel.ScheduleEndTime.ToString("HH");
                     dudMinuteEnd.Text = scheduleModel.ScheduleEndTime.ToString("mm");
-                    //this.txtName.Text = infantAccountModel.InfantName;
-
                 }
                 else
                 {
@@ -73,24 +71,44 @@ namespace ParentalControlWindowsForm.Forms
                 scheduleModel.ScheduleStartTime = new DateTime(2021, 11, 11, ih, im, 0);
                 scheduleModel.ScheduleEndTime = new DateTime(2021, 11, 11, ihf, ime, 0);
                 scheduleModel.ScheduleId = this.scheduleId;
-                
 
-                if (scheduleBO.UpdateSchedule(scheduleModel))
+                string message = scheduleModel.Validate(scheduleModel);
+
+                if (!string.IsNullOrEmpty(message))
                 {
-                    MessageBox.Show("La información se actualizó correctamente.");
-                    this.Hide();
-                    FormSchedule formSchedule = new FormSchedule();
-                    formSchedule.parentId = this.parentId;
-                    formSchedule.Show();
+                    MessageBox.Show(message);
+                    return;
                 }
                 else
                 {
-                    MessageBox.Show("Ocurrió un error al actualizar la información. Inténtelo de nuevo.");
-                    this.Hide();
-                    FormSchedule formSchedule = new FormSchedule();
-                    formSchedule.parentId = this.parentId;
-                    formSchedule.Show();
-                }
+                    // Se verifica que no exista un registro con el mismo horario
+                    List<ScheduleModel> scheduleModelList = new List<ScheduleModel>();
+                    scheduleModelList = scheduleBO.ValidateSchedule(scheduleModel.ScheduleStartTime, scheduleModel.ScheduleEndTime);
+
+                    if (scheduleModelList.Count > 0)
+                    {
+                        MessageBox.Show("Ya existe un registro con el mismo horario.");
+                    }
+                    else
+                    {
+                        if (scheduleBO.UpdateSchedule(scheduleModel))
+                        {
+                            MessageBox.Show("La información se actualizó correctamente.");
+                            this.Hide();
+                            FormSchedule formSchedule = new FormSchedule();
+                            formSchedule.parentId = this.parentId;
+                            formSchedule.Show();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Ocurrió un error al actualizar la información. Inténtelo de nuevo.");
+                            this.Hide();
+                            FormSchedule formSchedule = new FormSchedule();
+                            formSchedule.parentId = this.parentId;
+                            formSchedule.Show();
+                        }
+                    }                   
+                }                
             }
             catch (Exception ex)
             {
@@ -198,12 +216,10 @@ namespace ParentalControlWindowsForm.Forms
         private void btnCancel_Click(object sender, EventArgs e)
         {
             this.Hide();
-            FormScheduleEdit formScheduleEdit = new FormScheduleEdit();
-            formScheduleEdit.scheduleId= this.scheduleId;
-            formScheduleEdit.parentId = this.parentId;
-            formScheduleEdit.Show();
+            FormSchedule formSchedule = new FormSchedule();
+            formSchedule.scheduleId= this.scheduleId;
+            formSchedule.parentId = this.parentId;
+            formSchedule.Show();
         }
-
-
     }
 }

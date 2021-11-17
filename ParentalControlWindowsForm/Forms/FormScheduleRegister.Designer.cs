@@ -441,9 +441,11 @@ namespace ParentalControlWindowsForm.Forms
             this.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Location = new System.Drawing.Point(587, 13);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "FormScheduleRegister";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = " ";
+            this.Text = " Control Parental";
             this.Load += new System.EventHandler(this.FormScheduleRegister_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dudHora)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dudMinute)).EndInit();

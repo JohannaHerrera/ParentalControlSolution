@@ -59,6 +59,7 @@ namespace ParentalControlWindowsForm.Forms
             this.btnSave = new ParentalControlWindowsForm.Botones_Personalizados.OurButton();
             this.btnLogout = new ParentalControlWindowsForm.Botones_Personalizados.OurButton();
             this.btnMyAccount = new ParentalControlWindowsForm.Botones_Personalizados.OurButton();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imgNotifications)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgScheedule)).BeginInit();
@@ -189,7 +190,7 @@ namespace ParentalControlWindowsForm.Forms
             // dudMinuteEnd
             // 
             this.dudMinuteEnd.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dudMinuteEnd.Location = new System.Drawing.Point(531, 380);
+            this.dudMinuteEnd.Location = new System.Drawing.Point(559, 411);
             this.dudMinuteEnd.Maximum = new decimal(new int[] {
             59,
             0,
@@ -202,7 +203,7 @@ namespace ParentalControlWindowsForm.Forms
             // dudHoraFin
             // 
             this.dudHoraFin.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dudHoraFin.Location = new System.Drawing.Point(358, 378);
+            this.dudHoraFin.Location = new System.Drawing.Point(386, 411);
             this.dudHoraFin.Maximum = new decimal(new int[] {
             23,
             0,
@@ -215,7 +216,7 @@ namespace ParentalControlWindowsForm.Forms
             // dudMinute
             // 
             this.dudMinute.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dudMinute.Location = new System.Drawing.Point(531, 286);
+            this.dudMinute.Location = new System.Drawing.Point(559, 301);
             this.dudMinute.Maximum = new decimal(new int[] {
             59,
             0,
@@ -228,7 +229,7 @@ namespace ParentalControlWindowsForm.Forms
             // dudHora
             // 
             this.dudHora.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dudHora.Location = new System.Drawing.Point(358, 286);
+            this.dudHora.Location = new System.Drawing.Point(386, 301);
             this.dudHora.Maximum = new decimal(new int[] {
             23,
             0,
@@ -243,7 +244,7 @@ namespace ParentalControlWindowsForm.Forms
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.Black;
-            this.label5.Location = new System.Drawing.Point(636, 387);
+            this.label5.Location = new System.Drawing.Point(664, 420);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(36, 19);
             this.label5.TabIndex = 38;
@@ -254,7 +255,7 @@ namespace ParentalControlWindowsForm.Forms
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.Black;
-            this.label6.Location = new System.Drawing.Point(463, 385);
+            this.label6.Location = new System.Drawing.Point(491, 418);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(36, 19);
             this.label6.TabIndex = 37;
@@ -265,7 +266,7 @@ namespace ParentalControlWindowsForm.Forms
             this.lblScheduleEnd.AutoSize = true;
             this.lblScheduleEnd.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblScheduleEnd.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.lblScheduleEnd.Location = new System.Drawing.Point(282, 344);
+            this.lblScheduleEnd.Location = new System.Drawing.Point(310, 377);
             this.lblScheduleEnd.Name = "lblScheduleEnd";
             this.lblScheduleEnd.Size = new System.Drawing.Size(95, 22);
             this.lblScheduleEnd.TabIndex = 36;
@@ -276,7 +277,7 @@ namespace ParentalControlWindowsForm.Forms
             this.lblMnts.AutoSize = true;
             this.lblMnts.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblMnts.ForeColor = System.Drawing.Color.Black;
-            this.lblMnts.Location = new System.Drawing.Point(636, 293);
+            this.lblMnts.Location = new System.Drawing.Point(664, 308);
             this.lblMnts.Name = "lblMnts";
             this.lblMnts.Size = new System.Drawing.Size(36, 19);
             this.lblMnts.TabIndex = 35;
@@ -287,7 +288,7 @@ namespace ParentalControlWindowsForm.Forms
             this.lblHrs.AutoSize = true;
             this.lblHrs.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblHrs.ForeColor = System.Drawing.Color.Black;
-            this.lblHrs.Location = new System.Drawing.Point(463, 293);
+            this.lblHrs.Location = new System.Drawing.Point(491, 308);
             this.lblHrs.Name = "lblHrs";
             this.lblHrs.Size = new System.Drawing.Size(36, 19);
             this.lblHrs.TabIndex = 34;
@@ -298,7 +299,7 @@ namespace ParentalControlWindowsForm.Forms
             this.lblScheduleStar.AutoSize = true;
             this.lblScheduleStar.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblScheduleStar.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.lblScheduleStar.Location = new System.Drawing.Point(272, 235);
+            this.lblScheduleStar.Location = new System.Drawing.Point(310, 267);
             this.lblScheduleStar.Name = "lblScheduleStar";
             this.lblScheduleStar.Size = new System.Drawing.Size(144, 22);
             this.lblScheduleStar.TabIndex = 33;
@@ -309,7 +310,7 @@ namespace ParentalControlWindowsForm.Forms
             this.lblFecha.AutoSize = true;
             this.lblFecha.Font = new System.Drawing.Font("Microsoft Sans Serif", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblFecha.ForeColor = System.Drawing.SystemColors.ActiveCaption;
-            this.lblFecha.Location = new System.Drawing.Point(431, 170);
+            this.lblFecha.Location = new System.Drawing.Point(379, 191);
             this.lblFecha.Name = "lblFecha";
             this.lblFecha.Size = new System.Drawing.Size(109, 39);
             this.lblFecha.TabIndex = 47;
@@ -320,7 +321,7 @@ namespace ParentalControlWindowsForm.Forms
             this.lblHora.AutoSize = true;
             this.lblHora.Font = new System.Drawing.Font("Microsoft Sans Serif", 45.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblHora.ForeColor = System.Drawing.Color.DarkTurquoise;
-            this.lblHora.Location = new System.Drawing.Point(426, 100);
+            this.lblHora.Location = new System.Drawing.Point(374, 121);
             this.lblHora.Name = "lblHora";
             this.lblHora.Size = new System.Drawing.Size(194, 70);
             this.lblHora.TabIndex = 46;
@@ -331,7 +332,7 @@ namespace ParentalControlWindowsForm.Forms
             this.lblSchedule.AutoSize = true;
             this.lblSchedule.Font = new System.Drawing.Font("Arial", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblSchedule.ForeColor = System.Drawing.Color.Black;
-            this.lblSchedule.Location = new System.Drawing.Point(175, 55);
+            this.lblSchedule.Location = new System.Drawing.Point(189, 57);
             this.lblSchedule.Name = "lblSchedule";
             this.lblSchedule.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.lblSchedule.Size = new System.Drawing.Size(173, 29);
@@ -355,7 +356,7 @@ namespace ParentalControlWindowsForm.Forms
             this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancel.ForeColor = System.Drawing.Color.White;
-            this.btnCancel.Location = new System.Drawing.Point(511, 456);
+            this.btnCancel.Location = new System.Drawing.Point(546, 480);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(109, 31);
             this.btnCancel.TabIndex = 48;
@@ -375,7 +376,7 @@ namespace ParentalControlWindowsForm.Forms
             this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold);
             this.btnSave.ForeColor = System.Drawing.Color.White;
-            this.btnSave.Location = new System.Drawing.Point(358, 456);
+            this.btnSave.Location = new System.Drawing.Point(380, 480);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(112, 31);
             this.btnSave.TabIndex = 43;
@@ -424,12 +425,21 @@ namespace ParentalControlWindowsForm.Forms
             this.btnMyAccount.UseVisualStyleBackColor = false;
             this.btnMyAccount.Click += new System.EventHandler(this.btnMyAccount_Click);
             // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.Silver;
+            this.panel1.Location = new System.Drawing.Point(170, 91);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(706, 3);
+            this.panel1.TabIndex = 49;
+            // 
             // FormScheduleEdit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(884, 561);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.lblFecha);
             this.Controls.Add(this.lblHora);
@@ -450,9 +460,11 @@ namespace ParentalControlWindowsForm.Forms
             this.Controls.Add(this.panel2);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Location = new System.Drawing.Point(450, 490);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "FormScheduleEdit";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "FormScheduleEdit";
+            this.Text = "Control Parental";
             this.Load += new System.EventHandler(this.FormScheduleEdit_Load);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
@@ -500,5 +512,6 @@ namespace ParentalControlWindowsForm.Forms
         private System.Windows.Forms.Label lblSchedule;
         private System.Windows.Forms.Timer tmtHoraFecha;
         private Botones_Personalizados.OurButton btnCancel;
+        private System.Windows.Forms.Panel panel1;
     }
 }

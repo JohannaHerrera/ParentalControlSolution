@@ -132,5 +132,85 @@ namespace ParentalControlWindowsForm.Forms
                 MessageBox.Show(ex.Message);
             }
         }
+
+        private void btnWebLock_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                this.btnWebLock.Location = new System.Drawing.Point(0, 0);
+                this.btnAppLock.Location = new System.Drawing.Point(0, 237);
+                this.btnTimeUseDevice.Location = new System.Drawing.Point(0, 283);
+                this.btnActivityRecord.Location = new System.Drawing.Point(0, 329);
+                this.dgvWebLock.Location = new System.Drawing.Point(17, 46);
+                this.dgvWebLock.Visible = true;
+                this.dgvAppLock.Visible = false;
+                this.dgvTimeUseDevice.Visible = false;
+                this.dgvActivityRecord.Visible = false;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void btnAppLock_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                this.btnWebLock.Location = new System.Drawing.Point(0, 0);
+                this.btnAppLock.Location = new System.Drawing.Point(0, 46);
+                this.btnTimeUseDevice.Location = new System.Drawing.Point(0, 283);
+                this.btnActivityRecord.Location = new System.Drawing.Point(0, 329);
+                this.dgvAppLock.Location = new System.Drawing.Point(18, 92);
+                this.dgvWebLock.Visible = false;
+                this.dgvAppLock.Visible = true;
+                this.dgvTimeUseDevice.Visible = false;
+                this.dgvActivityRecord.Visible = false;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void btnTimeUseDevice_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                this.btnWebLock.Location = new System.Drawing.Point(0, 0);
+                this.btnAppLock.Location = new System.Drawing.Point(0, 46);
+                this.btnTimeUseDevice.Location = new System.Drawing.Point(0, 92);
+                this.btnActivityRecord.Location = new System.Drawing.Point(0, 329);
+                this.dgvTimeUseDevice.Location = new System.Drawing.Point(18, 138);
+                this.dgvWebLock.Visible = false;               
+                this.dgvAppLock.Visible = false;
+                this.dgvTimeUseDevice.Visible = true;
+                this.dgvActivityRecord.Visible = false;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void btnActivityRecord_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                this.btnWebLock.Location = new System.Drawing.Point(0, 0);
+                this.btnAppLock.Location = new System.Drawing.Point(0, 46);
+                this.btnTimeUseDevice.Location = new System.Drawing.Point(0, 92);
+                this.btnActivityRecord.Location = new System.Drawing.Point(0, 138);
+                this.dgvActivityRecord.Location = new System.Drawing.Point(17, 184);
+                this.dgvWebLock.Visible = false;                
+                this.dgvAppLock.Visible = false;
+                this.dgvTimeUseDevice.Visible = false;
+                this.dgvActivityRecord.Visible = true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
     }
 }

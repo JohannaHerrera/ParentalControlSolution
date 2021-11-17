@@ -89,10 +89,10 @@ namespace ParentalControlWindowsForm.Forms
         private void btnCancel_Click(object sender, EventArgs e)
         {
             this.Hide();
-            FormEditInfantAccount formEditInfantAccount = new FormEditInfantAccount();
-            formEditInfantAccount.infantId = this.infantId;
-            formEditInfantAccount.parentId = this.parentId;
-            formEditInfantAccount.Show();
+            FormInfantAccount formInfantAccount = new FormInfantAccount();
+            formInfantAccount.infantId = this.infantId;
+            formInfantAccount.parentId = this.parentId;
+            formInfantAccount.Show();
         }
 
         private void imgInfants_Click(object sender, EventArgs e)
@@ -177,6 +177,7 @@ namespace ParentalControlWindowsForm.Forms
 
                 infantAccountModel.InfantName = this.txtName.Text;
                 infantAccountModel.InfantAccountId = this.infantId;
+
                 if (rbGenderM.Checked)
                 {
                     infantAccountModel.InfantGender = constants.Masculino;
@@ -185,24 +186,44 @@ namespace ParentalControlWindowsForm.Forms
                 {
                     infantAccountModel.InfantGender = constants.Femenino;
                 }
-                
 
-                if (infantAccountBO.UpdateInfantInformation(infantAccountModel))
+                string message = infantAccountModel.Validate(infantAccountModel);
+
+                if (!string.IsNullOrEmpty(message))
                 {
-                    MessageBox.Show("La información se actualizó correctamente.");
-                    this.Hide();
-                    FormInfantAccount formInfantAccount = new FormInfantAccount();
-                    formInfantAccount.parentId = this.parentId;
-                    formInfantAccount.Show();
+                    MessageBox.Show(message);
+                    return;
                 }
                 else
                 {
-                    MessageBox.Show("Ocurrió un error al actualizar la información. Inténtelo de nuevo.");
-                    this.Hide();
-                    FormInfantAccount formInfantAccount = new FormInfantAccount();
-                    formInfantAccount.parentId = this.parentId;
-                    formInfantAccount.Show();
-                }
+                    // Se verifica que no exista un hijo con el mismo nombre
+                    List<InfantAccountModel> infantAccountModelList = new List<InfantAccountModel>();
+                    infantAccountModelList = infantAccountBO.ValidateInfantAccount(infantAccountModel.InfantName);
+
+                    if (infantAccountModelList.Count == 0)
+                    {
+                        if (infantAccountBO.UpdateInfantInformation(infantAccountModel))
+                        {
+                            MessageBox.Show("La información se actualizó correctamente.");
+                            this.Hide();
+                            FormInfantAccount formInfantAccount = new FormInfantAccount();
+                            formInfantAccount.parentId = this.parentId;
+                            formInfantAccount.Show();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Ocurrió un error al actualizar la información. Inténtelo de nuevo.");
+                            this.Hide();
+                            FormInfantAccount formInfantAccount = new FormInfantAccount();
+                            formInfantAccount.parentId = this.parentId;
+                            formInfantAccount.Show();
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Ya existe una cuenta con el mismo nombre.");
+                    }                   
+                }                   
             }
             catch (Exception ex)
             {
@@ -220,6 +241,7 @@ namespace ParentalControlWindowsForm.Forms
                 this.btnCancel.Visible = true;
                 this.btnSave.Visible = true;
                 this.btnEdit.Visible = false;
+                this.rbGroup.Enabled = true;
             }
             catch (Exception ex)
             {

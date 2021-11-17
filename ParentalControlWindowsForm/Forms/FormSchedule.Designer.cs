@@ -29,7 +29,12 @@ namespace ParentalControlWindowsForm.Forms
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormSchedule));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -42,15 +47,17 @@ namespace ParentalControlWindowsForm.Forms
             this.imgLogo = new System.Windows.Forms.PictureBox();
             this.lblSchedule = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.btnAddSchedule = new ParentalControlWindowsForm.Botones_Personalizados.OurButton();
-            this.btnLogout = new ParentalControlWindowsForm.Botones_Personalizados.OurButton();
-            this.btnMyAccount = new ParentalControlWindowsForm.Botones_Personalizados.OurButton();
             this.dgvSchedule = new System.Windows.Forms.DataGridView();
             this.idSchedule = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.StartTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.EndTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.editSchedule = new System.Windows.Forms.DataGridViewImageColumn();
             this.deleteSchedule = new System.Windows.Forms.DataGridViewImageColumn();
+            this.btnAddSchedule = new ParentalControlWindowsForm.Botones_Personalizados.OurButton();
+            this.btnLogout = new ParentalControlWindowsForm.Botones_Personalizados.OurButton();
+            this.btnMyAccount = new ParentalControlWindowsForm.Botones_Personalizados.OurButton();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imgNotifications)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgScheedule)).BeginInit();
@@ -195,6 +202,97 @@ namespace ParentalControlWindowsForm.Forms
             this.panel2.Size = new System.Drawing.Size(706, 3);
             this.panel2.TabIndex = 3;
             // 
+            // dgvSchedule
+            // 
+            this.dgvSchedule.AllowUserToAddRows = false;
+            this.dgvSchedule.AllowUserToDeleteRows = false;
+            this.dgvSchedule.BackgroundColor = System.Drawing.Color.White;
+            this.dgvSchedule.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgvSchedule.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SunkenHorizontal;
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle11.Font = new System.Drawing.Font("Arial Narrow", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvSchedule.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle11;
+            this.dgvSchedule.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvSchedule.ColumnHeadersVisible = false;
+            this.dgvSchedule.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.idSchedule,
+            this.StartTime,
+            this.EndTime,
+            this.editSchedule,
+            this.deleteSchedule});
+            this.dgvSchedule.GridColor = System.Drawing.Color.White;
+            this.dgvSchedule.Location = new System.Drawing.Point(287, 156);
+            this.dgvSchedule.Name = "dgvSchedule";
+            this.dgvSchedule.ReadOnly = true;
+            this.dgvSchedule.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.dgvSchedule.RowHeadersVisible = false;
+            this.dgvSchedule.RowTemplate.DividerHeight = 5;
+            this.dgvSchedule.RowTemplate.Height = 50;
+            this.dgvSchedule.Size = new System.Drawing.Size(450, 298);
+            this.dgvSchedule.TabIndex = 29;
+            this.dgvSchedule.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvSchedule_CellContentClick);
+            // 
+            // idSchedule
+            // 
+            this.idSchedule.HeaderText = "Id Horario";
+            this.idSchedule.Name = "idSchedule";
+            this.idSchedule.ReadOnly = true;
+            this.idSchedule.Visible = false;
+            // 
+            // StartTime
+            // 
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle12.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.Color.Black;
+            this.StartTime.DefaultCellStyle = dataGridViewCellStyle12;
+            this.StartTime.HeaderText = "Hora Inicio";
+            this.StartTime.Name = "StartTime";
+            this.StartTime.ReadOnly = true;
+            this.StartTime.Width = 125;
+            // 
+            // EndTime
+            // 
+            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle13.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.Color.Black;
+            this.EndTime.DefaultCellStyle = dataGridViewCellStyle13;
+            this.EndTime.HeaderText = "Hora Fin";
+            this.EndTime.Name = "EndTime";
+            this.EndTime.ReadOnly = true;
+            this.EndTime.Width = 125;
+            // 
+            // editSchedule
+            // 
+            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle14.NullValue = ((object)(resources.GetObject("dataGridViewCellStyle14.NullValue")));
+            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.Color.Black;
+            this.editSchedule.DefaultCellStyle = dataGridViewCellStyle14;
+            this.editSchedule.HeaderText = "";
+            this.editSchedule.Name = "editSchedule";
+            this.editSchedule.ReadOnly = true;
+            this.editSchedule.Width = 95;
+            // 
+            // deleteSchedule
+            // 
+            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle15.NullValue = ((object)(resources.GetObject("dataGridViewCellStyle15.NullValue")));
+            dataGridViewCellStyle15.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle15.SelectionForeColor = System.Drawing.Color.Black;
+            this.deleteSchedule.DefaultCellStyle = dataGridViewCellStyle15;
+            this.deleteSchedule.HeaderText = "";
+            this.deleteSchedule.Image = global::ParentalControlWindowsForm.Properties.Resources.delete;
+            this.deleteSchedule.Name = "deleteSchedule";
+            this.deleteSchedule.ReadOnly = true;
+            this.deleteSchedule.Width = 95;
+            // 
             // btnAddSchedule
             // 
             this.btnAddSchedule.BackColor = System.Drawing.SystemColors.Highlight;
@@ -255,58 +353,29 @@ namespace ParentalControlWindowsForm.Forms
             this.btnMyAccount.UseVisualStyleBackColor = false;
             this.btnMyAccount.Click += new System.EventHandler(this.btnMyAccount_Click);
             // 
-            // dgvSchedule
+            // label5
             // 
-            this.dgvSchedule.AllowUserToAddRows = false;
-            this.dgvSchedule.AllowUserToDeleteRows = false;
-            this.dgvSchedule.BackgroundColor = System.Drawing.Color.White;
-            this.dgvSchedule.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvSchedule.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.idSchedule,
-            this.StartTime,
-            this.EndTime,
-            this.editSchedule,
-            this.deleteSchedule});
-            this.dgvSchedule.Location = new System.Drawing.Point(292, 126);
-            this.dgvSchedule.Name = "dgvSchedule";
-            this.dgvSchedule.ReadOnly = true;
-            this.dgvSchedule.RowTemplate.DividerHeight = 10;
-            this.dgvSchedule.RowTemplate.Height = 60;
-            this.dgvSchedule.Size = new System.Drawing.Size(443, 328);
-            this.dgvSchedule.TabIndex = 29;
-            this.dgvSchedule.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvSchedule_CellContentClick);
+            this.label5.AutoSize = true;
+            this.label5.BackColor = System.Drawing.Color.White;
+            this.label5.Font = new System.Drawing.Font("Arial", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.ForeColor = System.Drawing.SystemColors.WindowFrame;
+            this.label5.Location = new System.Drawing.Point(300, 123);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(93, 19);
+            this.label5.TabIndex = 30;
+            this.label5.Text = "Hora Inicio";
             // 
-            // idSchedule
+            // label6
             // 
-            this.idSchedule.HeaderText = "Horarios";
-            this.idSchedule.Name = "idSchedule";
-            this.idSchedule.ReadOnly = true;
-            this.idSchedule.Visible = false;
-            // 
-            // StartTime
-            // 
-            this.StartTime.HeaderText = "Hora Inicio";
-            this.StartTime.Name = "StartTime";
-            this.StartTime.ReadOnly = true;
-            // 
-            // EndTime
-            // 
-            this.EndTime.HeaderText = "Hora Fin";
-            this.EndTime.Name = "EndTime";
-            this.EndTime.ReadOnly = true;
-            // 
-            // editSchedule
-            // 
-            this.editSchedule.HeaderText = "";
-            this.editSchedule.Name = "editSchedule";
-            this.editSchedule.ReadOnly = true;
-            // 
-            // deleteSchedule
-            // 
-            this.deleteSchedule.HeaderText = "";
-            this.deleteSchedule.Image = global::ParentalControlWindowsForm.Properties.Resources.delete;
-            this.deleteSchedule.Name = "deleteSchedule";
-            this.deleteSchedule.ReadOnly = true;
+            this.label6.AutoSize = true;
+            this.label6.BackColor = System.Drawing.Color.White;
+            this.label6.Font = new System.Drawing.Font("Arial", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.ForeColor = System.Drawing.SystemColors.WindowFrame;
+            this.label6.Location = new System.Drawing.Point(434, 123);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(76, 19);
+            this.label6.TabIndex = 31;
+            this.label6.Text = "Hora Fin";
             // 
             // FormSchedule
             // 
@@ -314,6 +383,8 @@ namespace ParentalControlWindowsForm.Forms
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(884, 561);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.dgvSchedule);
             this.Controls.Add(this.btnAddSchedule);
             this.Controls.Add(this.btnLogout);
@@ -323,9 +394,11 @@ namespace ParentalControlWindowsForm.Forms
             this.Controls.Add(this.panel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Location = new System.Drawing.Point(450, 490);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "FormSchedule";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "FormSchedule";
+            this.Text = "Control Parental";
             this.Load += new System.EventHandler(this.FormSchedule_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
@@ -364,5 +437,7 @@ namespace ParentalControlWindowsForm.Forms
         private System.Windows.Forms.DataGridViewTextBoxColumn EndTime;
         private System.Windows.Forms.DataGridViewImageColumn editSchedule;
         private System.Windows.Forms.DataGridViewImageColumn deleteSchedule;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label6;
     }
 }

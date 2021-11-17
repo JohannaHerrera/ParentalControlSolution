@@ -117,10 +117,6 @@ namespace ParentalControlWindowsForm.Forms
                 {
                     infantAccountModel.InfantGender = constants.Masculino;
                 }
-                else
-                {
-                    MessageBox.Show("Debe seleccionar el Género de su hijo.");
-                }
                 
                 string message = infantAccountModel.Validate(infantAccountModel);
 
