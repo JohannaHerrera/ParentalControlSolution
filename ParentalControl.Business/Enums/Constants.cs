@@ -29,5 +29,29 @@ namespace ParentalControl.Business.Enums
                 return "No Protegido";
             }
         }
+
+        public string Ninguno
+        {
+            get
+            {
+                return "Ninguno";
+            }
+        }
+
+        public int Access
+        {
+            get
+            {
+                return 1;
+            }
+        }
+
+        public int NoAccess
+        {
+            get
+            {
+                return 0;
+            }
+        }
     }
 }

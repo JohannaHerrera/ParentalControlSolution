@@ -73,14 +73,21 @@ namespace ParentalControl.Business.BusinessBO
         {
 
             List<ScheduleModel> scheduleModelList = new List<ScheduleModel>();
-            ScheduleModel accountNoProtected = new ScheduleModel();
-            Constants constants = new Constants();
 
             string query = $"SELECT * FROM Schedule WHERE ParentId = {parentId}";
             List<ScheduleModel> schedule = this.ObtenerListaSQL<ScheduleModel>(query).ToList();
             scheduleModelList.AddRange(schedule);
             return scheduleModelList;
 
+        }
+
+        public ScheduleModel GetSpecificSchedule(int scheduleId)
+        {
+            string query = $"SELECT * FROM Schedule WHERE ScheduleId = {scheduleId}";
+            List<ScheduleModel> scheduleModelList = this.ObtenerListaSQL<ScheduleModel>(query).ToList();
+            ScheduleModel scheduleModel = scheduleModelList.FirstOrDefault();
+
+            return scheduleModel;
         }
 
         //Create

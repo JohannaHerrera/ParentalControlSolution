@@ -15,6 +15,8 @@ namespace ParentalControl.Models.Device
         public int AppId { get; set; }
         // Id del infante
         public int InfantAccountId { get; set; }
+        // Id del infante
+        public int ScheduleId { get; set; }
         // Id del dispositivo PC
         public int DevicePCId { get; set; }
         // Nombre de la App

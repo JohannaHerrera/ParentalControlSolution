@@ -1,4 +1,5 @@
 ﻿using ParentalControl.Business.BusinessBO;
+using ParentalControl.Business.Enums;
 using ParentalControl.Models.Device;
 using ParentalControl.Models.Schedule;
 using System;
@@ -28,7 +29,8 @@ namespace ParentalControlWindowsForm.Forms
             try
             {
 
-                InfantAccountBO infantAccountBO = new InfantAccountBO();               
+                InfantAccountBO infantAccountBO = new InfantAccountBO();
+                Constants constants = new Constants(); 
                 lblInfantAccountName.Text= infantAccountBO.GetInfantAccount(this.infantId).InfantName;
 
                 // ***************** CATEGORÍAS WEB ***************** 
@@ -42,11 +44,13 @@ namespace ParentalControlWindowsForm.Forms
                 List<ApplicationModel> applicationModelList = new List<ApplicationModel>();
                 List<DeviceModel> deviceModelList = new List<DeviceModel>();
                 List<ScheduleModel> scheduleModelList = new List<ScheduleModel>();
+                ScheduleModel scheduleModel = new ScheduleModel();
                 DeviceBO deviceBO = new DeviceBO();
                 ScheduleBO scheduleBO = new ScheduleBO();
                 ApplicationBO applicationBO = new ApplicationBO();
 
                 //Obtengo los horarios
+                this.Schedule.Items.Add(constants.Ninguno);
                 scheduleModelList = scheduleBO.GetSchedule(this.parentId);
                 foreach (var schedule in scheduleModelList)
                 {
@@ -59,15 +63,48 @@ namespace ParentalControlWindowsForm.Forms
                 string deviceCode = deviceBO.GetMACAddress();
                 deviceModelList = deviceBO.VerifyDeviceExist(deviceCode);
                 int deviceId = deviceModelList.FirstOrDefault().DevicePCId;
+                int iterator = 0;
 
-                // Obtengo las aplicaciones de este Dispositivo
+                // Obtengo las aplicaciones de este Dispositivo con su configuración
                 applicationModelList = applicationBO.GetAppsDevice(this.infantId, deviceId);
 
                 foreach (var app in applicationModelList)
                 {
-                    dgvAppLock.Rows.Add(app.AppName);
+                    dgvAppLock.Rows.Add(app.AppName, false, this.Schedule.Items[0]);
+
+                    DataGridViewCheckBoxCell chkchecking = this.dgvAppLock.Rows[iterator].Cells[1] as DataGridViewCheckBoxCell;
+                    DataGridViewComboBoxCell cmb = this.dgvAppLock.Rows[iterator].Cells[2] as DataGridViewComboBoxCell;
+
+                    // Si tiene configurado horario de uso
+                    if (app.ScheduleId != 0)
+                    {
+                        scheduleModel = scheduleBO.GetSpecificSchedule(app.ScheduleId);
+                        string horaInicio = scheduleModel.ScheduleStartTime.ToString("HH:mm");
+                        string horaFin = scheduleModel.ScheduleEndTime.ToString("HH:mm");
+                        // No seleccionado
+                        chkchecking.Value = false;
+                    }
+                    else
+                    {
+                        // Si está bloqueada
+                        if (app.AppAccessPermission == false) //(= 0)
+                        {
+                            chkchecking.Value = true;
+                            cmb.ReadOnly = true;
+                            cmb.Value = cmb.Items[0];
+                        }
+                        else
+                        {
+                            chkchecking.Value = false;
+                            cmb.ReadOnly = false;
+                            cmb.Value = cmb.Items[0];
+                        }
+                    }
+
+                    iterator++;
                 }
-               
+
+                dgvAppLock.Sort(dgvAppLock.Columns[0], ListSortDirection.Ascending);
 
                 // ***************** USO DEL DISPOSITIVO ***************** 
                 dgvTimeUseDevice.Rows.Add("Day");
@@ -264,6 +301,63 @@ namespace ParentalControlWindowsForm.Forms
                 this.dgvAppLock.Visible = false;
                 this.dgvTimeUseDevice.Visible = false;
                 this.dgvActivityRecord.Visible = true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                // ***************** CATEGORÍAS WEB ***************** 
+
+                // ***************** APLICACIONES ***************** 
+                foreach (DataGridViewRow row in this.dgvAppLock.Rows)
+                {
+                    string appName = row.Cells[0].Value.ToString();
+                    string infantAccountName = row.Cells[1].Value.ToString();
+                }
+
+                    // ***************** USO DEL DISPOSITIVO ***************** 
+
+                    // ***************** HISTORIAL ***************** 
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void dgvWebLock_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            
+        }
+
+        private void dgvAppLock_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                if (e.ColumnIndex == 2)
+                {
+                    DataGridViewCheckBoxCell chkchecking = this.dgvAppLock.CurrentRow.Cells[1] as DataGridViewCheckBoxCell;
+                    chkchecking.Value = false;
+                }
+
+                if (e.ColumnIndex == 1)
+                {
+                    DataGridViewCheckBoxCell chkchecking = this.dgvAppLock.CurrentRow.Cells[1] as DataGridViewCheckBoxCell;
+                    DataGridViewComboBoxCell cmb = this.dgvAppLock.CurrentRow.Cells[2] as DataGridViewComboBoxCell;
+
+                    // Bloquear
+                    if (Convert.ToBoolean(chkchecking.Value) == false)
+                    {
+                        cmb.Value = cmb.Items[0];
+                    }
+                }                
             }
             catch (Exception ex)
             {

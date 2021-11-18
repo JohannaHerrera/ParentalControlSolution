@@ -31,10 +31,7 @@ namespace ParentalControlWindowsForm.Forms
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -42,6 +39,9 @@ namespace ParentalControlWindowsForm.Forms
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormInfantRules));
             this.panel2 = new System.Windows.Forms.Panel();
             this.label4 = new System.Windows.Forms.Label();
@@ -58,14 +58,9 @@ namespace ParentalControlWindowsForm.Forms
             this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
             this.panel1 = new System.Windows.Forms.Panel();
             this.dgvActivityRecord = new System.Windows.Forms.DataGridView();
-            this.Description = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvTimeUseDevice = new System.Windows.Forms.DataGridView();
-            this.Day = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ScheduleDeviceUse = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.dgvAppLock = new System.Windows.Forms.DataGridView();
             this.dgvWebLock = new System.Windows.Forms.DataGridView();
-            this.Category = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.EnableCategory = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.btnActivityRecord = new ParentalControlWindowsForm.Botones_Personalizados.OurButton();
             this.btnTimeUseDevice = new ParentalControlWindowsForm.Botones_Personalizados.OurButton();
             this.btnAppLock = new ParentalControlWindowsForm.Botones_Personalizados.OurButton();
@@ -73,9 +68,14 @@ namespace ParentalControlWindowsForm.Forms
             this.btnSave = new ParentalControlWindowsForm.Botones_Personalizados.OurButton();
             this.btnLogout = new ParentalControlWindowsForm.Botones_Personalizados.OurButton();
             this.btnMyAccount = new ParentalControlWindowsForm.Botones_Personalizados.OurButton();
+            this.Category = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.EnableCategory = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.App = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.EnableApp = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.Schedule = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.Day = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ScheduleDeviceUse = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.Description = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imgNotifications)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgScheedule)).BeginInit();
@@ -254,6 +254,8 @@ namespace ParentalControlWindowsForm.Forms
             // 
             this.dgvActivityRecord.AllowUserToAddRows = false;
             this.dgvActivityRecord.AllowUserToDeleteRows = false;
+            this.dgvActivityRecord.AllowUserToResizeColumns = false;
+            this.dgvActivityRecord.AllowUserToResizeRows = false;
             this.dgvActivityRecord.BackgroundColor = System.Drawing.Color.White;
             this.dgvActivityRecord.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvActivityRecord.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SunkenHorizontal;
@@ -281,22 +283,12 @@ namespace ParentalControlWindowsForm.Forms
             this.dgvActivityRecord.TabIndex = 36;
             this.dgvActivityRecord.Visible = false;
             // 
-            // Description
-            // 
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
-            this.Description.DefaultCellStyle = dataGridViewCellStyle3;
-            this.Description.HeaderText = "Descripción";
-            this.Description.Name = "Description";
-            this.Description.ReadOnly = true;
-            this.Description.Width = 572;
-            // 
             // dgvTimeUseDevice
             // 
             this.dgvTimeUseDevice.AllowUserToAddRows = false;
             this.dgvTimeUseDevice.AllowUserToDeleteRows = false;
+            this.dgvTimeUseDevice.AllowUserToResizeColumns = false;
+            this.dgvTimeUseDevice.AllowUserToResizeRows = false;
             this.dgvTimeUseDevice.BackgroundColor = System.Drawing.Color.White;
             this.dgvTimeUseDevice.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvTimeUseDevice.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SunkenHorizontal;
@@ -324,34 +316,12 @@ namespace ParentalControlWindowsForm.Forms
             this.dgvTimeUseDevice.TabIndex = 35;
             this.dgvTimeUseDevice.Visible = false;
             // 
-            // Day
-            // 
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.Black;
-            this.Day.DefaultCellStyle = dataGridViewCellStyle5;
-            this.Day.HeaderText = "Día";
-            this.Day.Name = "Day";
-            this.Day.ReadOnly = true;
-            this.Day.Width = 270;
-            // 
-            // ScheduleDeviceUse
-            // 
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.Padding = new System.Windows.Forms.Padding(60, 5, 60, 5);
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.Black;
-            this.ScheduleDeviceUse.DefaultCellStyle = dataGridViewCellStyle6;
-            this.ScheduleDeviceUse.HeaderText = "Seleccionar Horario";
-            this.ScheduleDeviceUse.Name = "ScheduleDeviceUse";
-            this.ScheduleDeviceUse.Width = 286;
-            // 
             // dgvAppLock
             // 
             this.dgvAppLock.AllowUserToAddRows = false;
             this.dgvAppLock.AllowUserToDeleteRows = false;
+            this.dgvAppLock.AllowUserToResizeColumns = false;
+            this.dgvAppLock.AllowUserToResizeRows = false;
             this.dgvAppLock.BackgroundColor = System.Drawing.Color.White;
             this.dgvAppLock.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvAppLock.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SunkenHorizontal;
@@ -379,6 +349,7 @@ namespace ParentalControlWindowsForm.Forms
             this.dgvAppLock.Size = new System.Drawing.Size(572, 189);
             this.dgvAppLock.TabIndex = 34;
             this.dgvAppLock.Visible = false;
+            this.dgvAppLock.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvAppLock_CellContentClick);
             // 
             // dgvWebLock
             // 
@@ -414,33 +385,7 @@ namespace ParentalControlWindowsForm.Forms
             this.dgvWebLock.Size = new System.Drawing.Size(572, 189);
             this.dgvWebLock.TabIndex = 33;
             this.dgvWebLock.Visible = false;
-            // 
-            // Category
-            // 
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle12.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.Color.Black;
-            this.Category.DefaultCellStyle = dataGridViewCellStyle12;
-            this.Category.HeaderText = "     Categoría";
-            this.Category.Name = "Category";
-            this.Category.ReadOnly = true;
-            this.Category.Width = 286;
-            // 
-            // EnableCategory
-            // 
-            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle13.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle13.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle13.NullValue = false;
-            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.Color.Black;
-            this.EnableCategory.DefaultCellStyle = dataGridViewCellStyle13;
-            this.EnableCategory.HeaderText = "Habilitar/Deshabilitar";
-            this.EnableCategory.Name = "EnableCategory";
-            this.EnableCategory.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.EnableCategory.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.EnableCategory.Width = 286;
+            this.dgvWebLock.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvWebLock_CellContentClick);
             // 
             // btnActivityRecord
             // 
@@ -544,6 +489,7 @@ namespace ParentalControlWindowsForm.Forms
             this.btnSave.Text = "Guardar";
             this.btnSave.TextColor = System.Drawing.Color.White;
             this.btnSave.UseVisualStyleBackColor = false;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // btnLogout
             // 
@@ -585,9 +531,37 @@ namespace ParentalControlWindowsForm.Forms
             this.btnMyAccount.UseVisualStyleBackColor = false;
             this.btnMyAccount.Click += new System.EventHandler(this.btnMyAccount_Click);
             // 
+            // Category
+            // 
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle12.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.Color.Black;
+            this.Category.DefaultCellStyle = dataGridViewCellStyle12;
+            this.Category.HeaderText = "     Categoría";
+            this.Category.Name = "Category";
+            this.Category.ReadOnly = true;
+            this.Category.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.Category.Width = 286;
+            // 
+            // EnableCategory
+            // 
+            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle13.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle13.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle13.NullValue = false;
+            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.Color.Black;
+            this.EnableCategory.DefaultCellStyle = dataGridViewCellStyle13;
+            this.EnableCategory.HeaderText = "Bloquear";
+            this.EnableCategory.Name = "EnableCategory";
+            this.EnableCategory.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.EnableCategory.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.EnableCategory.Width = 286;
+            // 
             // App
             // 
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle8.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.White;
             dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.Black;
@@ -595,6 +569,7 @@ namespace ParentalControlWindowsForm.Forms
             this.App.HeaderText = "Aplicación";
             this.App.Name = "App";
             this.App.ReadOnly = true;
+            this.App.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.App.Width = 250;
             // 
             // EnableApp
@@ -606,11 +581,10 @@ namespace ParentalControlWindowsForm.Forms
             dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.White;
             dataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.Black;
             this.EnableApp.DefaultCellStyle = dataGridViewCellStyle9;
-            this.EnableApp.HeaderText = "Habilitar/Deshabilitar";
+            this.EnableApp.HeaderText = "    Bloquear";
             this.EnableApp.Name = "EnableApp";
-            this.EnableApp.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.EnableApp.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.EnableApp.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.EnableApp.Width = 160;
             // 
             // Schedule
             // 
@@ -622,7 +596,47 @@ namespace ParentalControlWindowsForm.Forms
             this.Schedule.DefaultCellStyle = dataGridViewCellStyle10;
             this.Schedule.HeaderText = "Seleccionar Horario";
             this.Schedule.Name = "Schedule";
-            this.Schedule.Width = 172;
+            this.Schedule.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.Schedule.Width = 200;
+            // 
+            // Day
+            // 
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.Black;
+            this.Day.DefaultCellStyle = dataGridViewCellStyle5;
+            this.Day.HeaderText = "Día";
+            this.Day.Name = "Day";
+            this.Day.ReadOnly = true;
+            this.Day.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.Day.Width = 250;
+            // 
+            // ScheduleDeviceUse
+            // 
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.Padding = new System.Windows.Forms.Padding(60, 5, 60, 5);
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.Black;
+            this.ScheduleDeviceUse.DefaultCellStyle = dataGridViewCellStyle6;
+            this.ScheduleDeviceUse.HeaderText = "Seleccionar Horario";
+            this.ScheduleDeviceUse.Name = "ScheduleDeviceUse";
+            this.ScheduleDeviceUse.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.ScheduleDeviceUse.Width = 280;
+            // 
+            // Description
+            // 
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
+            this.Description.DefaultCellStyle = dataGridViewCellStyle3;
+            this.Description.HeaderText = "Descripción";
+            this.Description.Name = "Description";
+            this.Description.ReadOnly = true;
+            this.Description.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.Description.Width = 572;
             // 
             // FormInfantRules
             // 
@@ -688,12 +702,12 @@ namespace ParentalControlWindowsForm.Forms
         private System.Windows.Forms.DataGridView dgvTimeUseDevice;
         private System.Windows.Forms.DataGridView dgvActivityRecord;
         private System.Windows.Forms.DataGridViewTextBoxColumn Description;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Category;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn EnableCategory;
         private System.Windows.Forms.DataGridViewTextBoxColumn Day;
         private System.Windows.Forms.DataGridViewComboBoxColumn ScheduleDeviceUse;
         private System.Windows.Forms.DataGridViewTextBoxColumn App;
         private System.Windows.Forms.DataGridViewCheckBoxColumn EnableApp;
         private System.Windows.Forms.DataGridViewComboBoxColumn Schedule;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Category;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn EnableCategory;
     }
 }

@@ -1,4 +1,5 @@
 ﻿using Microsoft.Win32;
+using ParentalControl.Business.Enums;
 using ParentalControl.Data;
 using ParentalControl.Models.Device;
 using System;
@@ -6,6 +7,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace ParentalControl.Business.BusinessBO
@@ -40,6 +42,7 @@ namespace ParentalControl.Business.BusinessBO
         public bool RegisterApps(int infantId, string appName)
         {
             DeviceBO deviceBO = new DeviceBO();
+            Constants constants = new Constants();
             var creationDate = DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss");
             string deviceCode = deviceBO.GetMACAddress();
             bool execute = false;
@@ -51,7 +54,7 @@ namespace ParentalControl.Business.BusinessBO
             {
                 int deviceId = deviceModelList.FirstOrDefault().DevicePCId;
                 query = $"INSERT INTO App VALUES (NULL, {infantId}, NULL, {deviceId}, " +
-                        $"'{appName}', 0, 0, '{creationDate}')";
+                        $"'{appName}', {constants.Access}, {constants.Access}, '{creationDate}')";
 
                 execute = SQLConexionDataBase.Execute(query);
             }
@@ -93,6 +96,7 @@ namespace ParentalControl.Business.BusinessBO
         {
             string displayName;
             string size;
+            string displayVersion;
 
             List<string> gInstalledSoftware = new List<string>();
 
@@ -101,18 +105,154 @@ namespace ParentalControl.Business.BusinessBO
                 foreach (String keyName in key.GetSubKeyNames())
                 {
                     RegistryKey subkey = key.OpenSubKey(keyName);
+
                     displayName = subkey.GetValue("DisplayName") as string;
                     size = subkey.GetValue("EstimatedSize") as string;
+                    displayVersion = subkey.GetValue("DisplayVersion") as string;
                     if (string.IsNullOrEmpty(displayName))
                         continue;
                     if (string.IsNullOrEmpty(displayName))
                         continue;
 
-                    gInstalledSoftware.Add(displayName.ToLower());
+                    if (displayVersion != null)
+                    {
+                        displayName = Regex.Replace(displayName, displayVersion, string.Empty);
+                    }
+
+                    displayName = this.DeleteSpecialCharacters(displayName);
+                    
+                    if (!(string.IsNullOrEmpty(displayName) || gInstalledSoftware.Contains(displayName)))
+                    {
+                        gInstalledSoftware.Add(displayName);
+                    }                                       
+                }
+            }
+
+            using (var localMachine = RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, RegistryView.Registry64))
+            {
+                var key = localMachine.OpenSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall", false);
+                foreach (String keyName in key.GetSubKeyNames())
+                {
+                    RegistryKey subkey = key.OpenSubKey(keyName);
+                    displayName = subkey.GetValue("DisplayName") as string;
+                    size = subkey.GetValue("EstimatedSize") as string;
+                    displayVersion = subkey.GetValue("DisplayVersion") as string;
+                    if (string.IsNullOrEmpty(displayName))
+                        continue;
+                    if (string.IsNullOrEmpty(displayName))
+                        continue;
+
+                    if (displayVersion != null)
+                    {
+                        displayName = Regex.Replace(displayName, displayVersion, string.Empty);
+                    }
+
+                    displayName = this.DeleteSpecialCharacters(displayName);
+
+                    if (!(string.IsNullOrEmpty(displayName) || gInstalledSoftware.Contains(displayName)))
+                    {
+                        gInstalledSoftware.Add(displayName);
+                    }
+                }
+            }
+
+            using (var localMachine = RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, RegistryView.Registry32))
+            {
+                var key = localMachine.OpenSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall", false);
+                foreach (String keyName in key.GetSubKeyNames())
+                {
+                    RegistryKey subkey = key.OpenSubKey(keyName);
+                    displayName = subkey.GetValue("DisplayName") as string;
+                    size = subkey.GetValue("EstimatedSize") as string;
+                    displayVersion = subkey.GetValue("DisplayVersion") as string;
+                    if (string.IsNullOrEmpty(displayName))
+                        continue;
+                    if (string.IsNullOrEmpty(displayName))
+                        continue;
+
+                    if (displayVersion != null)
+                    {
+                        displayName = Regex.Replace(displayName, displayVersion, string.Empty);
+                    }
+
+                    displayName = this.DeleteSpecialCharacters(displayName);
+
+                    if (!(string.IsNullOrEmpty(displayName) || gInstalledSoftware.Contains(displayName)))
+                    {
+                        gInstalledSoftware.Add(displayName);
+                    }
+                }
+            }
+
+            using (RegistryKey key = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall", false))
+            {
+                foreach (String keyName in key.GetSubKeyNames())
+                {
+                    RegistryKey subkey = key.OpenSubKey(keyName);
+                    displayName = subkey.GetValue("DisplayName") as string;
+                    size = subkey.GetValue("EstimatedSize") as string;
+                    displayVersion = subkey.GetValue("DisplayVersion") as string;
+                    if (string.IsNullOrEmpty(displayName))
+                        continue;
+                    if (string.IsNullOrEmpty(displayName))
+                        continue;
+
+                    if (displayVersion != null)
+                    {
+                        displayName = Regex.Replace(displayName, displayVersion, string.Empty);
+                    }
+
+                    displayName = this.DeleteSpecialCharacters(displayName);
+
+                    if (!(string.IsNullOrEmpty(displayName) || gInstalledSoftware.Contains(displayName)))
+                    {
+                        gInstalledSoftware.Add(displayName);
+                    }
                 }
             }
 
             return gInstalledSoftware;
+        }
+
+        /// <summary>
+        /// Método para eliminar caracteres especiales
+        /// </summary>
+        /// <param name="cadena">string</param>
+        /// <returns>IList<TModel></returns>
+        private string DeleteSpecialCharacters(string cadena)
+        {
+            cadena = Regex.Replace(cadena, "current user", string.Empty);
+            cadena = Regex.Replace(cadena, "user", string.Empty);
+            cadena = Regex.Replace(cadena, "-x86", string.Empty);
+            cadena = Regex.Replace(cadena, "x86_64", string.Empty);
+            cadena = Regex.Replace(cadena, "x86", string.Empty);
+            cadena = Regex.Replace(cadena, "x64", string.Empty);
+            cadena = Regex.Replace(cadena, "-en-us", string.Empty);
+            cadena = Regex.Replace(cadena, "es-ES", string.Empty);
+            cadena = Regex.Replace(cadena, "64-bit", string.Empty);
+            cadena = Regex.Replace(cadena, "[()]", string.Empty);
+            cadena = cadena.TrimEnd(' ');
+            if ((cadena.ToLower().Contains("microsoft")
+                || cadena.ToLower().Contains("sql")
+                || cadena.ToLower().Contains("python")
+                || cadena.ToLower().Contains("visual studio")
+                || cadena.ToLower().Contains("java")
+                || cadena.ToLower().Contains("office")
+                || cadena.ToLower().Contains("c++")
+                || cadena.ToLower().Contains("php")
+                || cadena.ToLower().Contains("windows")
+                || cadena.ToLower().Contains("vs")
+                || cadena.ToLower().Contains("icecap")
+                || cadena.ToLower().Contains(".net")
+                || cadena.ToLower().Contains("intellisense")
+                || cadena.ToLower().Contains("sdk")
+                || cadena.ToLower().Contains("crt")
+                || cadena.ToLower().Contains("vcpp")))
+            {
+                cadena = string.Empty;
+            }
+
+            return cadena;
         }
 
         /// <summary>
