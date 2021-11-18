@@ -31,7 +31,7 @@ namespace ParentalControlWindowsForm.Forms
         {
             ScheduleBO scheduleBO = new ScheduleBO();
             List<ScheduleModel> scheduleList = new List<ScheduleModel>();
-            scheduleList = scheduleBO.GetSchedule();
+            scheduleList = scheduleBO.GetSchedule(this.parentId);
 
             if (scheduleList.Count > 0)
             {

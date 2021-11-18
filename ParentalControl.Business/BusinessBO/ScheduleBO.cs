@@ -33,14 +33,15 @@ namespace ParentalControl.Business.BusinessBO
             }
         }
 
-        public int GetScheduleId(DateTime start,DateTime end)
+        public int GetScheduleId(DateTime start, DateTime end, int parentId)
         {
             int scheduleId = 0;
             var startTime = start.ToString("HH:mm");
             var endTime = end.ToString("HH:mm");
 
             string query = $"SELECT * FROM Schedule WHERE CAST(ScheduleStartTime AS time) =" +
-                           $" '{startTime}' AND CAST(ScheduleEndTime AS time) = '{endTime}'";
+                           $" '{startTime}' AND CAST(ScheduleEndTime AS time) = '{endTime}'" +
+                           $" AND ParentId = {parentId}";
 
             List<ScheduleModel> scheduleModelList = this.ObtenerListaSQL<ScheduleModel>(query).ToList();
 
@@ -52,13 +53,14 @@ namespace ParentalControl.Business.BusinessBO
             return scheduleId;
         }
 
-        public List<ScheduleModel> ValidateSchedule(DateTime start, DateTime end)
+        public List<ScheduleModel> ValidateSchedule(DateTime start, DateTime end, int parentId)
         {
             var startTime = start.ToString("HH:mm");
             var endTime = end.ToString("HH:mm");
 
             string query = $"SELECT * FROM Schedule WHERE CAST(ScheduleStartTime AS time) =" +
-                           $" '{startTime}' AND CAST(ScheduleEndTime AS time) = '{endTime}'";
+                           $" '{startTime}' AND CAST(ScheduleEndTime AS time) = '{endTime}'" +
+                           $" AND ParentId = {parentId}";
 
             List<ScheduleModel> scheduleModelList = this.ObtenerListaSQL<ScheduleModel>(query).ToList();
 
@@ -67,19 +69,20 @@ namespace ParentalControl.Business.BusinessBO
 
         //List
 
-        public List<ScheduleModel> GetSchedule()
+        public List<ScheduleModel> GetSchedule(int parentId)
         {
 
             List<ScheduleModel> scheduleModelList = new List<ScheduleModel>();
             ScheduleModel accountNoProtected = new ScheduleModel();
             Constants constants = new Constants();
 
-            string query = $"SELECT * FROM Schedule";
+            string query = $"SELECT * FROM Schedule WHERE ParentId = {parentId}";
             List<ScheduleModel> schedule = this.ObtenerListaSQL<ScheduleModel>(query).ToList();
             scheduleModelList.AddRange(schedule);
             return scheduleModelList;
 
         }
+
         //Create
         public bool RegisterSchedule(ScheduleModel scheduleModel)
         {
@@ -87,12 +90,13 @@ namespace ParentalControl.Business.BusinessBO
             var startTime = scheduleModel.ScheduleStartTime.ToString("HH:mm");
             var endTime = scheduleModel.ScheduleEndTime.ToString("HH:mm");
             string query = $"INSERT INTO Schedule VALUES('{startTime}', " +
-                           $" '{endTime}', '{creationDate}')";
+                           $" '{endTime}', '{creationDate}', {scheduleModel.ParentId})";
 
             bool execute = SQLConexionDataBase.Execute(query);
 
             return execute;
         }
+
         //delete
         public bool DeleteSchedule(int scheduleId)
         {
@@ -102,6 +106,7 @@ namespace ParentalControl.Business.BusinessBO
 
             return execute;
         }
+
         //edit
         public bool UpdateSchedule(ScheduleModel scheduleModel)
         {

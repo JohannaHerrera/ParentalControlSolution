@@ -191,11 +191,12 @@ namespace ParentalControlWindowsForm.Forms
                 {
                     string windowsAccountName = row.Cells[0].Value.ToString();
                     string infantAccountName = row.Cells[1].Value.ToString();
-                    int infantId = infantAccountBO.GetInfantId(infantAccountName);
-                    windowsAccountModelList = windowsAccountBO.VerifyWindowsInfantAccount(windowsAccountName, infantId);
+                    int infantIdNuevo = infantAccountBO.GetInfantId(infantAccountName);
+                    int infantIdAnterior = this.infantIdEditList[iterator];
 
                     // Verifico si existe una cuenta Windows vinculada a la cuenta Infantil
-
+                    windowsAccountModelList = windowsAccountBO.VerifyWindowsInfantAccount(windowsAccountName, infantIdAnterior);
+                  
                     // Si ya existe actualizo el registro
                     if (windowsAccountModelList.Count > 0)
                     {
@@ -203,59 +204,63 @@ namespace ParentalControlWindowsForm.Forms
                         if (!infantAccountName.Equals(constants.NoProtected.ToString()))
                         {
                             // Si es la misma cuenta infantil que estaba no actualizo
-                            if (infantId != this.infantIdEditList[iterator])
+                            if (infantIdNuevo != this.infantIdEditList[iterator])
                             {
-                                if (!windowsAccountBO.UpdateInfantAccountLinked(infantAccountName, windowsAccountName, parentId))
+                                if (!windowsAccountBO.UpdateInfantAccountLinked(infantIdNuevo, windowsAccountName, infantIdAnterior))
                                 {
                                     updateState = false;
                                 }
                                 else
                                 {
-                                    if (!windowsAccountBO.DeleteWindowsAccount(infantId, windowsAccountName))
+                                    // Si se actualiza la cuenta infantil vinculada
+
+                                    // Registro las aplicaciones a la nueva cuenta
+                                    ApplicationBO applicationBO = new ApplicationBO();
+                                    List<string> installedApps = applicationBO.GetInstalledApps();
+                                    
+                                    foreach(var app in installedApps)
                                     {
-                                        updateState = false;
+                                        applicationBO.RegisterApps(infantIdNuevo, app);
                                     }
+
+                                    // Elimino las aplicaciones a la cuenta anterior
+                                    applicationBO.DeleteApps(infantIdAnterior);
                                 }
                             }                           
                         }
                         else
                         {
                             // Si se cambia a No Protegido elimino el registro
-                            if (!windowsAccountBO.DeleteWindowsAccount(infantId, windowsAccountName))
-                            {
-                                updateState = false;
-                            }
-                        }
-                    }
-                    else
-                    {
-                        // Si no existe registro en la BB
-                        if (!infantAccountName.Equals(constants.NoProtected.ToString()))
-                        {
-                            if (!windowsAccountBO.RegisterWindowsAccount(infantId, windowsAccountName))
+                            if (!windowsAccountBO.DeleteWindowsAccount(infantIdAnterior, windowsAccountName))
                             {
                                 updateState = false;
                             }
                             else
                             {
-                                // Verifico si no tenía vinculada antes una cuenta infantil
-                                if(this.infantIdEditList[iterator] != 0)
-                                {
-                                    if (!windowsAccountBO.DeleteWindowsAccount(this.infantIdEditList[iterator], windowsAccountName))
-                                    {
-                                        updateState = false;
-                                    }
-                                }
+                                // Elimino las aplicaciones a la cuenta anterior
+                                ApplicationBO applicationBO = new ApplicationBO();
+                                applicationBO.DeleteApps(infantIdAnterior);
                             }
                         }
-                        else
+                    }
+                    else
+                    {
+                        // Si no existe registro en la BD
+                        if (!infantAccountName.Equals(constants.NoProtected.ToString()))
                         {
-                            // Verifico si no tenía vinculada antes una cuenta infantil
-                            if (this.infantIdEditList[iterator] != 0)
+                            if (!windowsAccountBO.RegisterWindowsAccount(infantIdNuevo, windowsAccountName))
                             {
-                                if (!windowsAccountBO.DeleteWindowsAccount(this.infantIdEditList[iterator], windowsAccountName))
+                                updateState = false;
+                            }
+                            else
+                            {
+                                // Registro las aplicaciones a la nueva cuenta
+                                ApplicationBO applicationBO = new ApplicationBO();
+                                List<string> installedApps = applicationBO.GetInstalledApps();
+
+                                foreach (var app in installedApps)
                                 {
-                                    updateState = false;
+                                    applicationBO.RegisterApps(infantIdNuevo, app);
                                 }
                             }
                         }

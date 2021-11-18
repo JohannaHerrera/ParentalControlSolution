@@ -17,8 +17,10 @@ namespace ParentalControl.Models.Schedule
         public DateTime ScheduleStartTime { get; set; }
         //Tiempo de fin
         public DateTime ScheduleEndTime { get; set; }
-        //Fecha de creacion
+        //Fecha de creación
         public DateTime ScheduleCreationDate { get; set; }
+        //Id del Padre
+        public int ParentId { get; set; }
 
         //Método para validar los datos
         public string Validate(ScheduleModel scheduleModel)

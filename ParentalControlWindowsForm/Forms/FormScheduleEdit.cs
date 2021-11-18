@@ -71,6 +71,7 @@ namespace ParentalControlWindowsForm.Forms
                 scheduleModel.ScheduleStartTime = new DateTime(2021, 11, 11, ih, im, 0);
                 scheduleModel.ScheduleEndTime = new DateTime(2021, 11, 11, ihf, ime, 0);
                 scheduleModel.ScheduleId = this.scheduleId;
+                scheduleModel.ParentId = this.parentId;
 
                 string message = scheduleModel.Validate(scheduleModel);
 
@@ -83,7 +84,7 @@ namespace ParentalControlWindowsForm.Forms
                 {
                     // Se verifica que no exista un registro con el mismo horario
                     List<ScheduleModel> scheduleModelList = new List<ScheduleModel>();
-                    scheduleModelList = scheduleBO.ValidateSchedule(scheduleModel.ScheduleStartTime, scheduleModel.ScheduleEndTime);
+                    scheduleModelList = scheduleBO.ValidateSchedule(scheduleModel.ScheduleStartTime, scheduleModel.ScheduleEndTime, this.parentId);
 
                     if (scheduleModelList.Count > 0)
                     {

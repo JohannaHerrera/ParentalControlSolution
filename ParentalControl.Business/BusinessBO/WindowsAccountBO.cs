@@ -82,15 +82,25 @@ namespace ParentalControl.Business.BusinessBO
         /// </summary>
         /// <param name="deviceModel">contiene la data del dispositivo PC</param>
         /// <returns>bool: TRUE(registro exitoso), FALSE(error al registrar)</returns>
-        public bool UpdateInfantAccountLinked(string infantAccountName, string windowsAccountName, int parentId)
+        public bool UpdateInfantAccountLinked(int infantAccountIdActual, string windowsAccountName, int infantAccountIdAnterior)
         {
-            string query = $"SELECT * FROM InfantAccount WHERE InfantName = '{infantAccountName}' AND ParentId = {parentId}";
-            List<InfantAccountModel> infantAccountModelList = this.ObtenerListaSQL<InfantAccountModel>(query).ToList();
+            DeviceBO deviceBO = new DeviceBO();
+            bool execute = false;
+            string deviceCode = deviceBO.GetMACAddress();
 
-            int infantAccountId = infantAccountModelList.FirstOrDefault().InfantAccountId;
-            query = $"UPDATE WindowsAccount SET InfantAccountId = {infantAccountId} WHERE WindowsAccountName = '{windowsAccountName}'";
+            string query = $"SELECT * FROM DevicePC WHERE DevicePCCode = '{deviceCode}'";
+            List<DeviceModel> deviceModelList = this.ObtenerListaSQL<DeviceModel>(query).ToList();
 
-            bool execute = SQLConexionDataBase.Execute(query);
+            if (deviceModelList.Count > 0)
+            {
+                int deviceId = deviceModelList.FirstOrDefault().DevicePCId;
+                query = $"UPDATE WindowsAccount SET InfantAccountId = {infantAccountIdActual} " +
+                           $" WHERE WindowsAccountName = '{windowsAccountName}'" +
+                           $" AND DevicePCId = {deviceId}" +
+                           $" AND InfantAccountId = {infantAccountIdAnterior}";
+
+                execute = SQLConexionDataBase.Execute(query);
+            }          
 
             return execute;
         }

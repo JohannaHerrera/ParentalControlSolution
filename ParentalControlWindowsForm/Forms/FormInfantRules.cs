@@ -1,5 +1,6 @@
 ﻿using ParentalControl.Business.BusinessBO;
 using ParentalControl.Models.Device;
+using ParentalControl.Models.Schedule;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -29,16 +30,46 @@ namespace ParentalControlWindowsForm.Forms
 
                 InfantAccountBO infantAccountBO = new InfantAccountBO();               
                 lblInfantAccountName.Text= infantAccountBO.GetInfantAccount(this.infantId).InfantName;
+
+                // ***************** CATEGORÍAS WEB ***************** 
                 dgvWebLock.Rows.Add("Category", false);
                 dgvWebLock.Rows.Add("Category", false);
                 dgvWebLock.Rows.Add("Category", false);
                 dgvWebLock.Rows.Add("Category", false);
 
-                dgvAppLock.Rows.Add("App");
-                dgvAppLock.Rows.Add("App");
-                dgvAppLock.Rows.Add("App");
-                dgvAppLock.Rows.Add("App");
 
+                // ***************** APLICACIONES ***************** 
+                List<ApplicationModel> applicationModelList = new List<ApplicationModel>();
+                List<DeviceModel> deviceModelList = new List<DeviceModel>();
+                List<ScheduleModel> scheduleModelList = new List<ScheduleModel>();
+                DeviceBO deviceBO = new DeviceBO();
+                ScheduleBO scheduleBO = new ScheduleBO();
+                ApplicationBO applicationBO = new ApplicationBO();
+
+                //Obtengo los horarios
+                scheduleModelList = scheduleBO.GetSchedule(this.parentId);
+                foreach (var schedule in scheduleModelList)
+                {
+                    string horaInicio = schedule.ScheduleStartTime.ToString("HH:mm");
+                    string horaFin = schedule.ScheduleEndTime.ToString("HH:mm");
+                    this.Schedule.Items.Add($"{horaInicio} - {horaFin}");
+                }
+
+                // Obtengo el Id del Dispositivo
+                string deviceCode = deviceBO.GetMACAddress();
+                deviceModelList = deviceBO.VerifyDeviceExist(deviceCode);
+                int deviceId = deviceModelList.FirstOrDefault().DevicePCId;
+
+                // Obtengo las aplicaciones de este Dispositivo
+                applicationModelList = applicationBO.GetAppsDevice(this.infantId, deviceId);
+
+                foreach (var app in applicationModelList)
+                {
+                    dgvAppLock.Rows.Add(app.AppName);
+                }
+               
+
+                // ***************** USO DEL DISPOSITIVO ***************** 
                 dgvTimeUseDevice.Rows.Add("Day");
                 dgvTimeUseDevice.Rows.Add("Day");
                 dgvTimeUseDevice.Rows.Add("Day");
@@ -47,6 +78,7 @@ namespace ParentalControlWindowsForm.Forms
                 dgvTimeUseDevice.Rows.Add("Day");
                 dgvTimeUseDevice.Rows.Add("Day");
 
+                // ***************** HISTORIAL ***************** 
                 dgvActivityRecord.Rows.Add("Activity");
                 dgvActivityRecord.Rows.Add("Activity");
                 dgvActivityRecord.Rows.Add("Activity");
@@ -191,21 +223,7 @@ namespace ParentalControlWindowsForm.Forms
                 this.dgvWebLock.Visible = false;
                 this.dgvAppLock.Visible = true;
                 this.dgvTimeUseDevice.Visible = false;
-                this.dgvActivityRecord.Visible = false;
-
-                InfantAccountBO infantAccountBO = new InfantAccountBO();
-                List<ApplicationModel> applicationModelList = new List<ApplicationModel>();
-                List<DeviceModel> deviceModelList = new List<DeviceModel>();
-                DeviceBO deviceBO = new DeviceBO();
-                ApplicationBO applicationBO = new ApplicationBO();
-
-                // Obtengo el Id del Dispositivo
-                string deviceCode = deviceBO.GetMACAddress();
-                deviceModelList = deviceBO.VerifyDeviceExist(deviceCode);
-                int deviceId = deviceModelList.FirstOrDefault().DevicePCId;
-
-                // Obtengo las aplicaciones de este Dispositivo
-                applicationModelList = applicationBO.GetAppsDevice(this.infantId, deviceId);
+                this.dgvActivityRecord.Visible = false;                             
             }
             catch (Exception ex)
             {

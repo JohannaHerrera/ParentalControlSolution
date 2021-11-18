@@ -20,7 +20,7 @@ namespace ParentalControl.Models.Device
         // Nombre de la App
         public string AppName { get; set; }
         // Acceso a la App
-        public byte AppAccessPermission { get; set; }
+        public bool AppAccessPermission { get; set; }
         // Fecha de creación
         public DateTime AppCreationDate { get; set; }
     }
