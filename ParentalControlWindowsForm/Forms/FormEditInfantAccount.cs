@@ -19,6 +19,8 @@ namespace ParentalControlWindowsForm.Forms
 
         public int parentId;
         public int infantId;
+        private string infantNameEdit;
+
         public FormEditInfantAccount()
         {
             InitializeComponent();
@@ -128,7 +130,7 @@ namespace ParentalControlWindowsForm.Forms
         private void FormEditInfantAccount_Load(object sender, EventArgs e)
         {
             try
-            {
+            {                
                 InfantAccountModel infantAccountModel = new InfantAccountModel();
                 InfantAccountBO infantAccountBO = new InfantAccountBO();
 
@@ -154,6 +156,8 @@ namespace ParentalControlWindowsForm.Forms
                     formInfantAccount.parentId = this.parentId;
                     formInfantAccount.Show();
                 }
+
+                this.infantNameEdit = this.txtName.Text;
             }
             catch (Exception ex)
             {
@@ -200,7 +204,8 @@ namespace ParentalControlWindowsForm.Forms
                     List<InfantAccountModel> infantAccountModelList = new List<InfantAccountModel>();
                     infantAccountModelList = infantAccountBO.ValidateInfantAccount(infantAccountModel.InfantName);
 
-                    if (infantAccountModelList.Count == 0)
+                    if (infantAccountModelList.Count == 0 ||
+                        infantAccountModelList.FirstOrDefault().InfantName.ToUpper().Equals(this.infantNameEdit.ToUpper()))
                     {
                         if (infantAccountBO.UpdateInfantInformation(infantAccountModel))
                         {
@@ -222,6 +227,7 @@ namespace ParentalControlWindowsForm.Forms
                     else
                     {
                         MessageBox.Show("Ya existe una cuenta con el mismo nombre.");
+                        this.txtName.Text = this.infantNameEdit;
                     }                   
                 }                   
             }

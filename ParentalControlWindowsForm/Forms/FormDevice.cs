@@ -18,6 +18,7 @@ namespace ParentalControlWindowsForm.Forms
     {
         public int parentId;
         public string deviceName;
+        private List<int> infantIdEditList = new List<int>();
 
         public FormDevice()
         {
@@ -43,6 +44,7 @@ namespace ParentalControlWindowsForm.Forms
         {
             try
             {
+                // CARGO LA INFORMACIÓN
                 DeviceBO deviceBO = new DeviceBO();
                 WindowsAccountBO windowsAccountBO = new WindowsAccountBO();
                 List<string> windowsAccounts = new List<string>();
@@ -68,7 +70,7 @@ namespace ParentalControlWindowsForm.Forms
                     FormHome formHome = new FormHome();
                     formHome.parentId = this.parentId;
                     formHome.Show();
-                }                
+                }
 
                 if (windowsAccounts.Count > 0)
                 {
@@ -81,7 +83,7 @@ namespace ParentalControlWindowsForm.Forms
                         if (windowsAccountModelList.Count > 0)
                         {
                             string accountName = windowsAccountBO.GetInfantAccountLinked(windowsAccountModelList.FirstOrDefault().InfantAccountId);
-                            
+
                             // Si no se obtiene la cuenta infantil vinculada se muestra el mensaje de error
                             if (string.IsNullOrEmpty(accountName))
                             {
@@ -93,13 +95,9 @@ namespace ParentalControlWindowsForm.Forms
                             }
                             else
                             {
-                                var query = (from infant in infantAccounts
-                                             where infant.Equals(accountName)
-                                             select infant.InfantName).FirstOrDefault();
-
-                                int index = query.FirstOrDefault();
+                                int index = infantAccounts.FindIndex(c => c.InfantName.Equals(accountName));
                                 this.dtgWindowsAccounts.Rows[iterator].Cells[1].Value = this.cmbInfantAccount.Items[index];
-                            }                           
+                            }
                         }
                         // Sino, se deja por defecto "No Protegido"
                         else
@@ -117,7 +115,24 @@ namespace ParentalControlWindowsForm.Forms
                     FormHome formHome = new FormHome();
                     formHome.parentId = this.parentId;
                     formHome.Show();
-                }                
+                }
+
+                // GUARDO EL ID DE LOS INFANTES EN CASO DE QUERER EDITAR
+                Constants constants = new Constants();
+                InfantAccountBO infantAccountBO = new InfantAccountBO();
+                foreach (DataGridViewRow row in this.dtgWindowsAccounts.Rows)
+                {
+                    string infantAccountName = row.Cells[1].Value.ToString();
+                    if (!infantAccountName.Equals(constants.NoProtected.ToString()))
+                    {
+                        int infantId = infantAccountBO.GetInfantId(infantAccountName);
+                        this.infantIdEditList.Add(infantId);
+                    }
+                    else
+                    {
+                        this.infantIdEditList.Add(0);
+                    }
+                }
             }
             catch (Exception ex)
             {
@@ -160,6 +175,7 @@ namespace ParentalControlWindowsForm.Forms
             {
                 WindowsAccountBO windowsAccountBO = new WindowsAccountBO();
                 DeviceBO deviceBO = new DeviceBO();
+                InfantAccountBO infantAccountBO = new InfantAccountBO();
                 WindowsAccountModel windowsAccountModel = new WindowsAccountModel();
                 List<WindowsAccountModel> windowsAccountModelList = new List<WindowsAccountModel>();
                 Constants constants = new Constants();
@@ -169,18 +185,43 @@ namespace ParentalControlWindowsForm.Forms
 
                 // Se actualiza el nombre del dispositivo
                 updateState = deviceBO.UpdateDeviceName(this.lblDeviceName.Text);
+                int iterator = 0;
 
                 foreach (DataGridViewRow row in this.dtgWindowsAccounts.Rows)
                 {
                     string windowsAccountName = row.Cells[0].Value.ToString();
-                    windowsAccountModelList = windowsAccountBO.VerifyWindowsAccount(windowsAccountName);
                     string infantAccountName = row.Cells[1].Value.ToString();
+                    int infantId = infantAccountBO.GetInfantId(infantAccountName);
+                    windowsAccountModelList = windowsAccountBO.VerifyWindowsInfantAccount(windowsAccountName, infantId);
 
+                    // Verifico si existe una cuenta Windows vinculada a la cuenta Infantil
+
+                    // Si ya existe actualizo el registro
                     if (windowsAccountModelList.Count > 0)
                     {
+                        // Actualizo si no tiene No Protegido
                         if (!infantAccountName.Equals(constants.NoProtected.ToString()))
                         {
-                            if (!windowsAccountBO.UpdateInfantAccountLinked(infantAccountName, windowsAccountName, parentId))
+                            // Si es la misma cuenta infantil que estaba no actualizo
+                            if (infantId != this.infantIdEditList[iterator])
+                            {
+                                if (!windowsAccountBO.UpdateInfantAccountLinked(infantAccountName, windowsAccountName, parentId))
+                                {
+                                    updateState = false;
+                                }
+                                else
+                                {
+                                    if (!windowsAccountBO.DeleteWindowsAccount(infantId, windowsAccountName))
+                                    {
+                                        updateState = false;
+                                    }
+                                }
+                            }                           
+                        }
+                        else
+                        {
+                            // Si se cambia a No Protegido elimino el registro
+                            if (!windowsAccountBO.DeleteWindowsAccount(infantId, windowsAccountName))
                             {
                                 updateState = false;
                             }
@@ -188,14 +229,39 @@ namespace ParentalControlWindowsForm.Forms
                     }
                     else
                     {
+                        // Si no existe registro en la BB
                         if (!infantAccountName.Equals(constants.NoProtected.ToString()))
                         {
-                            if (!windowsAccountBO.UpdateInfantAccountLinked(infantAccountName, windowsAccountName, parentId))
+                            if (!windowsAccountBO.RegisterWindowsAccount(infantId, windowsAccountName))
                             {
                                 updateState = false;
                             }
+                            else
+                            {
+                                // Verifico si no tenía vinculada antes una cuenta infantil
+                                if(this.infantIdEditList[iterator] != 0)
+                                {
+                                    if (!windowsAccountBO.DeleteWindowsAccount(this.infantIdEditList[iterator], windowsAccountName))
+                                    {
+                                        updateState = false;
+                                    }
+                                }
+                            }
+                        }
+                        else
+                        {
+                            // Verifico si no tenía vinculada antes una cuenta infantil
+                            if (this.infantIdEditList[iterator] != 0)
+                            {
+                                if (!windowsAccountBO.DeleteWindowsAccount(this.infantIdEditList[iterator], windowsAccountName))
+                                {
+                                    updateState = false;
+                                }
+                            }
                         }
                     }
+
+                    iterator++;
                 }
 
                 if (!updateState)
@@ -206,8 +272,25 @@ namespace ParentalControlWindowsForm.Forms
                 else
                 {
                     MessageBox.Show("La información se actualizó correctamente.");
-                    return;
                 }
+
+                // GUARDO EL ID DE LOS INFANTES EN CASO DE QUERER EDITAR
+                this.infantIdEditList.Clear();
+                foreach (DataGridViewRow row in this.dtgWindowsAccounts.Rows)
+                {
+                    string infantAccountName = row.Cells[1].Value.ToString();
+                    if (!infantAccountName.Equals(constants.NoProtected.ToString()))
+                    {
+                        int infantId = infantAccountBO.GetInfantId(infantAccountName);
+                        this.infantIdEditList.Add(infantId);
+                    }
+                    else
+                    {
+                        this.infantIdEditList.Add(0);
+                    }
+                }
+
+                return;
             }
             catch (Exception ex)
             {

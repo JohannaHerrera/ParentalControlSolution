@@ -15,14 +15,42 @@ namespace ParentalControl.Business.BusinessBO
     /// </summary>
     public class WindowsAccountBO
     {
+
         /// <summary>
-        /// Método para verificar si ya está registrada una cuenta Windows
+        /// Método para verificar si ya está registrada una cuenta Windows de la PC
         /// </summary>
         /// <param name="windowsAccountName">nombre de la cuenta Windows</param>
         /// <returns>List<WindowsAccountModel></returns>
         public List<WindowsAccountModel> VerifyWindowsAccount(string windowsAccountName)
         {
-            string query = $"SELECT * FROM WindowsAccount WHERE WindowsAccountName = '{windowsAccountName}'";
+            DeviceBO deviceBO = new DeviceBO();
+            string deviceCode = deviceBO.GetMACAddress();
+            string query = $"SELECT wa.WindowsAccountId, wa.WindowsAccountName, wa.InfantAccountId" +
+                           $" FROM WindowsAccount wa INNER JOIN DevicePC pc" +
+                           $" ON wa.DevicePCId = pc.DevicePCId" +
+                           $" WHERE pc.DevicePCCode = '{deviceCode}'" +
+                           $" AND wa.WindowsAccountName = '{windowsAccountName}'";
+
+            List<WindowsAccountModel> deviceModelList = this.ObtenerListaSQL<WindowsAccountModel>(query).ToList();
+
+            return deviceModelList;
+        }
+
+        /// <summary>
+        /// Método para verificar si ya está vinculada una cuenta Windows a una cuenta infantil
+        /// </summary>
+        /// <param name="windowsAccountName">nombre de la cuenta Windows</param>
+        /// <returns>List<WindowsAccountModel></returns>
+        public List<WindowsAccountModel> VerifyWindowsInfantAccount(string windowsAccountName, int infantId)
+        {
+            DeviceBO deviceBO = new DeviceBO();
+            string deviceCode = deviceBO.GetMACAddress();
+            string query = $"SELECT wa.WindowsAccountId, wa.WindowsAccountName" +
+                           $" FROM WindowsAccount wa INNER JOIN DevicePC pc" +
+                           $" ON wa.DevicePCId = pc.DevicePCId" +
+                           $" WHERE pc.DevicePCCode = '{deviceCode}'" +
+                           $" AND wa.InfantAccountId = {infantId}" +
+                           $" AND wa.WindowsAccountName = '{windowsAccountName}'";
 
             List<WindowsAccountModel> deviceModelList = this.ObtenerListaSQL<WindowsAccountModel>(query).ToList();
 
@@ -63,6 +91,60 @@ namespace ParentalControl.Business.BusinessBO
             query = $"UPDATE WindowsAccount SET InfantAccountId = {infantAccountId} WHERE WindowsAccountName = '{windowsAccountName}'";
 
             bool execute = SQLConexionDataBase.Execute(query);
+
+            return execute;
+        }
+
+        /// <summary>
+        /// Método para vincular la cuenta Windows con una cuenta Infantil
+        /// </summary>
+        /// <param name="deviceModel">contiene la data del dispositivo PC</param>
+        /// <returns>bool: TRUE(registro exitoso), FALSE(error al registrar)</returns>
+        public bool RegisterWindowsAccount(int infantId, string windowsAccountName)
+        {
+            var creationDate = DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss");
+            DeviceBO deviceBO = new DeviceBO();
+            string deviceCode = deviceBO.GetMACAddress();
+            bool execute = false;
+
+            string query = $"SELECT * FROM DevicePC WHERE DevicePCCode = '{deviceCode}'";
+            List<DeviceModel> deviceModelList = this.ObtenerListaSQL<DeviceModel>(query).ToList();
+
+            if (deviceModelList.Count > 0)
+            {
+                int deviceId = deviceModelList.FirstOrDefault().DevicePCId;
+                query = $"INSERT INTO WindowsAccount VALUES ('{windowsAccountName}'," +
+                               $" '{creationDate}', {deviceId}, {infantId})";
+
+                execute = SQLConexionDataBase.Execute(query);
+            }           
+
+            return execute;
+        }
+
+        /// <summary>
+        /// Método para eliminar la cuenta Windows
+        /// </summary>
+        /// <param name="deviceModel">contiene la data del dispositivo PC</param>
+        /// <returns>bool: TRUE(registro exitoso), FALSE(error al registrar)</returns>
+        public bool DeleteWindowsAccount(int infantId, string windowsAccountName)
+        {
+            DeviceBO deviceBO = new DeviceBO();
+            string deviceCode = deviceBO.GetMACAddress();
+            bool execute = false;
+
+            string query = $"SELECT * FROM DevicePC WHERE DevicePCCode = '{deviceCode}'";
+            List<DeviceModel> deviceModelList = this.ObtenerListaSQL<DeviceModel>(query).ToList();
+
+            if (deviceModelList.Count > 0)
+            {
+                int deviceId = deviceModelList.FirstOrDefault().DevicePCId;
+                query = $"DELETE FROM WindowsAccount WHERE DevicePCId = {deviceId}" +
+                        $" AND InfantAccountId = {infantId}" +
+                        $" AND WindowsAccountName = '{windowsAccountName}'";
+
+                execute = SQLConexionDataBase.Execute(query);
+            }
 
             return execute;
         }

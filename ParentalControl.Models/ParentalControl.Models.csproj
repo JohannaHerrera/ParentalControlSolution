@@ -49,6 +49,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Device\ApplicationModel.cs" />
     <Compile Include="Device\DeviceModel.cs" />
     <Compile Include="Device\WindowsAccountModel.cs" />
     <Compile Include="InfantAccount\InfantAccountModel.cs" />

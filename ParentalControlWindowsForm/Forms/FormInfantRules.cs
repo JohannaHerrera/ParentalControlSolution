@@ -1,4 +1,5 @@
 ﻿using ParentalControl.Business.BusinessBO;
+using ParentalControl.Models.Device;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -15,6 +16,7 @@ namespace ParentalControlWindowsForm.Forms
     {
         public int parentId;
         public int infantId;
+
         public FormInfantRules()
         {
             InitializeComponent();
@@ -25,10 +27,34 @@ namespace ParentalControlWindowsForm.Forms
             try
             {
 
-                InfantAccountBO infantAccountBO = new InfantAccountBO();
-                
+                InfantAccountBO infantAccountBO = new InfantAccountBO();               
                 lblInfantAccountName.Text= infantAccountBO.GetInfantAccount(this.infantId).InfantName;
+                dgvWebLock.Rows.Add("Category", false);
+                dgvWebLock.Rows.Add("Category", false);
+                dgvWebLock.Rows.Add("Category", false);
+                dgvWebLock.Rows.Add("Category", false);
 
+                dgvAppLock.Rows.Add("App");
+                dgvAppLock.Rows.Add("App");
+                dgvAppLock.Rows.Add("App");
+                dgvAppLock.Rows.Add("App");
+
+                dgvTimeUseDevice.Rows.Add("Day");
+                dgvTimeUseDevice.Rows.Add("Day");
+                dgvTimeUseDevice.Rows.Add("Day");
+                dgvTimeUseDevice.Rows.Add("Day");
+                dgvTimeUseDevice.Rows.Add("Day");
+                dgvTimeUseDevice.Rows.Add("Day");
+                dgvTimeUseDevice.Rows.Add("Day");
+
+                dgvActivityRecord.Rows.Add("Activity");
+                dgvActivityRecord.Rows.Add("Activity");
+                dgvActivityRecord.Rows.Add("Activity");
+                dgvActivityRecord.Rows.Add("Activity");
+
+                
+
+                //dgvWebLock.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             }
             catch (Exception ex)
             {
@@ -166,6 +192,20 @@ namespace ParentalControlWindowsForm.Forms
                 this.dgvAppLock.Visible = true;
                 this.dgvTimeUseDevice.Visible = false;
                 this.dgvActivityRecord.Visible = false;
+
+                InfantAccountBO infantAccountBO = new InfantAccountBO();
+                List<ApplicationModel> applicationModelList = new List<ApplicationModel>();
+                List<DeviceModel> deviceModelList = new List<DeviceModel>();
+                DeviceBO deviceBO = new DeviceBO();
+                ApplicationBO applicationBO = new ApplicationBO();
+
+                // Obtengo el Id del Dispositivo
+                string deviceCode = deviceBO.GetMACAddress();
+                deviceModelList = deviceBO.VerifyDeviceExist(deviceCode);
+                int deviceId = deviceModelList.FirstOrDefault().DevicePCId;
+
+                // Obtengo las aplicaciones de este Dispositivo
+                applicationModelList = applicationBO.GetAppsDevice(this.infantId, deviceId);
             }
             catch (Exception ex)
             {
