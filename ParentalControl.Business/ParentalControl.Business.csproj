@@ -53,6 +53,7 @@
   <ItemGroup>
     <Compile Include="BusinessBO\ApplicationBO.cs" />
     <Compile Include="BusinessBO\DeviceBO.cs" />
+    <Compile Include="BusinessBO\DeviceUseBO.cs" />
     <Compile Include="BusinessBO\InfantAccountBO.cs" />
     <Compile Include="BusinessBO\LoginBO.cs" />
     <Compile Include="BusinessBO\ParentBO.cs" />

@@ -120,13 +120,75 @@ namespace ParentalControlWindowsForm.Forms
                 dgvAppLock.Sort(dgvAppLock.Columns[0], ListSortDirection.Ascending);
 
                 // ***************** USO DEL DISPOSITIVO ***************** 
-                dgvTimeUseDevice.Rows.Add("Day");
-                dgvTimeUseDevice.Rows.Add("Day");
-                dgvTimeUseDevice.Rows.Add("Day");
-                dgvTimeUseDevice.Rows.Add("Day");
-                dgvTimeUseDevice.Rows.Add("Day");
-                dgvTimeUseDevice.Rows.Add("Day");
-                dgvTimeUseDevice.Rows.Add("Day");
+                iterator = 0;
+
+                List<String> listDay = new List<string>()
+                {
+                    "Lunes", 
+                    "Martes", 
+                    "Miércoles", 
+                    "Jueves", 
+                    "Viernes", 
+                    "Sábado", 
+                    "Domingo" 
+                };
+
+                foreach (var day in listDay)
+                {
+                    dgvTimeUseDevice.Rows.Add(day, this.Schedule.Items[0]);
+
+                    DataGridViewComboBoxCell cmbDeviceUse = this.dgvTimeUseDevice.Rows[iterator].Cells[1] as DataGridViewComboBoxCell;
+
+                    // Si tiene configurado horario de uso
+                    if (day.ScheduleId != 0)
+                    {
+                        scheduleModel = scheduleBO.GetSpecificSchedule(app.ScheduleId);
+                        string horaInicio = scheduleModel.ScheduleStartTime.ToString("HH:mm");
+                        string horaFin = scheduleModel.ScheduleEndTime.ToString("HH:mm");
+                        // No seleccionado
+                        chkchecking.Value = false;
+                        int index = 0;
+                        int idexItem = 0;
+                        string time = $"{horaInicio} - {horaFin}";
+                        foreach (var item in cmb.Items)
+                        {
+                            if (item.Equals(time))
+                            {
+                                index = idexItem;
+                            }
+
+                            idexItem++;
+                        }
+                        cmb.Value = cmb.Items[index];
+                    }
+                    else
+                    {
+                        // Si está bloqueada
+                        if (app.AppAccessPermission == false) //(= 0)
+                        {
+                            chkchecking.Value = true;
+                            cmb.ReadOnly = true;
+                            cmb.Value = cmb.Items[0];
+                        }
+                        else
+                        {
+                            chkchecking.Value = false;
+                            cmb.ReadOnly = false;
+                            cmb.Value = cmb.Items[0];
+                        }
+                    }
+
+                    iterator++;
+                }
+
+                dgvAppLock.Sort(dgvAppLock.Columns[0], ListSortDirection.Ascending);
+                dgvTimeUseDevice.Rows.Add("Lunes");
+                dgvTimeUseDevice.Rows.Add("Martes");
+                dgvTimeUseDevice.Rows.Add("Miércoles");
+                dgvTimeUseDevice.Rows.Add("Jueves");
+                dgvTimeUseDevice.Rows.Add("Viernes");
+                dgvTimeUseDevice.Rows.Add("Sábado");
+                dgvTimeUseDevice.Rows.Add("Domingo");
 
                 // ***************** HISTORIAL ***************** 
                 dgvActivityRecord.Rows.Add("Activity");
