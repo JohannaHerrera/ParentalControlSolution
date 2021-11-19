@@ -172,8 +172,6 @@ namespace ParentalControlWindowsForm.Forms
                     iterator++;
                 }
 
-                dgvTimeUseDevice.Sort(dgvTimeUseDevice.Columns[0], ListSortDirection.Ascending);
-
                 // ***************** HISTORIAL ***************** 
                 dgvActivityRecord.Rows.Add("Activity");
                 dgvActivityRecord.Rows.Add("Activity");
