@@ -228,9 +228,10 @@ namespace ParentalControlWindowsForm.Forms
                     {
                         InfantAccountBO infantAccountBO = new InfantAccountBO();
                         this.infantId = infantAccountBO.GetInfantId(dtgInfantAccounts.CurrentRow.Cells[1].Value.ToString());
+                        
                         if (infantAccountBO.DeleteInfantAccount(this.infantId))
                         {
-                            MessageBox.Show("Se eliminó la cuenta correctamente");
+                            MessageBox.Show("Se eliminó la cuenta correctamente.");
                             this.Hide();
                             FormInfantAccount formInfantAccount = new FormInfantAccount();
                             formInfantAccount.parentId = this.parentId;
@@ -238,13 +239,12 @@ namespace ParentalControlWindowsForm.Forms
                         }
                         else
                         {
-                            MessageBox.Show("No se pudo eliminar la cuenta, intente nuevamente");
+                            MessageBox.Show("Ocurrió un problema al eliminar la cuenta infantil.");
                             this.Hide();
                             FormInfantAccount formInfantAccount = new FormInfantAccount();
                             formInfantAccount.parentId = this.parentId;
                             formInfantAccount.Show();
-                        }
-                        
+                        }                        
                     }
                 }
                 catch (Exception ex)

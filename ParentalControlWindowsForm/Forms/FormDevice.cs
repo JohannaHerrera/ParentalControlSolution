@@ -378,10 +378,19 @@ namespace ParentalControlWindowsForm.Forms
                 }
                 if (res == DialogResult.Yes)
                 {
-                    
-
-                    MessageBox.Show("You have clicked Ok Button");
-                    
+                    DeviceBO deviceBO = new DeviceBO();
+                    if (deviceBO.DeleteDevice())
+                    {
+                        MessageBox.Show("El dispositivo se eliminó correctamente.");
+                        this.Hide();
+                        FormLogin formLogin = new FormLogin();
+                        formLogin.Show();
+                        MessageBox.Show("Si desea vincular nuevamente el dispositivo, Inicie Sesión.");
+                    }
+                    else
+                    {
+                        MessageBox.Show("You have clicked Ok Button");
+                    }                                       
                 }
             }
             catch (Exception ex)

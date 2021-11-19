@@ -451,6 +451,14 @@ namespace ParentalControlWindowsForm.Forms
 
                 // ***************** HISTORIAL ***************** 
 
+                if (execute)
+                {
+                    MessageBox.Show("Las configuraciones se guardaron correctamente.");
+                }
+                else
+                {
+                    MessageBox.Show("Ocurrió un error al guardar las configuraciones. Inténtelo de nuevo.");
+                }
             }
             catch (Exception ex)
             {
@@ -467,19 +475,19 @@ namespace ParentalControlWindowsForm.Forms
         {
             try
             {
-                if (e.ColumnIndex == 2)
-                {
-                    DataGridViewCheckBoxCell chkchecking = this.dgvAppLock.CurrentRow.Cells[1] as DataGridViewCheckBoxCell;
-                    chkchecking.Value = false;
-                }
-
                 if (e.ColumnIndex == 1)
                 {
                     DataGridViewCheckBoxCell chkchecking = this.dgvAppLock.CurrentRow.Cells[1] as DataGridViewCheckBoxCell;
                     DataGridViewComboBoxCell cmb = this.dgvAppLock.CurrentRow.Cells[2] as DataGridViewComboBoxCell;
 
                     cmb.Value = cmb.Items[0];
-                }                
+                }
+
+                if (e.ColumnIndex == 2)
+                {
+                    DataGridViewCheckBoxCell chkchecking = this.dgvAppLock.CurrentRow.Cells[1] as DataGridViewCheckBoxCell;
+                    chkchecking.Value = false;
+                }                 
             }
             catch (Exception ex)
             {
