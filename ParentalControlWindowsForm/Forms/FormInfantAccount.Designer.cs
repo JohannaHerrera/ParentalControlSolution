@@ -106,6 +106,8 @@ namespace ParentalControlWindowsForm.Forms
             // 
             this.dtgInfantAccounts.AllowUserToAddRows = false;
             this.dtgInfantAccounts.AllowUserToDeleteRows = false;
+            this.dtgInfantAccounts.AllowUserToResizeColumns = false;
+            this.dtgInfantAccounts.AllowUserToResizeRows = false;
             this.dtgInfantAccounts.BackgroundColor = System.Drawing.Color.White;
             this.dtgInfantAccounts.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dtgInfantAccounts.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SunkenHorizontal;
@@ -328,6 +330,7 @@ namespace ParentalControlWindowsForm.Forms
             this.InfantImage.HeaderText = "Imagen";
             this.InfantImage.Name = "InfantImage";
             this.InfantImage.ReadOnly = true;
+            this.InfantImage.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.InfantImage.Width = 90;
             // 
             // InfantName
@@ -340,6 +343,7 @@ namespace ParentalControlWindowsForm.Forms
             this.InfantName.HeaderText = "Nombre Infante";
             this.InfantName.Name = "InfantName";
             this.InfantName.ReadOnly = true;
+            this.InfantName.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.InfantName.Width = 150;
             // 
             // EditButton
@@ -352,6 +356,7 @@ namespace ParentalControlWindowsForm.Forms
             this.EditButton.HeaderText = "Editar";
             this.EditButton.Name = "EditButton";
             this.EditButton.ReadOnly = true;
+            this.EditButton.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.EditButton.Width = 50;
             // 
             // delete
@@ -365,6 +370,7 @@ namespace ParentalControlWindowsForm.Forms
             this.delete.Image = global::ParentalControlWindowsForm.Properties.Resources.editar_32;
             this.delete.Name = "delete";
             this.delete.ReadOnly = true;
+            this.delete.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.delete.Width = 50;
             // 
             // Reglas
@@ -377,6 +383,7 @@ namespace ParentalControlWindowsForm.Forms
             this.Reglas.HeaderText = "Reglas";
             this.Reglas.Name = "Reglas";
             this.Reglas.ReadOnly = true;
+            this.Reglas.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.Reglas.Width = 50;
             // 
             // FormInfantAccount

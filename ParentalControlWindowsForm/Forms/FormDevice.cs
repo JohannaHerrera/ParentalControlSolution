@@ -213,18 +213,39 @@ namespace ParentalControlWindowsForm.Forms
                                 else
                                 {
                                     // Si se actualiza la cuenta infantil vinculada
-
                                     // Registro las aplicaciones a la nueva cuenta
+
+                                    // Otengo las aplicaciones instaladas en la PC
                                     ApplicationBO applicationBO = new ApplicationBO();
                                     List<string> installedApps = applicationBO.GetInstalledApps();
-                                    
-                                    foreach(var app in installedApps)
+
+                                    // Obtengo las aplicaciones de la BD
+                                    string deviceCode = deviceBO.GetMACAddress();
+                                    List<DeviceModel>deviceModelList = deviceBO.VerifyDeviceExist(deviceCode);
+                                    int deviceId = deviceModelList.FirstOrDefault().DevicePCId;
+                                    List<ApplicationModel> applicationModelList = applicationBO.GetAppsDevice(infantIdNuevo, deviceId);
+
+                                    // Inserto las que no estén registradas
+                                    foreach (var app in installedApps)
                                     {
-                                        applicationBO.RegisterApps(infantIdNuevo, app);
+                                        bool containsItem = applicationModelList.Any(item => item.DevicePCId == deviceId 
+                                                            && item.AppName == app && item.InfantAccountId == infantIdNuevo);
+
+                                        if (!containsItem)
+                                        {
+                                            applicationBO.RegisterApps(infantIdNuevo, app);
+                                        }
                                     }
 
                                     // Elimino las aplicaciones a la cuenta anterior
-                                    applicationBO.DeleteApps(infantIdAnterior);
+                                    // (si no está vinculada a ninguna cuenta Windows)
+                                    // Verifico si existe una cuenta Windows vinculada a la cuenta Infantil anterior
+                                    List<WindowsAccountModel> windowsAccounts = windowsAccountBO.VerifyWindowsAccountFromInfants(infantIdAnterior);
+
+                                    if (windowsAccounts.Count == 0)
+                                    {
+                                        applicationBO.DeleteApps(infantIdAnterior);
+                                    }                                       
                                 }
                             }                           
                         }
@@ -237,9 +258,15 @@ namespace ParentalControlWindowsForm.Forms
                             }
                             else
                             {
-                                // Elimino las aplicaciones a la cuenta anterior
-                                ApplicationBO applicationBO = new ApplicationBO();
-                                applicationBO.DeleteApps(infantIdAnterior);
+                                // Verifico si existe una cuenta Windows vinculada a la cuenta Infantil
+                                List<WindowsAccountModel> windowsAccounts = windowsAccountBO.VerifyWindowsAccountFromInfants(infantIdAnterior);
+
+                                if (windowsAccounts.Count == 0)
+                                {
+                                    // Elimino las aplicaciones a la cuenta anterior
+                                    ApplicationBO applicationBO = new ApplicationBO();
+                                    applicationBO.DeleteApps(infantIdAnterior);
+                                }                  
                             }
                         }
                     }
@@ -254,13 +281,26 @@ namespace ParentalControlWindowsForm.Forms
                             }
                             else
                             {
-                                // Registro las aplicaciones a la nueva cuenta
+                                // Otengo las aplicaciones instaladas en la PC
                                 ApplicationBO applicationBO = new ApplicationBO();
                                 List<string> installedApps = applicationBO.GetInstalledApps();
 
+                                // Obtengo las aplicaciones de la BD
+                                string deviceCode = deviceBO.GetMACAddress();
+                                List<DeviceModel> deviceModelList = deviceBO.VerifyDeviceExist(deviceCode);
+                                int deviceId = deviceModelList.FirstOrDefault().DevicePCId;
+                                List<ApplicationModel> applicationModelList = applicationBO.GetAppsDevice(infantIdNuevo, deviceId);
+
+                                // Inserto las que no estén registradas
                                 foreach (var app in installedApps)
                                 {
-                                    applicationBO.RegisterApps(infantIdNuevo, app);
+                                    bool containsItem = applicationModelList.Any(item => item.DevicePCId == deviceId
+                                                        && item.AppName == app && item.InfantAccountId == infantIdNuevo);
+
+                                    if (!containsItem)
+                                    {
+                                        applicationBO.RegisterApps(infantIdNuevo, app);
+                                    }                                    
                                 }
                             }
                         }

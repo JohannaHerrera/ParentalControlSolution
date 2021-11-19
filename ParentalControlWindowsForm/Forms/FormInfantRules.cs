@@ -83,6 +83,19 @@ namespace ParentalControlWindowsForm.Forms
                         string horaFin = scheduleModel.ScheduleEndTime.ToString("HH:mm");
                         // No seleccionado
                         chkchecking.Value = false;
+                        int index = 0;
+                        int idexItem = 0;
+                        string time = $"{horaInicio} - {horaFin}";
+                        foreach (var item in cmb.Items)
+                        {
+                            if (item.Equals(time))
+                            {
+                                index = idexItem;
+                            }
+
+                            idexItem++;
+                        }
+                        cmb.Value = cmb.Items[index];
                     }
                     else
                     {
@@ -315,10 +328,49 @@ namespace ParentalControlWindowsForm.Forms
                 // ***************** CATEGORÍAS WEB ***************** 
 
                 // ***************** APLICACIONES ***************** 
+                
+                Constants constants = new Constants();
+                ApplicationBO application = new ApplicationBO();
+                ScheduleBO scheduleBO = new ScheduleBO();
+                bool execute = true;
+                int appAccess = 0;
+                DateTime startTime;
+                DateTime endTime;
+                int schededuleId = 0;
+
                 foreach (DataGridViewRow row in this.dgvAppLock.Rows)
                 {
                     string appName = row.Cells[0].Value.ToString();
-                    string infantAccountName = row.Cells[1].Value.ToString();
+                    // True: Lock, False: Enable
+                    if (Convert.ToBoolean(row.Cells[1].Value))
+                    {
+                        appAccess = constants.NoAccess;
+                    }
+                    else
+                    {
+                        appAccess = constants.Access;
+                    }
+
+                    string schedule = row.Cells[2].Value.ToString();
+
+                    if(schedule != constants.Ninguno)
+                    {
+                        appAccess = constants.Access;
+                        string[] time = schedule.Split(new Char[] {'-'});
+                        startTime = Convert.ToDateTime(time[0].TrimEnd(' '));
+                        endTime = Convert.ToDateTime(time[1].TrimEnd(' '));
+                        schededuleId = scheduleBO.GetScheduleId(startTime, endTime, this.parentId);
+                        schedule = schededuleId.ToString();
+                    }
+                    else
+                    {
+                        schedule = "NULL";
+                    }
+
+                    if (!application.UpdateAppLock(appName, this.infantId, schedule, appAccess))
+                    {
+                        execute = false;
+                    }
                 }
 
                     // ***************** USO DEL DISPOSITIVO ***************** 
@@ -352,11 +404,7 @@ namespace ParentalControlWindowsForm.Forms
                     DataGridViewCheckBoxCell chkchecking = this.dgvAppLock.CurrentRow.Cells[1] as DataGridViewCheckBoxCell;
                     DataGridViewComboBoxCell cmb = this.dgvAppLock.CurrentRow.Cells[2] as DataGridViewComboBoxCell;
 
-                    // Bloquear
-                    if (Convert.ToBoolean(chkchecking.Value) == false)
-                    {
-                        cmb.Value = cmb.Items[0];
-                    }
+                    cmb.Value = cmb.Items[0];
                 }                
             }
             catch (Exception ex)

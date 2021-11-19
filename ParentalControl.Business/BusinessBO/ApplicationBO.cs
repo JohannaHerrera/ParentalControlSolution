@@ -89,6 +89,33 @@ namespace ParentalControl.Business.BusinessBO
         }
 
         /// <summary>
+        /// Método para actualizar la configuración de bloqueo
+        /// </summary>
+        /// <param name="infantId">Id del Infante</param>
+        /// <returns>bool: TRUE(registro exitoso), FALSE(error al registrar)</returns>
+        public bool UpdateAppLock(string appName, int infantId, string scheduleId, int appAccess)
+        {
+            DeviceBO deviceBO = new DeviceBO();
+            string deviceCode = deviceBO.GetMACAddress();
+            bool execute = false;
+
+            string query = $"SELECT * FROM DevicePC WHERE DevicePCCode = '{deviceCode}'";
+            List<DeviceModel> deviceModelList = this.ObtenerListaSQL<DeviceModel>(query).ToList();
+
+            if (deviceModelList.Count > 0)
+            {
+                int deviceId = deviceModelList.FirstOrDefault().DevicePCId;
+                query = $"UPDATE App SET ScheduleId = {scheduleId}, AppAccessPermission = {appAccess}" +
+                        $" WHERE InfantAccountId = {infantId} AND DevicePCId = {deviceId}" +
+                        $" AND AppName = '{appName}'";
+
+                execute = SQLConexionDataBase.Execute(query);
+            }
+
+            return execute;
+        }
+
+        /// <summary>
         /// Método para obtener las aplicaciones instaladas en la PC
         /// </summary>
         /// <returns>List<string></returns>
@@ -247,7 +274,9 @@ namespace ParentalControl.Business.BusinessBO
                 || cadena.ToLower().Contains("intellisense")
                 || cadena.ToLower().Contains("sdk")
                 || cadena.ToLower().Contains("crt")
-                || cadena.ToLower().Contains("vcpp")))
+                || cadena.ToLower().Contains("vcpp")
+                || cadena.ToLower().Contains("intelr")
+                || (cadena.ToLower().Contains("iis") && cadena.ToLower().Contains("express"))))
             {
                 cadena = string.Empty;
             }

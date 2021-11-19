@@ -37,9 +37,10 @@ namespace ParentalControl.Business.BusinessBO
         }
 
         /// <summary>
-        /// Método para verificar si ya está vinculada una cuenta Windows a una cuenta infantil
+        /// Método para verificar si ya está vinculada una cuenta infanil a una cuenta Windows X
         /// </summary>
         /// <param name="windowsAccountName">nombre de la cuenta Windows</param>
+        /// <param name="infantId">Id del Infante</param>
         /// <returns>List<WindowsAccountModel></returns>
         public List<WindowsAccountModel> VerifyWindowsInfantAccount(string windowsAccountName, int infantId)
         {
@@ -51,6 +52,26 @@ namespace ParentalControl.Business.BusinessBO
                            $" WHERE pc.DevicePCCode = '{deviceCode}'" +
                            $" AND wa.InfantAccountId = {infantId}" +
                            $" AND wa.WindowsAccountName = '{windowsAccountName}'";
+
+            List<WindowsAccountModel> deviceModelList = this.ObtenerListaSQL<WindowsAccountModel>(query).ToList();
+
+            return deviceModelList;
+        }
+
+        /// <summary>
+        /// Método para verificar si hay cuentas Windows relacionadas a un infante
+        /// </summary>
+        /// <param name="infantId">Id del Infante</param>
+        /// <returns>List<WindowsAccountModel></returns>
+        public List<WindowsAccountModel> VerifyWindowsAccountFromInfants(int infantId)
+        {
+            DeviceBO deviceBO = new DeviceBO();
+            string deviceCode = deviceBO.GetMACAddress();
+            string query = $"SELECT wa.WindowsAccountId, wa.WindowsAccountName" +
+                           $" FROM WindowsAccount wa INNER JOIN DevicePC pc" +
+                           $" ON wa.DevicePCId = pc.DevicePCId" +
+                           $" WHERE pc.DevicePCCode = '{deviceCode}'" +
+                           $" AND wa.InfantAccountId = {infantId}";
 
             List<WindowsAccountModel> deviceModelList = this.ObtenerListaSQL<WindowsAccountModel>(query).ToList();
 
