@@ -129,12 +129,37 @@ namespace ParentalControlWindowsForm.Forms
                 {
                     // Se verifica que no exista un hijo con el mismo nombre
                     List<InfantAccountModel> infantAccountModelList = new List<InfantAccountModel>();
+                    List<DeviceUseModel> deviceUseModelList = new List<DeviceUseModel>();
                     infantAccountModelList = infantAccountBO.ValidateInfantAccount(infantAccountModel.InfantName);
 
                     if (infantAccountModelList.Count == 0)
                     {
                         if (infantAccountBO.CreateInfantAccount(infantAccountModel,parentId))
                         {
+                            int infantId = infantAccountBO.GetInfantId(infantAccountModel.InfantName);
+
+                            List<String> listDay = new List<string>()
+                            {           
+                                "Lunes",
+                                "Martes",
+                                "Miércoles",
+                                "Jueves",
+                                "Viernes",
+                                "Sábado",
+                                "Domingo"
+                            };
+
+                            foreach (var day in listDay)
+                            {
+                                DeviceUseBO deviceUseBO = new DeviceUseBO();
+                                DeviceUseModel deviceUseModel = new DeviceUseModel();
+                                deviceUseModel.DeviceUseDay = day;
+                                deviceUseModel.InfantAccountId = infantId;
+                                deviceUseBO.RegisterDeviceUse(deviceUseModel);
+                                
+                                
+                            }
+
                             MessageBox.Show("¡Se ha creado la cuenta de Hijo satisfactoriamente!");
                             this.Hide();
                             FormInfantAccount formInfantAccount = new FormInfantAccount();

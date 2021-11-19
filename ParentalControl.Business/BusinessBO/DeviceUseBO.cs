@@ -45,6 +45,20 @@ namespace ParentalControl.Business.BusinessBO
         }
 
         /// <summary>
+        /// Método para verificar si el dispositivo está vinculado a un Horario
+        /// </summary>
+        /// <param name="deviceUseModel">contiene la data del uso del dispositivo</param>
+        /// <returns>List<DeviceUseModel></returns>
+        public List<DeviceUseModel> GetDeviceUse(int infantId)
+        {
+            string query = $"SELECT * FROM DeviceUse WHERE InfantAccountId = '{infantId}'";
+
+            List<DeviceUseModel> deviceUseModelList = this.ObtenerListaSQL<DeviceUseModel>(query).ToList();
+
+            return deviceUseModelList;
+        }
+        
+        /// <summary>
         /// Método para registrar y vincular el uso del dispositivo al infante y al horario.
         /// </summary>
         /// <param name="deviceUseModel">contiene la data del uso del dispositivo</param>
@@ -52,10 +66,22 @@ namespace ParentalControl.Business.BusinessBO
         public bool RegisterDeviceUse(DeviceUseModel deviceUseModel)
         {
             var creationDate = DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss");
-            string query = $"INSERT INTO DeviceUse VALUES('{deviceUseModel.}', " +
-                           $" '{deviceModel.DevicePCCode}', '{creationDate}'," +
-                           $" {deviceModel.ParentId})";
+            string query;
 
+            if (deviceUseModel.ScheduleId == 0)
+            {
+                
+                query = $"INSERT INTO DeviceUse VALUES('{deviceUseModel.DeviceUseDay}', " +
+                        $" '{creationDate}', '{deviceUseModel.InfantAccountId}'," +
+                        $"NULL)";
+            }
+            else
+            {
+                query = $"INSERT INTO DeviceUse VALUES('{deviceUseModel.DeviceUseDay}', " +
+                        $" '{creationDate}', '{deviceUseModel.InfantAccountId}'," +
+                        $" {deviceUseModel.ScheduleId})";
+            }
+       
             bool execute = SQLConexionDataBase.Execute(query);
 
             return execute;
@@ -66,10 +92,11 @@ namespace ParentalControl.Business.BusinessBO
         /// </summary>
         /// <param name="deviceName">nuevo nombre del dispositivo</param>
         /// <returns>bool: TRUE(registro exitoso), FALSE(error al registrar)</returns>
-        public bool UpdateDeviceUseSchedule(int deviceName)
+        public bool UpdateDeviceUseSchedule(string day,int infatId,string scheduleId)
         {
-            string deviceCode = this.GetMACAddress();
-            string query = $"UPDATE DevicePC SET DevicePCName = '{deviceName}' WHERE DevicePCCode = '{deviceCode}'";
+            
+            string query = $"UPDATE DeviceUse SET ScheduleId = {scheduleId} WHERE InfantAccountId = {infatId} " +
+                $"AND DeviceUseDay = '{day}'";
 
             bool execute = SQLConexionDataBase.Execute(query);
 

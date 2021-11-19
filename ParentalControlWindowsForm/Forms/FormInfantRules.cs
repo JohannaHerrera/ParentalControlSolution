@@ -120,37 +120,40 @@ namespace ParentalControlWindowsForm.Forms
                 dgvAppLock.Sort(dgvAppLock.Columns[0], ListSortDirection.Ascending);
 
                 // ***************** USO DEL DISPOSITIVO ***************** 
+                List<DeviceUseModel> deviceUseModelList = new List<DeviceUseModel>();
+                DeviceUseBO deviceUseBO = new DeviceUseBO();
                 iterator = 0;
 
-                List<String> listDay = new List<string>()
+                //Obtengo los horarios
+                this.ScheduleDeviceUse.Items.Add(constants.Ninguno);
+                scheduleModelList = scheduleBO.GetSchedule(this.parentId);
+                foreach (var schedule in scheduleModelList)
                 {
-                    "Lunes", 
-                    "Martes", 
-                    "Miércoles", 
-                    "Jueves", 
-                    "Viernes", 
-                    "Sábado", 
-                    "Domingo" 
-                };
+                    string horaInicio = schedule.ScheduleStartTime.ToString("HH:mm");
+                    string horaFin = schedule.ScheduleEndTime.ToString("HH:mm");
+                    this.ScheduleDeviceUse.Items.Add($"{horaInicio} - {horaFin}");
+                }
 
-                foreach (var day in listDay)
+                // Obtengo los días con su configuración
+                deviceUseModelList = deviceUseBO.GetDeviceUse(this.infantId);
+
+                foreach (var deviceUse in deviceUseModelList)
                 {
-                    dgvTimeUseDevice.Rows.Add(day, this.Schedule.Items[0]);
+                    dgvTimeUseDevice.Rows.Add(deviceUse.DeviceUseDay, this.ScheduleDeviceUse.Items[0]);
 
                     DataGridViewComboBoxCell cmbDeviceUse = this.dgvTimeUseDevice.Rows[iterator].Cells[1] as DataGridViewComboBoxCell;
 
                     // Si tiene configurado horario de uso
-                    if (day.ScheduleId != 0)
+                    if (deviceUse.ScheduleId != 0)
                     {
-                        scheduleModel = scheduleBO.GetSpecificSchedule(app.ScheduleId);
+                        scheduleModel = scheduleBO.GetSpecificSchedule(deviceUse.ScheduleId);
                         string horaInicio = scheduleModel.ScheduleStartTime.ToString("HH:mm");
                         string horaFin = scheduleModel.ScheduleEndTime.ToString("HH:mm");
                         // No seleccionado
-                        chkchecking.Value = false;
                         int index = 0;
                         int idexItem = 0;
                         string time = $"{horaInicio} - {horaFin}";
-                        foreach (var item in cmb.Items)
+                        foreach (var item in cmbDeviceUse.Items)
                         {
                             if (item.Equals(time))
                             {
@@ -159,36 +162,17 @@ namespace ParentalControlWindowsForm.Forms
 
                             idexItem++;
                         }
-                        cmb.Value = cmb.Items[index];
+                        cmbDeviceUse.Value = cmbDeviceUse.Items[index];
                     }
                     else
                     {
-                        // Si está bloqueada
-                        if (app.AppAccessPermission == false) //(= 0)
-                        {
-                            chkchecking.Value = true;
-                            cmb.ReadOnly = true;
-                            cmb.Value = cmb.Items[0];
-                        }
-                        else
-                        {
-                            chkchecking.Value = false;
-                            cmb.ReadOnly = false;
-                            cmb.Value = cmb.Items[0];
-                        }
+                        cmbDeviceUse.Value = cmbDeviceUse.Items[0];
                     }
 
                     iterator++;
                 }
 
-                dgvAppLock.Sort(dgvAppLock.Columns[0], ListSortDirection.Ascending);
-                dgvTimeUseDevice.Rows.Add("Lunes");
-                dgvTimeUseDevice.Rows.Add("Martes");
-                dgvTimeUseDevice.Rows.Add("Miércoles");
-                dgvTimeUseDevice.Rows.Add("Jueves");
-                dgvTimeUseDevice.Rows.Add("Viernes");
-                dgvTimeUseDevice.Rows.Add("Sábado");
-                dgvTimeUseDevice.Rows.Add("Domingo");
+                dgvTimeUseDevice.Sort(dgvTimeUseDevice.Columns[0], ListSortDirection.Ascending);
 
                 // ***************** HISTORIAL ***************** 
                 dgvActivityRecord.Rows.Add("Activity");
@@ -435,9 +419,37 @@ namespace ParentalControlWindowsForm.Forms
                     }
                 }
 
-                    // ***************** USO DEL DISPOSITIVO ***************** 
+                // ***************** USO DEL DISPOSITIVO ***************** 
 
-                    // ***************** HISTORIAL ***************** 
+                DeviceUseBO deviceUseBO = new DeviceUseBO();
+                schededuleId = 0;
+
+                foreach (DataGridViewRow row in this.dgvTimeUseDevice.Rows)
+                {
+                    string day = row.Cells[0].Value.ToString();
+                                
+                    string schedule = row.Cells[1].Value.ToString();
+
+                    if (schedule != constants.Ninguno)
+                    {
+                        string[] time = schedule.Split(new Char[] { '-' });
+                        startTime = Convert.ToDateTime(time[0].TrimEnd(' '));
+                        endTime = Convert.ToDateTime(time[1].TrimEnd(' '));
+                        schededuleId = scheduleBO.GetScheduleId(startTime, endTime, this.parentId);
+                        schedule = schededuleId.ToString();
+                    }
+                    else
+                    {
+                        schedule = "NULL";
+                    }
+
+                    if (!deviceUseBO.UpdateDeviceUseSchedule(day,this.infantId, schedule))
+                    {
+                        execute = false;
+                    }
+                }
+
+                // ***************** HISTORIAL ***************** 
 
             }
             catch (Exception ex)
