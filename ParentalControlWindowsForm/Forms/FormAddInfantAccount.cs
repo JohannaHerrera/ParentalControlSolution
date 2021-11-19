@@ -86,7 +86,7 @@ namespace ParentalControlWindowsForm.Forms
             try
             {
                 DeviceBO deviceBO = new DeviceBO();
-                string deviceCode = deviceBO.GetMACAddress();
+                string deviceCode = deviceBO.GetDeviceIdentifier();
                 this.Hide();
                 FormDevice formDevice = new FormDevice();
                 formDevice.parentId = this.parentId;

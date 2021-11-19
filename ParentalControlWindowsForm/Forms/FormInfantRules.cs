@@ -60,7 +60,7 @@ namespace ParentalControlWindowsForm.Forms
                 }
 
                 // Obtengo el Id del Dispositivo
-                string deviceCode = deviceBO.GetMACAddress();
+                string deviceCode = deviceBO.GetDeviceIdentifier();
                 deviceModelList = deviceBO.VerifyDeviceExist(deviceCode);
                 int deviceId = deviceModelList.FirstOrDefault().DevicePCId;
                 int iterator = 0;
@@ -179,7 +179,7 @@ namespace ParentalControlWindowsForm.Forms
             try
             {
                 DeviceBO deviceBO = new DeviceBO();
-                string deviceCode = deviceBO.GetMACAddress();
+                string deviceCode = deviceBO.GetDeviceIdentifier();
                 this.Hide();
                 FormDevice formDevice = new FormDevice();
                 formDevice.parentId = this.parentId;

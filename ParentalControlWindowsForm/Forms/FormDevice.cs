@@ -220,7 +220,7 @@ namespace ParentalControlWindowsForm.Forms
                                     List<string> installedApps = applicationBO.GetInstalledApps();
 
                                     // Obtengo las aplicaciones de la BD
-                                    string deviceCode = deviceBO.GetMACAddress();
+                                    string deviceCode = deviceBO.GetDeviceIdentifier();
                                     List<DeviceModel>deviceModelList = deviceBO.VerifyDeviceExist(deviceCode);
                                     int deviceId = deviceModelList.FirstOrDefault().DevicePCId;
                                     List<ApplicationModel> applicationModelList = applicationBO.GetAppsDevice(infantIdNuevo, deviceId);
@@ -286,7 +286,7 @@ namespace ParentalControlWindowsForm.Forms
                                 List<string> installedApps = applicationBO.GetInstalledApps();
 
                                 // Obtengo las aplicaciones de la BD
-                                string deviceCode = deviceBO.GetMACAddress();
+                                string deviceCode = deviceBO.GetDeviceIdentifier();
                                 List<DeviceModel> deviceModelList = deviceBO.VerifyDeviceExist(deviceCode);
                                 int deviceId = deviceModelList.FirstOrDefault().DevicePCId;
                                 List<ApplicationModel> applicationModelList = applicationBO.GetAppsDevice(infantIdNuevo, deviceId);
@@ -378,8 +378,10 @@ namespace ParentalControlWindowsForm.Forms
                 }
                 if (res == DialogResult.Yes)
                 {
+                    
+
                     MessageBox.Show("You have clicked Ok Button");
-                    // TODO: CREAR MÉTODO PARA ELIMINAR 
+                    
                 }
             }
             catch (Exception ex)
@@ -393,7 +395,7 @@ namespace ParentalControlWindowsForm.Forms
             try
             {
                 DeviceBO deviceBO = new DeviceBO();
-                string deviceCode = deviceBO.GetMACAddress();
+                string deviceCode = deviceBO.GetDeviceIdentifier();
                 this.Hide();
                 FormDevice formDevice = new FormDevice();
                 formDevice.parentId = this.parentId;

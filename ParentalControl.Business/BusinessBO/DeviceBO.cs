@@ -1,4 +1,5 @@
-﻿using ParentalControl.Business.Enums;
+﻿using DeviceId;
+using ParentalControl.Business.Enums;
 using ParentalControl.Data;
 using ParentalControl.Models.Device;
 using ParentalControl.Models.InfantAccount;
@@ -118,7 +119,7 @@ namespace ParentalControl.Business.BusinessBO
         /// <returns>bool: TRUE(registro exitoso), FALSE(error al registrar)</returns>
         public bool UpdateDeviceName(string deviceName)
         {
-            string deviceCode = this.GetMACAddress();
+            string deviceCode = this.GetDeviceIdentifier();
             string query = $"UPDATE DevicePC SET DevicePCName = '{deviceName}' WHERE DevicePCCode = '{deviceCode}'";
 
             bool execute = SQLConexionDataBase.Execute(query);
@@ -127,15 +128,14 @@ namespace ParentalControl.Business.BusinessBO
         }
 
         /// <summary>
-        /// Método para obtener la MAC del dispositivo
+        /// Método para obtener el identificador del dispositivo
         /// </summary>
         /// <returns>macAddresses</returns>
-        public string GetMACAddress()
+        public string GetDeviceIdentifier()
         {
-            ManagementObjectSearcher searcher = new ManagementObjectSearcher("SELECT * FROM Win32_NetworkAdapterConfiguration where IPEnabled=true");
-            IEnumerable<ManagementObject> objects = searcher.Get().Cast<ManagementObject>();
-            string mac = (from o in objects orderby o["IPConnectionMetric"] select o["MACAddress"].ToString()).FirstOrDefault();
-            return mac;
+            string deviceId = new DeviceIdBuilder().AddMachineName().ToString();
+
+            return deviceId;
         }
 
         /// <summary>

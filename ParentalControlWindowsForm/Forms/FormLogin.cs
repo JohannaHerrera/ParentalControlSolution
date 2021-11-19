@@ -53,7 +53,7 @@ namespace ParentalControlWindowsForm
                         DeviceBO deviceBO = new DeviceBO();
                         ParentBO parentBO = new ParentBO();
 
-                        deviceModel.DevicePCCode = deviceBO.GetMACAddress();
+                        deviceModel.DevicePCCode = deviceBO.GetDeviceIdentifier();
                         deviceModel.ParentId = parentBO.GetParentId(loginModel);
 
                         if (deviceModel.ParentId != 0)

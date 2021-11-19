@@ -24,7 +24,7 @@ namespace ParentalControl.Business.BusinessBO
         public List<WindowsAccountModel> VerifyWindowsAccount(string windowsAccountName)
         {
             DeviceBO deviceBO = new DeviceBO();
-            string deviceCode = deviceBO.GetMACAddress();
+            string deviceCode = deviceBO.GetDeviceIdentifier();
             string query = $"SELECT wa.WindowsAccountId, wa.WindowsAccountName, wa.InfantAccountId" +
                            $" FROM WindowsAccount wa INNER JOIN DevicePC pc" +
                            $" ON wa.DevicePCId = pc.DevicePCId" +
@@ -45,7 +45,7 @@ namespace ParentalControl.Business.BusinessBO
         public List<WindowsAccountModel> VerifyWindowsInfantAccount(string windowsAccountName, int infantId)
         {
             DeviceBO deviceBO = new DeviceBO();
-            string deviceCode = deviceBO.GetMACAddress();
+            string deviceCode = deviceBO.GetDeviceIdentifier();
             string query = $"SELECT wa.WindowsAccountId, wa.WindowsAccountName" +
                            $" FROM WindowsAccount wa INNER JOIN DevicePC pc" +
                            $" ON wa.DevicePCId = pc.DevicePCId" +
@@ -66,7 +66,7 @@ namespace ParentalControl.Business.BusinessBO
         public List<WindowsAccountModel> VerifyWindowsAccountFromInfants(int infantId)
         {
             DeviceBO deviceBO = new DeviceBO();
-            string deviceCode = deviceBO.GetMACAddress();
+            string deviceCode = deviceBO.GetDeviceIdentifier();
             string query = $"SELECT wa.WindowsAccountId, wa.WindowsAccountName" +
                            $" FROM WindowsAccount wa INNER JOIN DevicePC pc" +
                            $" ON wa.DevicePCId = pc.DevicePCId" +
@@ -107,7 +107,7 @@ namespace ParentalControl.Business.BusinessBO
         {
             DeviceBO deviceBO = new DeviceBO();
             bool execute = false;
-            string deviceCode = deviceBO.GetMACAddress();
+            string deviceCode = deviceBO.GetDeviceIdentifier();
 
             string query = $"SELECT * FROM DevicePC WHERE DevicePCCode = '{deviceCode}'";
             List<DeviceModel> deviceModelList = this.ObtenerListaSQL<DeviceModel>(query).ToList();
@@ -135,7 +135,7 @@ namespace ParentalControl.Business.BusinessBO
         {
             var creationDate = DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss");
             DeviceBO deviceBO = new DeviceBO();
-            string deviceCode = deviceBO.GetMACAddress();
+            string deviceCode = deviceBO.GetDeviceIdentifier();
             bool execute = false;
 
             string query = $"SELECT * FROM DevicePC WHERE DevicePCCode = '{deviceCode}'";
@@ -161,7 +161,7 @@ namespace ParentalControl.Business.BusinessBO
         public bool DeleteWindowsAccount(int infantId, string windowsAccountName)
         {
             DeviceBO deviceBO = new DeviceBO();
-            string deviceCode = deviceBO.GetMACAddress();
+            string deviceCode = deviceBO.GetDeviceIdentifier();
             bool execute = false;
 
             string query = $"SELECT * FROM DevicePC WHERE DevicePCCode = '{deviceCode}'";

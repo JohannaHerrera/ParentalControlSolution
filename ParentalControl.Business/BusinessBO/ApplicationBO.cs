@@ -44,7 +44,7 @@ namespace ParentalControl.Business.BusinessBO
             DeviceBO deviceBO = new DeviceBO();
             Constants constants = new Constants();
             var creationDate = DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss");
-            string deviceCode = deviceBO.GetMACAddress();
+            string deviceCode = deviceBO.GetDeviceIdentifier();
             bool execute = false;
 
             string query = $"SELECT * FROM DevicePC WHERE DevicePCCode = '{deviceCode}'";
@@ -70,7 +70,7 @@ namespace ParentalControl.Business.BusinessBO
         public bool DeleteApps(int infantId)
         {
             DeviceBO deviceBO = new DeviceBO();
-            string deviceCode = deviceBO.GetMACAddress();
+            string deviceCode = deviceBO.GetDeviceIdentifier();
             bool execute = false;
 
             string query = $"SELECT * FROM DevicePC WHERE DevicePCCode = '{deviceCode}'";
@@ -96,7 +96,7 @@ namespace ParentalControl.Business.BusinessBO
         public bool UpdateAppLock(string appName, int infantId, string scheduleId, int appAccess)
         {
             DeviceBO deviceBO = new DeviceBO();
-            string deviceCode = deviceBO.GetMACAddress();
+            string deviceCode = deviceBO.GetDeviceIdentifier();
             bool execute = false;
 
             string query = $"SELECT * FROM DevicePC WHERE DevicePCCode = '{deviceCode}'";
