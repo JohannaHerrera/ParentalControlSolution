@@ -21,17 +21,10 @@ namespace ParentalControlWindowsForm.Forms
             InitializeComponent();
         }
 
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-      
         private void FormSchedule_Load(object sender, EventArgs e)
         {
             ScheduleBO scheduleBO = new ScheduleBO();
-            List<ScheduleModel> scheduleList = new List<ScheduleModel>();
-            scheduleList = scheduleBO.GetSchedule(this.parentId);
+            List<ScheduleModel> scheduleList = scheduleBO.GetSchedule(this.parentId);
 
             if (scheduleList.Count > 0)
             {
@@ -65,7 +58,6 @@ namespace ParentalControlWindowsForm.Forms
             this.Hide();
             FormScheduleRegister formScheduleRegister = new FormScheduleRegister();
             formScheduleRegister.parentId = this.parentId;
-            //Todas las ventanas necesitan el ID del papa? Si
             formScheduleRegister.Show();
         }
 
@@ -149,32 +141,26 @@ namespace ParentalControlWindowsForm.Forms
         private void dgvSchedule_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             string idSchedule = dgvSchedule.CurrentRow.Cells[0].Value.ToString();
+            
             if (e.ColumnIndex == 3)
             {
-
-                
-                ScheduleBO scheduleBO = new ScheduleBO();
                 String id = dgvSchedule.CurrentRow.Cells[0].Value.ToString();
                 String st = dgvSchedule.CurrentRow.Cells[1].Value.ToString();
                 String et = dgvSchedule.CurrentRow.Cells[2].Value.ToString();
-
                 DateTime dtSt = DateTime.Parse(st);
-               
-                this.scheduleId = Int32.Parse(idSchedule); 
+                this.scheduleId = Int32.Parse(idSchedule);
                 this.Hide();
 
-                
                 FormScheduleEdit formScheduleEdit = new FormScheduleEdit();
                 formScheduleEdit.parentId = this.parentId;
                 formScheduleEdit.scheduleId = this.scheduleId;
-                formScheduleEdit.Show();
-                
+                formScheduleEdit.Show();               
             }   
             else if (e.ColumnIndex == 4)
             {
                 try
                 {
-                    DialogResult res = MessageBox.Show("¿Estás seguro que deseas eliminar la cuenta de infante?", "¡ADVERTENCIA!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                    DialogResult res = MessageBox.Show("¿Estás seguro que deseas eliminar el horario?", "¡ADVERTENCIA!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                     if (res == DialogResult.No)
                     {
                         return;
@@ -185,7 +171,7 @@ namespace ParentalControlWindowsForm.Forms
                         this.scheduleId = Int32.Parse(idSchedule);
                         if (scheduleBo.DeleteSchedule(this.scheduleId))
                         {
-                            MessageBox.Show("Se eliminó la cuenta correctamente");
+                            MessageBox.Show("El horario se eliminó correctamente.");
                             this.Hide();
                             FormSchedule formSchedule = new FormSchedule();
                             formSchedule.parentId = this.parentId;
@@ -193,13 +179,12 @@ namespace ParentalControlWindowsForm.Forms
                         }
                         else
                         {
-                            MessageBox.Show("No se pudo eliminar la cuenta, intente nuevamente");
+                            MessageBox.Show("Ocurrió un problema al eliminar el horario.");
                             this.Hide();
                             FormSchedule formSchedule = new FormSchedule();
                             formSchedule.parentId = this.parentId;
                             formSchedule.Show();
                         }
-
                     }
                 }
                 catch (Exception ex)

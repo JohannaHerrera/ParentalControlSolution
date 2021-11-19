@@ -34,7 +34,6 @@ namespace ParentalControlWindowsForm.Forms
         {
             lblHora.Text = DateTime.Now.ToString("HH:mm:ss");
             lblFecha.Text = DateTime.Now.ToString("dddd mmmm yyy");
-
         }
 
         private void btnSave_Click(object sender, EventArgs e)
@@ -99,24 +98,6 @@ namespace ParentalControlWindowsForm.Forms
             {
                 MessageBox.Show(ex.Message);
             }
-}
-
-
-
-
-        private void lblHora_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void lblFecha_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void lblMnts_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void imgLogo_Click(object sender, EventArgs e)

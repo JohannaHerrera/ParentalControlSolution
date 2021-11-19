@@ -40,7 +40,7 @@ namespace ParentalControlWindowsForm.Forms
                 }
                 else
                 {
-                    MessageBox.Show("Ha ocurrido un error al obtener la información de su cuenta.");
+                    MessageBox.Show("Ha ocurrido un error al obtener la información del horario.");
                     this.Hide();
                     FormSchedule formSchedule = new FormSchedule();
                     formSchedule.parentId = this.parentId;
@@ -150,6 +150,7 @@ namespace ParentalControlWindowsForm.Forms
                 MessageBox.Show(ex.Message);
             }
         }
+
         private void btnMyAccount_Click(object sender, EventArgs e)
         {
             try

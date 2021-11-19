@@ -128,6 +128,30 @@ namespace ParentalControl.Business.BusinessBO
         }
 
         /// <summary>
+        /// Método para eliminar el dispositivo
+        /// </summary>
+        /// <returns>bool: TRUE(registro exitoso), FALSE(error al registrar)</returns>
+        public bool DeleteDevice()
+        {
+            bool execute = false;
+            string deviceCode = this.GetDeviceIdentifier();
+            string query = $"SELECT * FROM DevicePC WHERE DevicePCCode = '{deviceCode}'";
+
+            List<DeviceModel> deviceModelList = this.ObtenerListaSQL<DeviceModel>(query).ToList();
+
+            if (deviceModelList.Count > 0)
+            {
+                int deviceId = deviceModelList.FirstOrDefault().DevicePCId;
+                query = $" DELETE FROM WindowsAccount WHERE DevicePCId = {deviceId};" +
+                        $" DELETE FROM App WHERE DevicePCId = {deviceId};" +
+                        $" DELETE FROM DevicePC WHERE DevicePCId = {deviceId};";
+                execute = SQLConexionDataBase.Execute(query);
+            }
+
+            return execute;
+        }
+
+        /// <summary>
         /// Método para obtener el identificador del dispositivo
         /// </summary>
         /// <returns>macAddresses</returns>

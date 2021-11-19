@@ -117,7 +117,6 @@ namespace ParentalControlWindowsForm.Forms
             this.lblHora.Size = new System.Drawing.Size(194, 70);
             this.lblHora.TabIndex = 8;
             this.lblHora.Text = "label5";
-            this.lblHora.Click += new System.EventHandler(this.lblHora_Click);
             // 
             // lblFecha
             // 
@@ -129,7 +128,6 @@ namespace ParentalControlWindowsForm.Forms
             this.lblFecha.Size = new System.Drawing.Size(109, 39);
             this.lblFecha.TabIndex = 9;
             this.lblFecha.Text = "label5";
-            this.lblFecha.Click += new System.EventHandler(this.lblFecha_Click);
             // 
             // lblHrs
             // 
@@ -152,7 +150,6 @@ namespace ParentalControlWindowsForm.Forms
             this.lblMnts.Size = new System.Drawing.Size(36, 19);
             this.lblMnts.TabIndex = 13;
             this.lblMnts.Text = "Min";
-            this.lblMnts.Click += new System.EventHandler(this.lblMnts_Click);
             // 
             // label5
             // 
