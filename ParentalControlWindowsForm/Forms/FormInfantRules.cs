@@ -34,10 +34,28 @@ namespace ParentalControlWindowsForm.Forms
                 lblInfantAccountName.Text= infantAccountBO.GetInfantAccount(this.infantId).InfantName;
 
                 // ***************** CATEGORÍAS WEB ***************** 
-                dgvWebLock.Rows.Add("Category", false);
-                dgvWebLock.Rows.Add("Category", false);
-                dgvWebLock.Rows.Add("Category", false);
-                dgvWebLock.Rows.Add("Category", false);
+
+                WebConfigurationBO webConfigurationBO = new WebConfigurationBO();
+                List<WebConfigurationModel> webConfigList = webConfigurationBO.GetWebConfiguration(this.infantId);               
+                List<WebCategoryModel> webCategoryList = webConfigurationBO.GetWebCategory();
+
+                dgvWebLock.Rows.Add("Drogas", false);
+                dgvWebLock.Rows.Add("Pornograf;ia", false);
+                dgvWebLock.Rows.Add("Videojuegos", false);
+                dgvWebLock.Rows.Add("Violencia", false);
+
+                int contador = 0;
+                if (webConfigList.Count > 0)
+                {   
+                    foreach (var web in webConfigList)
+                    {
+                        dgvWebLock.Rows[contador].Cells[1].Value = web.WebConfigurationAccess;
+                        dgvWebLock.Rows[contador].Cells[2].Value = web.WebConfigurationId.ToString();
+                        contador++;
+
+                    }          
+                }
+
 
 
                 // ***************** APLICACIONES ***************** 
@@ -370,13 +388,31 @@ namespace ParentalControlWindowsForm.Forms
             try
             {
                 // ***************** CATEGORÍAS WEB ***************** 
+                bool execute = true;
+                WebConfigurationBO webConfigurationBO = new WebConfigurationBO();
+                WebConfigurationModel webConfigModel = new WebConfigurationModel();
+                foreach (DataGridViewRow row in this.dgvWebLock.Rows)
+                {
+                    webConfigModel.WebConfigurationId = Convert.ToInt32(row.Cells[2].Value);
+                    webConfigModel.WebConfigurationAccess = Convert.ToBoolean(row.Cells[1].Value);             
+                    if (webConfigurationBO.UpdateWebConfiguration(webConfigModel))
+                    {
+                        execute = true;
+                        
+                    }
+                    else
+                    {
+                        execute = false;
+                        MessageBox.Show("Error al modificar bloqueo Web");
+                    }
+                }
 
-                // ***************** APLICACIONES ***************** 
-                
-                Constants constants = new Constants();
+                    // ***************** APLICACIONES ***************** 
+
+                    Constants constants = new Constants();
                 ApplicationBO application = new ApplicationBO();
                 ScheduleBO scheduleBO = new ScheduleBO();
-                bool execute = true;
+                
                 int appAccess = 0;
                 DateTime startTime;
                 DateTime endTime;

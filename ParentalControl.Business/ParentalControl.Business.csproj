@@ -63,6 +63,7 @@
     <Compile Include="BusinessBO\ParentBO.cs" />
     <Compile Include="BusinessBO\RequestBO.cs" />
     <Compile Include="BusinessBO\ScheduleBO.cs" />
+    <Compile Include="BusinessBO\WebConfigurationBO.cs" />
     <Compile Include="BusinessBO\WindowsAccountBO.cs" />
     <Compile Include="Enums\Constants.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
