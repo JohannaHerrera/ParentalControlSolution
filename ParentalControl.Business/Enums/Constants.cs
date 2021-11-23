@@ -42,7 +42,7 @@ namespace ParentalControl.Business.Enums
         {
             get
             {
-                return 1;
+                return 0;
             }
         }
 
@@ -50,8 +50,15 @@ namespace ParentalControl.Business.Enums
         {
             get
             {
-                return 0;
+                return 1;
             }
+        }
+
+        public enum RequestType
+        {
+            WebConfiguration = 1,
+            AppConfiguration = 2,
+            DeviceConfiguration = 3
         }
     }
 }

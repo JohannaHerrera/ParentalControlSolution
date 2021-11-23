@@ -118,14 +118,14 @@ namespace ParentalControlWindowsForm.Forms
                         // Si está bloqueada
                         if (app.AppAccessPermission == false) //(= 0)
                         {
-                            chkchecking.Value = true;
-                            cmb.ReadOnly = true;
+                            chkchecking.Value = false;
+                            cmb.ReadOnly = false;
                             cmb.Value = cmb.Items[0];
                         }
                         else
                         {
-                            chkchecking.Value = false;
-                            cmb.ReadOnly = false;
+                            chkchecking.Value = true;
+                            cmb.ReadOnly = true;
                             cmb.Value = cmb.Items[0];
                         }
                     }

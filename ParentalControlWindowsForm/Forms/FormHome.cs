@@ -1,4 +1,5 @@
 ﻿using ParentalControl.Business.BusinessBO;
+using ParentalControl.Models.News;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -120,6 +121,32 @@ namespace ParentalControlWindowsForm.Forms
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void FormHome_Load(object sender, EventArgs e)
+        {
+            try
+            {
+                NewsBO newsBO = new NewsBO();
+                List<NewsModel> newsModelList = newsBO.GetNews();
+
+                foreach (var news in newsModelList)
+                {
+                    this.dgvNews.Rows.Add(news.NewsTitle, news.NewsDescription, news.NewsLink);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void dgvNews_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == 2)
+            {
+                System.Diagnostics.Process.Start(dgvNews.CurrentRow.Cells[2].Value.ToString());
             }
         }
     }

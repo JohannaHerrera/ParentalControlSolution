@@ -29,6 +29,10 @@ namespace ParentalControlWindowsForm.Forms
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormHome));
             this.panel1 = new System.Windows.Forms.Panel();
             this.label4 = new System.Windows.Forms.Label();
@@ -40,14 +44,23 @@ namespace ParentalControlWindowsForm.Forms
             this.imgInfants = new System.Windows.Forms.PictureBox();
             this.imgDevice = new System.Windows.Forms.PictureBox();
             this.imgLogo = new System.Windows.Forms.PictureBox();
-            this.btnMyAccount = new ParentalControlWindowsForm.Botones_Personalizados.OurButton();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.lblNews = new System.Windows.Forms.Label();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.dgvNews = new System.Windows.Forms.DataGridView();
             this.btnLogout = new ParentalControlWindowsForm.Botones_Personalizados.OurButton();
+            this.btnMyAccount = new ParentalControlWindowsForm.Botones_Personalizados.OurButton();
+            this.Title = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Description = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Link = new System.Windows.Forms.DataGridViewLinkColumn();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imgNotifications)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgScheedule)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgInfants)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgDevice)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgLogo)).BeginInit();
+            this.panel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvNews)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -165,25 +178,64 @@ namespace ParentalControlWindowsForm.Forms
             this.imgLogo.TabStop = false;
             this.imgLogo.Click += new System.EventHandler(this.imgLogo_Click);
             // 
-            // btnMyAccount
+            // panel2
             // 
-            this.btnMyAccount.BackColor = System.Drawing.SystemColors.Highlight;
-            this.btnMyAccount.BackgroundColor = System.Drawing.SystemColors.Highlight;
-            this.btnMyAccount.BorderColor = System.Drawing.SystemColors.Highlight;
-            this.btnMyAccount.BorderRadius = 10;
-            this.btnMyAccount.BorderSize = 0;
-            this.btnMyAccount.FlatAppearance.BorderSize = 0;
-            this.btnMyAccount.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnMyAccount.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold);
-            this.btnMyAccount.ForeColor = System.Drawing.Color.White;
-            this.btnMyAccount.Location = new System.Drawing.Point(587, 13);
-            this.btnMyAccount.Name = "btnMyAccount";
-            this.btnMyAccount.Size = new System.Drawing.Size(112, 31);
-            this.btnMyAccount.TabIndex = 25;
-            this.btnMyAccount.Text = "Mi Cuenta";
-            this.btnMyAccount.TextColor = System.Drawing.Color.White;
-            this.btnMyAccount.UseVisualStyleBackColor = false;
-            this.btnMyAccount.Click += new System.EventHandler(this.btnMyAccount_Click);
+            this.panel2.BackColor = System.Drawing.Color.Silver;
+            this.panel2.Location = new System.Drawing.Point(170, 91);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(706, 3);
+            this.panel2.TabIndex = 28;
+            // 
+            // lblNews
+            // 
+            this.lblNews.AutoSize = true;
+            this.lblNews.Font = new System.Drawing.Font("Arial", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNews.ForeColor = System.Drawing.Color.Black;
+            this.lblNews.Location = new System.Drawing.Point(189, 57);
+            this.lblNews.Name = "lblNews";
+            this.lblNews.Size = new System.Drawing.Size(183, 29);
+            this.lblNews.TabIndex = 27;
+            this.lblNews.Text = "Tips y Noticias";
+            // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.dgvNews);
+            this.panel3.Location = new System.Drawing.Point(179, 116);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(682, 422);
+            this.panel3.TabIndex = 29;
+            // 
+            // dgvNews
+            // 
+            this.dgvNews.AllowUserToAddRows = false;
+            this.dgvNews.AllowUserToDeleteRows = false;
+            this.dgvNews.AllowUserToResizeColumns = false;
+            this.dgvNews.AllowUserToResizeRows = false;
+            this.dgvNews.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
+            this.dgvNews.BackgroundColor = System.Drawing.Color.White;
+            this.dgvNews.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgvNews.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SunkenHorizontal;
+            this.dgvNews.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.dgvNews.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            this.dgvNews.ColumnHeadersVisible = false;
+            this.dgvNews.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Title,
+            this.Description,
+            this.Link});
+            this.dgvNews.EnableHeadersVisualStyles = false;
+            this.dgvNews.GridColor = System.Drawing.SystemColors.Highlight;
+            this.dgvNews.Location = new System.Drawing.Point(3, 3);
+            this.dgvNews.Name = "dgvNews";
+            this.dgvNews.ReadOnly = true;
+            this.dgvNews.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.dgvNews.RowHeadersVisible = false;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvNews.RowsDefaultCellStyle = dataGridViewCellStyle4;
+            this.dgvNews.RowTemplate.DividerHeight = 1;
+            this.dgvNews.RowTemplate.Height = 100;
+            this.dgvNews.Size = new System.Drawing.Size(676, 416);
+            this.dgvNews.TabIndex = 0;
+            this.dgvNews.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvNews_CellContentClick);
             // 
             // btnLogout
             // 
@@ -205,12 +257,71 @@ namespace ParentalControlWindowsForm.Forms
             this.btnLogout.UseVisualStyleBackColor = false;
             this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
             // 
+            // btnMyAccount
+            // 
+            this.btnMyAccount.BackColor = System.Drawing.SystemColors.Highlight;
+            this.btnMyAccount.BackgroundColor = System.Drawing.SystemColors.Highlight;
+            this.btnMyAccount.BorderColor = System.Drawing.SystemColors.Highlight;
+            this.btnMyAccount.BorderRadius = 10;
+            this.btnMyAccount.BorderSize = 0;
+            this.btnMyAccount.FlatAppearance.BorderSize = 0;
+            this.btnMyAccount.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnMyAccount.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold);
+            this.btnMyAccount.ForeColor = System.Drawing.Color.White;
+            this.btnMyAccount.Location = new System.Drawing.Point(587, 13);
+            this.btnMyAccount.Name = "btnMyAccount";
+            this.btnMyAccount.Size = new System.Drawing.Size(112, 31);
+            this.btnMyAccount.TabIndex = 25;
+            this.btnMyAccount.Text = "Mi Cuenta";
+            this.btnMyAccount.TextColor = System.Drawing.Color.White;
+            this.btnMyAccount.UseVisualStyleBackColor = false;
+            this.btnMyAccount.Click += new System.EventHandler(this.btnMyAccount_Click);
+            // 
+            // Title
+            // 
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.HotTrack;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HotTrack;
+            this.Title.DefaultCellStyle = dataGridViewCellStyle1;
+            this.Title.HeaderText = "Título";
+            this.Title.Name = "Title";
+            this.Title.ReadOnly = true;
+            this.Title.Width = 150;
+            // 
+            // Description
+            // 
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
+            this.Description.DefaultCellStyle = dataGridViewCellStyle2;
+            this.Description.HeaderText = "Descripción";
+            this.Description.Name = "Description";
+            this.Description.ReadOnly = true;
+            this.Description.Width = 300;
+            // 
+            // Link
+            // 
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
+            this.Link.DefaultCellStyle = dataGridViewCellStyle3;
+            this.Link.HeaderText = "Enlace";
+            this.Link.Name = "Link";
+            this.Link.ReadOnly = true;
+            this.Link.Width = 200;
+            // 
             // FormHome
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(884, 561);
+            this.Controls.Add(this.panel3);
+            this.Controls.Add(this.panel2);
+            this.Controls.Add(this.lblNews);
             this.Controls.Add(this.btnLogout);
             this.Controls.Add(this.btnMyAccount);
             this.Controls.Add(this.panel1);
@@ -220,6 +331,7 @@ namespace ParentalControlWindowsForm.Forms
             this.Name = "FormHome";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Control Parental";
+            this.Load += new System.EventHandler(this.FormHome_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imgNotifications)).EndInit();
@@ -227,7 +339,10 @@ namespace ParentalControlWindowsForm.Forms
             ((System.ComponentModel.ISupportInitialize)(this.imgInfants)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgDevice)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgLogo)).EndInit();
+            this.panel3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvNews)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -245,5 +360,12 @@ namespace ParentalControlWindowsForm.Forms
         private System.Windows.Forms.Label label1;
         private Botones_Personalizados.OurButton btnMyAccount;
         private Botones_Personalizados.OurButton btnLogout;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Label lblNews;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.DataGridView dgvNews;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Title;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Description;
+        private System.Windows.Forms.DataGridViewLinkColumn Link;
     }
 }
