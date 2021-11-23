@@ -40,17 +40,28 @@ namespace ParentalControl.Business.BusinessBO
         public bool CreateInfantAccount(InfantAccountModel infantAccountModel, int parentId)
         {
             var creationDate = DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss");
-            // Trae las categorias web existentes
-
-            List<WebCategoryModel> webCategoryModelList = new List<WebCategoryModel>();
-            string queryWebCatgory = $"SELECT * FROM WebCategory ";
-            List<WebCategoryModel> webCategory = this.ObtenerListaSQL<WebCategoryModel>(queryWebCatgory).ToList();
-            webCategoryModelList.AddRange(webCategory);
             // Crea la cuenta infantil
             string query = $"INSERT INTO InfantAccount VALUES('{infantAccountModel.InfantName}', " +
                            $" '{infantAccountModel.InfantGender}', '{creationDate}'," +
                            $" {parentId})";
             bool execute = SQLConexionDataBase.Execute(query);
+            if (this.CreateWebConfiguration(execute,parentId))
+            {
+                execute = true;
+            }
+            else
+            {
+                execute = false;
+            }
+            return execute;
+        }
+        public bool CreateWebConfiguration(bool execute, int parentId)
+        {
+            // Trae las categorias web existentes
+            List<WebCategoryModel> webCategoryModelList = new List<WebCategoryModel>();
+            string queryWebCatgory = $"SELECT * FROM WebCategory ";
+            List<WebCategoryModel> webCategory = this.ObtenerListaSQL<WebCategoryModel>(queryWebCatgory).ToList();
+            webCategoryModelList.AddRange(webCategory);
             if (execute)
             {
                 // Trae al ultimo registro de cuenta infantil ingresada  por el padre
@@ -58,28 +69,28 @@ namespace ParentalControl.Business.BusinessBO
                 string queryInfant = $"select TOP(1) * FROM InfantAccount WHERE ParentId = {parentId} ORDER BY InfantAccountId DESC ";
                 List<InfantAccountModel> infantAccount = this.ObtenerListaSQL<InfantAccountModel>(queryInfant).ToList();
                 Constants constants = new Constants();
-                infantAccountModelList.AddRange(infantAccount);    
+                infantAccountModelList.AddRange(infantAccount);
                 foreach (var id in infantAccountModelList)
                 {
                     this.infantId = id.InfantAccountId;
-                }     
+                }
                 // Crea web configuration a la par de una cuenta infantil
                 if (webCategoryModelList.Count > 0)
                 {
                     try
-                    {                       
+                    {
                         foreach (var webC in webCategoryModelList)
                         {
                             string queryWebConfi = $"INSERT INTO WebConfiguration VALUES({constants.Access}, " +
                             $" '{webC.CategoryId}', '{this.infantId}')";
+                            //Valida el correcto ingreso de los datos a la Base de Datos
                             bool execut = SQLConexionDataBase.Execute(queryWebConfi);
                             if (execut == false)
                             {
                                 execute = false;
                                 break;
                             }
-
-                        }                       
+                        }
                     }
                     catch (Exception ex)
                     {
@@ -87,9 +98,9 @@ namespace ParentalControl.Business.BusinessBO
                     }
                 }
             }
+
             return execute;
         }
-
         /// <summary>
         /// Método para obtener el Id del Infante
         /// </summary>
@@ -108,6 +119,7 @@ namespace ParentalControl.Business.BusinessBO
             {
                 infantId = infantAccountModelList.FirstOrDefault().InfantAccountId;
             }
+
             
             return infantId;
         }
