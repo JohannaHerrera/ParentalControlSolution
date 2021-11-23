@@ -104,6 +104,12 @@
     <Compile Include="Forms\FormRegister.Designer.cs">
       <DependentUpon>FormRegister.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\FormRequest.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormRequest.Designer.cs">
+      <DependentUpon>FormRequest.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\FormSchedule.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -150,6 +156,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FormRegister.resx">
       <DependentUpon>FormRegister.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormRequest.resx">
+      <DependentUpon>FormRequest.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FormSchedule.resx">
       <DependentUpon>FormSchedule.cs</DependentUpon>
@@ -214,6 +223,8 @@
   <ItemGroup>
     <Content Include="Resources\editar 32.png" />
     <Content Include="Resources\eliminar 32.png" />
+    <None Include="Resources\okay.png" />
+    <None Include="Resources\question.png" />
     <None Include="Resources\flecha 32.png" />
     <Content Include="Resources\hijo 64.png" />
     <Content Include="Resources\nina_64.png" />
