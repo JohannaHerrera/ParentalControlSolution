@@ -34,10 +34,26 @@ namespace ParentalControlWindowsForm.Forms
                 lblInfantAccountName.Text= infantAccountBO.GetInfantAccount(this.infantId).InfantName;
 
                 // ***************** CATEGORÍAS WEB ***************** 
-                dgvWebLock.Rows.Add("Category", false);
-                dgvWebLock.Rows.Add("Category", false);
-                dgvWebLock.Rows.Add("Category", false);
-                dgvWebLock.Rows.Add("Category", false);
+
+                WebConfigurationBO webConfigurationBO = new WebConfigurationBO();
+                List<WebConfigurationModel> webConfigList = webConfigurationBO.GetWebConfiguration(this.infantId);               
+                List<WebCategoryModel> webCategoryList = webConfigurationBO.GetWebCategory();
+
+                dgvWebLock.Rows.Add("Drogas", false);
+                dgvWebLock.Rows.Add("Pornograf;ia", false);
+                dgvWebLock.Rows.Add("Videojuegos", false);
+                dgvWebLock.Rows.Add("Violencia", false);
+
+                int contador = 0;
+                if (webConfigList.Count > 0)
+                {   
+                    foreach (var web in webConfigList)
+                    {
+                        dgvWebLock.Rows[contador].Cells[1].Value = web.WebConfigurationAccess;
+                        contador++;
+                    }          
+                }
+
 
 
                 // ***************** APLICACIONES ***************** 

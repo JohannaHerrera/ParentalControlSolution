@@ -29,7 +29,7 @@ namespace ParentalControl.Models.Schedule
 
             if (scheduleModel.ScheduleStartTime > scheduleModel.ScheduleEndTime)
             {
-                return "La hora inicio debe ser menor a la hora fin";
+                return "La hora inicio debe ser menor a la hora fin"; // Y si quiero darle 23 horas de uso?
             }
 
             return message;
