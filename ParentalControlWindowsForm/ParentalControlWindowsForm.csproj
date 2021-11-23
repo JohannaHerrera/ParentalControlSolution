@@ -221,6 +221,7 @@
     <None Include="Resources\AddInfantAccount.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\atras.png" />
     <Content Include="Resources\editar 32.png" />
     <Content Include="Resources\eliminar 32.png" />
     <None Include="Resources\okay.png" />

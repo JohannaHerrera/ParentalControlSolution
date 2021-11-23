@@ -39,10 +39,13 @@ namespace ParentalControlWindowsForm
             this.btnRegister = new System.Windows.Forms.Button();
             this.txtUser = new System.Windows.Forms.TextBox();
             this.txtPassword = new System.Windows.Forms.TextBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
+            this.btnGoBack = new System.Windows.Forms.PictureBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnLogin = new ParentalControlWindowsForm.Botones_Personalizados.OurButton();
+            this.label6 = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.btnGoBack)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -109,16 +112,6 @@ namespace ParentalControlWindowsForm
             this.txtPassword.Size = new System.Drawing.Size(318, 26);
             this.txtPassword.TabIndex = 6;
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::ParentalControlWindowsForm.Properties.Resources.control_parental;
-            this.pictureBox1.Location = new System.Drawing.Point(102, 145);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(211, 208);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 7;
-            this.pictureBox1.TabStop = false;
-            // 
             // label4
             // 
             this.label4.AutoSize = true;
@@ -140,6 +133,27 @@ namespace ParentalControlWindowsForm
             this.label5.TabIndex = 9;
             this.label5.Text = "¡Bienvenido!";
             // 
+            // btnGoBack
+            // 
+            this.btnGoBack.Image = global::ParentalControlWindowsForm.Properties.Resources.atras;
+            this.btnGoBack.Location = new System.Drawing.Point(12, 513);
+            this.btnGoBack.Name = "btnGoBack";
+            this.btnGoBack.Size = new System.Drawing.Size(38, 36);
+            this.btnGoBack.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.btnGoBack.TabIndex = 29;
+            this.btnGoBack.TabStop = false;
+            this.btnGoBack.Click += new System.EventHandler(this.btnGoBack_Click);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::ParentalControlWindowsForm.Properties.Resources.control_parental;
+            this.pictureBox1.Location = new System.Drawing.Point(102, 145);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(211, 208);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 7;
+            this.pictureBox1.TabStop = false;
+            // 
             // btnLogin
             // 
             this.btnLogin.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(19)))), ((int)(((byte)(181)))), ((int)(((byte)(126)))));
@@ -160,6 +174,16 @@ namespace ParentalControlWindowsForm
             this.btnLogin.UseVisualStyleBackColor = false;
             this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
             // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(59, 522);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(53, 18);
+            this.label6.TabIndex = 30;
+            this.label6.Text = "Volver";
+            // 
             // FormLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -168,6 +192,8 @@ namespace ParentalControlWindowsForm
             this.AutoSize = true;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(884, 561);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.btnGoBack);
             this.Controls.Add(this.btnLogin);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
@@ -184,6 +210,7 @@ namespace ParentalControlWindowsForm
             this.Name = "FormLogin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Control Parental";
+            ((System.ComponentModel.ISupportInitialize)(this.btnGoBack)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -202,6 +229,8 @@ namespace ParentalControlWindowsForm
         private System.Windows.Forms.Label label4;
         private Label label5;
         private Botones_Personalizados.OurButton btnLogin;
+        private PictureBox btnGoBack;
+        private Label label6;
     }
 }
 

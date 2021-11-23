@@ -122,5 +122,19 @@ namespace ParentalControlWindowsForm
                 MessageBox.Show(ex.Message);
             }
         }
+
+        private void btnGoBack_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                this.Hide();
+                FormRequest formRequest = new FormRequest();
+                formRequest.Show();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
     }
 }

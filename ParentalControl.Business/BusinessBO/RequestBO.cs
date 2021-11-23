@@ -28,12 +28,27 @@ namespace ParentalControl.Business.BusinessBO
         /// <summary>
         /// Método para obtener las aplicaciones bloqueadas
         /// </summary>
-        /// <returns>List<RequestTypeModel></returns>
+        /// <returns>List<ApplicationModel></returns>
         public List<ApplicationModel> GetBlockedApps(int infantId, int deviceId)
         {
             string query = $"SELECT * FROM App WHERE InfantAccountId = {infantId}" +
                            $" AND DevicePCId = {deviceId}" +
-                           $" AND (AppAccessPermission <> 1 OR ScheduleId IS NOT NULL)";
+                           $" AND (AppAccessPermission <> 0 OR ScheduleId IS NOT NULL)";
+
+            List<ApplicationModel> applicationModelList = this.ObtenerListaSQL<ApplicationModel>(query).ToList();
+
+            return applicationModelList;
+        }
+
+        /// <summary>
+        /// Método para obtener las categorías web bloqueadas
+        /// </summary>
+        /// <returns>List<RequestTypeModel></returns>
+        public List<ApplicationModel> GetBlockedWebCategory(int infantId, int deviceId)
+        {
+            string query = $"SELECT * FROM App WHERE InfantAccountId = {infantId}" +
+                           $" AND DevicePCId = {deviceId}" +
+                           $" AND (AppAccessPermission <> 0 OR ScheduleId IS NOT NULL)";
 
             List<ApplicationModel> applicationModelList = this.ObtenerListaSQL<ApplicationModel>(query).ToList();
 
