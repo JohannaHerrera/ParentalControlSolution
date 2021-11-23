@@ -50,7 +50,9 @@ namespace ParentalControlWindowsForm.Forms
                     foreach (var web in webConfigList)
                     {
                         dgvWebLock.Rows[contador].Cells[1].Value = web.WebConfigurationAccess;
+                        dgvWebLock.Rows[contador].Cells[2].Value = web.WebConfigurationId.ToString();
                         contador++;
+
                     }          
                 }
 
@@ -386,13 +388,31 @@ namespace ParentalControlWindowsForm.Forms
             try
             {
                 // ***************** CATEGORÍAS WEB ***************** 
+                bool execute = true;
+                WebConfigurationBO webConfigurationBO = new WebConfigurationBO();
+                WebConfigurationModel webConfigModel = new WebConfigurationModel();
+                foreach (DataGridViewRow row in this.dgvWebLock.Rows)
+                {
+                    webConfigModel.WebConfigurationId = Convert.ToInt32(row.Cells[2].Value);
+                    webConfigModel.WebConfigurationAccess = Convert.ToBoolean(row.Cells[1].Value);             
+                    if (webConfigurationBO.UpdateWebConfiguration(webConfigModel))
+                    {
+                        execute = true;
+                        
+                    }
+                    else
+                    {
+                        execute = false;
+                        MessageBox.Show("Error al modificar bloqueo Web");
+                    }
+                }
 
-                // ***************** APLICACIONES ***************** 
-                
-                Constants constants = new Constants();
+                    // ***************** APLICACIONES ***************** 
+
+                    Constants constants = new Constants();
                 ApplicationBO application = new ApplicationBO();
                 ScheduleBO scheduleBO = new ScheduleBO();
-                bool execute = true;
+                
                 int appAccess = 0;
                 DateTime startTime;
                 DateTime endTime;

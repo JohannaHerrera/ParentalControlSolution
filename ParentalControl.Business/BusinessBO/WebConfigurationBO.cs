@@ -15,6 +15,7 @@ namespace ParentalControl.Business.BusinessBO
 {
     public class WebConfigurationBO
     {
+        int webAccess;
         private IList<TModel> ObtenerListaSQL<TModel>(string query)
         {
             try
@@ -50,6 +51,28 @@ namespace ParentalControl.Business.BusinessBO
             webCategoryModelList.AddRange(webCategory);
             return webCategoryModelList;
 
+        }
+         public bool UpdateWebConfiguration(WebConfigurationModel webConfig)
+        {
+            
+            
+            if (webConfig.WebConfigurationAccess == true)
+            {
+                this.webAccess = 1;
+            }
+            else
+            {
+                if (webConfig.WebConfigurationAccess == false)
+                {
+                    this.webAccess = 0;
+                }
+                
+            }
+            string query = $"UPDATE WebConfiguration " +
+                           $" SET WebConfigurationAccess = {this.webAccess}"
+                         + $" WHERE WebConfigurationId = {webConfig.WebConfigurationId}";
+            bool execute = SQLConexionDataBase.Execute(query);
+            return execute;
         }
     }
 }
