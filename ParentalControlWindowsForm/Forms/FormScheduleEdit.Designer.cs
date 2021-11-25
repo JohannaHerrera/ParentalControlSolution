@@ -142,9 +142,11 @@ namespace ParentalControlWindowsForm.Forms
             this.imgNotifications.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.imgNotifications.TabIndex = 4;
             this.imgNotifications.TabStop = false;
+            this.imgNotifications.Click += new System.EventHandler(this.imgNotifications_Click);
             // 
             // imgScheedule
             // 
+            this.imgScheedule.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.imgScheedule.Image = global::ParentalControlWindowsForm.Properties.Resources.calendario;
             this.imgScheedule.Location = new System.Drawing.Point(39, 340);
             this.imgScheedule.Name = "imgScheedule";

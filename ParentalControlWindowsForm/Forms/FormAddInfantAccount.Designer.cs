@@ -131,6 +131,7 @@ namespace ParentalControlWindowsForm.Forms
             this.imgNotifications.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.imgNotifications.TabIndex = 4;
             this.imgNotifications.TabStop = false;
+            this.imgNotifications.Click += new System.EventHandler(this.imgNotifications_Click);
             // 
             // imgScheedule
             // 
@@ -145,6 +146,7 @@ namespace ParentalControlWindowsForm.Forms
             // 
             // imgInfants
             // 
+            this.imgInfants.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.imgInfants.Image = global::ParentalControlWindowsForm.Properties.Resources.children;
             this.imgInfants.Location = new System.Drawing.Point(35, 156);
             this.imgInfants.Name = "imgInfants";

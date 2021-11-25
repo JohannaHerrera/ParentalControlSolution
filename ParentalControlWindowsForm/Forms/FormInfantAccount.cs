@@ -170,10 +170,7 @@ namespace ParentalControlWindowsForm.Forms
                 Constants constants = new Constants();
                 List<InfantAccountModel> infantAccounts = new List<InfantAccountModel>();
                 
-                int iterator = 0;
-                 
-                infantAccounts = infantAccountBO.GetInfantAccounts(this.parentId);
-                
+                infantAccounts = infantAccountBO.GetInfantAccounts(this.parentId);                
                
                 if (infantAccounts.Count > 0)
                 {
@@ -263,6 +260,21 @@ namespace ParentalControlWindowsForm.Forms
                 formInfantRules.Show();
             }
 
+        }
+
+        private void imgNotifications_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                this.Hide();
+                FormNotifications formNotifications = new FormNotifications();
+                formNotifications.parentId = this.parentId;
+                formNotifications.Show();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }

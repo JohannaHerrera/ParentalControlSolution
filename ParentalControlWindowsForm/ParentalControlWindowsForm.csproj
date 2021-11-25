@@ -68,6 +68,12 @@
     <Compile Include="Forms\FormEditInfantAccount.Designer.cs">
       <DependentUpon>FormEditInfantAccount.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\FormNotifications.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormNotifications.Designer.cs">
+      <DependentUpon>FormNotifications.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\FormHome.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -138,6 +144,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FormEditInfantAccount.resx">
       <DependentUpon>FormEditInfantAccount.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormNotifications.resx">
+      <DependentUpon>FormNotifications.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FormHome.resx">
       <DependentUpon>FormHome.cs</DependentUpon>
@@ -222,6 +231,11 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\atras.png" />
+    <None Include="Resources\Aprobado.png" />
+    <None Include="Resources\Aprobar.png" />
+    <None Include="Resources\Desaprobado.png" />
+    <None Include="Resources\Desaprobar.png" />
+    <None Include="Resources\Blank.png" />
     <Content Include="Resources\editar 32.png" />
     <Content Include="Resources\eliminar 32.png" />
     <None Include="Resources\okay.png" />

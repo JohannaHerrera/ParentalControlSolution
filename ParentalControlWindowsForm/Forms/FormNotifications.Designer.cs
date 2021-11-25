@@ -1,7 +1,7 @@
 ﻿
 namespace ParentalControlWindowsForm.Forms
 {
-    partial class FormSchedule
+    partial class FormNotifications
     {
         /// <summary>
         /// Required designer variable.
@@ -30,10 +30,10 @@ namespace ParentalControlWindowsForm.Forms
         private void InitializeComponent()
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormNotifications));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormSchedule));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label4 = new System.Windows.Forms.Label();
@@ -45,26 +45,27 @@ namespace ParentalControlWindowsForm.Forms
             this.imgInfants = new System.Windows.Forms.PictureBox();
             this.imgDevice = new System.Windows.Forms.PictureBox();
             this.imgLogo = new System.Windows.Forms.PictureBox();
-            this.lblSchedule = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.dgvSchedule = new System.Windows.Forms.DataGridView();
-            this.idSchedule = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.StartTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.EndTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.editSchedule = new System.Windows.Forms.DataGridViewImageColumn();
-            this.deleteSchedule = new System.Windows.Forms.DataGridViewImageColumn();
-            this.btnAddSchedule = new ParentalControlWindowsForm.Botones_Personalizados.OurButton();
+            this.lblNews = new System.Windows.Forms.Label();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.lblNoNotifications = new System.Windows.Forms.Label();
+            this.dgvNotifications = new System.Windows.Forms.DataGridView();
             this.btnLogout = new ParentalControlWindowsForm.Botones_Personalizados.OurButton();
             this.btnMyAccount = new ParentalControlWindowsForm.Botones_Personalizados.OurButton();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
+            this.lblRequestId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.imgInfant = new System.Windows.Forms.DataGridViewImageColumn();
+            this.lblInfantName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lblDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnAccept = new System.Windows.Forms.DataGridViewImageColumn();
+            this.btnNoAccept = new System.Windows.Forms.DataGridViewImageColumn();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imgNotifications)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgScheedule)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgInfants)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgDevice)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgLogo)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvSchedule)).BeginInit();
+            this.panel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvNotifications)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -79,10 +80,10 @@ namespace ParentalControlWindowsForm.Forms
             this.panel1.Controls.Add(this.imgInfants);
             this.panel1.Controls.Add(this.imgDevice);
             this.panel1.Controls.Add(this.imgLogo);
-            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Location = new System.Drawing.Point(0, -2);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(144, 566);
-            this.panel1.TabIndex = 1;
+            this.panel1.TabIndex = 0;
             // 
             // label4
             // 
@@ -130,6 +131,7 @@ namespace ParentalControlWindowsForm.Forms
             // 
             // imgNotifications
             // 
+            this.imgNotifications.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.imgNotifications.Image = global::ParentalControlWindowsForm.Properties.Resources.notificaciones;
             this.imgNotifications.Location = new System.Drawing.Point(41, 433);
             this.imgNotifications.Name = "imgNotifications";
@@ -141,7 +143,6 @@ namespace ParentalControlWindowsForm.Forms
             // 
             // imgScheedule
             // 
-            this.imgScheedule.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.imgScheedule.Image = global::ParentalControlWindowsForm.Properties.Resources.calendario;
             this.imgScheedule.Location = new System.Drawing.Point(39, 340);
             this.imgScheedule.Name = "imgScheedule";
@@ -184,142 +185,73 @@ namespace ParentalControlWindowsForm.Forms
             this.imgLogo.TabStop = false;
             this.imgLogo.Click += new System.EventHandler(this.imgLogo_Click);
             // 
-            // lblSchedule
-            // 
-            this.lblSchedule.AutoSize = true;
-            this.lblSchedule.Font = new System.Drawing.Font("Arial", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSchedule.ForeColor = System.Drawing.Color.Black;
-            this.lblSchedule.Location = new System.Drawing.Point(189, 57);
-            this.lblSchedule.Name = "lblSchedule";
-            this.lblSchedule.Size = new System.Drawing.Size(111, 29);
-            this.lblSchedule.TabIndex = 2;
-            this.lblSchedule.Text = "Horarios";
-            // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.Silver;
             this.panel2.Location = new System.Drawing.Point(170, 91);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(706, 3);
-            this.panel2.TabIndex = 3;
+            this.panel2.TabIndex = 28;
             // 
-            // dgvSchedule
+            // lblNews
             // 
-            this.dgvSchedule.AllowUserToAddRows = false;
-            this.dgvSchedule.AllowUserToDeleteRows = false;
-            this.dgvSchedule.AllowUserToResizeColumns = false;
-            this.dgvSchedule.AllowUserToResizeRows = false;
-            this.dgvSchedule.BackgroundColor = System.Drawing.Color.White;
-            this.dgvSchedule.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dgvSchedule.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SunkenHorizontal;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Arial Narrow", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvSchedule.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.dgvSchedule.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvSchedule.ColumnHeadersVisible = false;
-            this.dgvSchedule.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.idSchedule,
-            this.StartTime,
-            this.EndTime,
-            this.editSchedule,
-            this.deleteSchedule});
-            this.dgvSchedule.GridColor = System.Drawing.Color.White;
-            this.dgvSchedule.Location = new System.Drawing.Point(287, 156);
-            this.dgvSchedule.Name = "dgvSchedule";
-            this.dgvSchedule.ReadOnly = true;
-            this.dgvSchedule.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            this.dgvSchedule.RowHeadersVisible = false;
-            this.dgvSchedule.RowTemplate.DividerHeight = 5;
-            this.dgvSchedule.RowTemplate.Height = 50;
-            this.dgvSchedule.Size = new System.Drawing.Size(450, 298);
-            this.dgvSchedule.TabIndex = 29;
-            this.dgvSchedule.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvSchedule_CellContentClick);
+            this.lblNews.AutoSize = true;
+            this.lblNews.Font = new System.Drawing.Font("Arial", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNews.ForeColor = System.Drawing.Color.Black;
+            this.lblNews.Location = new System.Drawing.Point(189, 57);
+            this.lblNews.Name = "lblNews";
+            this.lblNews.Size = new System.Drawing.Size(177, 29);
+            this.lblNews.TabIndex = 27;
+            this.lblNews.Text = "Notificaciones";
             // 
-            // idSchedule
+            // panel3
             // 
-            this.idSchedule.HeaderText = "Id Horario";
-            this.idSchedule.Name = "idSchedule";
-            this.idSchedule.ReadOnly = true;
-            this.idSchedule.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.idSchedule.Visible = false;
+            this.panel3.Controls.Add(this.lblNoNotifications);
+            this.panel3.Controls.Add(this.dgvNotifications);
+            this.panel3.Location = new System.Drawing.Point(194, 142);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(639, 373);
+            this.panel3.TabIndex = 29;
             // 
-            // StartTime
+            // lblNoNotifications
             // 
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
-            this.StartTime.DefaultCellStyle = dataGridViewCellStyle2;
-            this.StartTime.HeaderText = "Hora Inicio";
-            this.StartTime.Name = "StartTime";
-            this.StartTime.ReadOnly = true;
-            this.StartTime.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.StartTime.Width = 125;
+            this.lblNoNotifications.AutoSize = true;
+            this.lblNoNotifications.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNoNotifications.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(31)))), ((int)(((byte)(31)))));
+            this.lblNoNotifications.Location = new System.Drawing.Point(238, 141);
+            this.lblNoNotifications.Name = "lblNoNotifications";
+            this.lblNoNotifications.Size = new System.Drawing.Size(125, 66);
+            this.lblNoNotifications.TabIndex = 60;
+            this.lblNoNotifications.Text = "Aún no tienes\r\nninguna\r\nnotificación";
+            this.lblNoNotifications.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblNoNotifications.Visible = false;
             // 
-            // EndTime
+            // dgvNotifications
             // 
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
-            this.EndTime.DefaultCellStyle = dataGridViewCellStyle3;
-            this.EndTime.HeaderText = "Hora Fin";
-            this.EndTime.Name = "EndTime";
-            this.EndTime.ReadOnly = true;
-            this.EndTime.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.EndTime.Width = 125;
-            // 
-            // editSchedule
-            // 
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle4.NullValue = ((object)(resources.GetObject("dataGridViewCellStyle4.NullValue")));
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.Black;
-            this.editSchedule.DefaultCellStyle = dataGridViewCellStyle4;
-            this.editSchedule.HeaderText = "";
-            this.editSchedule.Name = "editSchedule";
-            this.editSchedule.ReadOnly = true;
-            this.editSchedule.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.editSchedule.Width = 95;
-            // 
-            // deleteSchedule
-            // 
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle5.NullValue = ((object)(resources.GetObject("dataGridViewCellStyle5.NullValue")));
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.Black;
-            this.deleteSchedule.DefaultCellStyle = dataGridViewCellStyle5;
-            this.deleteSchedule.HeaderText = "";
-            this.deleteSchedule.Image = global::ParentalControlWindowsForm.Properties.Resources.delete;
-            this.deleteSchedule.Name = "deleteSchedule";
-            this.deleteSchedule.ReadOnly = true;
-            this.deleteSchedule.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.deleteSchedule.Width = 95;
-            // 
-            // btnAddSchedule
-            // 
-            this.btnAddSchedule.BackColor = System.Drawing.SystemColors.Highlight;
-            this.btnAddSchedule.BackgroundColor = System.Drawing.SystemColors.Highlight;
-            this.btnAddSchedule.BorderColor = System.Drawing.SystemColors.Highlight;
-            this.btnAddSchedule.BorderRadius = 10;
-            this.btnAddSchedule.BorderSize = 0;
-            this.btnAddSchedule.FlatAppearance.BorderSize = 0;
-            this.btnAddSchedule.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAddSchedule.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold);
-            this.btnAddSchedule.ForeColor = System.Drawing.Color.White;
-            this.btnAddSchedule.Location = new System.Drawing.Point(465, 480);
-            this.btnAddSchedule.Name = "btnAddSchedule";
-            this.btnAddSchedule.Size = new System.Drawing.Size(112, 31);
-            this.btnAddSchedule.TabIndex = 28;
-            this.btnAddSchedule.Text = "Agregar";
-            this.btnAddSchedule.TextColor = System.Drawing.Color.White;
-            this.btnAddSchedule.UseVisualStyleBackColor = false;
-            this.btnAddSchedule.Click += new System.EventHandler(this.btnAddSchedule_Click);
+            this.dgvNotifications.AllowUserToAddRows = false;
+            this.dgvNotifications.AllowUserToDeleteRows = false;
+            this.dgvNotifications.AllowUserToResizeColumns = false;
+            this.dgvNotifications.AllowUserToResizeRows = false;
+            this.dgvNotifications.BackgroundColor = System.Drawing.Color.White;
+            this.dgvNotifications.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgvNotifications.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvNotifications.ColumnHeadersVisible = false;
+            this.dgvNotifications.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.lblRequestId,
+            this.imgInfant,
+            this.lblInfantName,
+            this.lblDescription,
+            this.btnAccept,
+            this.btnNoAccept});
+            this.dgvNotifications.Location = new System.Drawing.Point(0, 0);
+            this.dgvNotifications.Name = "dgvNotifications";
+            this.dgvNotifications.ReadOnly = true;
+            this.dgvNotifications.RowHeadersVisible = false;
+            this.dgvNotifications.RowTemplate.DividerHeight = 1;
+            this.dgvNotifications.RowTemplate.Height = 70;
+            this.dgvNotifications.Size = new System.Drawing.Size(636, 370);
+            this.dgvNotifications.TabIndex = 0;
+            this.dgvNotifications.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvNotifications_CellContentClick);
             // 
             // btnLogout
             // 
@@ -335,7 +267,7 @@ namespace ParentalControlWindowsForm.Forms
             this.btnLogout.Location = new System.Drawing.Point(716, 13);
             this.btnLogout.Name = "btnLogout";
             this.btnLogout.Size = new System.Drawing.Size(128, 31);
-            this.btnLogout.TabIndex = 27;
+            this.btnLogout.TabIndex = 26;
             this.btnLogout.Text = "Cerrar Sesión";
             this.btnLogout.TextColor = System.Drawing.Color.White;
             this.btnLogout.UseVisualStyleBackColor = false;
@@ -355,59 +287,109 @@ namespace ParentalControlWindowsForm.Forms
             this.btnMyAccount.Location = new System.Drawing.Point(587, 13);
             this.btnMyAccount.Name = "btnMyAccount";
             this.btnMyAccount.Size = new System.Drawing.Size(112, 31);
-            this.btnMyAccount.TabIndex = 26;
+            this.btnMyAccount.TabIndex = 25;
             this.btnMyAccount.Text = "Mi Cuenta";
             this.btnMyAccount.TextColor = System.Drawing.Color.White;
             this.btnMyAccount.UseVisualStyleBackColor = false;
             this.btnMyAccount.Click += new System.EventHandler(this.btnMyAccount_Click);
             // 
-            // label5
+            // lblRequestId
             // 
-            this.label5.AutoSize = true;
-            this.label5.BackColor = System.Drawing.Color.White;
-            this.label5.Font = new System.Drawing.Font("Arial", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.label5.Location = new System.Drawing.Point(300, 123);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(93, 19);
-            this.label5.TabIndex = 30;
-            this.label5.Text = "Hora Inicio";
+            this.lblRequestId.HeaderText = "Id Request";
+            this.lblRequestId.Name = "lblRequestId";
+            this.lblRequestId.ReadOnly = true;
+            this.lblRequestId.Visible = false;
             // 
-            // label6
+            // imgInfant
             // 
-            this.label6.AutoSize = true;
-            this.label6.BackColor = System.Drawing.Color.White;
-            this.label6.Font = new System.Drawing.Font("Arial", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.label6.Location = new System.Drawing.Point(434, 123);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(76, 19);
-            this.label6.TabIndex = 31;
-            this.label6.Text = "Hora Fin";
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.NullValue = ((object)(resources.GetObject("dataGridViewCellStyle1.NullValue")));
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.imgInfant.DefaultCellStyle = dataGridViewCellStyle1;
+            this.imgInfant.HeaderText = "Imagen";
+            this.imgInfant.Name = "imgInfant";
+            this.imgInfant.ReadOnly = true;
+            this.imgInfant.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.imgInfant.Width = 90;
             // 
-            // FormSchedule
+            // lblInfantName
+            // 
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.lblInfantName.DefaultCellStyle = dataGridViewCellStyle2;
+            this.lblInfantName.HeaderText = "Nombre Infante";
+            this.lblInfantName.Name = "lblInfantName";
+            this.lblInfantName.ReadOnly = true;
+            this.lblInfantName.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            // 
+            // lblDescription
+            // 
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.lblDescription.DefaultCellStyle = dataGridViewCellStyle3;
+            this.lblDescription.HeaderText = "Descripción";
+            this.lblDescription.Name = "lblDescription";
+            this.lblDescription.ReadOnly = true;
+            this.lblDescription.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.lblDescription.Width = 230;
+            // 
+            // btnAccept
+            // 
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.NullValue = ((object)(resources.GetObject("dataGridViewCellStyle4.NullValue")));
+            dataGridViewCellStyle4.Padding = new System.Windows.Forms.Padding(5, 3, 5, 3);
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.btnAccept.DefaultCellStyle = dataGridViewCellStyle4;
+            this.btnAccept.HeaderText = "Aprobar";
+            this.btnAccept.Name = "btnAccept";
+            this.btnAccept.ReadOnly = true;
+            this.btnAccept.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            // 
+            // btnNoAccept
+            // 
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.NullValue = ((object)(resources.GetObject("dataGridViewCellStyle5.NullValue")));
+            dataGridViewCellStyle5.Padding = new System.Windows.Forms.Padding(5, 3, 5, 3);
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.btnNoAccept.DefaultCellStyle = dataGridViewCellStyle5;
+            this.btnNoAccept.HeaderText = "Desaprobar";
+            this.btnNoAccept.Name = "btnNoAccept";
+            this.btnNoAccept.ReadOnly = true;
+            this.btnNoAccept.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            // 
+            // FormNotifications
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(884, 561);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.dgvSchedule);
-            this.Controls.Add(this.btnAddSchedule);
+            this.Controls.Add(this.panel3);
+            this.Controls.Add(this.panel2);
+            this.Controls.Add(this.lblNews);
             this.Controls.Add(this.btnLogout);
             this.Controls.Add(this.btnMyAccount);
-            this.Controls.Add(this.panel2);
-            this.Controls.Add(this.lblSchedule);
             this.Controls.Add(this.panel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Location = new System.Drawing.Point(450, 490);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "FormSchedule";
+            this.Name = "FormNotifications";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Control Parental";
-            this.Load += new System.EventHandler(this.FormSchedule_Load);
+            this.Load += new System.EventHandler(this.FormNotifications_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imgNotifications)).EndInit();
@@ -415,7 +397,9 @@ namespace ParentalControlWindowsForm.Forms
             ((System.ComponentModel.ISupportInitialize)(this.imgInfants)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgDevice)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgLogo)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvSchedule)).EndInit();
+            this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvNotifications)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -424,28 +408,27 @@ namespace ParentalControlWindowsForm.Forms
         #endregion
 
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.PictureBox imgDevice;
+        private System.Windows.Forms.PictureBox imgLogo;
+        private System.Windows.Forms.PictureBox imgScheedule;
+        private System.Windows.Forms.PictureBox imgInfants;
+        private System.Windows.Forms.PictureBox imgNotifications;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.PictureBox imgNotifications;
-        private System.Windows.Forms.PictureBox imgScheedule;
-        private System.Windows.Forms.PictureBox imgInfants;
-        private System.Windows.Forms.PictureBox imgDevice;
-        private System.Windows.Forms.PictureBox imgLogo;
-        private System.Windows.Forms.Label lblSchedule;
-        private System.Windows.Forms.Panel panel2;
-        private Botones_Personalizados.OurButton btnLogout;
         private Botones_Personalizados.OurButton btnMyAccount;
-        private Botones_Personalizados.OurButton btnAddSchedule;
-        private System.Windows.Forms.DataGridViewImageColumn delete;
-        private System.Windows.Forms.DataGridView dgvSchedule;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.DataGridViewTextBoxColumn idSchedule;
-        private System.Windows.Forms.DataGridViewTextBoxColumn StartTime;
-        private System.Windows.Forms.DataGridViewTextBoxColumn EndTime;
-        private System.Windows.Forms.DataGridViewImageColumn editSchedule;
-        private System.Windows.Forms.DataGridViewImageColumn deleteSchedule;
+        private Botones_Personalizados.OurButton btnLogout;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Label lblNews;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.DataGridView dgvNotifications;
+        private System.Windows.Forms.Label lblNoNotifications;
+        private System.Windows.Forms.DataGridViewTextBoxColumn lblRequestId;
+        private System.Windows.Forms.DataGridViewImageColumn imgInfant;
+        private System.Windows.Forms.DataGridViewTextBoxColumn lblInfantName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn lblDescription;
+        private System.Windows.Forms.DataGridViewImageColumn btnAccept;
+        private System.Windows.Forms.DataGridViewImageColumn btnNoAccept;
     }
 }

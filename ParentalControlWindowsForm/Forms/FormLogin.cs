@@ -127,9 +127,21 @@ namespace ParentalControlWindowsForm
         {
             try
             {
-                this.Hide();
-                FormRequest formRequest = new FormRequest();
-                formRequest.Show();
+                DeviceBO deviceBO = new DeviceBO();
+                string deviceCode = deviceBO.GetDeviceIdentifier();
+                List<DeviceModel> deviceModelList = deviceBO.VerifyDeviceExist(deviceCode);
+
+                if (deviceModelList.Count > 0)
+                {
+                    this.Hide();
+                    FormRequest formRequest = new FormRequest();
+                    formRequest.Show();
+                }
+                else
+                {
+                    MessageBox.Show("Para realizar una petición primero registra el dispositivo, " +
+                                    "iniciando sesión en el sistema.");
+                }                
             }
             catch (Exception ex)
             {

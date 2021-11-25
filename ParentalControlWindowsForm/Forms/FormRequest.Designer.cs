@@ -31,12 +31,17 @@ namespace ParentalControlWindowsForm.Forms
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormRequest));
             this.lblRequestTitle = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
             this.cmbRequestType = new System.Windows.Forms.ComboBox();
             this.pnlRequest = new System.Windows.Forms.Panel();
+            this.lblMinutes = new System.Windows.Forms.Label();
+            this.lblHours = new System.Windows.Forms.Label();
+            this.cmbMinutes = new System.Windows.Forms.ComboBox();
+            this.cmbHours = new System.Windows.Forms.ComboBox();
             this.cmbObject = new System.Windows.Forms.ComboBox();
             this.lblObject = new System.Windows.Forms.Label();
             this.lblNoProtected = new System.Windows.Forms.Label();
@@ -44,17 +49,13 @@ namespace ParentalControlWindowsForm.Forms
             this.ptBoxRequestImage = new System.Windows.Forms.PictureBox();
             this.Line = new System.Windows.Forms.Panel();
             this.pnlNotifications = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
+            this.lblNoNotifications = new System.Windows.Forms.Label();
             this.dgvNotifications = new System.Windows.Forms.DataGridView();
-            this.Request = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.State = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cmbHours = new System.Windows.Forms.ComboBox();
-            this.cmbMinutes = new System.Windows.Forms.ComboBox();
-            this.lblHours = new System.Windows.Forms.Label();
-            this.lblMinutes = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.btnSendRequest = new ParentalControlWindowsForm.Botones_Personalizados.OurButton();
             this.btnLogin = new ParentalControlWindowsForm.Botones_Personalizados.OurButton();
-            this.lblNoNotifications = new System.Windows.Forms.Label();
+            this.Request = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.State = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pnlRequest.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ptBoxCheck)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ptBoxRequestImage)).BeginInit();
@@ -120,6 +121,48 @@ namespace ParentalControlWindowsForm.Forms
             this.pnlRequest.Name = "pnlRequest";
             this.pnlRequest.Size = new System.Drawing.Size(377, 355);
             this.pnlRequest.TabIndex = 54;
+            // 
+            // lblMinutes
+            // 
+            this.lblMinutes.AutoSize = true;
+            this.lblMinutes.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMinutes.Location = new System.Drawing.Point(178, 219);
+            this.lblMinutes.Name = "lblMinutes";
+            this.lblMinutes.Size = new System.Drawing.Size(58, 17);
+            this.lblMinutes.TabIndex = 60;
+            this.lblMinutes.Text = "Minutos";
+            this.lblMinutes.Visible = false;
+            // 
+            // lblHours
+            // 
+            this.lblHours.AutoSize = true;
+            this.lblHours.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblHours.Location = new System.Drawing.Point(69, 219);
+            this.lblHours.Name = "lblHours";
+            this.lblHours.Size = new System.Drawing.Size(47, 17);
+            this.lblHours.TabIndex = 59;
+            this.lblHours.Text = "Horas";
+            this.lblHours.Visible = false;
+            // 
+            // cmbMinutes
+            // 
+            this.cmbMinutes.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbMinutes.FormattingEnabled = true;
+            this.cmbMinutes.Location = new System.Drawing.Point(122, 212);
+            this.cmbMinutes.Name = "cmbMinutes";
+            this.cmbMinutes.Size = new System.Drawing.Size(50, 24);
+            this.cmbMinutes.TabIndex = 58;
+            this.cmbMinutes.Visible = false;
+            // 
+            // cmbHours
+            // 
+            this.cmbHours.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbHours.FormattingEnabled = true;
+            this.cmbHours.Location = new System.Drawing.Point(13, 212);
+            this.cmbHours.Name = "cmbHours";
+            this.cmbHours.Size = new System.Drawing.Size(50, 24);
+            this.cmbHours.TabIndex = 57;
+            this.cmbHours.Visible = false;
             // 
             // cmbObject
             // 
@@ -193,16 +236,18 @@ namespace ParentalControlWindowsForm.Forms
             this.pnlNotifications.Size = new System.Drawing.Size(316, 357);
             this.pnlNotifications.TabIndex = 57;
             // 
-            // label1
+            // lblNoNotifications
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(31)))), ((int)(((byte)(31)))));
-            this.label1.Location = new System.Drawing.Point(90, 2);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(141, 22);
-            this.label1.TabIndex = 57;
-            this.label1.Text = "Notificaciones";
+            this.lblNoNotifications.AutoSize = true;
+            this.lblNoNotifications.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNoNotifications.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(31)))), ((int)(((byte)(31)))));
+            this.lblNoNotifications.Location = new System.Drawing.Point(98, 155);
+            this.lblNoNotifications.Name = "lblNoNotifications";
+            this.lblNoNotifications.Size = new System.Drawing.Size(125, 66);
+            this.lblNoNotifications.TabIndex = 59;
+            this.lblNoNotifications.Text = "Aún no tienes\r\nninguna\r\nnotificación";
+            this.lblNoNotifications.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblNoNotifications.Visible = false;
             // 
             // dgvNotifications
             // 
@@ -210,6 +255,16 @@ namespace ParentalControlWindowsForm.Forms
             this.dgvNotifications.AllowUserToDeleteRows = false;
             this.dgvNotifications.BackgroundColor = System.Drawing.Color.White;
             this.dgvNotifications.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.dgvNotifications.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SunkenVertical;
+            this.dgvNotifications.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvNotifications.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvNotifications.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvNotifications.ColumnHeadersVisible = false;
             this.dgvNotifications.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -220,69 +275,21 @@ namespace ParentalControlWindowsForm.Forms
             this.dgvNotifications.Name = "dgvNotifications";
             this.dgvNotifications.ReadOnly = true;
             this.dgvNotifications.RowHeadersVisible = false;
+            this.dgvNotifications.RowTemplate.DividerHeight = 1;
+            this.dgvNotifications.RowTemplate.Height = 55;
             this.dgvNotifications.Size = new System.Drawing.Size(309, 310);
             this.dgvNotifications.TabIndex = 58;
             // 
-            // Request
+            // label1
             // 
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Black;
-            this.Request.DefaultCellStyle = dataGridViewCellStyle1;
-            this.Request.HeaderText = "Petición";
-            this.Request.Name = "Request";
-            this.Request.ReadOnly = true;
-            this.Request.Width = 200;
-            // 
-            // State
-            // 
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
-            this.State.DefaultCellStyle = dataGridViewCellStyle2;
-            this.State.HeaderText = "Estado";
-            this.State.Name = "State";
-            this.State.ReadOnly = true;
-            // 
-            // cmbHours
-            // 
-            this.cmbHours.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmbHours.FormattingEnabled = true;
-            this.cmbHours.Location = new System.Drawing.Point(13, 212);
-            this.cmbHours.Name = "cmbHours";
-            this.cmbHours.Size = new System.Drawing.Size(66, 24);
-            this.cmbHours.TabIndex = 57;
-            this.cmbHours.Visible = false;
-            // 
-            // cmbMinutes
-            // 
-            this.cmbMinutes.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmbMinutes.FormattingEnabled = true;
-            this.cmbMinutes.Location = new System.Drawing.Point(144, 212);
-            this.cmbMinutes.Name = "cmbMinutes";
-            this.cmbMinutes.Size = new System.Drawing.Size(66, 24);
-            this.cmbMinutes.TabIndex = 58;
-            this.cmbMinutes.Visible = false;
-            // 
-            // lblHours
-            // 
-            this.lblHours.AutoSize = true;
-            this.lblHours.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblHours.Location = new System.Drawing.Point(85, 219);
-            this.lblHours.Name = "lblHours";
-            this.lblHours.Size = new System.Drawing.Size(47, 17);
-            this.lblHours.TabIndex = 59;
-            this.lblHours.Text = "Horas";
-            this.lblHours.Visible = false;
-            // 
-            // lblMinutes
-            // 
-            this.lblMinutes.AutoSize = true;
-            this.lblMinutes.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMinutes.Location = new System.Drawing.Point(216, 219);
-            this.lblMinutes.Name = "lblMinutes";
-            this.lblMinutes.Size = new System.Drawing.Size(58, 17);
-            this.lblMinutes.TabIndex = 60;
-            this.lblMinutes.Text = "Minutos";
-            this.lblMinutes.Visible = false;
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(31)))), ((int)(((byte)(31)))));
+            this.label1.Location = new System.Drawing.Point(90, 2);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(141, 22);
+            this.label1.TabIndex = 57;
+            this.label1.Text = "Notificaciones";
             // 
             // btnSendRequest
             // 
@@ -303,6 +310,7 @@ namespace ParentalControlWindowsForm.Forms
             this.btnSendRequest.TextColor = System.Drawing.Color.White;
             this.btnSendRequest.UseVisualStyleBackColor = false;
             this.btnSendRequest.Visible = false;
+            this.btnSendRequest.Click += new System.EventHandler(this.btnSendRequest_Click);
             // 
             // btnLogin
             // 
@@ -325,18 +333,31 @@ namespace ParentalControlWindowsForm.Forms
             this.btnLogin.UseVisualStyleBackColor = false;
             this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
             // 
-            // lblNoNotifications
+            // Request
             // 
-            this.lblNoNotifications.AutoSize = true;
-            this.lblNoNotifications.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNoNotifications.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(31)))), ((int)(((byte)(31)))));
-            this.lblNoNotifications.Location = new System.Drawing.Point(98, 155);
-            this.lblNoNotifications.Name = "lblNoNotifications";
-            this.lblNoNotifications.Size = new System.Drawing.Size(125, 66);
-            this.lblNoNotifications.TabIndex = 59;
-            this.lblNoNotifications.Text = "Aún no tienes\r\nninguna\r\nnotificación";
-            this.lblNoNotifications.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.lblNoNotifications.Visible = false;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.Request.DefaultCellStyle = dataGridViewCellStyle2;
+            this.Request.HeaderText = "Petición";
+            this.Request.Name = "Request";
+            this.Request.ReadOnly = true;
+            this.Request.Width = 202;
+            // 
+            // State
+            // 
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.MidnightBlue;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.MidnightBlue;
+            this.State.DefaultCellStyle = dataGridViewCellStyle3;
+            this.State.HeaderText = "Estado";
+            this.State.Name = "State";
+            this.State.ReadOnly = true;
+            this.State.Width = 105;
             // 
             // FormRequest
             // 
@@ -390,12 +411,12 @@ namespace ParentalControlWindowsForm.Forms
         private System.Windows.Forms.Panel pnlNotifications;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridView dgvNotifications;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Request;
-        private System.Windows.Forms.DataGridViewTextBoxColumn State;
         private System.Windows.Forms.ComboBox cmbMinutes;
         private System.Windows.Forms.ComboBox cmbHours;
         private System.Windows.Forms.Label lblMinutes;
         private System.Windows.Forms.Label lblHours;
         private System.Windows.Forms.Label lblNoNotifications;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Request;
+        private System.Windows.Forms.DataGridViewTextBoxColumn State;
     }
 }

@@ -132,6 +132,7 @@ namespace ParentalControlWindowsForm.Forms
             this.imgNotifications.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.imgNotifications.TabIndex = 4;
             this.imgNotifications.TabStop = false;
+            this.imgNotifications.Click += new System.EventHandler(this.imgNotifications_Click);
             // 
             // imgScheedule
             // 

@@ -223,5 +223,20 @@ namespace ParentalControlWindowsForm.Forms
             formSchedule.parentId = this.parentId;
             formSchedule.Show();
         }
+
+        private void imgNotifications_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                this.Hide();
+                FormNotifications formNotifications = new FormNotifications();
+                formNotifications.parentId = this.parentId;
+                formNotifications.Show();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
     }
 }

@@ -180,9 +180,9 @@ namespace ParentalControlWindowsForm
             this.label6.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.Location = new System.Drawing.Point(59, 522);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(53, 18);
+            this.label6.Size = new System.Drawing.Size(128, 18);
             this.label6.TabIndex = 30;
-            this.label6.Text = "Volver";
+            this.label6.Text = "Realizar Petición";
             // 
             // FormLogin
             // 
