@@ -40,6 +40,8 @@ namespace ParentalControlWindowsForm.Forms
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormDevice));
             this.panel1 = new System.Windows.Forms.Panel();
             this.dtgWindowsAccounts = new System.Windows.Forms.DataGridView();
+            this.WindowsAccounts = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cmbInfantAccount = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -59,8 +61,6 @@ namespace ParentalControlWindowsForm.Forms
             this.btnLogout = new ParentalControlWindowsForm.Botones_Personalizados.OurButton();
             this.btnMyAccount = new ParentalControlWindowsForm.Botones_Personalizados.OurButton();
             this.btnSave = new ParentalControlWindowsForm.Botones_Personalizados.OurButton();
-            this.WindowsAccounts = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cmbInfantAccount = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgWindowsAccounts)).BeginInit();
             this.panel2.SuspendLayout();
@@ -128,6 +128,38 @@ namespace ParentalControlWindowsForm.Forms
             this.dtgWindowsAccounts.RowTemplate.Height = 50;
             this.dtgWindowsAccounts.Size = new System.Drawing.Size(516, 305);
             this.dtgWindowsAccounts.TabIndex = 0;
+            // 
+            // WindowsAccounts
+            // 
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowFrame;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.WindowFrame;
+            this.WindowsAccounts.DefaultCellStyle = dataGridViewCellStyle3;
+            this.WindowsAccounts.FillWeight = 250F;
+            this.WindowsAccounts.HeaderText = "Cuentas Windows";
+            this.WindowsAccounts.MinimumWidth = 100;
+            this.WindowsAccounts.Name = "WindowsAccounts";
+            this.WindowsAccounts.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.WindowsAccounts.Width = 250;
+            // 
+            // cmbInfantAccount
+            // 
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Arial", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle4.Padding = new System.Windows.Forms.Padding(5, 9, 5, 9);
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.Black;
+            this.cmbInfantAccount.DefaultCellStyle = dataGridViewCellStyle4;
+            this.cmbInfantAccount.FillWeight = 200F;
+            this.cmbInfantAccount.HeaderText = "Cuentas Infantiles";
+            this.cmbInfantAccount.MaxDropDownItems = 10;
+            this.cmbInfantAccount.MinimumWidth = 100;
+            this.cmbInfantAccount.Name = "cmbInfantAccount";
+            this.cmbInfantAccount.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.cmbInfantAccount.Width = 200;
             // 
             // panel2
             // 
@@ -199,6 +231,7 @@ namespace ParentalControlWindowsForm.Forms
             this.imgNotifications.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.imgNotifications.TabIndex = 4;
             this.imgNotifications.TabStop = false;
+            this.imgNotifications.Click += new System.EventHandler(this.imgNotifications_Click);
             // 
             // imgScheedule
             // 
@@ -224,6 +257,7 @@ namespace ParentalControlWindowsForm.Forms
             // 
             // imgDevice
             // 
+            this.imgDevice.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.imgDevice.Image = global::ParentalControlWindowsForm.Properties.Resources.devices;
             this.imgDevice.Location = new System.Drawing.Point(41, 248);
             this.imgDevice.Name = "imgDevice";
@@ -364,38 +398,6 @@ namespace ParentalControlWindowsForm.Forms
             this.btnSave.TextColor = System.Drawing.Color.White;
             this.btnSave.UseVisualStyleBackColor = false;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
-            // 
-            // WindowsAccounts
-            // 
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.WindowsAccounts.DefaultCellStyle = dataGridViewCellStyle3;
-            this.WindowsAccounts.FillWeight = 250F;
-            this.WindowsAccounts.HeaderText = "Cuentas Windows";
-            this.WindowsAccounts.MinimumWidth = 100;
-            this.WindowsAccounts.Name = "WindowsAccounts";
-            this.WindowsAccounts.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.WindowsAccounts.Width = 250;
-            // 
-            // cmbInfantAccount
-            // 
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Arial", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle4.Padding = new System.Windows.Forms.Padding(5, 9, 5, 9);
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.Black;
-            this.cmbInfantAccount.DefaultCellStyle = dataGridViewCellStyle4;
-            this.cmbInfantAccount.FillWeight = 200F;
-            this.cmbInfantAccount.HeaderText = "Cuentas Infantiles";
-            this.cmbInfantAccount.MaxDropDownItems = 10;
-            this.cmbInfantAccount.MinimumWidth = 100;
-            this.cmbInfantAccount.Name = "cmbInfantAccount";
-            this.cmbInfantAccount.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.cmbInfantAccount.Width = 200;
             // 
             // FormDevice
             // 

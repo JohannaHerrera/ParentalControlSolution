@@ -61,6 +61,7 @@
     <Compile Include="BusinessBO\InfantAccountBO.cs" />
     <Compile Include="BusinessBO\LoginBO.cs" />
     <Compile Include="BusinessBO\NewsBO.cs" />
+    <Compile Include="BusinessBO\NotificationBO.cs" />
     <Compile Include="BusinessBO\ParentBO.cs" />
     <Compile Include="BusinessBO\RequestBO.cs" />
     <Compile Include="BusinessBO\ScheduleBO.cs" />

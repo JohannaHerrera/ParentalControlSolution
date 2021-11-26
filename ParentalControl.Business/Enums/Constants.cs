@@ -54,11 +54,52 @@ namespace ParentalControl.Business.Enums
             }
         }
 
-        public enum RequestType
+        public int RequestStateCreated
         {
-            WebConfiguration = 1,
-            AppConfiguration = 2,
-            DeviceConfiguration = 3
+            get
+            {
+                return 0;
+            }
+        }
+
+        public int RequestStateApproved
+        {
+            get
+            {
+                return 1;
+            }
+        }
+
+        public int RequestStateDisapproved
+        {
+            get
+            {
+                return 2;
+            }
+        }
+
+        public int WebConfiguration
+        {
+            get
+            {
+                return 1;
+            }
+        }
+
+        public int AppConfiguration
+        {
+            get
+            {
+                return 2;
+            }
+        }
+
+        public int DeviceConfiguration
+        {
+            get
+            {
+                return 3;
+            }
         }
     }
 }

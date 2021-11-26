@@ -41,7 +41,7 @@ namespace ParentalControlWindowsForm.Forms
                 List<WebCategoryModel> webCategoryList = webConfigurationBO.GetWebCategory();
 
                 dgvWebLock.Rows.Add("Drogas", false);
-                dgvWebLock.Rows.Add("Pornograf;ia", false);
+                dgvWebLock.Rows.Add("Pornografía", false);
                 dgvWebLock.Rows.Add("Videojuegos", false);
                 dgvWebLock.Rows.Add("Violencia", false);
 
@@ -280,7 +280,17 @@ namespace ParentalControlWindowsForm.Forms
 
         private void imgNotifications_Click(object sender, EventArgs e)
         {
-
+            try
+            {
+                this.Hide();
+                FormNotifications formNotifications = new FormNotifications();
+                formNotifications.parentId = this.parentId;
+                formNotifications.Show();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void btnMyAccount_Click(object sender, EventArgs e)

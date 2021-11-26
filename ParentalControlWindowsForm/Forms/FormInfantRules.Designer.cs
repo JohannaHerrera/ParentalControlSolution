@@ -69,11 +69,11 @@ namespace ParentalControlWindowsForm.Forms
             this.Category = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.EnableCategory = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.WebConfigId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnSave = new ParentalControlWindowsForm.Botones_Personalizados.OurButton();
             this.btnActivityRecord = new ParentalControlWindowsForm.Botones_Personalizados.OurButton();
             this.btnTimeUseDevice = new ParentalControlWindowsForm.Botones_Personalizados.OurButton();
             this.btnAppLock = new ParentalControlWindowsForm.Botones_Personalizados.OurButton();
             this.btnWebLock = new ParentalControlWindowsForm.Botones_Personalizados.OurButton();
-            this.btnSave = new ParentalControlWindowsForm.Botones_Personalizados.OurButton();
             this.btnLogout = new ParentalControlWindowsForm.Botones_Personalizados.OurButton();
             this.btnMyAccount = new ParentalControlWindowsForm.Botones_Personalizados.OurButton();
             this.aplicacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -176,6 +176,7 @@ namespace ParentalControlWindowsForm.Forms
             // 
             // imgInfants
             // 
+            this.imgInfants.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.imgInfants.Image = global::ParentalControlWindowsForm.Properties.Resources.children;
             this.imgInfants.Location = new System.Drawing.Point(35, 156);
             this.imgInfants.Name = "imgInfants";
@@ -493,6 +494,26 @@ namespace ParentalControlWindowsForm.Forms
             this.WebConfigId.Name = "WebConfigId";
             this.WebConfigId.Visible = false;
             // 
+            // btnSave
+            // 
+            this.btnSave.BackColor = System.Drawing.SystemColors.Highlight;
+            this.btnSave.BackgroundColor = System.Drawing.SystemColors.Highlight;
+            this.btnSave.BorderColor = System.Drawing.SystemColors.Highlight;
+            this.btnSave.BorderRadius = 10;
+            this.btnSave.BorderSize = 0;
+            this.btnSave.FlatAppearance.BorderSize = 0;
+            this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold);
+            this.btnSave.ForeColor = System.Drawing.Color.White;
+            this.btnSave.Location = new System.Drawing.Point(443, 504);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(112, 31);
+            this.btnSave.TabIndex = 31;
+            this.btnSave.Text = "Guardar";
+            this.btnSave.TextColor = System.Drawing.Color.White;
+            this.btnSave.UseVisualStyleBackColor = false;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            // 
             // btnActivityRecord
             // 
             this.btnActivityRecord.BackColor = System.Drawing.SystemColors.Highlight;
@@ -576,26 +597,6 @@ namespace ParentalControlWindowsForm.Forms
             this.btnWebLock.TextColor = System.Drawing.Color.White;
             this.btnWebLock.UseVisualStyleBackColor = false;
             this.btnWebLock.Click += new System.EventHandler(this.btnWebLock_Click);
-            // 
-            // btnSave
-            // 
-            this.btnSave.BackColor = System.Drawing.SystemColors.Highlight;
-            this.btnSave.BackgroundColor = System.Drawing.SystemColors.Highlight;
-            this.btnSave.BorderColor = System.Drawing.SystemColors.Highlight;
-            this.btnSave.BorderRadius = 10;
-            this.btnSave.BorderSize = 0;
-            this.btnSave.FlatAppearance.BorderSize = 0;
-            this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold);
-            this.btnSave.ForeColor = System.Drawing.Color.White;
-            this.btnSave.Location = new System.Drawing.Point(443, 504);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(112, 31);
-            this.btnSave.TabIndex = 31;
-            this.btnSave.Text = "Guardar";
-            this.btnSave.TextColor = System.Drawing.Color.White;
-            this.btnSave.UseVisualStyleBackColor = false;
-            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // btnLogout
             // 

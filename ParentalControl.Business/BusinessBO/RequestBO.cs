@@ -1,10 +1,17 @@
-﻿using ParentalControl.Data;
+﻿using ParentalControl.Business.Enums;
+using ParentalControl.Data;
 using ParentalControl.Models.Device;
+using ParentalControl.Models.Login;
 using ParentalControl.Models.Request;
+using ParentalControl.Models.Schedule;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Net;
+using System.Net.Mail;
+using System.Net.Security;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -28,16 +35,165 @@ namespace ParentalControl.Business.BusinessBO
         /// <summary>
         /// Método para obtener las aplicaciones bloqueadas
         /// </summary>
-        /// <returns>List<RequestTypeModel></returns>
+        /// <returns>List<ApplicationModel></returns>
         public List<ApplicationModel> GetBlockedApps(int infantId, int deviceId)
         {
             string query = $"SELECT * FROM App WHERE InfantAccountId = {infantId}" +
                            $" AND DevicePCId = {deviceId}" +
-                           $" AND (AppAccessPermission <> 1 OR ScheduleId IS NOT NULL)";
+                           $" AND (AppAccessPermission <> 0 OR ScheduleId IS NOT NULL)";
 
             List<ApplicationModel> applicationModelList = this.ObtenerListaSQL<ApplicationModel>(query).ToList();
 
             return applicationModelList;
+        }
+
+        /// <summary>
+        /// Método para obtener las categorías web bloqueadas
+        /// </summary>
+        /// <returns>List<WebConfigurationModel></returns>
+        public List<WebConfigurationModel> GetBlockedWebCategory(int infantId)
+        {
+            string query = $"SELECT * FROM WebConfiguration WHERE InfantAccountId = {infantId}" +
+                           $" AND WebConfigurationAccess <> 0";
+
+            List<WebConfigurationModel> webConfigurationModelList = this.ObtenerListaSQL<WebConfigurationModel>(query).ToList();
+
+            return webConfigurationModelList;
+        }
+
+        /// <summary>
+        /// Método para obtener la configuración del uso del dispositivo de ese día
+        /// </summary>
+        /// <returns>List<ScheduleModel></returns>
+        public ScheduleModel GetDeviceUse(int infantId, string day)
+        {
+            ScheduleModel scheduleModel = null;
+            string query = $"SELECT * FROM DeviceUse WHERE InfantAccountId = {infantId}" +
+                           $" AND DeviceUseDay = '{day}'";
+            List<DeviceUseModel> deviceUseModelList = this.ObtenerListaSQL<DeviceUseModel>(query).ToList();
+
+            if (deviceUseModelList.Count > 0 )
+            {
+                int scheduleId = deviceUseModelList.FirstOrDefault().ScheduleId;
+
+                if (scheduleId != 0)
+                {
+                    query = $"SELECT * FROM Schedule WHERE ScheduleId = {scheduleId} ";
+                    List<ScheduleModel> scheduleModelList = this.ObtenerListaSQL<ScheduleModel>(query).ToList();
+                    scheduleModel = scheduleModelList.FirstOrDefault();
+                }
+            }
+
+            return scheduleModel;
+        }
+
+        /// <summary>
+        /// Método para obtener el email del Padre
+        /// </summary>
+        /// <returns>string</returns>
+        public string GetParentEmail(int parentId)
+        {
+            string parentEmail = string.Empty;
+            string query = $"SELECT * FROM Parent WHERE ParentId = {parentId}";
+            List<ParentModel> parentModelList = this.ObtenerListaSQL<ParentModel>(query).ToList();
+
+            if (parentModelList.Count > 0)
+            {
+                parentEmail = parentModelList.FirstOrDefault().ParentEmail;
+            }
+            return parentEmail;
+        }
+
+        /// <summary>
+        /// Método para registrar la petición en caso de categorías web y aplicaciones
+        /// </summary>
+        /// <returns>bool: TRUE(registro exitoso), FALSE(error al registrar)</returns>
+        public bool RegisterRequestWA(string requestType, int infantId, int parentId, string objecto)
+        {
+            Constants constants = new Constants();
+            var dateCreation = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+            bool execute = false;
+            string query = $"SELECT * FROM RequestType WHERE RequestTypeName = '{requestType}'";
+            List<RequestTypeModel> requestTypeModelList = this.ObtenerListaSQL<RequestTypeModel>(query).ToList();
+
+            if (requestTypeModelList.Count > 0)
+            {
+                int idRequestType = requestTypeModelList.FirstOrDefault().RequestTypeId;
+                query = $"INSERT INTO Request VALUES ({idRequestType}, {infantId}," +
+                        $" '{objecto}', NULL, {constants.RequestStateCreated}," +
+                        $" '{dateCreation}', {parentId})";
+                execute = SQLConexionDataBase.Execute(query);
+            }
+            return execute;
+        }
+
+        /// <summary>
+        /// Método para registrar la petición en caso del uso del dispositivo
+        /// </summary>
+        /// <returns>bool: TRUE(registro exitoso), FALSE(error al registrar)</returns>
+        public bool RegisterRequestDU(string requestType, int infantId, int parentId, decimal time)
+        {
+            Constants constants = new Constants();
+            var dateCreation = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+            bool execute = false;
+            string query = $"SELECT * FROM RequestType WHERE RequestTypeName = '{requestType}'";
+            List<RequestTypeModel> requestTypeModelList = this.ObtenerListaSQL<RequestTypeModel>(query).ToList();
+
+            if (requestTypeModelList.Count > 0)
+            {
+                int idRequestType = requestTypeModelList.FirstOrDefault().RequestTypeId;
+                query = $"INSERT INTO Request VALUES ({idRequestType}, {infantId}," +
+                        $" NULL, {time}, {constants.RequestStateCreated}," +
+                        $" '{dateCreation}', {parentId})";
+                execute = SQLConexionDataBase.Execute(query);
+            }
+            return execute;
+        }
+
+
+        /// <summary>
+        /// Método para actualizar el estado de la petición
+        /// </summary>
+        /// <returns>bool: TRUE(actualización exitosa), FALSE(error al actualizar)</returns>
+        public bool UpdateRequest(int requestId, int state)
+        {
+            string query = $"UPDATE Request SET RequestState = {state} WHERE RequestId = {requestId}";
+            bool execute = SQLConexionDataBase.Execute(query);
+            
+            return execute;
+        }
+
+
+        /// <summary>
+        /// Método para enviar el correo de notificación al Padre
+        /// </summary>
+        /// <returns>bool: TRUE(envío exitoso), FALSE(error al enviar)</returns>
+        public bool SendEmail(string parentEmail, string body)
+        {
+            try
+            {
+                MailMessage correo = new MailMessage();
+                correo.From = new MailAddress("prueba.controlparental.jkn@gmail.com", "JKN", System.Text.Encoding.UTF8);//Correo de salida
+                correo.To.Add(parentEmail); //Correo destino
+                correo.Subject = "Notificación Control Parental"; //Asunto
+                correo.Body = body; //Mensaje del correo
+                correo.IsBodyHtml = true;
+                correo.Priority = MailPriority.High;
+                SmtpClient smtp = new SmtpClient();
+                smtp.UseDefaultCredentials = false;
+                smtp.Host = "smtp.gmail.com"; //Host del servidor de correo
+                smtp.Port = 587; //Puerto de salida
+                smtp.Credentials = new System.Net.NetworkCredential("prueba.controlparental.jkn@gmail.com", "JKN123456a");//Cuenta de correo
+                ServicePointManager.ServerCertificateValidationCallback = delegate (object s, X509Certificate certificate, X509Chain chain, SslPolicyErrors sslPolicyErrors) { return true; };
+                smtp.EnableSsl = true; //True si el servidor de correo permite ssl
+                smtp.Send(correo);
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }           
         }
 
         /// <summary>
