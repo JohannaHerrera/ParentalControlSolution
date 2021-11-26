@@ -1,5 +1,6 @@
 ﻿using ParentalControl.Business.BusinessBO;
 using ParentalControl.Business.Enums;
+using ParentalControl.Models.Activity;
 using ParentalControl.Models.Device;
 using ParentalControl.Models.Schedule;
 using System;
@@ -191,14 +192,22 @@ namespace ParentalControlWindowsForm.Forms
                 }
 
                 // ***************** HISTORIAL ***************** 
-                dgvActivityRecord.Rows.Add("Activity");
-                dgvActivityRecord.Rows.Add("Activity");
-                dgvActivityRecord.Rows.Add("Activity");
-                dgvActivityRecord.Rows.Add("Activity");
+                ActivityBO activityBO = new ActivityBO();
+                List<ActivityModel> activityModelList = new List<ActivityModel>();
 
-                
+                iterator = 0;
 
-                //dgvWebLock.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                activityModelList = activityBO.GetActivityList(this.infantId);
+
+
+                if (activityModelList.Count > 0)
+                {
+                    foreach (var activity in activityModelList)
+                    {
+                        this.dgvActivityRecord.Rows.Add(activity.ActivityObject, activity.ActivityDescription);
+                    }
+                }
+
             }
             catch (Exception ex)
             {
