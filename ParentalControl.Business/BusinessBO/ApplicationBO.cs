@@ -34,7 +34,7 @@ namespace ParentalControl.Business.BusinessBO
         }
 
         /// <summary>
-        /// Método para obtener las aplicaciones de una cuenta infantil
+        /// Método para registrar una aplicación
         /// </summary>
         /// <param name="infantId">Id del Infante</param>
         /// <param name="appName">Nombre de la App</param>

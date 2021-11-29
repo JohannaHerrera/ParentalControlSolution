@@ -7,6 +7,7 @@ using ParentalControl.Models.Schedule;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Globalization;
 using System.Linq;
 using System.Net;
 using System.Net.Mail;
@@ -150,7 +151,6 @@ namespace ParentalControl.Business.BusinessBO
             return execute;
         }
 
-
         /// <summary>
         /// Método para actualizar el estado de la petición
         /// </summary>
@@ -163,6 +163,93 @@ namespace ParentalControl.Business.BusinessBO
             return execute;
         }
 
+        /// <summary>
+        /// Método para aprobar una petición de configuración web
+        /// </summary>
+        /// <returns>bool: TRUE(actualización exitosa), FALSE(error al actualizar)</returns>
+        public bool ApproveWebAccess(string webCategory, int infantId)
+        {
+            Constants constants = new Constants();
+            bool execute = false;
+            string query = $"SELECT * FROM WebCategory WHERE CategoryName = '{webCategory}'";
+            List<WebCategoryModel> webCategoryModelList = this.ObtenerListaSQL<WebCategoryModel>(query).ToList();
+
+            if(webCategoryModelList.Count > 0)
+            {
+                int webCategoryId = webCategoryModelList.FirstOrDefault().CategoryId;
+                query = $"UPDATE WebConfiguration SET WebConfigurationAccess = {constants.Access}" +
+                        $" WHERE CategoryId = {webCategoryId}";
+                execute = SQLConexionDataBase.Execute(query);
+            }       
+
+            return execute;
+        }
+
+        /// <summary>
+        /// Método para aprobar una petición de configuración de apps
+        /// </summary>
+        /// <returns>bool: TRUE(actualización exitosa), FALSE(error al actualizar)</returns>
+        public bool ApproveAppAccess(string appName, int infantId)
+        {
+            Constants constants = new Constants();
+            DeviceBO deviceBO = new DeviceBO(); 
+            bool execute = false;
+            string deviceCode = deviceBO.GetDeviceIdentifier();
+
+            string query = $"SELECT * FROM DevicePC WHERE DevicePCCode = '{deviceCode}'";
+            List<DeviceModel> deviceModelList = this.ObtenerListaSQL<DeviceModel>(query).ToList();
+
+            if (deviceModelList.Count > 0)
+            {
+                int deviceId = deviceModelList.FirstOrDefault().DevicePCId;
+                query = $"SELECT * FROM App WHERE AppName = '{appName}' AND DevicePCId = {deviceId}";
+                List<ApplicationModel> applicationModelList = this.ObtenerListaSQL<ApplicationModel>(query).ToList();
+
+                if (applicationModelList.Count > 0)
+                {
+                    int appId = applicationModelList.FirstOrDefault().AppId;
+                    query = $"UPDATE App SET AppAccessPermission = {constants.Access}" +
+                            $" WHERE AppId = {appId}";
+                    execute = SQLConexionDataBase.Execute(query);
+                }                              
+            }
+
+            return execute;
+        }
+
+        public bool VerifyRequest(int requestType, string requestObject)
+        {
+            Constants constants = new Constants();
+            bool exist = true;
+            var dateNow = DateTime.Now.ToString("yyyy-MM-dd");
+            string query = string.Empty;
+            List<RequestModel> requestModelList = new List<RequestModel>();
+
+            if (requestType == constants.WebConfiguration || requestType == constants.AppConfiguration)
+            {
+                query = $"SELECT * FROM Request WHERE RequestState = 0" +
+                        $" AND RequestObject = '{requestObject}'";
+            }
+            else if (requestType == constants.DeviceConfiguration)
+            {
+                query = $"SELECT * FROM Request WHERE RequestState = 0" +
+                        $" AND CAST(RequestCreationDate AS date) = '{dateNow}'" +
+                        $" AND RequestTime IS NOT NULL";
+            }
+
+            requestModelList = this.ObtenerListaSQL<RequestModel>(query).ToList();
+
+            if (requestModelList.Count > 0)
+            {
+                exist = true;
+            }
+            else
+            {
+                exist = false;
+            }
+
+            return exist;
+        }
 
         /// <summary>
         /// Método para enviar el correo de notificación al Padre

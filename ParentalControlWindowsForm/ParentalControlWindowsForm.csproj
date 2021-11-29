@@ -230,6 +230,7 @@
     <None Include="Resources\AddInfantAccount.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\Sin-Respuesta.png" />
     <None Include="Resources\atras.png" />
     <None Include="Resources\Aprobado.png" />
     <None Include="Resources\Aprobar.png" />

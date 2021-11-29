@@ -78,6 +78,14 @@ namespace ParentalControl.Business.Enums
             }
         }
 
+        public int RequestStateUnanswered
+        {
+            get
+            {
+                return 3;
+            }
+        }
+
         public int WebConfiguration
         {
             get

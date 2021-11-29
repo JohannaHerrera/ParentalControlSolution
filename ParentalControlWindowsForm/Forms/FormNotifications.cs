@@ -145,6 +145,8 @@ namespace ParentalControlWindowsForm.Forms
                         string infantName = infantAccounts.Where(x => x.InfantAccountId == request.InfantAccountId)
                                         .Select(x => x.InfantName).FirstOrDefault();
                         string description = string.Empty;
+                        int numEntero = 0;
+                        int numDecimal = 0;
 
                         // Imagen del infante
                         if (infantGender.Equals(constants.Femenino))
@@ -169,9 +171,7 @@ namespace ParentalControlWindowsForm.Forms
                         }
                         else if (request.RequestTypeId == constants.DeviceConfiguration)
                         {
-                            string[] time = request.RequestTime.ToString().Split('.');
-                            int numEntero = 0;
-                            int numDecimal = 0;
+                            string[] time = request.RequestTime.ToString().Split('.');                           
 
                             if (time.Count() > 1)
                             {
@@ -223,14 +223,39 @@ namespace ParentalControlWindowsForm.Forms
                         }
 
                         // Estado de la petición
-                        this.dgvNotifications.Rows.Add(request.RequestId, this.imgInfant.Image, infantName, description);
-                        DataGridViewImageCell bAccept = this.dgvNotifications.Rows[cont].Cells[4] as DataGridViewImageCell;
-                        DataGridViewImageCell bNoAccept = this.dgvNotifications.Rows[cont].Cells[5] as DataGridViewImageCell;
+                        if (request.RequestTypeId == constants.WebConfiguration || request.RequestTypeId == constants.AppConfiguration)
+                        {
+                            this.dgvNotifications.Rows.Add(request.RequestObject, request.RequestTypeId,
+                                      request.RequestId, this.imgInfant.Image, infantName, description);
+                        }
+                        else
+                        {
+                            string time = $"{numEntero}.{numDecimal}";
+                            this.dgvNotifications.Rows.Add(time, request.RequestTypeId, request.RequestId, 
+                                      this.imgInfant.Image, infantName, description);
+                        }
+
+                        DataGridViewImageCell bAccept = this.dgvNotifications.Rows[cont].Cells[6] as DataGridViewImageCell;
+                        DataGridViewImageCell bNoAccept = this.dgvNotifications.Rows[cont].Cells[7] as DataGridViewImageCell;
 
                         if (request.RequestState == constants.RequestStateCreated)
                         {
                             bAccept.Value = global::ParentalControlWindowsForm.Properties.Resources.Aprobar;
                             bNoAccept.Value = global::ParentalControlWindowsForm.Properties.Resources.Desaprobar;
+
+                            if (request.RequestTypeId == constants.DeviceConfiguration)
+                            {
+                                DateTime now = DateTime.Now;
+                                
+                                if (now.Date > request.RequestCreationDate.Date)
+                                {
+                                    RequestBO requestBO = new RequestBO();
+                                    requestBO.UpdateRequest(request.RequestId, constants.RequestStateUnanswered);
+                                    bAccept.Value = global::ParentalControlWindowsForm.Properties.Resources.Sin_Respuesta;
+                                    bNoAccept.Value = global::ParentalControlWindowsForm.Properties.Resources.Blank;
+                                    bNoAccept.Description = "Blank";
+                                }                        
+                            }
                         }
                         else if (request.RequestState == constants.RequestStateApproved)
                         {
@@ -241,6 +266,12 @@ namespace ParentalControlWindowsForm.Forms
                         else if (request.RequestState == constants.RequestStateDisapproved)
                         {
                             bAccept.Value = global::ParentalControlWindowsForm.Properties.Resources.Desaprobado;
+                            bNoAccept.Value = global::ParentalControlWindowsForm.Properties.Resources.Blank;
+                            bNoAccept.Description = "Blank";
+                        }
+                        else if (request.RequestState == constants.RequestStateUnanswered)
+                        {
+                            bAccept.Value = global::ParentalControlWindowsForm.Properties.Resources.Sin_Respuesta;
                             bNoAccept.Value = global::ParentalControlWindowsForm.Properties.Resources.Blank;
                             bNoAccept.Description = "Blank";
                         }
@@ -280,32 +311,78 @@ namespace ParentalControlWindowsForm.Forms
             {
                 RequestBO requestBO = new RequestBO();
                 Constants constants = new Constants();
+                InfantAccountBO infantAccountBO = new InfantAccountBO();
 
-                if(e.ColumnIndex == 4)
+                if(e.ColumnIndex == 6)
                 {
-                    DataGridViewImageCell bNoAccept = this.dgvNotifications.CurrentRow.Cells[5] as DataGridViewImageCell;
-                    int requestId = Convert.ToInt32(this.dgvNotifications.CurrentRow.Cells[0].Value);
-                    
+                    DataGridViewImageCell bNoAccept = this.dgvNotifications.CurrentRow.Cells[7] as DataGridViewImageCell;
+                    int requestId = Convert.ToInt32(this.dgvNotifications.CurrentRow.Cells[2].Value);
+                    int requestTypeId = Convert.ToInt32(this.dgvNotifications.CurrentRow.Cells[1].Value);
+                    string requestObject = this.dgvNotifications.CurrentRow.Cells[0].Value.ToString();
+                    string infantName = this.dgvNotifications.CurrentRow.Cells[4].Value.ToString();
+                    bool execute = false;
+
                     if (!(bNoAccept.Description.Equals("Blank")))
                     {
-                        if (requestBO.UpdateRequest(requestId, constants.RequestStateApproved))
+                        int infantId = infantAccountBO.GetInfantId(infantName);
+                        
+                        if(infantId != 0)
                         {
-                            MessageBox.Show("Petición Aprobada.");
-                            this.Hide();
-                            FormNotifications formNotifications = new FormNotifications();
-                            formNotifications.parentId = this.parentId;
-                            formNotifications.Show();
+                            if (requestTypeId == constants.WebConfiguration)
+                            {
+                                if (requestBO.ApproveWebAccess(requestObject, infantId))
+                                {
+                                    if (requestBO.UpdateRequest(requestId, constants.RequestStateApproved))
+                                    {
+                                        MessageBox.Show("Petición Aprobada.");
+                                        execute = true;
+                                        this.Hide();
+                                        FormNotifications formNotifications = new FormNotifications();
+                                        formNotifications.parentId = this.parentId;
+                                        formNotifications.Show();
+                                    }
+                                }
+                            } 
+                            else if (requestTypeId == constants.AppConfiguration)
+                            {
+                                if (requestBO.ApproveAppAccess(requestObject, infantId))
+                                {
+                                    if (requestBO.UpdateRequest(requestId, constants.RequestStateApproved))
+                                    {
+                                        MessageBox.Show("Petición Aprobada.");
+                                        execute = true;
+                                        this.Hide();
+                                        FormNotifications formNotifications = new FormNotifications();
+                                        formNotifications.parentId = this.parentId;
+                                        formNotifications.Show();
+                                    }
+                                }
+                            }
+                            else if (requestTypeId == constants.DeviceConfiguration)
+                            {
+                                if (requestBO.UpdateRequest(requestId, constants.RequestStateApproved))
+                                {
+                                    MessageBox.Show("Petición Aprobada.");
+                                    execute = true;
+                                    this.Hide();
+                                    FormNotifications formNotifications = new FormNotifications();
+                                    formNotifications.parentId = this.parentId;
+                                    formNotifications.Show();
+                                }
+                               
+                            }
                         }
-                        else
+
+                        if (!execute)
                         {
                             MessageBox.Show("Ocurrió un error al aprobar la petición. Inténtalo de nuevo.");
-                        }                       
-                    }
+                        }
+                    }                   
                 }
-                else if (e.ColumnIndex == 5)
+                else if (e.ColumnIndex == 7)
                 {
-                    int requestId = Convert.ToInt32(this.dgvNotifications.CurrentRow.Cells[0].Value);
-                    DataGridViewImageCell bNoAccept = this.dgvNotifications.CurrentRow.Cells[5] as DataGridViewImageCell;
+                    int requestId = Convert.ToInt32(this.dgvNotifications.CurrentRow.Cells[2].Value);
+                    DataGridViewImageCell bNoAccept = this.dgvNotifications.CurrentRow.Cells[7] as DataGridViewImageCell;
 
                     if (!(bNoAccept.Description.Equals("Blank")))
                     {

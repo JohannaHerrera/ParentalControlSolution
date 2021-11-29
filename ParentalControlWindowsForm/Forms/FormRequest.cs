@@ -71,7 +71,8 @@ namespace ParentalControlWindowsForm.Forms
                     NotificationBO notificationBO = new NotificationBO();
                     Constants constants = new Constants();
                     List<RequestModel> notifications = notificationBO.GetInfantNotifications(this.infantId);
-                    
+                    int cont = 0;
+
                     if (notifications.Count > 0)
                     {
                         this.lblNoNotifications.Visible = false;
@@ -143,22 +144,48 @@ namespace ParentalControlWindowsForm.Forms
                                     request = $"Petición para extender el tiempo de uso del " +
                                               $"dispositivo por {numDecimal} minutos.";
                                 }                                
-                            }
+                            }                           
+
+                            this.dgvNotifications.Rows.Add(request, state);
 
                             if (notification.RequestState == constants.RequestStateCreated)
                             {
                                 state = "En espera";
+                                this.dgvNotifications.Rows[cont].Cells[1].Value = state;
+
+                                if (notification.RequestTypeId == constants.DeviceConfiguration)
+                                {
+                                    DateTime now = DateTime.Now;
+
+                                    if (now.Date > notification.RequestCreationDate.Date)
+                                    {
+                                        requestBO.UpdateRequest(notification.RequestId, constants.RequestStateUnanswered);
+                                        state = "Sin Respuesta";
+                                        this.dgvNotifications.Rows[cont].Cells[1].Value = state;
+                                        this.dgvNotifications.Rows[cont].Cells[1].Style = new DataGridViewCellStyle { ForeColor = Color.OrangeRed };
+                                    }
+                                }
                             }
                             else if (notification.RequestState == constants.RequestStateApproved)
                             {
                                 state = "Aprobado";
+                                this.dgvNotifications.Rows[cont].Cells[1].Value = state;
+                                this.dgvNotifications.Rows[cont].Cells[1].Style = new DataGridViewCellStyle { ForeColor = Color.Green };
                             }
                             else if (notification.RequestState == constants.RequestStateDisapproved)
                             {
                                 state = "Desaprobado";
+                                this.dgvNotifications.Rows[cont].Cells[1].Value = state;
+                                this.dgvNotifications.Rows[cont].Cells[1].Style = new DataGridViewCellStyle { ForeColor = Color.Red };
+                            }
+                            else if (notification.RequestState == constants.RequestStateUnanswered)
+                            {
+                                state = "Sin Respuesta";
+                                this.dgvNotifications.Rows[cont].Cells[1].Value = state;
+                                this.dgvNotifications.Rows[cont].Cells[1].Style = new DataGridViewCellStyle { ForeColor = Color.OrangeRed };
                             }
 
-                            this.dgvNotifications.Rows.Add(request, state);
+                            cont++;
                         }                       
                     }
                     else
@@ -374,6 +401,7 @@ namespace ParentalControlWindowsForm.Forms
             try
             {
                 RequestBO requestBO = new RequestBO();
+                Constants constants = new Constants();
                 WindowsAccountBO windowsAccountBO = new WindowsAccountBO();
                 bool result = false;
                 string body = string.Empty;
@@ -384,39 +412,55 @@ namespace ParentalControlWindowsForm.Forms
                     if (cmbRequestType.SelectedItem.Equals("Desbloqueo Web")
                         && cmbObject.SelectedItem != null)
                     {
-                        body = $"<p>¡Hola! <br> <br> Queremos informarte que <b>{infantName}</b> " +
+                        if (!requestBO.VerifyRequest(constants.WebConfiguration, cmbObject.SelectedItem.ToString()))
+                        {
+                            body = $"<p>¡Hola! <br> <br> Queremos informarte que <b>{infantName}</b> " +
                                $"está solicitando que le habilites la categoría web " +
                                $"<b>{cmbObject.SelectedItem}</b>. <br>" +
                                $"Para aprobar o desaprobar esta petición ingresa a nuestro " +
                                $"sistema y dirígete a la sección de <b>Notificaciones</b>.<p>";
 
-                        if (requestBO.SendEmail(this.parentEmail, body))
-                        {
-                            result = requestBO.RegisterRequestWA(cmbRequestType.SelectedItem.ToString(),
-                                     this.infantId, this.parentId, cmbObject.SelectedItem.ToString());
+                            if (requestBO.SendEmail(this.parentEmail, body))
+                            {
+                                result = requestBO.RegisterRequestWA(cmbRequestType.SelectedItem.ToString(),
+                                         this.infantId, this.parentId, cmbObject.SelectedItem.ToString());
+                            }
+                            else
+                            {
+                                result = false;
+                            }
                         }
                         else
                         {
-                            result = false;
+                            MessageBox.Show("Error, ya enviaste una petición de acceso sobre este recurso.");
+                            return;
                         }
                     }
                     else if (cmbRequestType.SelectedItem.Equals("Desbloqueo de Aplicaciones")
                             && cmbObject.SelectedItem != null)
                     {
-                        body = $"<p>¡Hola! <br> <br> Queremos informarte que <b>{infantName}</b> " +
+                        if (!requestBO.VerifyRequest(constants.AppConfiguration, cmbObject.SelectedItem.ToString()))
+                        {
+                            body = $"<p>¡Hola! <br> <br> Queremos informarte que <b>{infantName}</b> " +
                                $"está solicitando que le habilites la aplicación " +
                                $"<b>{cmbObject.SelectedItem}</b>. <br>" +
                                $"Para aprobar o desaprobar esta petición ingresa a nuestro " +
                                $"sistema y dirígete a la sección de <b>Notificaciones</b>.<p>";
 
-                        if (requestBO.SendEmail(this.parentEmail, body))
-                        {
-                            result = requestBO.RegisterRequestWA(cmbRequestType.SelectedItem.ToString(),
-                                     this.infantId, this.parentId, cmbObject.SelectedItem.ToString());
+                            if (requestBO.SendEmail(this.parentEmail, body))
+                            {
+                                result = requestBO.RegisterRequestWA(cmbRequestType.SelectedItem.ToString(),
+                                         this.infantId, this.parentId, cmbObject.SelectedItem.ToString());
+                            }
+                            else
+                            {
+                                result = false;
+                            }
                         }
                         else
                         {
-                            result = false;
+                            MessageBox.Show("Error, ya enviaste una petición de acceso sobre este recurso.");
+                            return;
                         }
                     }
                     else if (cmbRequestType.SelectedItem.Equals("Ampliar uso del Dispositivo")
@@ -460,22 +504,30 @@ namespace ParentalControlWindowsForm.Forms
                             extraTime = $"0.{cmbMinutes.SelectedItem}";
                         }
 
-                        body = $"<p>¡Hola! <br> <br> Queremos informarte que <b>{infantName}</b> " +
+                        if (!requestBO.VerifyRequest(constants.DeviceConfiguration, null))
+                        {
+                            body = $"<p>¡Hola! <br> <br> Queremos informarte que <b>{infantName}</b> " +
                                $"está solicitando que le amplíes el tiempo de uso del dispositivo " +
                                $"por: <b>{time}</b>. <br>" +
                                $"Para aprobar o desaprobar esta petición ingresa a nuestro " +
                                $"sistema y dirígete a la sección de <b>Notificaciones</b>.<p>";
 
-                        if (requestBO.SendEmail(this.parentEmail, body))
-                        {
-                            decimal timeDecimal = Convert.ToDecimal(extraTime);
-                            result = requestBO.RegisterRequestDU(cmbRequestType.SelectedItem.ToString(),
-                                     this.infantId, this.parentId, timeDecimal);
+                            if (requestBO.SendEmail(this.parentEmail, body))
+                            {
+                                decimal timeDecimal = Convert.ToDecimal(extraTime);
+                                result = requestBO.RegisterRequestDU(cmbRequestType.SelectedItem.ToString(),
+                                         this.infantId, this.parentId, timeDecimal);
+                            }
+                            else
+                            {
+                                result = false;
+                            }
                         }
                         else
                         {
-                            result = false;
-                        }
+                            MessageBox.Show("Error, ya solicitaste una extensión de tiempo de uso del dispositivo para este día.");
+                            return;
+                        }                            
                     }
                     else
                     {

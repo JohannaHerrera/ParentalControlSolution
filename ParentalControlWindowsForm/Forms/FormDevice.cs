@@ -389,7 +389,7 @@ namespace ParentalControlWindowsForm.Forms
                     }
                     else
                     {
-                        MessageBox.Show("You have clicked Ok Button");
+                        MessageBox.Show("Ocurrió un error al eliminar el dispositivo. Inténtelo de nuevo");
                     }                                       
                 }
             }

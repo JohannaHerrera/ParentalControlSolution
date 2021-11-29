@@ -52,6 +52,8 @@ namespace ParentalControlWindowsForm.Forms
             this.dgvNotifications = new System.Windows.Forms.DataGridView();
             this.btnLogout = new ParentalControlWindowsForm.Botones_Personalizados.OurButton();
             this.btnMyAccount = new ParentalControlWindowsForm.Botones_Personalizados.OurButton();
+            this.lblRequestObject = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lblRequestTypeId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lblRequestId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.imgInfant = new System.Windows.Forms.DataGridViewImageColumn();
             this.lblInfantName = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -237,6 +239,8 @@ namespace ParentalControlWindowsForm.Forms
             this.dgvNotifications.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvNotifications.ColumnHeadersVisible = false;
             this.dgvNotifications.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.lblRequestObject,
+            this.lblRequestTypeId,
             this.lblRequestId,
             this.imgInfant,
             this.lblInfantName,
@@ -292,6 +296,20 @@ namespace ParentalControlWindowsForm.Forms
             this.btnMyAccount.TextColor = System.Drawing.Color.White;
             this.btnMyAccount.UseVisualStyleBackColor = false;
             this.btnMyAccount.Click += new System.EventHandler(this.btnMyAccount_Click);
+            // 
+            // lblRequestObject
+            // 
+            this.lblRequestObject.HeaderText = "RequestObject";
+            this.lblRequestObject.Name = "lblRequestObject";
+            this.lblRequestObject.ReadOnly = true;
+            this.lblRequestObject.Visible = false;
+            // 
+            // lblRequestTypeId
+            // 
+            this.lblRequestTypeId.HeaderText = "Id RequestType";
+            this.lblRequestTypeId.Name = "lblRequestTypeId";
+            this.lblRequestTypeId.ReadOnly = true;
+            this.lblRequestTypeId.Visible = false;
             // 
             // lblRequestId
             // 
@@ -424,6 +442,8 @@ namespace ParentalControlWindowsForm.Forms
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.DataGridView dgvNotifications;
         private System.Windows.Forms.Label lblNoNotifications;
+        private System.Windows.Forms.DataGridViewTextBoxColumn lblRequestObject;
+        private System.Windows.Forms.DataGridViewTextBoxColumn lblRequestTypeId;
         private System.Windows.Forms.DataGridViewTextBoxColumn lblRequestId;
         private System.Windows.Forms.DataGridViewImageColumn imgInfant;
         private System.Windows.Forms.DataGridViewTextBoxColumn lblInfantName;

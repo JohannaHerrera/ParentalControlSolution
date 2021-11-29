@@ -42,6 +42,7 @@ namespace ParentalControlWindowsForm.Forms
             this.lblHours = new System.Windows.Forms.Label();
             this.cmbMinutes = new System.Windows.Forms.ComboBox();
             this.cmbHours = new System.Windows.Forms.ComboBox();
+            this.btnSendRequest = new ParentalControlWindowsForm.Botones_Personalizados.OurButton();
             this.cmbObject = new System.Windows.Forms.ComboBox();
             this.lblObject = new System.Windows.Forms.Label();
             this.lblNoProtected = new System.Windows.Forms.Label();
@@ -52,7 +53,6 @@ namespace ParentalControlWindowsForm.Forms
             this.lblNoNotifications = new System.Windows.Forms.Label();
             this.dgvNotifications = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
-            this.btnSendRequest = new ParentalControlWindowsForm.Botones_Personalizados.OurButton();
             this.btnLogin = new ParentalControlWindowsForm.Botones_Personalizados.OurButton();
             this.Request = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.State = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -164,6 +164,27 @@ namespace ParentalControlWindowsForm.Forms
             this.cmbHours.TabIndex = 57;
             this.cmbHours.Visible = false;
             // 
+            // btnSendRequest
+            // 
+            this.btnSendRequest.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(19)))), ((int)(((byte)(181)))), ((int)(((byte)(126)))));
+            this.btnSendRequest.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(19)))), ((int)(((byte)(181)))), ((int)(((byte)(126)))));
+            this.btnSendRequest.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.btnSendRequest.BorderRadius = 10;
+            this.btnSendRequest.BorderSize = 0;
+            this.btnSendRequest.FlatAppearance.BorderSize = 0;
+            this.btnSendRequest.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSendRequest.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSendRequest.ForeColor = System.Drawing.Color.White;
+            this.btnSendRequest.Location = new System.Drawing.Point(268, 264);
+            this.btnSendRequest.Name = "btnSendRequest";
+            this.btnSendRequest.Size = new System.Drawing.Size(109, 71);
+            this.btnSendRequest.TabIndex = 56;
+            this.btnSendRequest.Text = "Enviar Petición";
+            this.btnSendRequest.TextColor = System.Drawing.Color.White;
+            this.btnSendRequest.UseVisualStyleBackColor = false;
+            this.btnSendRequest.Visible = false;
+            this.btnSendRequest.Click += new System.EventHandler(this.btnSendRequest_Click);
+            // 
             // cmbObject
             // 
             this.cmbObject.BackColor = System.Drawing.Color.White;
@@ -231,9 +252,9 @@ namespace ParentalControlWindowsForm.Forms
             this.pnlNotifications.Controls.Add(this.lblNoNotifications);
             this.pnlNotifications.Controls.Add(this.dgvNotifications);
             this.pnlNotifications.Controls.Add(this.label1);
-            this.pnlNotifications.Location = new System.Drawing.Point(70, 154);
+            this.pnlNotifications.Location = new System.Drawing.Point(45, 154);
             this.pnlNotifications.Name = "pnlNotifications";
-            this.pnlNotifications.Size = new System.Drawing.Size(316, 357);
+            this.pnlNotifications.Size = new System.Drawing.Size(341, 357);
             this.pnlNotifications.TabIndex = 57;
             // 
             // lblNoNotifications
@@ -277,7 +298,7 @@ namespace ParentalControlWindowsForm.Forms
             this.dgvNotifications.RowHeadersVisible = false;
             this.dgvNotifications.RowTemplate.DividerHeight = 1;
             this.dgvNotifications.RowTemplate.Height = 55;
-            this.dgvNotifications.Size = new System.Drawing.Size(309, 310);
+            this.dgvNotifications.Size = new System.Drawing.Size(337, 310);
             this.dgvNotifications.TabIndex = 58;
             // 
             // label1
@@ -290,27 +311,6 @@ namespace ParentalControlWindowsForm.Forms
             this.label1.Size = new System.Drawing.Size(141, 22);
             this.label1.TabIndex = 57;
             this.label1.Text = "Notificaciones";
-            // 
-            // btnSendRequest
-            // 
-            this.btnSendRequest.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(19)))), ((int)(((byte)(181)))), ((int)(((byte)(126)))));
-            this.btnSendRequest.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(19)))), ((int)(((byte)(181)))), ((int)(((byte)(126)))));
-            this.btnSendRequest.BorderColor = System.Drawing.Color.PaleVioletRed;
-            this.btnSendRequest.BorderRadius = 10;
-            this.btnSendRequest.BorderSize = 0;
-            this.btnSendRequest.FlatAppearance.BorderSize = 0;
-            this.btnSendRequest.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSendRequest.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSendRequest.ForeColor = System.Drawing.Color.White;
-            this.btnSendRequest.Location = new System.Drawing.Point(268, 264);
-            this.btnSendRequest.Name = "btnSendRequest";
-            this.btnSendRequest.Size = new System.Drawing.Size(109, 71);
-            this.btnSendRequest.TabIndex = 56;
-            this.btnSendRequest.Text = "Enviar Petición";
-            this.btnSendRequest.TextColor = System.Drawing.Color.White;
-            this.btnSendRequest.UseVisualStyleBackColor = false;
-            this.btnSendRequest.Visible = false;
-            this.btnSendRequest.Click += new System.EventHandler(this.btnSendRequest_Click);
             // 
             // btnLogin
             // 
@@ -344,7 +344,7 @@ namespace ParentalControlWindowsForm.Forms
             this.Request.HeaderText = "Petición";
             this.Request.Name = "Request";
             this.Request.ReadOnly = true;
-            this.Request.Width = 202;
+            this.Request.Width = 206;
             // 
             // State
             // 
@@ -353,11 +353,12 @@ namespace ParentalControlWindowsForm.Forms
             dataGridViewCellStyle3.ForeColor = System.Drawing.Color.MidnightBlue;
             dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.White;
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.MidnightBlue;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.State.DefaultCellStyle = dataGridViewCellStyle3;
             this.State.HeaderText = "Estado";
             this.State.Name = "State";
             this.State.ReadOnly = true;
-            this.State.Width = 105;
+            this.State.Width = 112;
             // 
             // FormRequest
             // 

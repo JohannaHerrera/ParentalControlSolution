@@ -23,7 +23,8 @@ namespace ParentalControl.Business.BusinessBO
         public List<RequestModel> GetInfantNotifications(int infantId)
         {
             string query = $"SELECT TOP 20 * FROM Request WHERE InfantAccountId = {infantId}" +
-                           $" ORDER BY RequestCreationDate DESC";
+                           $" ORDER BY CASE WHEN RequestState = 0 then 0 else 1 end," +
+                           $" RequestCreationDate DESC";
 
             List<RequestModel> requestModelList = this.ObtenerListaSQL<RequestModel>(query).ToList();
 
@@ -38,7 +39,8 @@ namespace ParentalControl.Business.BusinessBO
         public List<RequestModel> GetParentNotifications(int parentId)
         {
             string query = $"SELECT TOP 20 * FROM Request WHERE ParentId = {parentId}" +
-                           $" ORDER BY RequestCreationDate DESC";
+                           $" ORDER BY CASE WHEN RequestState = 0 then 0 else 1 end," +
+                           $" RequestCreationDate DESC";
 
             List<RequestModel> requestModelList = this.ObtenerListaSQL<RequestModel>(query).ToList();
 
