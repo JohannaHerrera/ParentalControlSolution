@@ -54,6 +54,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BusinessBO\ActivityBO.cs" />
     <Compile Include="BusinessBO\ApplicationBO.cs" />
     <Compile Include="BusinessBO\DeviceBO.cs" />
     <Compile Include="BusinessBO\DeviceUseBO.cs" />
