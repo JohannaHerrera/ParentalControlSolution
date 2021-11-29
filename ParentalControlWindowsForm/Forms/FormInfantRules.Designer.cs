@@ -69,14 +69,13 @@ namespace ParentalControlWindowsForm.Forms
             this.Category = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.EnableCategory = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.WebConfigId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnSave = new ParentalControlWindowsForm.Botones_Personalizados.OurButton();
             this.btnActivityRecord = new ParentalControlWindowsForm.Botones_Personalizados.OurButton();
             this.btnTimeUseDevice = new ParentalControlWindowsForm.Botones_Personalizados.OurButton();
             this.btnAppLock = new ParentalControlWindowsForm.Botones_Personalizados.OurButton();
             this.btnWebLock = new ParentalControlWindowsForm.Botones_Personalizados.OurButton();
+            this.btnSave = new ParentalControlWindowsForm.Botones_Personalizados.OurButton();
             this.btnLogout = new ParentalControlWindowsForm.Botones_Personalizados.OurButton();
             this.btnMyAccount = new ParentalControlWindowsForm.Botones_Personalizados.OurButton();
-            this.aplicacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Description = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imgNotifications)).BeginInit();
@@ -273,7 +272,6 @@ namespace ParentalControlWindowsForm.Forms
             this.dgvActivityRecord.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvActivityRecord.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvActivityRecord.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.aplicacion,
             this.Description});
             this.dgvActivityRecord.EnableHeadersVisualStyles = false;
             this.dgvActivityRecord.Location = new System.Drawing.Point(17, 184);
@@ -494,26 +492,6 @@ namespace ParentalControlWindowsForm.Forms
             this.WebConfigId.Name = "WebConfigId";
             this.WebConfigId.Visible = false;
             // 
-            // btnSave
-            // 
-            this.btnSave.BackColor = System.Drawing.SystemColors.Highlight;
-            this.btnSave.BackgroundColor = System.Drawing.SystemColors.Highlight;
-            this.btnSave.BorderColor = System.Drawing.SystemColors.Highlight;
-            this.btnSave.BorderRadius = 10;
-            this.btnSave.BorderSize = 0;
-            this.btnSave.FlatAppearance.BorderSize = 0;
-            this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold);
-            this.btnSave.ForeColor = System.Drawing.Color.White;
-            this.btnSave.Location = new System.Drawing.Point(443, 504);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(112, 31);
-            this.btnSave.TabIndex = 31;
-            this.btnSave.Text = "Guardar";
-            this.btnSave.TextColor = System.Drawing.Color.White;
-            this.btnSave.UseVisualStyleBackColor = false;
-            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
-            // 
             // btnActivityRecord
             // 
             this.btnActivityRecord.BackColor = System.Drawing.SystemColors.Highlight;
@@ -598,6 +576,26 @@ namespace ParentalControlWindowsForm.Forms
             this.btnWebLock.UseVisualStyleBackColor = false;
             this.btnWebLock.Click += new System.EventHandler(this.btnWebLock_Click);
             // 
+            // btnSave
+            // 
+            this.btnSave.BackColor = System.Drawing.SystemColors.Highlight;
+            this.btnSave.BackgroundColor = System.Drawing.SystemColors.Highlight;
+            this.btnSave.BorderColor = System.Drawing.SystemColors.Highlight;
+            this.btnSave.BorderRadius = 10;
+            this.btnSave.BorderSize = 0;
+            this.btnSave.FlatAppearance.BorderSize = 0;
+            this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold);
+            this.btnSave.ForeColor = System.Drawing.Color.White;
+            this.btnSave.Location = new System.Drawing.Point(443, 504);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(112, 31);
+            this.btnSave.TabIndex = 31;
+            this.btnSave.Text = "Guardar";
+            this.btnSave.TextColor = System.Drawing.Color.White;
+            this.btnSave.UseVisualStyleBackColor = false;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            // 
             // btnLogout
             // 
             this.btnLogout.BackColor = System.Drawing.SystemColors.Highlight;
@@ -638,18 +636,13 @@ namespace ParentalControlWindowsForm.Forms
             this.btnMyAccount.UseVisualStyleBackColor = false;
             this.btnMyAccount.Click += new System.EventHandler(this.btnMyAccount_Click);
             // 
-            // aplicacion
-            // 
-            this.aplicacion.HeaderText = "Aplicación";
-            this.aplicacion.Name = "aplicacion";
-            this.aplicacion.ReadOnly = true;
-            // 
             // Description
             // 
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.White;
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.Description.DefaultCellStyle = dataGridViewCellStyle3;
             this.Description.HeaderText = "Descripción";
             this.Description.Name = "Description";
@@ -728,7 +721,6 @@ namespace ParentalControlWindowsForm.Forms
         private System.Windows.Forms.DataGridViewTextBoxColumn Category;
         private System.Windows.Forms.DataGridViewCheckBoxColumn EnableCategory;
         private System.Windows.Forms.DataGridViewTextBoxColumn WebConfigId;
-        private System.Windows.Forms.DataGridViewTextBoxColumn aplicacion;
         private System.Windows.Forms.DataGridViewTextBoxColumn Description;
     }
 }

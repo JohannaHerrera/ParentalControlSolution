@@ -204,8 +204,12 @@ namespace ParentalControlWindowsForm.Forms
                 {
                     foreach (var activity in activityModelList)
                     {
-                        this.dgvActivityRecord.Rows.Add(activity.ActivityObject, activity.ActivityDescription);
+                        this.dgvActivityRecord.Rows.Add(activity.ActivityDescription);
                     }
+                }
+                else
+                {
+                    this.dgvActivityRecord.Rows.Add("Aún no existen registros de actividad.");
                 }
 
             }
