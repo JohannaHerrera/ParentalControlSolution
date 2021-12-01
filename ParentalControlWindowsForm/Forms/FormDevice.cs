@@ -56,6 +56,7 @@ namespace ParentalControlWindowsForm.Forms
                 windowsAccounts = deviceBO.GetWindowsAccounts();
                 infantAccounts = deviceBO.GetInfantAccounts(this.parentId);
 
+                // Cuentas infantiles
                 if (infantAccounts.Count > 0)
                 {
                     foreach (var account in infantAccounts)
@@ -72,6 +73,7 @@ namespace ParentalControlWindowsForm.Forms
                     formHome.Show();
                 }
 
+                // Cuentas Windows
                 if (windowsAccounts.Count > 0)
                 {
                     foreach (var account in windowsAccounts)
@@ -80,7 +82,7 @@ namespace ParentalControlWindowsForm.Forms
                         windowsAccountModelList = windowsAccountBO.VerifyWindowsAccount(account);
 
                         // Si la cuenta Windows está registrada, se setea la cuenta Infantil vinculada
-                        if (windowsAccountModelList.Count > 0)
+                        if (windowsAccountModelList.Count > 0 && windowsAccountModelList.FirstOrDefault().InfantAccountId != 0)
                         {
                             string accountName = windowsAccountBO.GetInfantAccountLinked(windowsAccountModelList.FirstOrDefault().InfantAccountId);
 
@@ -103,6 +105,10 @@ namespace ParentalControlWindowsForm.Forms
                         else
                         {
                             this.dtgWindowsAccounts.Rows[iterator].Cells[1].Value = this.cmbInfantAccount.Items[0];
+                            if(windowsAccountModelList.Count == 0)
+                            {
+                                windowsAccountBO.RegisterWindowsAccount(0, account);
+                            }                           
                         }
 
                         iterator++;
@@ -252,7 +258,11 @@ namespace ParentalControlWindowsForm.Forms
                         else
                         {
                             // Si se cambia a No Protegido elimino el registro
-                            if (!windowsAccountBO.DeleteWindowsAccount(infantIdAnterior, windowsAccountName))
+                            //if (!windowsAccountBO.DeleteWindowsAccount(infantIdAnterior, windowsAccountName))
+                            //{
+                            //    updateState = false;
+                            //}
+                            if (!windowsAccountBO.UpdateInfantAccountLinked(0, windowsAccountName, infantIdAnterior))
                             {
                                 updateState = false;
                             }
@@ -275,7 +285,11 @@ namespace ParentalControlWindowsForm.Forms
                         // Si no existe registro en la BD
                         if (!infantAccountName.Equals(constants.NoProtected.ToString()))
                         {
-                            if (!windowsAccountBO.RegisterWindowsAccount(infantIdNuevo, windowsAccountName))
+                            //if (!windowsAccountBO.RegisterWindowsAccount(infantIdNuevo, windowsAccountName))
+                            //{
+                            //    updateState = false;
+                            //}
+                            if (!windowsAccountBO.UpdateInfantAccountLinked(infantIdNuevo, windowsAccountName, infantIdAnterior))
                             {
                                 updateState = false;
                             }

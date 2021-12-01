@@ -115,11 +115,31 @@ namespace ParentalControl.Business.BusinessBO
             if (deviceModelList.Count > 0)
             {
                 int deviceId = deviceModelList.FirstOrDefault().DevicePCId;
-                query = $"UPDATE WindowsAccount SET InfantAccountId = {infantAccountIdActual} " +
+                if (infantAccountIdAnterior == 0)
+                {
+                    query = $"UPDATE WindowsAccount SET InfantAccountId = {infantAccountIdActual} " +
+                           $" WHERE WindowsAccountName = '{windowsAccountName}'" +
+                           $" AND DevicePCId = {deviceId}" +
+                           $" AND InfantAccountId IS NULL";
+                }
+                else
+                {
+                    if (infantAccountIdActual == 0)
+                    {
+                        query = $"UPDATE WindowsAccount SET InfantAccountId = NULL " +
                            $" WHERE WindowsAccountName = '{windowsAccountName}'" +
                            $" AND DevicePCId = {deviceId}" +
                            $" AND InfantAccountId = {infantAccountIdAnterior}";
-
+                    }
+                    else
+                    {
+                        query = $"UPDATE WindowsAccount SET InfantAccountId = {infantAccountIdActual} " +
+                           $" WHERE WindowsAccountName = '{windowsAccountName}'" +
+                           $" AND DevicePCId = {deviceId}" +
+                           $" AND InfantAccountId = {infantAccountIdAnterior}";
+                    }                    
+                }
+                
                 execute = SQLConexionDataBase.Execute(query);
             }          
 
@@ -144,9 +164,17 @@ namespace ParentalControl.Business.BusinessBO
             if (deviceModelList.Count > 0)
             {
                 int deviceId = deviceModelList.FirstOrDefault().DevicePCId;
-                query = $"INSERT INTO WindowsAccount VALUES ('{windowsAccountName}'," +
+                if (infantId == 0)
+                {
+                    query = $"INSERT INTO WindowsAccount VALUES ('{windowsAccountName}'," +
+                               $" '{creationDate}', {deviceId}, NULL)";
+                }
+                else
+                {
+                    query = $"INSERT INTO WindowsAccount VALUES ('{windowsAccountName}'," +
                                $" '{creationDate}', {deviceId}, {infantId})";
-
+                }
+                
                 execute = SQLConexionDataBase.Execute(query);
             }           
 
