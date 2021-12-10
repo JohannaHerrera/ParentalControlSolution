@@ -109,6 +109,23 @@ namespace ParentalControl.Business.BusinessBO
 
             bool execute = SQLConexionDataBase.Execute(query);
 
+            if (execute)
+            {
+                ApplicationBO applicationBO = new ApplicationBO();
+                List<string> appsInstalled = applicationBO.GetInstalledApps();
+
+                query = $"SELECT * FROM DevicePC WHERE DevicePCCode = '{deviceModel.DevicePCCode}'";
+                DeviceModel device = this.ObtenerListaSQL<DeviceModel>(query).FirstOrDefault();
+
+                foreach (var app in appsInstalled)
+                {
+                    query = $"INSERT INTO AppDevice VALUES (NULL, {device.DevicePCId}," +
+                           $" '{app}', '{creationDate}')";
+
+                    execute = SQLConexionDataBase.Execute(query);
+                }
+            }
+
             return execute;
         }
 
@@ -144,6 +161,7 @@ namespace ParentalControl.Business.BusinessBO
                 int deviceId = deviceModelList.FirstOrDefault().DevicePCId;
                 query = $" DELETE FROM WindowsAccount WHERE DevicePCId = {deviceId};" +
                         $" DELETE FROM App WHERE DevicePCId = {deviceId};" +
+                        $" DELETE FROM AppDevice WHERE DevicePCId = {deviceId};" +
                         $" DELETE FROM DevicePC WHERE DevicePCId = {deviceId};";
                 execute = SQLConexionDataBase.Execute(query);
             }
