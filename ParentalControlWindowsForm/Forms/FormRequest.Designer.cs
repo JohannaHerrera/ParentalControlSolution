@@ -52,10 +52,10 @@ namespace ParentalControlWindowsForm.Forms
             this.pnlNotifications = new System.Windows.Forms.Panel();
             this.lblNoNotifications = new System.Windows.Forms.Label();
             this.dgvNotifications = new System.Windows.Forms.DataGridView();
-            this.label1 = new System.Windows.Forms.Label();
-            this.btnLogin = new ParentalControlWindowsForm.Botones_Personalizados.OurButton();
             this.Request = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.State = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label1 = new System.Windows.Forms.Label();
+            this.btnLogin = new ParentalControlWindowsForm.Botones_Personalizados.OurButton();
             this.pnlRequest.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ptBoxCheck)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ptBoxRequestImage)).BeginInit();
@@ -228,6 +228,7 @@ namespace ParentalControlWindowsForm.Forms
             this.ptBoxCheck.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.ptBoxCheck.TabIndex = 56;
             this.ptBoxCheck.TabStop = false;
+            this.ptBoxCheck.Visible = false;
             // 
             // ptBoxRequestImage
             // 
@@ -301,6 +302,33 @@ namespace ParentalControlWindowsForm.Forms
             this.dgvNotifications.Size = new System.Drawing.Size(337, 310);
             this.dgvNotifications.TabIndex = 58;
             // 
+            // Request
+            // 
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.Request.DefaultCellStyle = dataGridViewCellStyle2;
+            this.Request.HeaderText = "Petición";
+            this.Request.Name = "Request";
+            this.Request.ReadOnly = true;
+            this.Request.Width = 206;
+            // 
+            // State
+            // 
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.MidnightBlue;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.MidnightBlue;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.State.DefaultCellStyle = dataGridViewCellStyle3;
+            this.State.HeaderText = "Estado";
+            this.State.Name = "State";
+            this.State.ReadOnly = true;
+            this.State.Width = 112;
+            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -332,33 +360,6 @@ namespace ParentalControlWindowsForm.Forms
             this.btnLogin.TextColor = System.Drawing.SystemColors.Highlight;
             this.btnLogin.UseVisualStyleBackColor = false;
             this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
-            // 
-            // Request
-            // 
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.Request.DefaultCellStyle = dataGridViewCellStyle2;
-            this.Request.HeaderText = "Petición";
-            this.Request.Name = "Request";
-            this.Request.ReadOnly = true;
-            this.Request.Width = 206;
-            // 
-            // State
-            // 
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.MidnightBlue;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.MidnightBlue;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.State.DefaultCellStyle = dataGridViewCellStyle3;
-            this.State.HeaderText = "Estado";
-            this.State.Name = "State";
-            this.State.ReadOnly = true;
-            this.State.Width = 112;
             // 
             // FormRequest
             // 
