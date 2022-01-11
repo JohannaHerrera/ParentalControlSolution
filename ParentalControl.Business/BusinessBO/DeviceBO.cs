@@ -200,6 +200,44 @@ namespace ParentalControl.Business.BusinessBO
         }
 
         /// <summary>
+        /// Método para obtener el nombre del dispositivo PC
+        /// </summary>
+        /// <returns>deviceName</returns>
+        public string GetDevicePCName(int deviceId)
+        {
+            string deviceName = string.Empty;
+            string query = $"SELECT * FROM DevicePC WHERE DevicePCId = '{deviceId}'";
+
+            List<DeviceModel> deviceModelList = this.ObtenerListaSQL<DeviceModel>(query).ToList();
+
+            if (deviceModelList.Count > 0)
+            {
+                deviceName = deviceModelList.FirstOrDefault().DevicePCName;
+            }
+
+            return deviceName;
+        }
+
+        /// <summary>
+        /// Método para obtener el nombre del dispositivo móvil
+        /// </summary>
+        /// <returns>deviceName</returns>
+        public string GetDevicePhoneName(int deviceId)
+        {
+            string deviceName = string.Empty;
+            string query = $"SELECT * FROM DevicePhone WHERE DevicePhoneId = '{deviceId}'";
+
+            List<DevicePhoneModel> deviceModelList = this.ObtenerListaSQL<DevicePhoneModel>(query).ToList();
+
+            if (deviceModelList.Count > 0)
+            {
+                deviceName = deviceModelList.FirstOrDefault().DevicePhoneName;
+            }
+
+            return deviceName;
+        }
+
+        /// <summary>
         /// Método para convertir una lista DataTable a un TModel (Modelo genérico)
         /// </summary>
         /// <param name="deviceModel">contiene la data del dispositivo PC</param>

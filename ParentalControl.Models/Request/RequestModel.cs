@@ -27,5 +27,9 @@ namespace ParentalControl.Models.Request
         public DateTime RequestCreationDate { get; set; }
         // Id del padre
         public int ParentId { get; set; }
+        // Id del dispositivo móvil
+        public int? DevicePhoneId { get; set; }
+        // Id del dispositivo PC
+        public int? DevicePCId { get; set; }
     }
 }

@@ -20,9 +20,10 @@ namespace ParentalControl.Business.BusinessBO
         /// </summary>
         /// <param name="infantId">contiene el Id del infante</param>
         /// <returns>IList<TModel></returns>
-        public List<RequestModel> GetInfantNotifications(int infantId)
+        public List<RequestModel> GetInfantNotifications(int infantId, int deviceId)
         {
             string query = $"SELECT TOP 20 * FROM Request WHERE InfantAccountId = {infantId}" +
+                           $" AND DevicePCId = {deviceId}" +
                            $" ORDER BY CASE WHEN RequestState = 0 then 0 else 1 end," +
                            $" RequestCreationDate DESC";
 

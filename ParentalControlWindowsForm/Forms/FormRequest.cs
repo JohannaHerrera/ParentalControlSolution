@@ -67,10 +67,11 @@ namespace ParentalControlWindowsForm.Forms
                     this.infantId = windowsAccountModelList.FirstOrDefault().InfantAccountId;
                     this.parentId = deviceModelList.FirstOrDefault().ParentId;
                     this.parentEmail = requestBO.GetParentEmail(this.parentId);
+                    int deviceId = deviceModelList.FirstOrDefault().DevicePCId;
 
                     NotificationBO notificationBO = new NotificationBO();
                     Constants constants = new Constants();
-                    List<RequestModel> notifications = notificationBO.GetInfantNotifications(this.infantId);
+                    List<RequestModel> notifications = notificationBO.GetInfantNotifications(this.infantId, deviceId);
                     int cont = 0;
 
                     if (notifications.Count > 0)
@@ -403,6 +404,10 @@ namespace ParentalControlWindowsForm.Forms
                 RequestBO requestBO = new RequestBO();
                 Constants constants = new Constants();
                 WindowsAccountBO windowsAccountBO = new WindowsAccountBO();
+                DeviceBO deviceBO = new DeviceBO();
+                string deviceCode = deviceBO.GetDeviceIdentifier();
+                string deviceName = deviceBO.GetDeviceName(deviceCode);
+
                 bool result = false;
                 string body = string.Empty;
                 string infantName = windowsAccountBO.GetInfantAccountLinked(this.infantId);
@@ -412,7 +417,7 @@ namespace ParentalControlWindowsForm.Forms
                     if (cmbRequestType.SelectedItem.Equals("Desbloqueo Web")
                         && cmbObject.SelectedItem != null)
                     {
-                        if (!requestBO.VerifyRequest(constants.WebConfiguration, cmbObject.SelectedItem.ToString()))
+                        if (!requestBO.VerifyRequest(constants.WebConfiguration, cmbObject.SelectedItem.ToString(), deviceCode))
                         {
                             body = $"<p>¡Hola! <br> <br> Queremos informarte que <b>{infantName}</b> " +
                                $"está solicitando que le habilites la categoría web " +
@@ -423,7 +428,7 @@ namespace ParentalControlWindowsForm.Forms
                             if (requestBO.SendEmail(this.parentEmail, body))
                             {
                                 result = requestBO.RegisterRequestWA(cmbRequestType.SelectedItem.ToString(),
-                                         this.infantId, this.parentId, cmbObject.SelectedItem.ToString());
+                                         this.infantId, this.parentId, cmbObject.SelectedItem.ToString(), deviceCode);
                             }
                             else
                             {
@@ -439,18 +444,18 @@ namespace ParentalControlWindowsForm.Forms
                     else if (cmbRequestType.SelectedItem.Equals("Desbloqueo de Aplicaciones")
                             && cmbObject.SelectedItem != null)
                     {
-                        if (!requestBO.VerifyRequest(constants.AppConfiguration, cmbObject.SelectedItem.ToString()))
+                        if (!requestBO.VerifyRequest(constants.AppConfiguration, cmbObject.SelectedItem.ToString(), deviceCode))
                         {
                             body = $"<p>¡Hola! <br> <br> Queremos informarte que <b>{infantName}</b> " +
                                $"está solicitando que le habilites la aplicación " +
-                               $"<b>{cmbObject.SelectedItem}</b>. <br>" +
+                               $"<b>{cmbObject.SelectedItem}</b> del dispositivo <b>{deviceName}</b>. <br>" +
                                $"Para aprobar o desaprobar esta petición ingresa a nuestro " +
                                $"sistema y dirígete a la sección de <b>Notificaciones</b>.<p>";
 
                             if (requestBO.SendEmail(this.parentEmail, body))
                             {
                                 result = requestBO.RegisterRequestWA(cmbRequestType.SelectedItem.ToString(),
-                                         this.infantId, this.parentId, cmbObject.SelectedItem.ToString());
+                                         this.infantId, this.parentId, cmbObject.SelectedItem.ToString(), deviceCode);
                             }
                             else
                             {
@@ -504,10 +509,10 @@ namespace ParentalControlWindowsForm.Forms
                             extraTime = $"0.{cmbMinutes.SelectedItem}";
                         }
 
-                        if (!requestBO.VerifyRequest(constants.DeviceConfiguration, null))
+                        if (!requestBO.VerifyRequest(constants.DeviceConfiguration, null, deviceCode))
                         {
                             body = $"<p>¡Hola! <br> <br> Queremos informarte que <b>{infantName}</b> " +
-                               $"está solicitando que le amplíes el tiempo de uso del dispositivo " +
+                               $"está solicitando que le amplíes el tiempo de uso del dispositivo PC " +
                                $"por: <b>{time}</b>. <br>" +
                                $"Para aprobar o desaprobar esta petición ingresa a nuestro " +
                                $"sistema y dirígete a la sección de <b>Notificaciones</b>.<p>";
@@ -516,7 +521,7 @@ namespace ParentalControlWindowsForm.Forms
                             {
                                 decimal timeDecimal = Convert.ToDecimal(extraTime);
                                 result = requestBO.RegisterRequestDU(cmbRequestType.SelectedItem.ToString(),
-                                         this.infantId, this.parentId, timeDecimal);
+                                         this.infantId, this.parentId, timeDecimal, deviceCode);
                             }
                             else
                             {
