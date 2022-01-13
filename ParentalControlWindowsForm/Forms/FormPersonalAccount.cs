@@ -148,14 +148,41 @@ namespace ParentalControlWindowsForm.Forms
                 parentModel.ParentEmail = this.txtEmail.Text;
                 parentModel.ParentPassword = this.txtPassword.Text;
 
-                if (parentBO.UpdateParenInformation(parentModel))
+                if(string.IsNullOrEmpty(parentModel.ParentUsername) || string.IsNullOrEmpty(parentModel.ParentEmail) ||
+                   string.IsNullOrEmpty(parentModel.ParentPassword))
                 {
-                    MessageBox.Show("La información se actualizó correctamente.");
+                    MessageBox.Show("Complete todos los campos requeridos.");
+                    this.txtName.Enabled = true;
+                    this.txtEmail.Enabled = true;
+                    this.txtPassword.Enabled = true;
+                    this.btnCancel.Visible = true;
+                    this.btnSave.Visible = true;
+                    this.btnEdit.Visible = false;
                 }
                 else
                 {
-                    MessageBox.Show("Ocurrió un error al actualizar la información. Inténtelo de nuevo.");
-                }
+                    if (parentModel.ParentEmail.IndexOf("@") == -1 || parentModel.ParentEmail.IndexOf(".") == -1)
+                    {
+                        MessageBox.Show("Ingrese una dirección de correo electrónico válida.");
+                        this.txtName.Enabled = true;
+                        this.txtEmail.Enabled = true;
+                        this.txtPassword.Enabled = true;
+                        this.btnCancel.Visible = true;
+                        this.btnSave.Visible = true;
+                        this.btnEdit.Visible = false;
+                    }
+                    else
+                    {
+                        if (parentBO.UpdateParenInformation(parentModel))
+                        {
+                            MessageBox.Show("La información se actualizó correctamente.");
+                        }
+                        else
+                        {
+                            MessageBox.Show("Ocurrió un error al actualizar la información. Inténtelo de nuevo.");
+                        }
+                    }
+                }  
             }
             catch (Exception ex)
             {

@@ -182,7 +182,7 @@ namespace ParentalControl.Business.BusinessBO
             {
                 int webCategoryId = webCategoryModelList.FirstOrDefault().CategoryId;
                 query = $"UPDATE WebConfiguration SET WebConfigurationAccess = {constants.Access}" +
-                        $" WHERE CategoryId = {webCategoryId}";
+                        $" WHERE CategoryId = {webCategoryId} AND InfantAccountId = {infantId}";
                 execute = SQLConexionDataBase.Execute(query);
             }       
 
@@ -206,13 +206,13 @@ namespace ParentalControl.Business.BusinessBO
             if (deviceModelList.Count > 0)
             {
                 int deviceId = deviceModelList.FirstOrDefault().DevicePCId;
-                query = $"SELECT * FROM App WHERE AppName = '{appName}' AND DevicePCId = {deviceId}";
+                query = $"SELECT * FROM App WHERE AppName = '{appName}' AND DevicePCId = {deviceId} AND InfantAccountId = {infantId}";
                 List<ApplicationModel> applicationModelList = this.ObtenerListaSQL<ApplicationModel>(query).ToList();
 
                 if (applicationModelList.Count > 0)
                 {
                     int appId = applicationModelList.FirstOrDefault().AppId;
-                    query = $"UPDATE App SET AppAccessPermission = {constants.Access}" +
+                    query = $"UPDATE App SET AppAccessPermission = {constants.Access}, ScheduleId = NULL" +
                             $" WHERE AppId = {appId}";
                     execute = SQLConexionDataBase.Execute(query);
                 }                              

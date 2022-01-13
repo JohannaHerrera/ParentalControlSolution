@@ -271,7 +271,7 @@ namespace ParentalControlWindowsForm.Forms
                                 DateTime now = DateTime.Now;
                                 int result = DateTime.Compare(now, request.RequestCreationDate);
 
-                                if (result > 0)
+                                if (now.Date > request.RequestCreationDate.Date)
                                 {
                                     RequestBO requestBO = new RequestBO();
                                     requestBO.UpdateRequest(request.RequestId, constants.RequestStateUnanswered);
