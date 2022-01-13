@@ -130,6 +130,7 @@ namespace ParentalControlWindowsForm.Forms
             try
             {
                 NotificationBO notificationBO = new NotificationBO();
+                DeviceBO deviceBO = new DeviceBO();
                 Constants constants = new Constants();
                 InfantAccountBO infantAccountBO = new InfantAccountBO();
                 List<RequestModel> requestModelList = notificationBO.GetParentNotifications(this.parentId);
@@ -166,12 +167,34 @@ namespace ParentalControlWindowsForm.Forms
                         }
                         else if (request.RequestTypeId == constants.AppConfiguration)
                         {
+                            string deviceName = string.Empty;
+
+                            if (request.DevicePCId != null)
+                            {
+                                deviceName = deviceBO.GetDevicePCName((int)request.DevicePCId);
+                            }
+                            else if (request.DevicePhoneId != null)
+                            {
+                                deviceName = deviceBO.GetDevicePhoneName((int)request.DevicePCId);
+                            }
+
                             description = $"Petición para habilitar el acceso a la aplicación:" +
-                                      $" {request.RequestObject}.";
+                                      $" {request.RequestObject} del dispositivo {deviceName}.";
                         }
                         else if (request.RequestTypeId == constants.DeviceConfiguration)
                         {
-                            string[] time = request.RequestTime.ToString().Split('.');                           
+                            string[] time = request.RequestTime.ToString().Split('.');
+
+                            string deviceName = string.Empty;
+
+                            if (request.DevicePCId != null)
+                            {
+                                deviceName = deviceBO.GetDevicePCName((int)request.DevicePCId);
+                            }
+                            else if (request.DevicePhoneId != null)
+                            {
+                                deviceName = deviceBO.GetDevicePhoneName((int)request.DevicePhoneId);
+                            }
 
                             if (time.Count() > 1)
                             {
@@ -190,13 +213,13 @@ namespace ParentalControlWindowsForm.Forms
                                     if (numDecimal > 0)
                                     {
                                         description = $"Petición para extender el tiempo de uso del " +
-                                                                                  $"dispositivo por {numEntero} hora y {numDecimal}" +
-                                                                                  $" minutos.";
+                                                      $"dispositivo {deviceName} por {numEntero} hora y {numDecimal}" +
+                                                      $" minutos.";
                                     }
                                     else
                                     {
                                         description = $"Petición para extender el tiempo de uso del " +
-                                          $"dispositivo por {numEntero} hora.";
+                                          $"dispositivo {deviceName} por {numEntero} hora.";
                                     }
                                 }
                                 else
@@ -204,20 +227,20 @@ namespace ParentalControlWindowsForm.Forms
                                     if (numDecimal > 0)
                                     {
                                         description = $"Petición para extender el tiempo de uso del " +
-                                          $"dispositivo por {numEntero} horas y {numDecimal}" +
+                                          $"dispositivo {deviceName} por {numEntero} horas y {numDecimal}" +
                                           $" minutos.";
                                     }
                                     else
                                     {
                                         description = $"Petición para extender el tiempo de uso del " +
-                                          $"dispositivo por {numEntero} horas.";
+                                          $"dispositivo {deviceName} por {numEntero} horas.";
                                     }
                                 }
                             }
                             else
                             {
                                 description = $"Petición para extender el tiempo de uso del " +
-                                          $"dispositivo por {numDecimal} minutos.";
+                                          $"dispositivo {deviceName} por {numDecimal} minutos.";
                             }
 
                         }
@@ -246,8 +269,9 @@ namespace ParentalControlWindowsForm.Forms
                             if (request.RequestTypeId == constants.DeviceConfiguration)
                             {
                                 DateTime now = DateTime.Now;
-                                
-                                if (now.Date > request.RequestCreationDate.Date)
+                                int result = DateTime.Compare(now, request.RequestCreationDate);
+
+                                if (result > 0)
                                 {
                                     RequestBO requestBO = new RequestBO();
                                     requestBO.UpdateRequest(request.RequestId, constants.RequestStateUnanswered);

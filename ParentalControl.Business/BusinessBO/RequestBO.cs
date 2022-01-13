@@ -109,12 +109,14 @@ namespace ParentalControl.Business.BusinessBO
         /// Método para registrar la petición en caso de categorías web y aplicaciones
         /// </summary>
         /// <returns>bool: TRUE(registro exitoso), FALSE(error al registrar)</returns>
-        public bool RegisterRequestWA(string requestType, int infantId, int parentId, string objecto)
+        public bool RegisterRequestWA(string requestType, int infantId, int parentId, string objecto, string deviceCode)
         {
             Constants constants = new Constants();
             var dateCreation = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
             bool execute = false;
-            string query = $"SELECT * FROM RequestType WHERE RequestTypeName = '{requestType}'";
+            string query = $"SELECT * FROM DevicePC WHERE DevicePCCode = '{deviceCode}'";
+            int deviceId = this.ObtenerListaSQL<DeviceModel>(query).FirstOrDefault().DevicePCId;
+            query = $"SELECT * FROM RequestType WHERE RequestTypeName = '{requestType}'";
             List<RequestTypeModel> requestTypeModelList = this.ObtenerListaSQL<RequestTypeModel>(query).ToList();
 
             if (requestTypeModelList.Count > 0)
@@ -122,7 +124,7 @@ namespace ParentalControl.Business.BusinessBO
                 int idRequestType = requestTypeModelList.FirstOrDefault().RequestTypeId;
                 query = $"INSERT INTO Request VALUES ({idRequestType}, {infantId}," +
                         $" '{objecto}', NULL, {constants.RequestStateCreated}," +
-                        $" '{dateCreation}', {parentId})";
+                        $" '{dateCreation}', {parentId}, {deviceId}, NULL)";
                 execute = SQLConexionDataBase.Execute(query);
             }
             return execute;
@@ -132,12 +134,14 @@ namespace ParentalControl.Business.BusinessBO
         /// Método para registrar la petición en caso del uso del dispositivo
         /// </summary>
         /// <returns>bool: TRUE(registro exitoso), FALSE(error al registrar)</returns>
-        public bool RegisterRequestDU(string requestType, int infantId, int parentId, decimal time)
+        public bool RegisterRequestDU(string requestType, int infantId, int parentId, decimal time, string deviceCode)
         {
             Constants constants = new Constants();
             var dateCreation = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
             bool execute = false;
-            string query = $"SELECT * FROM RequestType WHERE RequestTypeName = '{requestType}'";
+            string query = $"SELECT * FROM DevicePC WHERE DevicePCCode = '{deviceCode}'";
+            int deviceId = this.ObtenerListaSQL<DeviceModel>(query).FirstOrDefault().DevicePCId;
+            query = $"SELECT * FROM RequestType WHERE RequestTypeName = '{requestType}'";
             List<RequestTypeModel> requestTypeModelList = this.ObtenerListaSQL<RequestTypeModel>(query).ToList();
 
             if (requestTypeModelList.Count > 0)
@@ -145,7 +149,7 @@ namespace ParentalControl.Business.BusinessBO
                 int idRequestType = requestTypeModelList.FirstOrDefault().RequestTypeId;
                 query = $"INSERT INTO Request VALUES ({idRequestType}, {infantId}," +
                         $" NULL, {time}, {constants.RequestStateCreated}," +
-                        $" '{dateCreation}', {parentId})";
+                        $" '{dateCreation}', {parentId}, {deviceId}, NULL)";
                 execute = SQLConexionDataBase.Execute(query);
             }
             return execute;
@@ -217,7 +221,7 @@ namespace ParentalControl.Business.BusinessBO
             return execute;
         }
 
-        public bool VerifyRequest(int requestType, string requestObject)
+        public bool VerifyRequest(int requestType, string requestObject, string devicePcCode)
         {
             Constants constants = new Constants();
             bool exist = true;
@@ -225,16 +229,21 @@ namespace ParentalControl.Business.BusinessBO
             string query = string.Empty;
             List<RequestModel> requestModelList = new List<RequestModel>();
 
+            query = $"SELECT * FROM DevicePC WHERE DevicePCCode = '{devicePcCode}'";
+            int deviceId = this.ObtenerListaSQL<DeviceModel>(query).FirstOrDefault().DevicePCId;
+
             if (requestType == constants.WebConfiguration || requestType == constants.AppConfiguration)
             {
                 query = $"SELECT * FROM Request WHERE RequestState = 0" +
-                        $" AND RequestObject = '{requestObject}'";
+                        $" AND RequestObject = '{requestObject}'" +
+                        $" AND DevicePCId = {deviceId}";
             }
             else if (requestType == constants.DeviceConfiguration)
             {
                 query = $"SELECT * FROM Request WHERE RequestState = 0" +
                         $" AND CAST(RequestCreationDate AS date) = '{dateNow}'" +
-                        $" AND RequestTime IS NOT NULL";
+                        $" AND RequestTime IS NOT NULL" +
+                        $" AND DevicePCId = {deviceId}";
             }
 
             requestModelList = this.ObtenerListaSQL<RequestModel>(query).ToList();
