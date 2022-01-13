@@ -167,7 +167,7 @@ namespace ParentalControl.Business.BusinessBO
         /// <returns></returns>
         public bool DeleteInfantAccount(int infantAccountId)
         {
-            string query = $"DELETE FROM Activity where InfantAccountId = {infantAccountId};" +
+            string query = $" DELETE FROM Activity where InfantAccountId = {infantAccountId};" +
                            $" DELETE FROM App where InfantAccountId = {infantAccountId};;" +
                            $" DELETE FROM DevicePhone where InfantAccountId = {infantAccountId};" +
                            $" DELETE FROM DeviceUse where InfantAccountId = {infantAccountId};" +

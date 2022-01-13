@@ -107,7 +107,7 @@ namespace ParentalControl.Business.BusinessBO
         //delete
         public bool DeleteSchedule(int scheduleId)
         {
-            string query = $"UPDATE App SET ScheduleId = NULL WHERE ScheduleId = {scheduleId};" +
+            string query = $" UPDATE App SET ScheduleId = NULL WHERE ScheduleId = {scheduleId};" +
                            $" UPDATE DevicePhoneUse SET ScheduleId = NULL WHERE ScheduleId = {scheduleId};" +
                            $" UPDATE DeviceUse SET ScheduleId = NULL WHERE ScheduleId = {scheduleId};" +
                            $" DELETE FROM Schedule WHERE ScheduleId = {scheduleId};";
