@@ -208,5 +208,10 @@ namespace ParentalControlWindowsForm.Forms
                 MessageBox.Show(ex.Message);
             }
         }
+
+        private void lblSchedule_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

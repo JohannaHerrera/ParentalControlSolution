@@ -193,7 +193,8 @@ namespace ParentalControlWindowsForm.Forms
             this.lblSchedule.Name = "lblSchedule";
             this.lblSchedule.Size = new System.Drawing.Size(111, 29);
             this.lblSchedule.TabIndex = 2;
-            this.lblSchedule.Text = "Horarios";
+            this.lblSchedule.Text = "Horarios De Uso";
+            this.lblSchedule.Click += new System.EventHandler(this.lblSchedule_Click);
             // 
             // panel2
             // 
