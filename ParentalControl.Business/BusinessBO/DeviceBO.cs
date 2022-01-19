@@ -162,6 +162,7 @@ namespace ParentalControl.Business.BusinessBO
                 query = $" DELETE FROM WindowsAccount WHERE DevicePCId = {deviceId};" +
                         $" DELETE FROM App WHERE DevicePCId = {deviceId};" +
                         $" DELETE FROM AppDevice WHERE DevicePCId = {deviceId};" +
+                        $" DELETE FROM Request WHERE DevicePCId = {deviceId};" +
                         $" DELETE FROM DevicePC WHERE DevicePCId = {deviceId};";
                 execute = SQLConexionDataBase.Execute(query);
             }
